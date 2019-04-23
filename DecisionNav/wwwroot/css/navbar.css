@@ -32,11 +32,10 @@
 
 .mainmenu .collapse ul ul > li:hover > a, .navbar-default .navbar-nav .show .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .show .dropdown-menu > li > a:hover {
     background: #007bff;
-   
 }
 
 .mainmenu .collapse ul ul ul > li:hover > a {
-    background: #4CAF50;
+    background: #007bff;
 }
 
 .mainmenu .collapse ul ul, .mainmenu .collapse ul ul.dropdown-menu {
@@ -44,11 +43,11 @@
 }
 
     .mainmenu .collapse ul ul ul, .mainmenu .collapse ul ul ul.dropdown-menu {
-        background: #1E88E5
+        background: #222;
     }
 
         .mainmenu .collapse ul ul ul ul, .mainmenu .collapse ul ul ul ul.dropdown-menu {
-            background: #64B5F6
+            background: #222;
         }
 
 /******************************Drop-down menu work on hover**********************************/
