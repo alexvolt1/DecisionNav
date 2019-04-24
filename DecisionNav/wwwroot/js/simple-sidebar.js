@@ -5,6 +5,15 @@
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+
+        //var arrClass = $(this).find('.fas');
+
+        //if ($(arrClass).hasClass('fa-angle-double-left')) {
+        //    $(arrClass).removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
+        //}
+        //else if ($(arrClass).hasClass('fa-angle-double-right')) {
+        //    $(arrClass).removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
+        //}
     });
 
     $('.nav-link-collapse').on('click', function () {
