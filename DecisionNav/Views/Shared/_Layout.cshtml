@@ -107,6 +107,47 @@
                                     aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
+                            
+                            
+                            
+                            
+                            <div class="btn-group">
+                                <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"
+                                   href="">
+                                    Dropdown
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                    <li><a class="dropdown-item" href="#">level 1</a></li>
+                                    <li><a class="dropdown-item" href="#">level 1</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item" tabindex="-1" href="#">
+                                            level 1
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" tabindex="-1" href="#">level 2</a></li>
+                                            <li class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">
+                                                    level 2
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">3rd level</a></li>
+                                                    <li><a class="dropdown-item" href="#">3rd level</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">level 2</a></li>
+                                            <li><a class="dropdown-item" href="#">level 2</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+
+
+
+
+
                             <div class="collapse justify-content-md-center navbar-collapse" id="topNavbarSupportedContent">
                                 <ul class="navbar-nav">
                                     <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
@@ -145,6 +186,13 @@
             <div class="container-fluid">
                 <partial name="_CookieConsentPartial" />
                 <main role="main" class="pb-3">
+
+
+
+
+
+
+
                     @RenderBody()
                 </main>
             </div>
