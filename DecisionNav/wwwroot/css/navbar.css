@@ -118,3 +118,127 @@
         padding-left: 3.5rem;
     }
 }
+
+
+
+
+
+
+
+/*@media all and (min-width:992px)*/
+.left-menu .navbar-expand-lg .navbar-nav {
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+}
+
+/*@media only screen and (min-width:767px)*/
+.left-menu .mainmenu .collapse ul ul {
+    top: 0px;
+    left: 50%;
+}
+
+.left-menu.menu-area {
+    width: 15rem;
+}
+
+/*@media only screen and (min-width:767px)*/
+.left-menu .mainmenu .collapse ul ul ul ul {
+    left: 50%;
+}
+
+
+.mainmenu a,
+.navbar-default .navbar-nav > li > a,
+.mainmenu ul li a,
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding: 0 1.25rem;
+}
+
+
+.top-menu {
+    height: 2.8rem;
+}
+
+    .top-menu .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .top-menu .btn:hover {
+        background: #222;
+    }
+
+    .top-menu .navbar-nav li {
+        line-height: 2.6;
+    }
+
+.left-menu {
+    height: 2.8rem;
+}
+
+    .left-menu .btn:hover {
+        background: #222;
+    }
+
+    .left-menu .navbar-nav li {
+        line-height: 2.6;
+    }
+
+
+
+.navbar-expand-lg .navbar-collapse {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+}
+
+.left-nav :not(.show).collapse {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.top-menu ul li a,
+.left-menu ul li a {
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    border: 1px solid #444;
+    border-radius: 0.25rem;
+}
+
+
+
+/*.dropdown-menu {
+    display: block;
+}
+
+.navbar-nav .dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+    .navbar-nav .dropdown-menu.show {
+        max-height: 500px;
+    }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

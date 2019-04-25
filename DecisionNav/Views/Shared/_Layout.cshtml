@@ -16,32 +16,26 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
 
-    <link href="~/css/simple-sidebar.css" rel="stylesheet" />
+    <link href="~/css/sidebar.css" rel="stylesheet" />
     <link href="~/lib/fontawesome-free/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/css/navbar.css" rel="stylesheet" />
-    <link href="~/css/left-menu.css" rel="stylesheet" />
-
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+        <nav id="site-header" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DecisionNav</a>
+                <a class="navbar-brand afslogo-font" asp-area="" asp-controller="Home" asp-action="Index">afs<sup>&#174;</sup><sub>The market leader in lending solutions</sub></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <partial name="_AppTitlePartial" />
                         </li>
                     </ul>
                 </div>
@@ -53,43 +47,15 @@
 
         <!-- Sidebar -->
         <div class="bg-dark" id="sidebar-wrapper">
-            <div class="sidebar-heading cl-white">Start Bootstrap </div>
+            <div class="sidebar-heading cl-white">Title</div>
 
             <div id="menu_area" class="left-menu menu-area">
-                <nav class="navbar navbar-light navbar-expand-lg mainmenu">
+                <nav class="navbar navbar-dark  navbar-expand-lg mainmenu">
                     @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#leftNavbarSupportedContent" aria-controls="leftNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>*@
+                            <span class="navbar-toggler-icon"></span>
+                        </button>*@
                     <div class="collapse navbar-collapse" id="leftNavbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">Link</a></li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2</a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown3</a>
-                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <li><a href="#">Action</a></li>
-                                                    <li><a href="#">Another action</a></li>
-                                                    <li><a href="#">Something else here</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Service</a></li>
-                        </ul>
+                        <partial name="_NavBarPartial" />
                     </div>
                 </nav>
             </div>
@@ -107,77 +73,9 @@
                                     aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            
-                            
-                            
-                            
-                            <div class="btn-group">
-                                <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"
-                                   href="">
-                                    Dropdown
-                                </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><a class="dropdown-item" href="#">level 1</a></li>
-                                    <li><a class="dropdown-item" href="#">level 1</a></li>
-                                    <li class="dropdown-divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a class="dropdown-item" tabindex="-1" href="#">
-                                            level 1
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" tabindex="-1" href="#">level 2</a></li>
-                                            <li class="dropdown-submenu">
-                                                <a class="dropdown-item" href="#">
-                                                    level 2
-                                                </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">3rd level</a></li>
-                                                    <li><a class="dropdown-item" href="#">3rd level</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">level 2</a></li>
-                                            <li><a class="dropdown-item" href="#">level 2</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-
-
-
-
 
                             <div class="collapse justify-content-md-center navbar-collapse" id="topNavbarSupportedContent">
-                                <ul class="navbar-nav">
-                                    <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2</a>
-                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <li><a href="#">Action</a></li>
-                                                    <li><a href="#">Another action</a></li>
-                                                    <li><a href="#">Something else here</a></li>
-                                                    <li class="dropdown">
-                                                        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown3</a>
-                                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Service</a></li>
-                                </ul>
+                                <partial name="_NavBarPartial" />
                             </div>
                         </div>
                     </nav>
@@ -208,7 +106,7 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="~/js/simple-sidebar.js"></script>
+
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -225,6 +123,7 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sidebar.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
