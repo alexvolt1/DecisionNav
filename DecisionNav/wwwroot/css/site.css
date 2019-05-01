@@ -205,4 +205,18 @@ _:-ms-lang(x), .afslogo-font sup {
     color: white;
 }
 
+.nav-item.dropdown .dropdown-toggle::after {
+    width: 1rem;
+    text-align: center;
+    right:0;
+    vertical-align: 0px;
+    border: 0;
+    font-weight: 900;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    /*border: blue 1px solid;*/
+}
+
+
+
 
