@@ -1,0 +1,14 @@
+﻿@model IList<DecisionNav.Models.NavigationList>
+@using DecisionNav.Helpers
+@{
+
+    var listMenuItems = MenuHelper.GetMenuNavList(Model, null);
+}
+
+<h3>Priority Items</h3>
+<ul class="sidebar-menu" data-widget="tree">
+    @*@Html.Partial("_TestPartial", listMenuItems)*@
+
+    <partial name="_NavListPartial" model="listMenuItems" />
+</ul>
+

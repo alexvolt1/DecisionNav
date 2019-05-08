@@ -1,0 +1,32 @@
+@model IEnumerable<DecisionNav.Models.ViewModels.MenuViewModel>
+111111111111
+@foreach (var menu in Model)
+{
+    <a>3333333333</a>
+    if (menu.Children.Any())
+    {
+        <li class="treeview">
+            <a href="#">
+                <i class="@menu.IconClass"></i> <span>@menu.Content</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                @*@Html.Partial("_MenuPartial", menu.Children)*@
+                <partial name="_MenuPartial" , menu.Children />
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li class="treeview">
+            <a href="@menu.Href">
+                <i class="@menu.IconClass"></i> <span>@menu.Content</span>
+            </a>
+        </li>
+    }
+    <a>4444444</a>
+}
+22222222222
+

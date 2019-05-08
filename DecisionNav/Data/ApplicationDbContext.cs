@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DecisionNav.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,9 @@ namespace DecisionNav.Data
             : base(options)
         {
         }
+
+        public virtual DbSet<Menu> Menu { get; set; }
+        public virtual DbSet<NavigationList> NavigationList { get; set; }
+
     }
 }
