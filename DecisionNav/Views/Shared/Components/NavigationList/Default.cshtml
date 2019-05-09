@@ -2,11 +2,10 @@
 @using DecisionNav.Helpers
 @{
 
-    var listMenuItems = MenuHelper.GetMenuNavList(Model, null);
+    var listMenuItems = MenuHelper.GetMenuNavList(Model, "00000000-0000-0000-0000-000000000000");
 }
 
-<h3>Priority Items</h3>
-<ul class="sidebar-menu" data-widget="tree">
+<ul class="navbar-nav m-auto">
     @*@Html.Partial("_TestPartial", listMenuItems)*@
 
     <partial name="_NavListPartial" model="listMenuItems" />

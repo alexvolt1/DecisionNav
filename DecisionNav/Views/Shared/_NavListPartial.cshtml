@@ -5,14 +5,11 @@
 {
     if (menu.Children.Any())
     {
-        <li class="treeview">
-            <a href="#">
-                <i class="@menu.Id"></i> <span>@menu.DefaultName</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown-@menu.Id" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>@menu.DefaultName</span>
             </a>
-            <ul class="treeview-menu">
+            <ul class="dropdown-menu" aria-labelledby="pagesDropdown-@menu.Id">
                 @*@Html.Partial("_TestPartial", menu.Children)*@
                 <partial name="_NavListPartial" model="menu.Children" />
             </ul>
@@ -20,9 +17,9 @@
     }
     else
     {
-        <li class="treeview">
-            <a href="@menu.ImageUrl">
-                <i class="@menu.Id"></i> <span>@menu.DefaultName</span>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="pagesDropdown-@menu.Id" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>@menu.DefaultName</span>
             </a>
         </li>
     }

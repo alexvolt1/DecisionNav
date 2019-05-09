@@ -49,9 +49,6 @@ namespace DecisionNav.Helpers
 
         public static IList<NavigationList> GetChildrenMenuNavList(IList<NavigationList> menuList, string parentId = null)
         {
-            parentId = "00000000-0000-0000-0000-000000000000";
-
-
             return menuList.Where(x => x.ParentId == parentId).ToList();
         }
 

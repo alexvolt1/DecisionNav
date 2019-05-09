@@ -55,7 +55,8 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>*@
                     <div class="collapse navbar-collapse" id="leftNavbarSupportedContent">
-                        <partial name="_NavBarPartial" />
+                        @*<partial name="_NavBarPartial" />*@
+                        @await Component.InvokeAsync("NavigationList", new { maxPriority = 3, isDone = false })
                     </div>
                 </nav>
             </div>
@@ -75,7 +76,8 @@
                             </button>
 
                             <div class="collapse navbar-collapse" id="topNavbarSupportedContent" style>
-                                <partial name="_NavBarPartial" />
+                                @*<partial name="_NavBarPartial" />*@
+                                @await Component.InvokeAsync("NavigationList", new { maxPriority = 3, isDone = false })
                             </div>
                         </div>
                     </nav>

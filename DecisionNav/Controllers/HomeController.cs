@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DecisionNav.Models;
-using DecisionNav.Models.NavBarModel;
 using System.Data.SqlClient;
 using System.Text;
 using DecisionNav.Models.ViewModels;
