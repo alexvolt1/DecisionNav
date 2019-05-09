@@ -14,8 +14,13 @@ namespace DecisionNav.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Query<NavigationList>().ToView("vNavigationList");
+        }
         public virtual DbSet<Menu> Menu { get; set; }
-        public virtual DbSet<NavigationList> NavigationList { get; set; }
+        public virtual DbQuery<NavigationList> NavigationList { get; set; }
 
     }
 }

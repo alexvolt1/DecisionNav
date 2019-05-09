@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DecisionNav.Models
 {
-    [Table("vNavigationList")]
+    //[Table("vNavigationList")]
     public class NavigationList
     {
         public string Id { get; set; }
@@ -19,7 +19,7 @@ namespace DecisionNav.Models
         public string Source { get; set; }
         public string ImageUrl { get; set; }
         public string LargeImageUrl { get; set; }
-        public int IsMobile { get; set; }
+        public string IsMobile { get; set; }
         public string DocumentMode { get; set; }
 
     }

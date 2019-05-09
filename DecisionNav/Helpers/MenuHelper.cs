@@ -49,7 +49,10 @@ namespace DecisionNav.Helpers
 
         public static IList<NavigationList> GetChildrenMenuNavList(IList<NavigationList> menuList, string parentId = null)
         {
-            return menuList.Where(x => x.ParentId == parentId).OrderBy(x => x.Sequence).ToList();
+            parentId = "00000000-0000-0000-0000-000000000000";
+
+
+            return menuList.Where(x => x.ParentId == parentId).ToList();
         }
 
         public static Menu GetMenuItem(IList<Menu> menuList, string id)
