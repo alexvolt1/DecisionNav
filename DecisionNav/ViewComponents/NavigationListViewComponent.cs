@@ -24,7 +24,7 @@ namespace DecisionNav.ViewComponents
         }
 
         public async Task<IViewComponentResult> InvokeAsync(
-        int maxPriority, bool isDone)
+        int maxPriority, bool isDone, string position)
         {
             IEnumerable<NavigationList> cacheEntry;
 
@@ -42,8 +42,15 @@ namespace DecisionNav.ViewComponents
                 // Save data in cache.
                 _cache.Set(CacheKeys.Entry, cacheEntry, cacheEntryOptions);
             }
-
-            return View(cacheEntry);
+            if (position=="left")
+            {
+                return View("LeftMenu", cacheEntry);
+            }
+            else
+            {
+                return View(cacheEntry);
+            }
+            
         }
 
     }

@@ -1,0 +1,28 @@
+﻿@model IList<DecisionNav.Models.NavigationList>
+@using DecisionNav.Helpers
+@{
+
+    var listMenuItems = MenuHelper.GetMenuNavList(Model, "00000000-0000-0000-0000-000000000000");
+}
+
+    <ul class="navbar-nav m-auto">
+        @*@Html.Partial("_TestPartial", listMenuItems)*@
+
+        <partial name="_NavListPartial" model="listMenuItems" />
+        <li class="nav-item">
+            <a class="nav-link" href="#" role="button">
+                <span>Show Loaded Views :0</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" role="button">
+                <span>Show Private Views :0</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" role="button">
+                <span>Manage My Account</span>
+            </a>
+        </li>
+    </ul>
+

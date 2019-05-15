@@ -24,15 +24,15 @@
 </head>
 <body>
     <header>
-        <nav id="site-header" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
-            <div class="container-fluid">
+        <div class="container-fluid">
+            <div id="site-header" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
                 <a class="navbar-brand afslogo-font" asp-area="" asp-controller="Home" asp-action="Index">afs<sup>&#174;</sup><sub>The market leader in lending solutions</sub></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
+                    <partial name="_BankLogoPartial" />
                     <ul class="navbar-nav flex-grow-1 justify-content-center">
                         <li class="nav-item">
                             <partial name="_AppTitlePartial" />
@@ -40,7 +40,17 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+
+
+            <div id="sub-header" class="navbar navbar-expand-sm">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <partial name="_SubMenuPartial" />
+                </div>
+            </div>
+
+
+        </div>
     </header>
 
     <div class="d-flex" id="wrapper">
@@ -56,7 +66,7 @@
                         </button>*@
                     <div class="collapse navbar-collapse" id="leftNavbarSupportedContent">
                         @*<partial name="_NavBarPartial" />*@
-                        @await Component.InvokeAsync("NavigationList", new { maxPriority = 3, isDone = false })
+                        @await Component.InvokeAsync("NavigationList", new { maxPriority = 3, isDone = false, position="left" })
                     </div>
                 </nav>
             </div>
@@ -75,9 +85,9 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
 
-                            <div class="collapse navbar-collapse" id="topNavbarSupportedContent" style>
+                            <div class="collapse navbar-collapse" id="topNavbarSupportedContent">
                                 @*<partial name="_NavBarPartial" />*@
-                                @await Component.InvokeAsync("NavigationList", new { maxPriority = 3, isDone = false })
+                                @await Component.InvokeAsync("NavigationList", new { maxPriority = 3, isDone = false, position="top" })
                             </div>
                         </div>
                     </nav>

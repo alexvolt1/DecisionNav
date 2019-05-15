@@ -87,6 +87,16 @@ a.navbar-brand label.text-info {
         padding-bottom: 0
     }
 
+
+#sub-header {
+    line-height: 1
+}
+
+    #sub-header a {
+        padding-top: 0;
+        padding-bottom: 0
+    }
+
 #nav-title {
     width: 100%;
 }
@@ -196,6 +206,12 @@ footer .copyright h6 {
     font-weight: 500;
 }
 
+    .afslogo-font sub.logo-title {
+        margin-top: -1rem;
+    }
+
+
+
 _:-ms-lang(x), .afslogo-font sup {
     top: 0.1rem;
 }
@@ -224,4 +240,27 @@ _:-ms-lang(x), .afslogo-font sup {
 
 ul.dropdown-menu li.nav-item a span {
     /*white-space: nowrap;*/
+}
+
+#site-header.navbar {
+    box-shadow: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#site-header.box-shadow {
+    box-shadow: none;
+}
+
+#site-header.border-bottom {
+    border-bottom: none !important;
+}
+#site-header .afslogo-font {
+    position:absolute;
+    top:0.8rem;
+}
+#site-header {
+    padding-top:0.8rem;
 }
