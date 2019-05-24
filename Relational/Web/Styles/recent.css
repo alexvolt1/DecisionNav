@@ -1,0 +1,93 @@
+﻿  body
+        {
+            font-family: Trebuchet MS, Lucida Sans Unicode, Lucida Grande,Lucida Sans, Arial, sans-serif;
+        	font-size:12px;
+        	color:#333;
+        }
+  .recents ul {
+		/* rules common to BOTH inner and outer UL */
+		
+		z-index:	100000;
+		margin:		4px 0;
+		padding:	0;
+		list-style:	none;
+		cursor:		pointer;
+		
+		/* rules for outer UL only */
+		color:White;
+		width:		80px;
+		position:	relative;
+	}
+	.recentss ul li span{
+	 padding:0 0 0 2px ;
+	
+     height:25px;
+	}
+	
+.recents ul img{
+	 padding-top:4px;
+		}
+	
+.recents ul:hover 
+	{
+	    border:		1px solid #eee;
+	}
+	
+	
+.recents ul li {
+		
+		padding:0;
+		
+	}
+.recents ul ul {
+		display:	none; 
+		position:	absolute;
+		width:		100%;
+		left:		-220px;
+		/* Pop-Up */
+		bottom:		0;
+		margin:		0;
+		margin-bottom: 1.55em;
+		width:300px;
+		border:		1px solid #bbb;
+	}
+	
+.list-dropdown ul ul {
+		/* Drop-Down */
+		bottom:		auto;
+		margin:		0;
+		margin-top:	1.45em;
+		width:300px;
+	}	
+	
+.recents ul ul li		{ padding: 3px 0 3px 5px; }
+.recents ul ul li a		
+	{
+    color:#003768;
+    text-decoration:none;
+    }
+    
+ .recents ul ul li a:hover{
+    text-decoration: underline;
+     }
+
+.recents ul ul li:hover	
+{
+     background-color: #EEa;
+    
+      }	
+
+.recents ul li:hover ul	{ display:	block; background-color: #EEE; }
+	
+
+
+
+	
+#recentviewsbgcover
+	{
+	    display:none;
+	    position:absolute;
+        padding:0;
+        margin:0;
+	    z-index:99998;
+	}

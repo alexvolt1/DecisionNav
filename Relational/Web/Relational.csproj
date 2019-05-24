@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D5C497A5-0E2C-4598-93DD-685E20E74CF6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Relational</RootNamespace>
+    <AssemblyName>Relational</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.76.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DecisionCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Bin\DecisionCore.dll</HintPath>
+    </Reference>
+    <Reference Include="DeciwebAccountManagement, Version=1.0.7079.30069, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Bin\DeciwebAccountManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="DeciwebProperties, Version=1.0.7079.30190, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Bin\DeciwebProperties.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\..\Lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DSS.Logs, Version=1.0.6585.25989, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\DSS.Logs.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\v2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Relational.Core, Version=1.0.7079.30070, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Bin\Relational.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DeciwebPageBase.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="images\afs-logo.gif" />
+    <Content Include="images\circle-east.png" />
+    <Content Include="images\circle-west.png" />
+    <Content Include="images\ajax-loader-small.gif" />
+    <Content Include="images\gradientSprite.jpg" />
+    <Content Include="images\header-columns-bg.gif" />
+    <Content Include="images\header-columns-over-bg.gif" />
+    <Content Include="images\list.png" />
+    <Content Include="images\LogoSmall_AFS.gif" />
+    <Content Include="images\radiobutton_no.png" />
+    <Content Include="images\radiobutton_yes.png" />
+    <Content Include="images\tick.gif" />
+    <Content Include="images\unchecked.gif" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
+    <Content Include="Scripts\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\css\smoothness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\css\smoothness\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Scripts\default.css" />
+    <Content Include="Scripts\firebugx.js" />
+    <Content Include="Scripts\images\actions.gif" />
+    <Content Include="Scripts\images\ajax-loader-small.gif" />
+    <Content Include="Scripts\images\arrow_redo.png" />
+    <Content Include="Scripts\images\arrow_right_peppermint.png" />
+    <Content Include="Scripts\images\arrow_right_spearmint.png" />
+    <Content Include="Scripts\images\arrow_undo.png" />
+    <Content Include="Scripts\images\bullet_blue.png" />
+    <Content Include="Scripts\images\bullet_star.png" />
+    <Content Include="Scripts\images\bullet_toggle_minus.png" />
+    <Content Include="Scripts\images\bullet_toggle_plus.png" />
+    <Content Include="Scripts\images\calendar.gif" />
+    <Content Include="Scripts\images\collapse.gif" />
+    <Content Include="Scripts\images\comment_yellow.gif" />
+    <Content Include="Scripts\images\down.gif" />
+    <Content Include="Scripts\images\drag-handle.png" />
+    <Content Include="Scripts\images\editor-helper-bg.gif" />
+    <Content Include="Scripts\images\expand.gif" />
+    <Content Include="Scripts\images\header-bg.gif" />
+    <Content Include="Scripts\images\header-columns-bg.gif" />
+    <Content Include="Scripts\images\header-columns-over-bg.gif" />
+    <Content Include="Scripts\images\help.png" />
+    <Content Include="Scripts\images\info.gif" />
+    <Content Include="Scripts\images\listview.gif" />
+    <Content Include="Scripts\images\pencil.gif" />
+    <Content Include="Scripts\images\row-over-bg.gif" />
+    <Content Include="Scripts\images\sort-asc.gif" />
+    <Content Include="Scripts\images\sort-asc.png" />
+    <Content Include="Scripts\images\sort-desc.gif" />
+    <Content Include="Scripts\images\sort-desc.png" />
+    <Content Include="Scripts\images\stripes.png" />
+    <Content Include="Scripts\images\tag_red.png" />
+    <Content Include="Scripts\images\tick.png" />
+    <Content Include="Scripts\images\unchecked.gif" />
+    <Content Include="Scripts\images\user_identity.gif" />
+    <Content Include="Scripts\images\user_identity_plus.gif" />
+    <Content Include="Scripts\jquery-1.7.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.custom.css" />
+    <Content Include="Scripts\jquery-ui-1.8.24.custom.min.js" />
+    <Content Include="Scripts\jquery.event.drag-2.2.js" />
+    <Content Include="Scripts\jquery.FileDownload.js" />
+    <Content Include="Scripts\jquery.getscrollbarwidth.js" />
+    <Content Include="Scripts\jquery.mousewheel.js" />
+    <Content Include="Scripts\lib\firebugx.js" />
+    <Content Include="Scripts\lib\jquery-1.7.min.js" />
+    <Content Include="Scripts\lib\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Scripts\lib\jquery.event.drag-2.0.min.js" />
+    <Content Include="Scripts\lib\jquery.event.drop-2.0.min.js" />
+    <Content Include="Scripts\lib\jquery.jsonp-1.1.0.min.js" />
+    <Content Include="Scripts\lib\jquery.simulate.js" />
+    <Content Include="Scripts\lib\jquery.sparkline.min.js" />
+    <Content Include="Scripts\lib\qunit.css" />
+    <Content Include="Scripts\lib\qunit.js" />
+    <Content Include="Scripts\plugins\filterdialog.js" />
+    <Content Include="Scripts\plugins\filtersdialog.css" />
+    <Content Include="Scripts\plugins\jquery.getscrollbarwidth.js" />
+    <Content Include="Scripts\plugins\memberselectdialog.css" />
+    <Content Include="Scripts\plugins\memberselectdialog.js" />
+    <Content Include="Scripts\plugins\slick.autotooltips.js" />
+    <Content Include="Scripts\plugins\slick.cellcopymanager.js" />
+    <Content Include="Scripts\plugins\slick.cellrangedecorator.js" />
+    <Content Include="Scripts\plugins\slick.cellrangeselector.js" />
+    <Content Include="Scripts\plugins\slick.cellselectionmodel.js" />
+    <Content Include="Scripts\plugins\slick.checkboxselectcolumn.js" />
+    <Content Include="Scripts\plugins\slick.headerbuttons.css" />
+    <Content Include="Scripts\plugins\slick.headerbuttons.js" />
+    <Content Include="Scripts\plugins\slick.headermenu.css" />
+    <Content Include="Scripts\plugins\slick.headermenu.js" />
+    <Content Include="Scripts\plugins\slick.remotemodel.js" />
+    <Content Include="Scripts\plugins\slick.rowmovemanager.js" />
+    <Content Include="Scripts\plugins\slick.rowselectionmodel.js" />
+    <Content Include="Scripts\plugins\TotalsDataViewVirtual.js" />
+    <Content Include="Scripts\plugins\TotalsPlugin.css" />
+    <Content Include="Scripts\plugins\TotalsPluginVirtual orig.js" />
+    <Content Include="Scripts\plugins\TotalsPluginVirtual.js" />
+    <Content Include="Scripts\relational-2.0.js" />
+    <Content Include="Scripts\relational.css" />
+    <Content Include="Scripts\slick-default-theme.css" />
+    <Content Include="Scripts\plugins\slick.columnpicker.css" />
+    <Content Include="Scripts\plugins\slick.columnpicker.js" />
+    <Content Include="Scripts\slick.core.js" />
+    <Content Include="Scripts\plugins\slick.dataview.js" />
+    <Content Include="Scripts\plugins\slick.editors.js" />
+    <Content Include="Scripts\plugins\slick.formatters.js" />
+    <Content Include="Scripts\slick.grid.js" />
+    <Content Include="Scripts\slick.grid.css" />
+    <Content Include="Scripts\slick.grid111.js" />
+    <Content Include="Scripts\plugins\slick.pager.css" />
+    <Content Include="Scripts\plugins\slick.pager.js" />
+    <Content Include="Scripts\slick.grid222.js" />
+    <Content Include="Scripts\toolbar.css" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="Scripts\Tree\images\blank.png" />
+    <Content Include="Scripts\Tree\images\downArrow.gif" />
+    <Content Include="Scripts\Tree\images\minus.png" />
+    <Content Include="Scripts\Tree\images\plus.png" />
+    <Content Include="Scripts\Tree\images\rightArrow.gif" />
+    <Content Include="Scripts\Tree\jquery.checkboxtree.css" />
+    <Content Include="Scripts\Tree\jquery.checkboxtree.js" />
+    <Content Include="Script\controls\slick.columnpicker.css" />
+    <Content Include="Script\controls\slick.columnpicker.js" />
+    <Content Include="Script\controls\slick.js" />
+    <Content Include="Script\controls\slick.pager.css" />
+    <Content Include="Script\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Script\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Script\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Script\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Script\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Script\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Script\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Script\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Script\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Script\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Script\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Script\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Script\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Script\css\smoothness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Script\css\smoothness\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Script\default.css" />
+    <Content Include="Script\firebugx.js" />
+    <Content Include="Script\images\actions.gif" />
+    <Content Include="Script\images\ajax-loader-small.gif" />
+    <Content Include="Script\images\arrow_redo.png" />
+    <Content Include="Script\images\arrow_right_peppermint.png" />
+    <Content Include="Script\images\arrow_right_spearmint.png" />
+    <Content Include="Script\images\arrow_undo.png" />
+    <Content Include="Script\images\bullet_blue.png" />
+    <Content Include="Script\images\bullet_star.png" />
+    <Content Include="Script\images\bullet_toggle_minus.png" />
+    <Content Include="Script\images\bullet_toggle_plus.png" />
+    <Content Include="Script\images\calendar.gif" />
+    <Content Include="Script\images\collapse.gif" />
+    <Content Include="Script\images\comment_yellow.gif" />
+    <Content Include="Script\images\down.gif" />
+    <Content Include="Script\images\drag-handle.png" />
+    <Content Include="Script\images\editor-helper-bg.gif" />
+    <Content Include="Script\images\expand.gif" />
+    <Content Include="Script\images\header-bg.gif" />
+    <Content Include="Script\images\header-columns-bg.gif" />
+    <Content Include="Script\images\header-columns-over-bg.gif" />
+    <Content Include="Script\images\help.png" />
+    <Content Include="Script\images\info.gif" />
+    <Content Include="Script\images\listview.gif" />
+    <Content Include="Script\images\pencil.gif" />
+    <Content Include="Script\images\row-over-bg.gif" />
+    <Content Include="Script\images\sort-asc.gif" />
+    <Content Include="Script\images\sort-asc.png" />
+    <Content Include="Script\images\sort-desc.gif" />
+    <Content Include="Script\images\sort-desc.png" />
+    <Content Include="Script\images\stripes.png" />
+    <Content Include="Script\images\tag_red.png" />
+    <Content Include="Script\images\tick.png" />
+    <Content Include="Script\images\unchecked.gif" />
+    <Content Include="Script\images\user_identity.gif" />
+    <Content Include="Script\images\user_identity_plus.gif" />
+    <Content Include="Script\jquery-1.7.min.js" />
+    <Content Include="Script\jquery-ui-1.8.24.custom.css" />
+    <Content Include="Script\jquery-ui-1.8.24.custom.min.js" />
+    <Content Include="Script\jquery.event.drag-2.2.js" />
+    <Content Include="Script\jquery.FileDownload.js" />
+    <Content Include="Script\jquery.getscrollbarwidth.js" />
+    <Content Include="Script\jquery.mousewheel.js" />
+    <Content Include="Script\lib\firebugx.js" />
+    <Content Include="Script\lib\jquery-1.7.min.js" />
+    <Content Include="Script\lib\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Script\lib\jquery.event.drag-2.0.min.js" />
+    <Content Include="Script\lib\jquery.event.drop-2.0.min.js" />
+    <Content Include="Script\lib\jquery.jsonp-1.1.0.min.js" />
+    <Content Include="Script\lib\jquery.simulate.js" />
+    <Content Include="Script\lib\jquery.sparkline.min.js" />
+    <Content Include="Script\lib\qunit.css" />
+    <Content Include="Script\lib\qunit.js" />
+    <Content Include="Script\plugins\jquery.getscrollbarwidth.js" />
+    <Content Include="Script\plugins\slick.autotooltips.js" />
+    <Content Include="Script\plugins\slick.cellcopymanager.js" />
+    <Content Include="Script\plugins\slick.cellrangedecorator.js" />
+    <Content Include="Script\plugins\slick.cellrangeselector.js" />
+    <Content Include="Script\plugins\slick.cellselectionmodel.js" />
+    <Content Include="Script\plugins\slick.checkboxselectcolumn.js" />
+    <Content Include="Script\plugins\slick.headerbuttons.css" />
+    <Content Include="Script\plugins\slick.headerbuttons.js" />
+    <Content Include="Script\plugins\slick.headermenu.css" />
+    <Content Include="Script\plugins\slick.headermenu.js" />
+    <Content Include="Script\plugins\slick.remotemodel.js" />
+    <Content Include="Script\plugins\slick.rowmovemanager.js" />
+    <Content Include="Script\plugins\slick.rowselectionmodel.js" />
+    <Content Include="Script\plugins\TotalsDataViewVirtual.js" />
+    <Content Include="Script\plugins\TotalsPlugin.css" />
+    <Content Include="Script\plugins\TotalsPluginVirtual orig.js" />
+    <Content Include="Script\plugins\TotalsPluginVirtual.js" />
+    <Content Include="Script\relational-2.0.js" />
+    <Content Include="Script\relational.css" />
+    <Content Include="Script\slick-default-theme.css" />
+    <Content Include="Script\slick.columnpicker.css" />
+    <Content Include="Script\slick.columnpicker.js" />
+    <Content Include="Script\slick.core.js" />
+    <Content Include="Script\slick.dataview.js" />
+    <Content Include="Script\slick.editors.js" />
+    <Content Include="Script\slick.formatters.js" />
+    <Content Include="Script\slick.grid.css" />
+    <Content Include="Script\slick.grid.js" />
+    <Content Include="Script\slick.pager.css" />
+    <Content Include="Script\slick.pager.js" />
+    <Content Include="Script\slick.rowselectionmodel.js" />
+    <Content Include="Script\toolbar.css" />
+    <Content Include="Script\Tree\images\blank.png" />
+    <Content Include="Script\Tree\images\downArrow.gif" />
+    <Content Include="Script\Tree\images\minus.png" />
+    <Content Include="Script\Tree\images\plus.png" />
+    <Content Include="Script\Tree\images\rightArrow.gif" />
+    <Content Include="Script\Tree\jquery.checkboxtree.css" />
+    <Content Include="Script\Tree\jquery.checkboxtree.js" />
+    <Content Include="Styles\bookmarks.css" />
+    <Content Include="Styles\description.css" />
+    <Content Include="Styles\dss-metro-preloader.css" />
+    <Content Include="Styles\filebrowser.css" />
+    <Content Include="Styles\fonts.css" />
+    <Content Include="Styles\fullheight.css" />
+    <Content Include="Styles\header.css" />
+    <Content Include="Styles\mainmenu.css" />
+    <Content Include="Styles\modal.css" />
+    <Content Include="Styles\modal_ie.css" />
+    <Content Include="Styles\recent.css" />
+    <Content Include="Styles\relational.css" />
+    <Content Include="Styles\WhatsNew.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Workstation\Reports\RelReport.aspx" />
+    <Content Include="Workstation\Reports\Dialogs.html" />
+    <Content Include="Workstation\Reports\filtersdialog.html" />
+    <Content Include="Workstation\Reports\Grid2.html" />
+    <Content Include="Workstation\Reports\HtmlPage1.html" />
+    <Content Include="Workstation\Reports\HtmlPage2.html" />
+    <Content Include="Workstation\Reports\MemberSelectDialog.html" />
+    <Content Include="Workstation\Reports\RelReport3.aspx" />
+    <Content Include="Workstation\Reports\RelReport5.aspx" />
+    <Content Include="Workstation\Reports\RelReport4.aspx" />
+    <Content Include="Workstation\Reports\Shell.html" />
+    <Content Include="Workstation\Reports\TextFile1.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DeciwebPageBase.aspx.cs">
+      <DependentUpon>DeciwebPageBase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeciwebPageBase.aspx.designer.cs">
+      <DependentUpon>DeciwebPageBase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Workstation\Reports\RelReport.aspx.cs">
+      <DependentUpon>RelReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Workstation\Reports\RelReport.aspx.designer.cs">
+      <DependentUpon>RelReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Workstation\Reports\RelReport3.aspx.cs">
+      <DependentUpon>RelReport3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Workstation\Reports\RelReport3.aspx.designer.cs">
+      <DependentUpon>RelReport3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Workstation\Reports\RelReport5.aspx.cs">
+      <DependentUpon>RelReport5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Workstation\Reports\RelReport5.aspx.designer.cs">
+      <DependentUpon>RelReport5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Workstation\Reports\RelReport4.aspx.cs">
+      <DependentUpon>RelReport4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Workstation\Reports\RelReport4.aspx.designer.cs">
+      <DependentUpon>RelReport4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Workstation\Reports\RelToExcel.ashx.cs">
+      <DependentUpon>RelToExcel.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\PublishProfiles\Relational.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Workstation\Reports\RelToExcel.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\controls\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55829</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost/Relational</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

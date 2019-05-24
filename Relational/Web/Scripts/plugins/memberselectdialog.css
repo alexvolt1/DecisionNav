@@ -1,0 +1,329 @@
+﻿        body {
+            margin: 0;
+            font: 100% sans-serif;
+            background-color:#fff;
+        }
+
+#keywordsearch {
+    position:absolute;
+    top:40px;
+    background-color:#fff;
+    display:block;
+    height:500px;
+    width:699px;
+    z-index:1000000;
+}
+#keywordsearch table {
+    display:block;
+    width:100%;
+    
+}
+#keywordsearch table input {
+        width:400px;
+        height: 25px;
+ }
+#keywordsearch table td {
+        width:200px;
+        padding:6px;
+ }
+#keywordsearch table td a{
+                    display: inline-block;
+                    margin-left: 45px;
+                    height: 25px;
+                    padding: 0 25px;
+                    font-size: 16px;
+                    line-height: 25px;
+                    text-decoration: none;
+                    background-color: #999e9e;
+                    color: #fff;
+                    border: 1px solid #d3d3d3
+ }
+#keywordsearch table td a:hover{
+                        color: #fff;
+                        border-color: #5c5959;         
+ }
+#keywordsearch .search-data-items {
+        height:362px;
+        overflow-y:auto;
+        list-style: none;
+        cursor:pointer;
+}
+#keywordsearch .search-data-items LI {
+          padding:3px 32px;
+          border:1px solid #fff;
+          background-image:url("../../images/unchecked.gif");
+          background-position:3px 8px;
+          background-repeat:no-repeat;
+}
+
+
+
+        
+#keywordsearch .search-data-items LI.checked{
+          background-image:url("../../images/tick.gif");
+}
+
+
+
+
+
+
+
+        .hide {
+            display: none;
+        }
+
+        .cf:after {
+            content: ' ';
+            height: 0;
+            visibility: hidden;
+            display: block;
+            clear: both;
+        }
+
+        .cf {
+            zoom: 1;
+        }
+
+        .memsel-wrapper {
+            width: 700px;
+            height:600px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+            -moz-box-shadow: 0px 0px 15px black;
+            -webkit-box-shadow: 0px 0px 15px black;
+             box-shadow: 0px 0px 15px black;
+              color:#555;
+              background-color:#fff;
+              position:relative;
+              z-index:10000;
+              /*float:left;*/
+        }
+
+        .memsel-wrapper .memsel-header {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                background-color: #fff;
+                border-bottom: 2px solid #007acc;
+            }
+
+        .memsel-wrapper .memsel-header-item {
+                float: left;
+                padding: 10px 20px;
+                font-size: 16px;
+                text-align: center;
+                color: #676;
+                background-color: #eee;
+                cursor:pointer;
+            
+            }
+
+        .memsel-wrapper .memsel-header .activated {
+               color: #000;
+               background-color: #efeff2;
+               
+            }
+
+        .memsel-wrapper .memsel-header .active {
+                color: #fff;
+                 background-color: #007acc;
+            }
+        .memsel-wrapper .memsel-members .active {
+                color: #fff;
+                background-color: #0af;
+            }
+
+        .memsel-members {
+            width:250px;
+            position:absolute;
+            background-color: #fff;
+            margin:16px 0;
+            padding: 0;
+            /*border:1px solid red;*/
+          
+        }
+        .memsel-member-item {
+            list-style: none;
+            padding: 9px 12px;
+            cursor:pointer;
+        }
+
+         .memsel-member-item:hover {
+              background-color: #eee;
+        }
+
+
+         .memsel-wrapper .memsel-body .member-data-items {
+          list-style: none;
+          cursor:pointer;
+         }
+
+         .memsel-wrapper .memsel-body .member-data-items LI {
+          padding:3px 32px;
+          border:1px solid #fff;
+          background-image:url("../../images/unchecked.gif");
+          background-position:3px 8px;
+          background-repeat:no-repeat;
+         }
+         .memsel-wrapper .memsel-body .member-data-items LI.checked{
+          background-image:url("../../images/tick.gif");
+         }
+
+         .memsel-wrapper .memsel-body .member-data-item:hover {
+            border:1px solid #ccc;
+         }
+
+
+
+        .memsel-wrapper .memsel-body .memsel-body-item {
+                display: none;
+                height: 495px;
+                overflow-y:auto;
+            }
+
+        .memsel-body {
+            width:450px;
+            /*border-left:1px solid #eee;*/
+            left:250px;
+            position:relative;
+            background-color: #fff !important;
+            box-shadow: 0 0 15px 0 rgba(0,0,0,0.16),0 0 0 0 rgba(0,0,0,0.12);
+            /*border-radius: 4px;*/
+
+
+        }
+
+        .memsel-wrapper .memsel-body .active {
+                display: block;
+            }
+
+        .memsel-wrapper .memsel-footer {
+                padding: 18px 15px 20px 0;
+                text-align: right;
+                /*background-color: #066493;*/
+                  background-color: #c1dff1;
+                /*border-top: 1px solid #ccc;*/
+                cursor: default;
+            }
+
+        .memsel-wrapper .memsel-footer .memsel-btn {
+                    display: inline-block;
+                    margin-right: 25px;
+                    height: 25px;
+                    padding: 0 25px;
+                    font-size: 16px;
+                    line-height: 25px;
+                    text-decoration: none;
+                    background-color: #999e9e;
+                    color: #fff;
+                    border: 1px solid #d3d3d3
+                }
+
+        .memsel-wrapper .memsel-footer .memsel-btn:hover {
+                        color: #fff;
+                        border-color: #5c5959;
+                    }
+
+        .box-sh {
+            color: #000 !important;
+            background-color: #fff !important;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+            border-radius: 4px;
+        }
+
+        
+        @media only screen and (min-width: 797px) {
+            .memsel-wrapper {
+                height:294px;
+            }
+            #keywordsearch {
+                height:200px;
+            }
+            .filterselect-wrapper .filterselect-body .filterselect-body-item {
+                height: 188px;
+            }
+             #keywordsearch .search-data-items{
+                height: 62px;
+            }
+        }
+
+        @media only screen and (min-width: 1263px) {
+            .memsel-wrapper {
+                height:345px;
+            }
+            #keywordsearch {
+                height:241px;
+            }
+            .filterselect-wrapper .filterselect-body .filterselect-body-item {
+                height: 238px;
+            }
+            .filterselect-wrapper{
+                height: 360px;
+            }
+            #keywordsearch .search-data-items{
+                height: 104px;
+            }
+        }
+
+        @media only screen and (min-width: 1519px) {
+            .memsel-wrapper {
+                height:470px;
+            }
+            #keywordsearch {
+                height:365px;
+            }
+            .filterselect-wrapper .filterselect-body .filterselect-body-item {
+                height: 330px;
+            }
+
+            .filterselect-wrapper{
+                height: 451px;
+            }
+            #keywordsearch .search-data-items{
+                height: 228px;
+            }
+        }
+
+        @media only screen and (min-width: 1920px) and (max-width: 3520px){
+            .memsel-wrapper {
+                height:580px;
+            }
+            #keywordsearch {
+                height:480px;
+            }
+            .filterselect-wrapper .filterselect-body .filterselect-body-item {
+                height: 458px;
+            }
+            .filterselect-wrapper{
+                height: 580px;
+            }
+            #keywordsearch .search-data-items{
+                height: 343px;
+            }
+        }
+
+        @media only screen and (min-width: 797px) {
+            .memsel-wrapper .memsel-body .memsel-body-item {
+                height: 198px;
+            }
+        }
+
+        @media only screen and (min-width: 1263px) {
+            .memsel-wrapper .memsel-body .memsel-body-item {
+                height: 240px;
+            }
+        }
+        
+         @media only screen and (min-width: 1519px) {
+        .memsel-wrapper .memsel-body .memsel-body-item {
+                height: 365px;
+            }
+        }
+
+         @media only screen and (min-width: 1920px) and (max-width: 3520px){
+        .memsel-wrapper .memsel-body .memsel-body-item {
+                height: 475px;
+            }
+        }

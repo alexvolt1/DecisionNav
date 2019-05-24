@@ -1,0 +1,129 @@
+﻿        body
+        {
+            font-family: Trebuchet MS, Lucida Sans Unicode, Lucida Grande,Lucida Sans, Arial, sans-serif;
+        	font-size:12px;
+        	color:#333;
+        }
+
+        
+        
+.bookmarks ul {
+		/* rules common to BOTH inner and outer UL */
+		 
+		z-index:	100000;
+		margin:		4px 0;
+		padding:	0;
+		list-style:	none;
+		cursor:		pointer;
+		
+		/* rules for outer UL only */
+		color:White;
+		width:		80px;
+		position:	relative;
+	}
+	.bookmarks ul li span{
+	 padding:0 0 0 2px ;
+	
+     height:25px;
+	
+	
+
+	}
+	.bookmarks ul img{
+	 padding-top:4px;
+	
+
+	}
+	.bookmarks ul:hover 
+	{
+	    border:		1px solid #eee;
+	}
+	
+.bookmarks ul li {
+		
+		padding:0;
+		
+	}
+.bookmarks	ul ul {
+		display:	none; 
+		position:	absolute;
+		width:		100%;
+		left:		-220px;
+		/* Pop-Up */
+		bottom:		0;
+		margin:		0;
+		margin-bottom: 1.55em;
+		width:300px;
+		border:		1px solid #bbb;
+	}
+	
+	
+
+	
+	
+	
+.list-dropdown ul ul {
+		/* Drop-Down */
+		bottom:		auto;
+		margin:		0;
+		margin-top:	1.45em;
+		width:300px;
+	}
+.bookmarks ul ul li		{ padding: 3px 0 3px 5px; }
+.bookmarks ul ul li a		
+	{
+    color:#003768;
+    text-decoration:none;
+    }
+    
+ .bookmarks ul ul li a:hover{
+    text-decoration: underline;
+     }
+
+.bookmarks ul ul li:hover	
+{
+     background-color: #EEa;
+     background-image:url(../Images/DelSmallOff.gif);
+      background-repeat:no-repeat;
+      background-position:right;
+      }
+.bookmarks ul li:hover ul	{ display:	block; background-color: #EEE; }
+	
+	#bookmarksbgcover
+	{
+	    display:none;
+	    position:absolute;
+        padding:0;
+        margin:0;
+	    z-index:99998;
+	}
+	
+.bookmarks ul li ul  li#btnAddBookmark
+{
+     border-bottom:solid 1px #bbb;
+     text-align:left;
+     padding-left:20px;
+     color:#000;
+      background-image:url(../Images/add_to_favorites_16.png);
+      background-repeat:no-repeat;
+      background-position:left center;
+}
+.bookmarkItem
+{
+/* border:solid 1px red;*/
+ float:left;   
+}
+.bookmarks ul ul li div.delete
+{
+    width:16px;
+    height:100%;
+    float:right;
+}
+.bookmarks ul ul li div.delete:hover
+{
+    display:block;
+    background-image:url(../Images/DelSmallOver.gif);
+    width:16px;
+    height:100%;
+    float:right;
+}

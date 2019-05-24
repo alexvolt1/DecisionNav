@@ -1,0 +1,94 @@
+﻿@model DecisionNav.Models.BankVars.Bank
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Bank</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BankID" />
+            <div class="form-group">
+                <label asp-for="BankName" class="control-label"></label>
+                <input asp-for="BankName" class="form-control" />
+                <span asp-validation-for="BankName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BankAlias" class="control-label"></label>
+                <input asp-for="BankAlias" class="form-control" />
+                <span asp-validation-for="BankAlias" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DBServer" class="control-label"></label>
+                <input asp-for="DBServer" class="form-control" />
+                <span asp-validation-for="DBServer" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RMTools" /> @Html.DisplayNameFor(model => model.RMTools)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HAT" /> @Html.DisplayNameFor(model => model.HAT)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Lockout_RMTools" /> @Html.DisplayNameFor(model => model.Lockout_RMTools)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustSearch" class="control-label"></label>
+                <input asp-for="CustSearch" class="form-control" />
+                <span asp-validation-for="CustSearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReportList" class="control-label"></label>
+                <input asp-for="ReportList" class="form-control" />
+                <span asp-validation-for="ReportList" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Lockout_RMWeekly" /> @Html.DisplayNameFor(model => model.Lockout_RMWeekly)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Lockout_RMMonthly" /> @Html.DisplayNameFor(model => model.Lockout_RMMonthly)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DBServerDataNetwork" class="control-label"></label>
+                <input asp-for="DBServerDataNetwork" class="form-control" />
+                <span asp-validation-for="DBServerDataNetwork" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="BatchProcessed" /> @Html.DisplayNameFor(model => model.BatchProcessed)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OnDemand" /> @Html.DisplayNameFor(model => model.OnDemand)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

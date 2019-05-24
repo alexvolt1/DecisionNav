@@ -1,0 +1,875 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UnifiedNavigation.Common</name>
+    </assembly>
+    <members>
+        <member name="T:UnifiedNavigation.Common.CacheOutOfDateEventArgs">
+            <summary>
+            Event Arguments for the CacheOutOfDate event.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.CacheOutOfDateEventArgs.#ctor(System.Guid)">
+            <summary>
+            Initializes a new instance of the CacheOutOfDateEventArgs class.
+            </summary>
+            <param name="providerId">The Id of the provider triggering out of date.</param>
+        </member>
+        <member name="M:UnifiedNavigation.Common.CacheOutOfDateEventArgs.#ctor(System.Guid,System.Guid)">
+            <summary>
+            Initializes a new instance of the CacheOutOfDateEventArgs class.
+            </summary>
+            <param name="providerId">The Id of the provider triggering out of date.</param>
+            <param name="unifiedNavigationItemId">The Unified Navigation Item that is out of date.</param>
+        </member>
+        <member name="M:UnifiedNavigation.Common.CacheOutOfDateEventArgs.#ctor(System.Guid,System.Guid,System.String)">
+            <summary>
+            Initializes a new instance of the CacheOutOfDateEventArgs class.
+            </summary>
+            <param name="providerId">The Id of the provider triggering out of date.</param>
+            <param name="unifiedNavigationItemId">The Unified Navigation Item that is out of date.</param>
+            <param name="userId">The user for which the Unified Navigation Item is out of date.</param>
+        </member>
+        <member name="M:UnifiedNavigation.Common.CacheOutOfDateEventArgs.#ctor(System.Guid,System.Guid,System.String,UnifiedNavigation.Common.NavigationItemContract[])">
+            <summary>
+            Initializes a new instance of the CacheOutOfDateEventArgs class.
+            </summary>
+            <param name="providerId">The Id of the provider triggering out of date.</param>
+            <param name="unifiedNavigationItemId">The Unified Navigation Item that is out of date.</param>
+            <param name="userId">The user for which the Unified Navigation Item is out of date.</param>
+            <param name="data">The data to replace the cached data with.</param>
+        </member>
+        <member name="P:UnifiedNavigation.Common.CacheOutOfDateEventArgs.ProviderId">
+            <summary>
+            Gets the Dynamic Provider Id
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.CacheOutOfDateEventArgs.UnifiedNavigationItemId">
+            <summary>
+            Gets the optional Unified Navigation Item Id refers to the Id of the Dynamic Node.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.CacheOutOfDateEventArgs.UserId">
+            <summary>
+            Gets the optional User Id refers to the User's Id.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.CacheOutOfDateEventArgs.Data">
+            <summary>
+            Gets the optional Data refers to the new Data for a user.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.CacheOutOfDateWrapperContract">
+            <summary>
+            Data Contract Wrapper for signaling Cache Out of Date.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.CacheOutOfDateWrapperContract.ProviderId">
+            <summary>
+            Gets the required Id of the provider to set out of date.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.CacheOutOfDateWrapperContract.UnifiedNavigationItemId">
+            <summary>
+            Gets the optional Unified Navigation Item Id to set out of date.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.CacheOutOfDateWrapperContract.UserId">
+            <summary>
+            Gets the optional User Id to set out of date. Requires UnifiedNavigationItemId.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.CacheOutOfDateWrapperContract.Data">
+            <summary>
+            Gets the optional Data to replace the cached data.  Requires UserId and UnifiedNavigationItemId.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.Constants">
+            <summary>
+            A class for defining Unified Navigation related constants.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.Constants.HomePageId">
+            <summary>
+            The guid id for the CPM home page. If this id ever changes it needs to also change in the creation scripts
+            for sql and oracle in UnifiedNavigation.Service.DatabaseUtilities. Located in the following files.
+            UnifiedNavigation_Oracle_Create_Schema.sql
+            UnifiedNavigation_SqlServer_Create_Schema.sql
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.IDynamicNavigationServiceContract">
+            <summary>
+            Service interface contract for a server endpoint for WebServiceDynamicProvider.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.IDynamicNavigationServiceContract.GetNavigationItems(System.String,System.String,System.String,System.Guid,System.Guid)">
+            <summary>
+            Returns the Navigation Items from a WebServiceDynamicProvider's request.
+            </summary>
+            <param name="filterInformation">Information for returning a filtered resultset.</param>
+            <param name="userId">User Id for the server to limit based on permissions.</param>
+            <param name="callbackServiceUrl">Callback Url for server to call if the data it sends becomes out-of-date.</param>
+            <param name="providerId">Id of the provider for the server to use when invalidating out-of-date data.</param>
+            <param name="unifiedNavigationItemId">Id of the Unified Navigation Item which the server can optionally use to limit the amount of data invalidated.</param>
+            <returns>Returns an array of filtered Navigation Items, filtered by the filter with only items the User can see.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.IDynamicNavigationServiceContract.DefaultEndPoint">
+            <summary>
+            Serves as a default endpoint which can be redirected to if the requested url doesn't have an endpoint specified.
+            An HttpModule is required for redirecting. 
+            Sends back a msg indicating the connection to the service was successful. The response must be sent 
+            in xml or the browser will not properly display it.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.IDynamicProvider">
+            <summary>
+            Interface for an assembly-based Dynamic Provider.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.IDynamicProvider.GetNavigationItems(System.Guid,System.String,System.String,System.String,System.Guid)">
+            <summary>
+            Returns an array of filtered Navigation Items, filtered by the filter with only items the User can see.
+            </summary>
+            <param name="providerId">The Provider Id that the Dynamic Provider should keep track of.</param>
+            <param name="connection">Any connection information specified for the Dynamic Provider.</param>
+            <param name="filter">Information for returning a filtered resultset.</param>
+            <param name="userId">Id of the User to retrieve items for.</param>
+            <param name="unifiedNavigationItemId">Id of the Unified Navigation Item which the server can optionally use to limit the amount of data invalidated.</param>
+            <returns>An array of filtered Navigation Items, filtered by the filter with only items the User can see.</returns>
+        </member>
+        <member name="E:UnifiedNavigation.Common.IDynamicProvider.CacheOutOfDate">
+            <summary>
+            <para>Event the Dynamic Provider should trigger if the data it has sent becomes invalidated.</para>
+            <para>The minimum data that the Provider should send in the CacheOutOfDateEventArgs is the providerId.</para>
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.IDynamicProvider.ImportOnly">
+            <summary>
+            Gets a value indicating whether the provider should only be used for importing.
+            <para>If this returns true, the dynamic provider cannot act in a "dynamic" context</para>
+            <para> and should implement CacheOutOfDate explicitly (hiding it).</para>
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.IAuthorizationProvider">
+            <summary>
+            Interface for a provider that will validate authorization.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.IAuthorizationProvider.UserHasPermission(System.String,System.String)">
+            <summary>
+            Validates the provided user is authorized against the provided member.
+            </summary>
+            <param name="userId">The identifier of the user being authorized.</param>
+            <param name="member">The authorization member the user is being validated against.</param>
+            <returns>Returns a boolean indicated whether the user is authorized (true) or not (false).</returns>
+        </member>
+        <member name="T:UnifiedNavigation.Common.IWebServiceDynamicProviderWebService">
+            <summary>
+            Service interface contract for the WebServiceDynamicProvider's web service component.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.IWebServiceDynamicProviderWebService.SetCacheOutOfDate(UnifiedNavigation.Common.CacheOutOfDateWrapperContract)">
+            <summary>
+            Triggers the WebServiceDynamicProvider's CacheOutOfDate event.
+            </summary>
+            <param name="contract">Contains the information needed for emptying cache data.</param>
+        </member>
+        <member name="T:UnifiedNavigation.Common.LoggingUtils">
+            <summary>
+            Common initialization of the log4net library for Unified Navigation.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.LoggingUtils.DefaultRepositoryName">
+            <summary>
+            Name of the default logging repository.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.LoggingUtils.InitializeLogging(System.String)">
+            <summary>
+            Gets and initializes the logging object.  Our default repository name will be used.
+            This is a convenience method.
+            </summary>
+            <param name="loggerName">Name of the logger to retrieve or configure.</param>
+            <returns>The logging object we should use to log information.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.LoggingUtils.InitializeLogging(System.String,System.String)">
+            <summary>
+            Gets and initializes the logging object.
+            </summary>
+            <param name="repositoryName">Name of the logging repository to be used.  If none is provided, a default will be used.</param>
+            <param name="loggerName">Name of the logger to retrieve or configure.</param>
+            <returns>The logging object we should use to log information.</returns>
+        </member>
+        <member name="T:UnifiedNavigation.Common.NavigationGroupContract">
+            <summary>
+            Represents a navigation group.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationGroupContract.Id">
+            <summary>
+            Gets or sets the required identifier for the navigation group.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationGroupContract.Name">
+            <summary>
+            Gets or sets the required name of the navigation group.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationGroupContract.Members">
+            <summary>
+            Gets or sets the collection of members in the navigation group.  
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.NavigationGroupMemberContract">
+            <summary>
+            Represents a member of a navigation group.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationGroupMemberContract.Name">
+            <summary>
+            Gets or sets the required name of the navigation group member.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationGroupMemberContract.Type">
+            <summary>
+            Gets or sets the required type of the navigation group member. Type should be one of “Claim”, “User”, or “WindowsGrp”.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.NavigationItemContract">
+            <summary>
+            Data Contract for a NavigationItem Json response for an IDynamicNavigationServiceContract.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.Id">
+            <summary>
+            Gets or sets the required Unique and Persistent Identifier for a Navigation Item.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.Type">
+            <summary>
+            Gets or sets the required Navigation Item Type.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.DefaultName">
+            <summary>
+            Gets or sets the required Name of the Navigation Item in the default Locale.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.Url">
+            <summary>
+            Gets or sets the Url of the Navigation Item.  Required for Page types.  Ignored for Node types.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.ImageUrl">
+            <summary>
+            Gets or sets the image Url of the Navigation Item.  Optional for Page types.  Ignored for Node types.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.LargeImageUrl">
+            <summary>
+            Gets or sets the large Image Url of the Navigation Item.  Optional for Page types.  Ignored for Node types.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.DocumentMode">
+            <summary>
+            Gets or sets the Document Mode of the Navigation Item.  Optional for Page types.  Ignored for Node types.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.DefaultDescription">
+            <summary>
+            Gets or sets the optional Description of the Navigation Item in the default Locale.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.Localizations">
+            <summary>
+            Gets or sets the optional dictionary of localizations for the Navigation Item.
+            <para>The Dictionary is keyed by the lower cased locale string.  Examples are "en-us" and "de".</para>
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.Children">
+            <summary>
+            Gets or sets the ordered collection of children of the Navigation Item.  Required for Node types.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.InheritsPermissions">
+            <summary>
+            Gets or sets the true/false depending on whether this navigation item inherits permissions from its parent.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.AllowedGroups">
+            <summary>
+            Gets or sets the list of groups that have access to this navigation item.  Only populated if InheritsPermissions is false.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemContract.DeniedGroups">
+            <summary>
+            Gets or sets the list of groups that are denied access to this navigation item.  Only populated if InheritsPermissions is false.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.NavigationItemLocaleContract">
+            <summary>
+            Data Contract for the Json Localization of a Navigation Item.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemLocaleContract.Name">
+            <summary>
+            Gets or sets the required Name in the locale specified.
+            </summary>
+        </member>
+        <member name="P:UnifiedNavigation.Common.NavigationItemLocaleContract.Description">
+            <summary>
+            Gets or sets the required Description in the locale specified.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.NavigationItemStoredType">
+            <summary>
+            String representations of the stored types for Navigation Items.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.NavigationItemStoredType.Node">
+            <summary>
+            Node type string representation "Node".
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.NavigationItemStoredType.Page">
+            <summary>
+            Page type string representation "Page".
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.NavigationItemStoredType.Custom">
+            <summary>
+            Custom type string representation "Custom".
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.NavigationItemStoredType.Dynamic">
+            <summary>
+            Dynamic type string representation "Dynamic".
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.NavigationItemType">
+            <summary>
+            Enum for Navigation Item Type.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.NavigationItemType.Node">
+            <summary>
+            Represents a Node type Navigation Item.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.NavigationItemType.Page">
+            <summary>
+            Represents a Page type Navigation Item.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.NavigationItemType.Custom">
+            <summary>
+            Represents a Custom type Navigation Item.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.NavigationItemTypeExtensions">
+            <summary>
+            Extension class for creating a .ToString() for the NavigationItemType enum.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.NavigationItemTypeExtensions.ToStoredValue(UnifiedNavigation.Common.NavigationItemType)">
+            <summary>
+            Returns the string value representing the enum.
+            </summary>
+            <param name="navigationItemType">The Navigation Item Type to convert to string.</param>
+            <returns>The string value representing the enum.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.NavigationItemTypeExtensions.GetTypeFromStoredType(System.String)">
+            <summary>
+            Returns the NavigationItemType from the stored type.
+            </summary>
+            <param name="storedType">Stored type string representation of the navigation item.</param>
+            <returns>Returns the NavigationItemType.</returns>
+        </member>
+        <member name="T:UnifiedNavigation.Common.Resource">
+            <summary>
+            Utility class used to access the resource file in App_GlobalResources
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.Resource.log">
+            <summary>
+            log4net logger used for writing to the Unified Navigation log file.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.Resource.GetGlobalResourceString(System.String)">
+            <summary>
+            Gets the value from the resx file based on the key
+            </summary>
+            <param name="resourceKey">The resource key</param>
+            <returns>The resource value</returns>
+        </member>
+        <member name="T:UnifiedNavigation.Common.DomainUtils">
+            <summary>
+            Domain utils class.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.SamGroupObject">
+            <summary>
+            Constant same group object.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.SamUserObject">
+            <summary>
+            Constant same user object.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.UserMemberOfGroupFilter">
+            <summary>
+            The filter to look up a user by sam account name to determine if that user is a member of a group. This filter includes
+            searching up the LDAP tree if groups are nested.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.DistinguishedName">
+            <summary>
+            The name of the DistinguishedName property on a LDAP SearchResult.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.SamAccountName">
+            <summary>
+            The name of the SamAccountName property on a LDAP SearchResult.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.DisplayName">
+            <summary>
+            The name of the DisplayName property on a LDAP SearchResult.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.UserSchemaClassName">
+            <summary>
+            The schema class name for looking up users on the WinNT provider.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.GroupSchemaClassName">
+            <summary>
+            The schema class name for looking up groups on the WinNT provider.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.log">
+            <summary>
+            log4net logger used for writing to the Unified Navigation log file.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.computerDomainBackingStore">
+            <summary>
+            Computer domain backing store.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.domainCacheLock">
+            <summary>
+            For locking the dictionary of cached domain entries.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.domainToDirectoryEntry">
+            <summary>
+            Storage of a domain name to a fully qualified entry.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.userCacheLock">
+            <summary>
+            For locking the dictionary of cached users.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.userToValid">
+            <summary>
+            Storage of a user to whether it is valid.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.groupCacheLock">
+            <summary>
+            For locking the dictionary of cached groups.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.groupToValid">
+            <summary>
+            Storage of a group to whether it is valid.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.groupUserCacheLock">
+            <summary>
+            For locking the set of cached user/groups.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.groupUserMembership">
+            <summary>
+            Storage of a group and user key combination as group:user and whether the user is a member of the group.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.dnsNetBiosCacheLock">
+            <summary>
+            For locking the dictionary of cached DNS to NetBIOS names.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.dnsToNetBiosName">
+            <summary>
+            Storage of a group and user key combination as group:user.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.windowsIdentitiesCacheLock">
+            <summary>
+            For locking the HashSet of windows identities that have been cached.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.windowsIdentitiesCached">
+            <summary>
+            Tracks whether a WindowsIdentity has been cached for a given Identity.Name key. If the
+            user is in this set, then the identity has been cached and we don't want to process it again.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.CacheCurrentUserInformation(System.Security.Principal.WindowsIdentity)">
+            <summary>
+            Caches the provided running WindowsIdentity user information for group memberships.
+            </summary>
+            <param name="currentUser">The current user to cache information from.</param>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.IsUserSame(System.String,System.String)">
+            <summary>
+            Compares two user names to see if they are the same user. If the names supplied
+            are not exactly the same (case insensitive), it returns false. The users are trusted
+            to be in a valid form (DOMAIN\User).
+            <remarks>
+            Previously, if the initial comparison failed, the code would attempt to resolve the
+            user names using NTAccount. This was to handle the case where users were not in the
+            same format (e.g. DOMAIN.COM\User, DOMAIN\User, User, or User@Domain). This has
+            been removed due to performance issues with resolution. Since the second user
+            parameter comes from the membership table in the database and was stored in accepted
+            form that way, we can assume it is in the same form as the first user parameter.
+            </remarks>
+            </summary>
+            <param name="firstUser">The first user name to compare against the second.</param>
+            <param name="secondUser">The second user name to compare against the first.</param>
+            <returns>Whether the users supplied are the same.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.VerifyMember(System.String@)">
+            <summary>
+            Verifies that the provided member is a valid local or domain member. If a 
+            non-fully qualified name is supplied, the machine is searched before the
+            domain, and precedence is given to the machine if the same user name exists
+            on both the machine and domain. If no domain is supplied, it defaults to the
+            computer's domain.
+            </summary>
+            <param name="member">The member to verify. This parameter is by reference and is updated
+            to the fully qualified member that it resolves to.</param>
+            <returns>The type of member that was found. If nothing was found, it returns MemberType.None.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GetUserDisplayName(System.String)">
+            <summary>
+            Retrieves the display name for a given user.
+            </summary>
+            <param name="user">The user to get the display name of.</param>
+            <returns>The display name of the user.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.IsUserInGroup(System.String,System.String)">
+            <summary>
+            Checks if the user is in the group. This handles three different cases, whether a:
+            1) local user is a member of a local group.
+            2) domain user is a member of a local group.
+            3) domain user is a member of a domain group. 
+            </summary>
+            <param name="user">The user to check.</param>
+            <param name="group">The group to check.</param>
+            <returns>True when user is in the group.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.ClearAllCaches">
+            <summary>
+            Clears the user/group to fully qualified user/group cache and the group membership to user cache.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GetFullyQualifiedMember(System.String)">
+            <summary>
+            Attempts to resolve a member to its fully qualified form.
+            </summary>
+            <param name="member">The member to resolve.</param>
+            <returns>The resolved member.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GetFullyQualifiedMemberFromNTAccount(System.String)">
+            <summary>
+            Attempts to resolve a member into its fully qualified form using NTAccount.
+            </summary>
+            <param name="member">The member to resolve.</param>
+            <returns>The resolved member.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GetFullyQualifiedMemberFromSid(System.String)">
+            <summary>
+            Attempts to resolve a SID into its fully qualified form.
+            </summary>
+            <param name="sid">The SID to resolve.</param>
+            <returns>The resolved member.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GetFullyQualifiedMemberFromActiveDirectory(System.String,UnifiedNavigation.Common.DomainUtils.MemberType)">
+            <summary>
+            Attempts to resolve a member into its fully qualified form using the ActiveDirectory.
+            </summary>
+            <param name="member">The member to resolve.</param>
+            <param name="memberType">The type of member to resolve.</param>
+            <returns>The resolved member.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.DoesUserExist(System.String,System.DirectoryServices.AccountManagement.ContextType)">
+            <summary>
+            Checks to see if a user of a specific type (Machine or Domain) exists.
+            </summary>
+            <param name="user">The user to look up.</param>
+            <param name="contextType">The type of user, Machine or Domain.</param>
+            <returns>Whether the user exists.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.DoesGroupExist(System.String,System.DirectoryServices.AccountManagement.ContextType)">
+            <summary>
+            Checks to see if a group of a specific type (Machine or Domain) exists.
+            </summary>
+            <param name="group">The group to look up.</param>
+            <param name="contextType">The type of group, Machine or Domain.</param>
+            <returns>Whether the group exists.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.DoesMachineMemberExist(System.String,System.String)">
+            <summary>
+            Checks to see if the member exists on the machine. The type of member is determined
+            by the schema class name provided (user or group).
+            </summary>
+            <param name="member">The member to look up.</param>
+            <param name="schemaClassName">The schema class name to use when looking up the member (user or group).</param>
+            <returns>Whether the member exists on the machine.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.IsMemberLocal(System.String)">
+            <summary>
+            Determines if a provided member is a local machine member by comparing the context qualifier
+            against the machine name. If the qualifier doesn't exist, then it returns false.
+            </summary>
+            <param name="member">The fully qualified member to check.</param>
+            <returns>Whether the member is a local machine member, local to the machine running Navigation.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GetUserDisplayNameFromActiveDirectory(System.String)">
+            <summary>
+            Gets the DisplayName property value from an LDAP/ActiveDirectory query result for
+            the supplied user.
+            </summary>
+            <param name="user">The user to resolve the DisplayName for in the ActiveDirectory.</param>
+            <returns>The DisplayName if one exists, or string.Empty otherwise.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GetDnsDomainFromDistinguishedName(System.String)">
+            <summary>
+            Generates the domain name from the provided distinguished name by searching for
+            and concatenating all "DC" key values.
+            </summary>
+            <param name="distinguishedName">The distinguished name to use for generating the domain name.</param>
+            <returns>The domain name generated from the distinguished name.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.ExtractFullyQualifiedInformation(System.String,System.String@,System.String@)">
+            <summary>
+            Extracts the domain and member information from a supplied fully qualified domain name.
+            </summary>
+            <param name="input">The fully qualified domain name.</param>
+            <param name="domain">The extracted domain. For example, given DOMAIN\User, DOMAIN is returned.</param>
+            <param name="member">The extracted member. For example, given DOMAIN\User, User is returned.</param>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.FindUserInActiveDirectory(System.String)">
+            <summary>
+            Searches the ActiveDirectory for the supplied user and returns the
+            result if one is found.
+            </summary>
+            <remarks>
+            This code uses the SamUserObject value as a SamAccountType filter. This allows
+            for more precise (and faster) filtering/searching since it is an indexed attribute.
+            </remarks>
+            <param name="user">The user to look up in the ActiveDirectory.</param>
+            <returns>The result of the query if the user is found.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.FindGroupInActiveDirectory(System.String)">
+            <summary>
+            Searches the ActiveDirectory for the supplied group and returns the
+            result if one is found.
+            </summary>
+            <remarks>
+            This code uses the SamGroupObject value as a SamAccountType filter. This allows
+            for more precise (and faster) filtering/searching since it is an indexed attribute.
+            </remarks>
+            <param name="group">The group to look up in the ActiveDirectory.</param>
+            <returns>The result of the query if the group is found.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.FindMemberInActiveDirectory(System.String,System.String,System.Int32)">
+            <summary>
+            Searches the ActiveDirectory for the supplied member, given the samAccountType filter.
+            The filters used for searching are 'anr' for the member, which stands for
+            'Ambiguous Name Resolution', and 'samAccountType' for more specific filtering.
+            The 'anr' filter is used because different types of members can be supplied. For
+            example, the user can be 'jdoe', 'DOMAIN\jdoe', 'John Doe', which are all valid.
+            The 'samAccountType' allows for more specific, faster filtering since it is an
+            indexed attribute on the LDAP/ActiveDirectory.
+            </summary>
+            <remarks>
+            The member supplied must be something that will return a unique result from the
+            ActiveDirectory. If more than one result is returned, then it is assumed that
+            the search failed since it is not unique, and will therefore return null.
+            </remarks>
+            <param name="domain">The domain name to use when searching.</param>
+            <param name="member">The member to search for.</param>
+            <param name="samAccountType">The specific account type filtering.</param>
+            <returns>The result of the search, if found and unique. It will return null otherwise.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.FindSamAccountNameInActiveDirectory(System.String,System.String,System.Int32)">
+            <summary>
+            Searches the ActiveDirectory for the supplied member, given the samAccountType filter.
+            The filters used for searching are 'samAccountName' for the member and 'samAccountType' 
+            for more specific filtering. The 'samAccountName' filter is used in order to provide
+            more specific filtering. There are cases when the user provides a fully qualified member
+            which is expected to map to a single result. In order to search the ActiveDirectory, the
+            domain is stripped and only the member is used. There are cases where using 'anr', as in
+            the FindMemberInActiveDirectory method, will return multiple results because the member
+            may exist with additional characters appended as the samAccountName. To prevent this from
+            occurring, the search needs to be more specific, requiring the use of 'samAccountName'.
+            One example of the necessity of this method is the list of users:
+            'DOMAIN\jdoe' and 'DOMAIN\jdoe1'. Using the member 'jdoe' and filter 'anr', both will be returned, 
+            but using 'samAccountName', only 'DOMAIN\jdoe' will be returned.
+            The 'samAccountType' allows for more specific, faster filtering since it is an
+            indexed attribute on the LDAP/ActiveDirectory.
+            </summary>
+            <param name="domain">The domain name to use when searching.</param>
+            <param name="samAccountName">The samAccountName to search for.</param>
+            <param name="samAccountType">The specific account type filtering.</param>
+            <returns>The result of the search, if found and unique. It will return null otherwise.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.FindUniqueInActiveDirectory(System.String,System.String)">
+            <summary>
+            Searches the Active Directory for the supplied query. It returns a result only if the count
+            is 1. Anything else returns null. A domain name can be supplied, but if not, the method defaults
+            to the Computer's domain.
+            </summary>
+            <param name="domainName">The domain name to search on. If empty, defaults to the computer's domain.</param>
+            <param name="query">The query to perform against the ActiveDirectory.</param>
+            <returns>A search result if it is unique. Otherwise, it returns null.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GetDirectoryEntry(System.String)">
+            <summary>
+            Gets a DirectoryEntry using the provided domain name. If it is null or empty, it defaults to
+            the Computer domain.
+            </summary>
+            <param name="domainName">The domain name to retrieve a DirectoryEntry of.</param>
+            <returns>A DirectoryEntry for the provided domain.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GetNetbiosDomainName(System.String)">
+            <summary>
+            Retrieves the NetBIOS name for a given DNS domain name.
+            <remarks>
+            Code was obtained from http://stackoverflow.com/q/14119753
+            </remarks>
+            </summary>
+            <param name="dnsDomainName">The DNS domain name to resolve into the NetBIOS name.</param>
+            <returns>The NetBIOS name from the resolved DNS name.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.DomainUtils.GenerateGroupCacheKey(System.String,System.String)">
+            <summary>
+            Generates the key used in the group/user membership cache.
+            </summary>
+            <param name="group">The group to use when generating the key.</param>
+            <param name="user">The user to use when generating the key.</param>
+            <returns>The key to use for the cache.</returns>
+        </member>
+        <member name="P:UnifiedNavigation.Common.DomainUtils.ComputerDomain">
+            <summary>
+            Gets the static member for the Computer Domain in order to not have to call this repeatedly, since it is expensive.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.DomainUtils.MemberType">
+            <summary>
+            Enum used for specifying the type of member that was located.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.MemberType.None">
+            <summary>
+            Used when a member could not be found and therefore its type not determined.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.MemberType.User">
+            <summary>
+            Used for members that are users.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.DomainUtils.MemberType.Group">
+            <summary>
+            Used for members that are groups.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.ConfigFileChangedEvent">
+            <summary>
+            Config changed delegate.
+            </summary>
+        </member>
+        <member name="T:UnifiedNavigation.Common.UnifiedNavigationConfiguration">
+            <summary>
+            Class to provide access to the UnifiedNavigation Configuration file settings.
+            Upon the first access, all settings are read and cached for future access.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.UnifiedNavigationConfiguration.ConfigFilePath">
+            <summary>
+            Path to the configuration files for our application.
+            This path is local to the CommonApplicationData root folder.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.UnifiedNavigationConfiguration.ConfigFileName">
+            <summary>
+            Name of the configuration file for our application
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.UnifiedNavigationConfiguration.configurationLock">
+            <summary>
+            For locking the dictionary of Configuration Properties.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.UnifiedNavigationConfiguration.configurationCached">
+            <summary>
+            Indicates whether the configuration is cached.  This is also wrapped by the configurationLock.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.UnifiedNavigationConfiguration.configurationByName">
+            <summary>
+            Storage of configuration properties keyed by their names.
+            </summary>
+        </member>
+        <member name="F:UnifiedNavigation.Common.UnifiedNavigationConfiguration.configFileWatcher">
+            <summary>
+            The object that watches the config file for changes so that it can be reread.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.UnifiedNavigationConfiguration.ClearCache">
+            <summary>
+            Clears the cached Configuration properties. Sets configurationCached to false.
+            </summary>
+        </member>
+        <member name="M:UnifiedNavigation.Common.UnifiedNavigationConfiguration.GetConfigFilePath">
+            <summary>
+            Return the full path to the UnifiedNavigation configuration file.
+            </summary>
+            <returns>Full path for the UnifiedNavigation configuration file.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.UnifiedNavigationConfiguration.GetPropertyValue(System.String)">
+            <summary>
+            <para>Returns the configuration property value for the provided key.</para>
+            </summary>
+            <param name="propertyKey">The key of the configuration property requested.</param>
+            <returns>The value of the requested configuration property or null.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.UnifiedNavigationConfiguration.GetPropertyValueOrNull(System.String)">
+            <summary>
+            <para>Returns either the property value for the given key or null.</para>
+            <para>Do not call outside of lock greater than or equal to read.</para>
+            </summary>
+            <param name="key">The Configuration property key to lookup.</param>
+            <returns>The cached configuration property value if it exists, or null.</returns>
+        </member>
+        <member name="M:UnifiedNavigation.Common.UnifiedNavigationConfiguration.ConfigFileChanged(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+            Called when the config file changes so that we can begin the process of reloading it.
+            </summary>
+            <param name="sender">The object that generated the event.</param>
+            <param name="e">The data for the event.</param>
+        </member>
+        <member name="E:UnifiedNavigation.Common.UnifiedNavigationConfiguration.ConfigFileChangedEvent">
+            <summary>
+            The event for config file changed.
+            </summary>
+        </member>
+    </members>
+</doc>

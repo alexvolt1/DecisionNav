@@ -1,0 +1,904 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+AnnotationReport
+</name>
+</assembly>
+<members>
+<member name="P:Resources.HD_Translate.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Resources.HD_Translate.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_AddDescription">
+	<summary>
+  Looks up a localized string similar to Add a description to help you identify stored data (optional)..
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_AggregateMissing">
+	<summary>
+  Looks up a localized string similar to Aggregate Missing Data.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_AuthorHeader">
+	<summary>
+  Looks up a localized string similar to Author.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_CalcPassed">
+	<summary>
+  Looks up a localized string similar to Calculation passes.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_CCAmt">
+	<summary>
+  Looks up a localized string similar to Crosscheck Amount.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_CCLine">
+	<summary>
+  Looks up a localized string similar to Crosscheck Line.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_CellHeader">
+	<summary>
+  Looks up a localized string similar to Cell Specification.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Cell_Value">
+	<summary>
+  Looks up a localized string similar to Value.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Compute">
+	<summary>
+  Looks up a localized string similar to Compute.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ComputeAllocs">
+	<summary>
+  Looks up a localized string similar to Compute Allocations.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ComputeYTD">
+	<summary>
+  Looks up a localized string similar to Compute YTD.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ConsolOptsTitle">
+	<summary>
+  Looks up a localized string similar to Select consolidation options.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ConsolOptTitle">
+	<summary>
+  Looks up a localized string similar to Select consolidation option.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ContentHeader">
+	<summary>
+  Looks up a localized string similar to Contents.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_DateHeader">
+	<summary>
+  Looks up a localized string similar to Date.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Descrip">
+	<summary>
+  Looks up a localized string similar to Description.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Dimension">
+	<summary>
+  Looks up a localized string similar to Dimension.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_EndDate">
+	<summary>
+  Looks up a localized string similar to End: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_EnterName">
+	<summary>
+  Looks up a localized string similar to Enter the name for the local data.  This name will be used to restore the data later..
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ExistData">
+	<summary>
+  Looks up a localized string similar to This lists the existing locally saved data.  Duplicates are not allowed..
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ExtraParams">
+	<summary>
+  Looks up a localized string similar to Extra Command Parameters.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_HideAdvanced">
+	<summary>
+  Looks up a localized string similar to Hide Options.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_IncConsolOptTitle">
+	<summary>
+  Looks up a localized string similar to Select Incremental Consolidation option.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Include">
+	<summary>
+  Looks up a localized string similar to Include: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_IncrementalConsolidationActive">
+	<summary>
+  Looks up a localized string similar to Used as the Incremental Consolidation Dimension.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_IncrementalDimension">
+	<summary>
+  Looks up a localized string similar to Incremental Consolidation Dimension.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_LDCDim">
+	<summary>
+  Looks up a localized string similar to Dimension: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_LDCLevel">
+	<summary>
+  Looks up a localized string similar to Level: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_LevelDepthCons">
+	<summary>
+  Looks up a localized string similar to Level Depth Consolidations.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_LineNote">
+	<summary>
+  Looks up a localized string similar to Line Note.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Members">
+	<summary>
+  Looks up a localized string similar to Members.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_MemSel">
+	<summary>
+  Looks up a localized string similar to Member Selection: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_MeterInterval">
+	<summary>
+  Looks up a localized string similar to Seconds between Progress Updates.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Missing">
+	<summary>
+  Looks up a localized string similar to Missing.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_NALevelDepth">
+	<summary>
+  Looks up a localized string similar to  = option does not apply to level depth consolidations.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Name">
+	<summary>
+  Looks up a localized string similar to Name.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_NoneSelected">
+	<summary>
+  Looks up a localized string similar to (None).
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_OffGridMembers">
+	<summary>
+  Looks up a localized string similar to Off-Grid Members.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Option">
+	<summary>
+  Looks up a localized string similar to Options: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_OutputOptions">
+	<summary>
+  Looks up a localized string similar to Output Options: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Period">
+	<summary>
+  Looks up a localized string similar to Period.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_PointCons">
+	<summary>
+  Looks up a localized string similar to Point Consolidation.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ProcessUnsubmitted">
+	<summary>
+  Looks up a localized string similar to Process Unsubmitted Statements.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ReadConsMemberP0">
+	<summary>
+  Looks up a localized string similar to Read Consolidated Member P0 Balances.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ReadSubConsNodes">
+	<summary>
+  Looks up a localized string similar to Read Local Consolidated Data.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_RecntSubs">
+	<summary>
+  Looks up a localized string similar to Most Recent Submission Date.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ReportStatAsOf">
+	<summary>
+  Looks up a localized string similar to Report status as of: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_RequiredScheds">
+	<summary>
+  Looks up a localized string similar to Required schedules are automatically included.  Select additional schedules..
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_RequiredScheds1">
+	<summary>
+  Looks up a localized string similar to Required schedules are automatically included..
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_RequiredScheds2">
+	<summary>
+  Looks up a localized string similar to Select additional schedules..
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Sched">
+	<summary>
+  Looks up a localized string similar to Schedule.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SchedNote">
+	<summary>
+  Looks up a localized string similar to Schedule Note.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Schedule">
+	<summary>
+  Looks up a localized string similar to Schedules.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Schedules">
+	<summary>
+  Looks up a localized string similar to Schedules: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SelectSaved">
+	<summary>
+  Looks up a localized string similar to Select a saved version of the data..
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_ShowAdvanced">
+	<summary>
+  Looks up a localized string similar to Show Options.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SkipLocalCons">
+	<summary>
+  Looks up a localized string similar to Skip Local Consolidations.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SourceAmt">
+	<summary>
+  Looks up a localized string similar to Source Amount.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SourceLine">
+	<summary>
+  Looks up a localized string similar to Source Line.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Spec4CCRpt">
+	<summary>
+  Looks up a localized string similar to Validation Report.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Spec4Consolidate">
+	<summary>
+  Looks up a localized string similar to Consolidation.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Spec4ConsolOpts">
+	<summary>
+  Looks up a localized string similar to Options for Consolidation.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Spec4IncConsolOpts">
+	<summary>
+  Looks up a localized string similar to Options for Incremental Consolidation.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Spec4IncConsTarget">
+	<summary>
+  Looks up a localized string similar to Target Member.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Spec4StartingMember">
+	<summary>
+  Looks up a localized string similar to Starting Member.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Spec4SubStatRpt">
+	<summary>
+  Looks up a localized string similar to Submission Status.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SpecForLocalCons">
+	<summary>
+  Looks up a localized string similar to Local Consolidation.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_StartDate">
+	<summary>
+  Looks up a localized string similar to Start: .
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Stat">
+	<summary>
+  Looks up a localized string similar to Status.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SuppressEliminationUnit">
+	<summary>
+  Looks up a localized string similar to Suppress Elimination Units.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SuppressLeafProcessing">
+	<summary>
+  Looks up a localized string similar to Suppress Leaf Processing.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SuppressLeafProcessingLDOnly">
+	<summary>
+  Looks up a localized string similar to Suppress Leaf Processing (Level Depth Only).
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SuppressLeafWriteback">
+	<summary>
+  Looks up a localized string similar to Suppress Leaf Writeback.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_SuppressZeros">
+	<summary>
+  Looks up a localized string similar to Suppress Zeros.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Task">
+	<summary>
+  Looks up a localized string similar to Task.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_TypeHeader">
+	<summary>
+  Looks up a localized string similar to Type.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_Unit">
+	<summary>
+  Looks up a localized string similar to Unit.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_UseNetAdjOffSheetData">
+	<summary>
+  Looks up a localized string similar to Use Net Adjusted Off-sheet Data.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_VersionNote">
+	<summary>
+  Looks up a localized string similar to Version Note.
+</summary>
+</member><member name="P:Resources.HD_Translate.HD_YTD">
+	<summary>
+  Looks up a localized string similar to YTD.
+</summary>
+</member><member name="T:Resources.HD_Translate">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:Resources.Common_Translate.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Resources.Common_Translate.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_Back">
+	<summary>
+  Looks up a localized string similar to Back.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_BadHandle">
+	<summary>
+  Looks up a localized string similar to Bad dimension handle supplied..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CallingPage">
+	<summary>
+  Looks up a localized string similar to Calling page: .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_Cancel">
+	<summary>
+  Looks up a localized string similar to Cancel.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckAuthConfig">
+	<summary>
+  Looks up a localized string similar to Ensure that authentication settings are configured correctly on the web server and database server..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckAuthConfigNoAppServ">
+	<summary>
+  Looks up a localized string similar to Ensure that authentication settings are configured correctly on the web server..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckDBServer">
+	<summary>
+  Looks up a localized string similar to Ensure that the database server is running..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckDBSettingsForUser">
+	<summary>
+  Looks up a localized string similar to Ensure that the user's username and password are correctly set up on the database server, and that the user's database permissions are sufficient to access data..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckDSNMapping">
+	<summary>
+  Looks up a localized string similar to Check that your Options.txt file contains an entry to associate your decision datasource name with a DSN..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckPMObjPresent">
+	<summary>
+  Looks up a localized string similar to Ensure that PMObj.dll is present and registered correctly on the web server..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckUsernamePwd">
+	<summary>
+  Looks up a localized string similar to This error can be caused by an incorrect username and/or password.  Please check your username and password, and if necessary, log out of the application and back in..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckViewConfigSettings">
+	<summary>
+  Looks up a localized string similar to Check that the datasource configuration settings for the view are defined correctly..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckViewNameCorrect1">
+	<summary>
+  Looks up a localized string similar to Check that the view name being used for this page (.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CheckViewNameCorrect2">
+	<summary>
+  Looks up a localized string similar to ) correctly matches a view name in View Manager..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_Close">
+	<summary>
+  Looks up a localized string similar to Close.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CurrentPage">
+	<summary>
+  Looks up a localized string similar to Current page: .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CurrentSetting">
+	<summary>
+  Looks up a localized string similar to Current setting is.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_CurrentSettings">
+	<summary>
+  Looks up a localized string similar to Current settings are.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_Delete">
+	<summary>
+  Looks up a localized string similar to Delete.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrDimCt">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the dimension count..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrDimCt4DimArr">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the dimension count..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrDimHandle">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the dimension handle for dimension .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrDims">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving dimensions..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrDimSet">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the View dimension set..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrMemSet">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the member set..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrNoAllowedMbr">
+	<summary>
+  Looks up a localized string similar to You have no allowed member. You cannot perform this operation..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrNoWriteMbr">
+	<summary>
+  Looks up a localized string similar to You have no allowed writable member. You cannot perform this operation..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrorLabel">
+	<summary>
+  Looks up a localized string similar to Error: .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_errorMissingURLViewParam">
+	<summary>
+  Looks up a localized string similar to A view name was not specified in the URL. Contact your administrator to correct the setup for this page..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrorNumber">
+	<summary>
+  Looks up a localized string similar to Error Number: .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_errorOnPageLoad">
+	<summary>
+  Looks up a localized string similar to Cannot load the '{0}' page..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrorText">
+	<summary>
+  Looks up a localized string similar to Error Description: .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSchedHier">
+	<summary>
+  Looks up a localized string similar to Cannot find a Schedule.Master member or hierarchy..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSchedMem">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the schedule members set..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSchema">
+	<summary>
+  Looks up a localized string similar to An error occurred when creating a Schema object..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSchemaDimSet">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the schema dimension set..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSchemaSet">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the schema dimension set..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSelMems">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving selected members for the dimension .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSelOffGridMem">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving off-grid members for the dimension .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSSObj">
+	<summary>
+  Looks up a localized string similar to An error occurred when creating the submission status object..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSSResult">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the submission status..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrSysParams">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the schema system parameters..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrViewCt">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the view count..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ErrViewObj">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the view object..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_Err_Not_Supported">
+	<summary>
+  Looks up a localized string similar to This feature is not supported..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_FunctionName">
+	<summary>
+  Looks up a localized string similar to Source function: .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_Generated">
+	<summary>
+  Looks up a localized string similar to Generated .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_GenerateRpt">
+	<summary>
+  Looks up a localized string similar to Generate Report.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_HaveAdminCheck">
+	<summary>
+  Looks up a localized string similar to Contact your administrator to check the following possible causes for this error: .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_IfErrorPersists">
+	<summary>
+  Looks up a localized string similar to If this error persists, then: .
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_NumericField">
+	<summary>
+  Looks up a localized string similar to Only numeric values allowed..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_OK">
+	<summary>
+  Looks up a localized string similar to OK.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_Options">
+	<summary>
+  Looks up a localized string similar to Options.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_OptionsTip">
+	<summary>
+  Looks up a localized string similar to Options.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_RedirNoCatGiven">
+	<summary>
+  Looks up a localized string similar to Redir.asp requires a category parameter (e.g. Redir.asp?category=CategoryUniqueName). Check the topic property in View Manager to make sure a category parameter has been specified..
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ReviewRpt">
+	<summary>
+  Looks up a localized string similar to Review Report.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ShowAll">
+	<summary>
+  Looks up a localized string similar to Show All.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ShowMems">
+	<summary>
+  Looks up a localized string similar to Show Selected Members.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ShowSelections">
+	<summary>
+  Looks up a localized string similar to Show All Selections.
+</summary>
+</member><member name="P:Resources.Common_Translate.COM_ViewNameRequired">
+	<summary>
+  Looks up a localized string similar to A view name is required..
+</summary>
+</member><member name="T:Resources.Common_Translate">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:Resources.AnnotationReport.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Resources.AnnotationReport.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:Resources.AnnotationReport.ARD_Title">
+	<summary>
+  Looks up a localized string similar to Reporting on descendants of .
+</summary>
+</member><member name="P:Resources.AnnotationReport.ARD_Unit">
+	<summary>
+  Looks up a localized string similar to Unit Member.
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ARGen1">
+	<summary>
+  Looks up a localized string similar to Annotation Report.
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ARGen2">
+	<summary>
+  Looks up a localized string similar to Generated.
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_AuthorUnknown">
+	<summary>
+  Looks up a localized string similar to (Author Unknown).
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_DateUnknown">
+	<summary>
+  Looks up a localized string similar to (Date Unknown).
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ErrAnnotCt">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving the annotation count..
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ErrAnnotData">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving annotation data..
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ErrBuild">
+	<summary>
+  Looks up a localized string similar to An error occurred when building the request..
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ErrDimSet">
+	<summary>
+  Looks up a localized string similar to An error occurred retrieving the dimension set: .
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ErrNoteObj">
+	<summary>
+  Looks up a localized string similar to An error occurred when creating notes object: .
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ErrNoteSet">
+	<summary>
+  Looks up a localized string similar to An error occurred when creating NoteSet: .
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ErrRetAnnots">
+	<summary>
+  Looks up a localized string similar to An error occurred when retrieving annotations: count invalid..
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_ErrSchema">
+	<summary>
+  Looks up a localized string similar to An error occurred when creating the schema object: .
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_GMT">
+	<summary>
+  Looks up a localized string similar to (GMT).
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_NoAnnots">
+	<summary>
+  Looks up a localized string similar to There are no annotations in this data view..
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_NoAnnotSupport">
+	<summary>
+  Looks up a localized string similar to This view does not support annotations..
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_NoContents">
+	<summary>
+  Looks up a localized string similar to (No Contents).
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_NoLocation">
+	<summary>
+  Looks up a localized string similar to (Cell specification information not found).
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_Title">
+	<summary>
+  Looks up a localized string similar to Annotation Report.
+</summary>
+</member><member name="P:Resources.AnnotationReport.AR_View">
+	<summary>
+  Looks up a localized string similar to View = .
+</summary>
+</member><member name="T:Resources.AnnotationReport">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.GenerateAnnotationReport(System.Web.UI.Page@,Infor.PM.Decision.DecisionCore.ViewSession)">
+	<summary>
+ Generate and write out the annotation report table	
+ </summary>
+	<param name="oPage"></param>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.DescendantsAnnotationsTable(System.Web.UI.Page@,Infor.PM.Decision.DecisionCore.ViewSession)">
+	<summary>
+ Writes out a table of annotations from a Relational or Essbase datasource
+ </summary>
+	<param name="oPage"></param>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.GetMemberDisplayName(Infor.PM.Decision.DecisionCore.ViewSession,System.String)">
+	<summary>
+ Given a member unique name, get its display name from view.
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<param name="uniqueName">Member UniqueName</param>
+	<returns>Member text base on description value</returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.GetMemberText(Infor.PM.Decision.DecisionCore.ViewSession,Infor.PM.Decision.DecisionCore.Member)">
+	<summary>
+ Given a member object, get its display name from view.
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<param name="member">Member Object</param>
+	<returns>Member text base on description value</returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.IsBaseDimMember(System.Object)">
+	<summary>
+ returns true if the member is a member of the base dimension
+ </summary>
+	<param name="memberUniqueName">member name </param>
+	<returns>True/False</returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.GetDescendants(Infor.PM.Decision.DecisionCore.Member)">
+	<summary>
+ Gets the descendants of the base m and populates it to rsDescMems recordset
+ </summary>
+	<param name="baseMember"></param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.LoadVirtualGrid(Infor.PM.Decision.DecisionCore.ViewSession)">
+	<summary>
+ Loads a VirtualGrid object for the specified view, forcing Decision to get
+ the latest data for that view, including Links recordset data.
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.GetCellNotes(Infor.PM.Decision.DecisionCore.ViewSession,Infor.PM.Decision.DecisionCore.Member)">
+	<summary>
+ Gets the cell notes of the specifed offgrid member and its descendants
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<param name="BaseMemberDetails"></param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.PopulateLinkObject(Infor.PM.Decision.DecisionCore.ViewSession)">
+	<summary>
+ Adds cellnote and cellvalue and other fields to the Links object
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.getMemberFromOnGridMembers(Infor.PM.Decision.DecisionCore.ViewSession,System.String)">
+	<summary>
+ gets the member from the onGridMembers, returns the member if found else returns an empty object
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<param name="memberUniqueName">member unique name</param>
+	<returns>DecisionCore.Member</returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.GetDrillMode(Infor.PM.Decision.DecisionCore.ViewSession,System.String)">
+	<summary>
+ Gets DrillMode and DrillingEnabled property of the specified dimension
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<param name="dimensionUniqueName"></param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.SetDrillMode(Infor.PM.Decision.DecisionCore.ViewSession,System.String,System.String)">
+	<summary>
+ Sets DrillMode and DrillingEnabled property of the specified dimension 
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<param name="dimensionUniqueName"></param>
+	<param name="drillMode"></param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.SetDimensionPosition(Infor.PM.Decision.DecisionCore.ViewSession,System.String,Infor.PM.Decision.DecisionCore.DimensionPosition)">
+	<summary>
+ Moves the specified dimension on the specified view to the specified target position.
+ (0 = Off Grid, 1 = Down, 2 = Across)
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<param name="dimUniqueName"></param>
+	<param name="dimensionPosition"></param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.GetRotationMode(Infor.PM.Decision.DecisionCore.ViewSession,System.Object,System.Boolean@)">
+	<summary>
+	</summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<param name="dimensionUniqueName">a valid Dimension UniqueName</param>
+	<param name="dimensionRotationEnabled">gets the current value of RotationEnabled and saves it in dimensionRotationEnabled </param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReportDescendants.SetRotationMode(Infor.PM.Decision.DecisionCore.ViewSession,System.Object,System.Boolean)">
+	<summary>
+ Given a dimension uniquename, sets the RotationEnabled property. 
+ </summary>
+	<param name="viewSession">a view session for the currently loaded view</param>
+	<param name="dimensionUniqueName">a valid Dimension UniqueName</param>
+	<param name="dimensionRotationEnabled">New value that needs to be set for RotationEnabled</param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.AnnotationsTable(System.Object@,System.Object)">
+	<summary>
+ Writes out a table of annotations from a Relational or Essbase datasource
+ Sub AnnotationsTable(ByVal ViewName, ByVal UserName, ByVal Password)
+ </summary>
+	<param name="oPage"></param>
+	<param name="viewSession"></param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.GetCellValue(Infor.PM.Decision.DecisionCore.ViewSession,Infor.PM.Decision.DecisionCore.VirtualGrid,System.Collections.ObjectModel.Collection{System.String})">
+	<summary>
+ Given a virtual grid and member uniquename looks in the headers of ongrid members to isolate the cell and returns the cell value.
+ </summary>
+	<param name="viewSession">loaded viewsession</param>
+	<param name="virtualGrid">virtual grid in the state from which the cell value needs to be pulled</param>
+	<param name="members">collection of uniquename members that identify the cell</param>
+	<returns>The Cell value identified by the member passed.</returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.GetHeaderRowOrCol(System.Collections.ObjectModel.Collection{System.String},System.Collections.ObjectModel.ReadOnlyCollection{Infor.PM.Decision.DecisionCore.VirtualGridHeader})">
+	<summary>
+ searches the header for the members passed and returns the row or col
+ </summary>
+	<param name="memberUniqueName">if nested dimensions than more than one memberunique is needed, thus always take a collection of member</param>
+	<param name="virtualGridHeadersDirection">direction of the header. You may search down (vertical) or across(horizontal) </param>
+	<returns>row / col No, where the headers were found</returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.GetHeaders(Infor.PM.Decision.DecisionCore.VirtualGrid,Infor.PM.Decision.DecisionCore.AxisDirection)">
+	<summary>
+ Get the headers across(Horizontal) or down (Vertical)
+ </summary>
+	<param name="virtualGrid">VirtualGrid object</param>
+	<param name="direction">Across(Horizontal) or down (Vertical)</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.StartNewRow(System.Object@)">
+	<summary>
+  Handles formatting of even and odd rows of the report
+ </summary>
+	<param name="oPage"></param>
+	<remarks>Now the even and odd row use the same formatting.</remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.OutputFooterRow(System.Object@)">
+	<summary>
+  Handles formatting of footer rows of the report
+ </summary>
+	<param name="oPage"></param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.GetOffGridMems(System.Object@,System.Object)">
+	<summary>
+ Populates the OffGridMems and array with names/descriptions (as set in the view) of 
+ all of the off-grid members on the view.  Also populates the VisibleOffGridMems
+ array with the names/descriptions of only the visible off-grid dimensions on the view
+ (the dimensions for which either a button or a label or both are displayed).
+ </summary>
+	<param name="oPage"></param>
+	<param name="viewSession"></param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.IsMemberNonAlternateOffGrid(System.Object,System.Object)">
+	<summary>
+ Returns true if the specified member unique name is off-grid and
+ not an "alternate off-grid member"; returns false otherwise
+ </summary>
+	<param name="MemberUniqueName"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.CorrectNameModesInLocationString(Infor.PM.Decision.DecisionCore.ViewSession,System.Collections.ObjectModel.Collection{System.String})">
+	<summary>
+ Given a collection of string returns the collection as a concatinated string. with 
+ each uniquename name converted to the associated member description, if the dimension
+ for that member is set to display descriptions in the View. 
+ </summary>
+	<param name="viewSession"></param>
+	<param name="locMembers"></param>
+	<returns>Returns members as a string. Example: "Advertising; Actual; No Product" </returns>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.StripOffGridFromLocationString(Infor.PM.Decision.DecisionCore.ViewSession,System.Collections.ObjectModel.Collection{System.String})">
+	<summary>
+ Given a collection of string, returns the same collection of string with 
+ all non-alternate, off-grid members removed.  
+ </summary>
+	<param name="locMembers"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.OutputJavascriptSortTable(System.Web.UI.Page@)">
+	<summary>
+ Registers java script with the page. 
+ </summary>
+	<param name="oPage"></param>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.Utilities.AnnotationReportCommon.FormatDataValue(Infor.PM.Decision.DecisionCore.ViewSession,System.String)">
+	<summary>
+ ' Use the same number format that is being used by the grid 
+ </summary>
+	<param name="viewSession"></param>
+	<param name="DataValue"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Infor.PM.Workstation.UI.AnnotationReport.AnnotationsReport(System.Web.UI.Page,Infor.PM.Decision.DecisionCore.ViewSession)">
+	<summary>
+ Generate and write out the annotation report table
+ </summary>
+	<param name="viewSession"> loaded view</param>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

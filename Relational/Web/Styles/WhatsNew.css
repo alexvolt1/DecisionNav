@@ -1,0 +1,11 @@
+﻿.whatsnewcontainer {  background-color: #fff; margin: 5px 0 10px 0;  border-collapse:collapse;
+                      font-family:Trebuchet MS, Lucida Sans Unicode, Lucida Grande,Lucida Sans, Arial, sans-serif;
+                      font-size:14px;}
+    .whatsnewcontainer td { padding: 4px 6px;  color: #444;  }
+    .whatsnewcontainer th { padding: 4px 6px; color: #fff; background: url(../images/gradientSprite.jpg) repeat-x 0px -35px;
+                             text-align:left;
+                              border-bottom:#45172a 1px solid;
+                              font-size: 1em; }  
+    .whatsnewcontainer ul { margin:0; padding:0;}
+    .whatsnewcontainer ul li { color:#333;list-style-type: none;margin:0; padding:0;}
+    .whatsnewcontainer .tDate{ text-align:right;}

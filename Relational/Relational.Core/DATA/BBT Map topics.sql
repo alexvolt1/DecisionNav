@@ -1,0 +1,5 @@
+ update [Navigation BBT].[dbo].[NavigationItem_View] set Viewid =  'fac8f8da-5c62-42b7-b7f7-7eb94bdbc19a' where TopicId='4646720d-89e9-4413-8b31-aca3e7e3ffd0'
+  update [Navigation BBT].[dbo].[NavigationItem_View] set Viewid =  'a297ff5e-51e7-4217-bc04-cf99a3d70626' where TopicId='88c709ce-00fa-4be3-959c-47c2a869908e'
+  update [Navigation BBT].[dbo].[NavigationItem_View] set Viewid =  'fcaaec36-d7fa-400b-a05a-d5caca725415' where TopicId='b586dc0e-d63e-4408-b51f-280fa509296c'
+  update [Navigation BBT].[dbo].[NavigationItem_View] set Viewid =  '0a599b15-dbd2-4b24-a7d3-9d312db290c3' where TopicId='c104e325-d112-4a0b-add3-2e4d36b15813'
+  update [Navigation BBT].[dbo].[NavigationItem_View] set Viewid =  '53bab813-3e08-4569-9920-948beaed00b5' where TopicId='e452c963-9fc8-4b62-b50e-f695bdfcb2e1'

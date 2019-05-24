@@ -1,0 +1,13 @@
+div#appName
+{
+     font-family:TheSerifSemiBoldPlain, Trebuchet MS, Lucida Sans Unicode, Lucida Grande, Lucida Sans, Arial, sans-serif;
+    top:15px;
+    position:absolute;
+    font-size:28px;
+    color:#333;
+   cursor:pointer;
+    width:100%;
+     text-align:center;
+     
+}
+

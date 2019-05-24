@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="21e9146d-eaa3-4bed-af25-2c4e5f90fc3a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://dssdev01.dsspreprod.com/RelationalInternal/RelationalService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RelationalService1.wsdl" MetadataType="Wsdl" ID="edb97020-872b-4e38-a526-e7f0d9c6a702" SourceId="1" SourceUrl="http://dssdev01.dsspreprod.com/RelationalInternal/RelationalService.svc?wsdl" />
+    <MetadataFile FileName="RelationalService4.xsd" MetadataType="Schema" ID="374423cd-c83d-4fa0-90c9-946a075d92c1" SourceId="1" SourceUrl="http://dssdev01.dsspreprod.com/RelationalInternal/RelationalService.svc?xsd=xsd0" />
+    <MetadataFile FileName="RelationalService41.xsd" MetadataType="Schema" ID="04a4f9f9-5c44-4c57-8a88-41f909e4a300" SourceId="1" SourceUrl="http://dssdev01.dsspreprod.com/RelationalInternal/RelationalService.svc?xsd=xsd3" />
+    <MetadataFile FileName="RelationalService42.xsd" MetadataType="Schema" ID="7ca17a26-38ec-49b0-bd9e-e6f361b05cb2" SourceId="1" SourceUrl="http://dssdev01.dsspreprod.com/RelationalInternal/RelationalService.svc?xsd=xsd1" />
+    <MetadataFile FileName="RelationalService1.disco" MetadataType="Disco" ID="ef26ef5c-334f-4ce1-b148-0cb4a18965d3" SourceId="1" SourceUrl="http://dssdev01.dsspreprod.com/RelationalInternal/RelationalService.svc?disco" />
+    <MetadataFile FileName="RelationalService43.xsd" MetadataType="Schema" ID="d3297481-2349-4966-9e60-07fd25ac9730" SourceId="1" SourceUrl="http://dssdev01.dsspreprod.com/RelationalInternal/RelationalService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

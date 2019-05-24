@@ -1,0 +1,2804 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Infor.CPMImport.DataAccess</name>
+    </assembly>
+    <members>
+        <member name="T:Infor.CPMImport.DataAccess.AbstractDatabaseSchema">
+            <summary>
+            Non-vendor specific portions of IDatabaseSchema.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.IDatabaseSchema">
+            <summary>
+            Information about the schema for a model.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.IDatabaseSchema.Schema">
+            <summary>
+            Gets the schema prefix that should be used for accessing tables.
+            This could be production or authorized.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.IDatabaseSchema.ProductionSchema">
+            <summary>
+            Gets the schema prefix that should be used to access tables on the
+            production side.  This must only be used for special cases
+            when the table and/or data only resides in production and may
+            need to be accessed when using the authorized schema.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.IDatabaseSchema.AuthorizedSchema">
+            <summary>
+            Gets the schema prefix that should be used to access tables on the
+            authorized side.  This must only be used for special cases
+            when the table and/or data only resides in authorized and may
+            need to be accessed when using the production schema.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.AbstractDatabaseSchema.schema">
+            <summary>
+            Schema to use for normal qualification of tables and such.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.AbstractDatabaseSchema.#ctor(Infor.CPMImport.DataAccess.IModelConnectionDefinitions)">
+            <summary>
+            Initializes a new instance of the AbstractDatabaseSchema class.
+            </summary>
+            <param name="connectionDefinitions">Connection definitions</param>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.AbstractDatabaseSchema.Schema">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.AbstractDatabaseSchema.ProductionSchema">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.AbstractDatabaseSchema.AuthorizedSchema">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.AutofacExtensions">
+            <summary>
+            Custom extensions to Autofac.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.AutofacExtensions.logger">
+            <summary>
+            Our logger.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.AutofacExtensions.RegisterDatabaseTypeKeyedInterface``1(Autofac.ContainerBuilder)">
+            <summary>
+            Registers an interface that has multiple implementations keyed by
+            DatabaseType.
+            </summary>
+            <typeparam name="TImplementor">Interface with database specific implementations</typeparam>
+            <param name="builder">Autofac builder</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.AutofacModule">
+            <summary>
+            Data access module for Autofac.
+            http://code.google.com/p/autofac/wiki/StructuringWithModules
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.AutofacModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Register types needed to expose an IRepository to the rest of the
+            application.
+            </summary>
+            <param name="builder">Builder to which we'll add our types.</param>
+            <remarks>
+            To handle multiple databases will probably need
+            http://code.google.com/p/autofac/wiki/DelegateFactories
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.AutofacModule.LoadDatabaseComponents(Autofac.ContainerBuilder)">
+            <summary>
+            Registers components related to the schema, model, and database configuration
+            </summary>
+            <param name="builder">Builder to which we'll add our types</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.AutofacModule.LoadHibernateComponents(Autofac.ContainerBuilder)">
+            <summary>
+            Registers components related to NHibernate and its sessions and repositories
+            </summary>
+            <param name="builder">Builder to which we'll add our types</param>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Resources.DataAccess">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Resources.DataAccess.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Resources.DataAccess.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Resources.DataAccess.Validation_ColumnDoesNotMapToTargetField">
+            <summary>
+              Looks up a localized string similar to Column {0} does not map to a valid target field..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Resources.DataAccess.Validation_IndirectlyRequiredFieldNotMapped">
+            <summary>
+              Looks up a localized string similar to Mapping target field {0} also requires that {1} be mapped..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Resources.DataAccess.Validation_RequiredFieldNotMapped">
+            <summary>
+              Looks up a localized string similar to Required target field {0} has not been mapped to..
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException">
+            <summary>
+            Thrown when the database schema doesn't match we expect.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException.#ctor(System.String,Infor.Cpm.RelationalModel.SchemaVersion,Infor.Cpm.RelationalModel.SchemaVersion)">
+            <summary>
+            Initializes a new instance of the DatabaseSchemaMismatchException class.
+            </summary>
+            <param name="modelName">Name of the model</param>
+            <param name="expectedVersion">Schema version expected</param>
+            <param name="actualVersion">Schema version found in the model</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException.#ctor">
+            <summary>
+            Initializes a new instance of the DatabaseSchemaMismatchException class.
+            </summary>
+            <remarks>
+            Required by CA1032.
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DatabaseSchemaMismatchException class.
+            </summary>
+            <remarks>
+            Required by CA1032.
+            </remarks>
+            <param name="message">Exception message</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the DatabaseSchemaMismatchException class.
+            </summary>
+            <remarks>
+            Required by CA1032.
+            </remarks>
+            <param name="message">Exception message</param>
+            <param name="innerException">Exception that triggered this one</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the DatabaseSchemaMismatchException class.
+            </summary>
+            <remarks>
+            Required by CA1032.
+            </remarks>
+            <param name="info">Serialization information</param>
+            <param name="context">Streaming context</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+            <remarks>
+            Required by CA2240 (Implement ISerializable correctly).
+            </remarks>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException.ModelName">
+            <summary>
+            Gets the name of the model with the database schema version mismatch.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException.ExpectedVersion">
+            <summary>
+            Gets the expected schema version.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.DatabaseSchemaMismatchException.ActualVersion">
+            <summary>
+            Gets the actual schema version of the model.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.DatabaseType">
+            <summary>
+            Set of supported database types, used to pick the correct concrete
+            implementations of certain classes where this information is
+            significant.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DatabaseType.MicrosoftSqlServer">
+            <summary>
+            Microsoft SQL Server database.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DatabaseType.Oracle">
+            <summary>
+            Oracle database.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.DefinitionValidation">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DefinitionValidation.definition">
+            <summary>
+            Load definition containing import settings and details
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DefinitionValidation.fields">
+            <summary>
+            The collection of target fields used by the load definition
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DefinitionValidation.messages">
+            <summary>
+            A list of potential error messages
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DefinitionValidation.table">
+            <summary>
+            Table containing the source that would go into an import
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DefinitionValidation.handler">
+            <summary>
+            The source handler used to request the table correctly
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DefinitionValidation.#ctor(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,System.Collections.Generic.ICollection{Infor.CPMImport.Common.ITargetField},Infor.CPMImport.DataAccess.Source.ISourceHandler)">
+            <summary>
+            Initializes a new instance of the DefinitionValidation class
+            </summary>
+            <param name="definition">Load definition</param>
+            <param name="fields">Collection of ITargetFields from the IDataLoad</param>
+            <param name="handler">The appropriate source handler for the definition</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DefinitionValidation.CheckAllSettings">
+            <summary>
+            Performs all validation checks
+            </summary>
+            <returns>Returns a status, possibly containing error messages</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DefinitionValidation.ValidateDateFormat">
+            <summary>
+            Verify the date format matches all date columns appropriately
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DefinitionValidation.IsDateFormatValidForColumn(System.String,System.String)">
+            <summary>
+            Determines if the specified date format is valid for the specified field
+            </summary>
+            <param name="fieldName">The name of the column to check in the DataTable</param>
+            <param name="dateFormat">The format to check with</param>
+            <returns>Whether the date format is valid</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DefinitionValidation.ValidateMappings">
+            <summary>
+            Validate the table's columns against the target fields
+            </summary>
+            <remarks>Mappings are valid when:
+             1. All columns map to an appropriate target field and there are no extras columns
+             2. All required target fields are mapped
+             3. All indirectly required target fields are mapped (ie: if field X is mapped, Y and Z become required)
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DefinitionValidation.LoadSourceData">
+            <summary>
+            Loads the source data for verification
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.DefinitionValidationStatus">
+            <summary>
+            Status object used to return details about load definition validation
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DefinitionValidationStatus.definitionId">
+            <summary>
+            Id of the Load Definition the status relates to
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DefinitionValidationStatus.messages">
+            <summary>
+            Internal collection of messages
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DefinitionValidationStatus.#ctor(System.Guid)">
+            <summary>
+            Initializes a new instance of the DefinitionValidationStatus class
+            </summary>
+            <param name="loadDefinitionId">The load definition id the status relates to</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DefinitionValidationStatus.ClearMessages">
+            <summary>
+            Clears the messages in the collection
+            </summary>
+            <remarks>CA2227 suggests collections not be settable but instead provide clear and add range functions</remarks>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.DefinitionValidationStatus.AddMessages(System.Collections.Generic.ICollection{System.String})">
+            <summary>
+            Adds a range of messages to the collection
+            </summary>
+            <param name="messageList">Collection of string messages</param>
+            <remarks>CA2227 suggests collections not be settable but instead provide clear and add range functions</remarks>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.DefinitionValidationStatus.Id">
+            <summary>
+            Gets the load definition ID
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.DefinitionValidationStatus.IsValid">
+            <summary>
+            Gets or sets a value indicating whether the definition is valid
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.DefinitionValidationStatus.ErrorMessages">
+            <summary>
+            Gets the dictionary containing error messages for the status
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.FileManagement.ILoadStatusWorkbook">
+            <summary>
+            Interface for LoadStatusWorkbook implementations
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.ILoadStatusWorkbook.AddSheet(System.String)">
+            <summary>
+            Add a new sheet to the workbook
+            </summary>
+            <param name="name">Sheet name</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.ILoadStatusWorkbook.AddFullReport(Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport,System.String)">
+            <summary>
+            Generates a report with all rows
+            </summary>
+            <param name="load">LoadDefinition to create error report for</param>
+            <param name="sheetName">Sheet to add report to</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.ILoadStatusWorkbook.AddErrorReport(Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport,System.String)">
+            <summary>
+            Generates an error report for all errors
+            </summary>
+            <param name="load">LoadDefinition to create error report for</param>
+            <param name="sheetName">Sheet to add report to</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.ILoadStatusWorkbook.SaveAs(System.IO.Stream)">
+            <summary>
+            Saves the workbook as a stream
+            </summary>
+            <param name="stream">The stream to save the workbook into</param>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.FileManagement.ILoadStatusWorkbook.RowsWritten">
+            <summary>
+            Gets the number of rows written to the file.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.FileManagement.ILoadStatusWorkbook.MaxRows">
+            <summary>
+            Gets the max number of rows that will be written by this workbook
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook">
+            <summary>
+            Handles convering the error text stored on the database to excel spreadsheets
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.workbook">
+            <summary>
+            Gets the Load Status XLWorkbook
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.#ctor">
+            <summary>
+            Initializes a new instance of the LoadStatusWorkbook class
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.Dispose">
+            <summary>
+            Disposes of the class
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.SaveAs(System.IO.Stream)">
+            <summary>
+            Saves the XLWorkbook stream to the given stream
+            </summary>
+            <param name="stream">The stream to write to</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.AddSheet(System.String)">
+            <summary>
+            Add a new sheet to the workbook
+            </summary>
+            <param name="name">Sheet name</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.AddFullReport(Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport,System.String)">
+            <summary>
+            Generates a report with all rows
+            </summary>
+            <param name="load">LoadDefinition to create error report for</param>
+            <param name="sheetName">Sheet to add report to</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.AddErrorReport(Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport,System.String)">
+            <summary>
+            Generates an error report for all errors
+            </summary>
+            <param name="load">LoadDefinition to create error report for</param>
+            <param name="sheetName">Sheet to add report to</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.Dispose(System.Boolean)">
+            <summary>
+            Disposes of the class
+            </summary>
+            <param name="disposing">Whether or not to dispose</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.ParseErrors(System.String,System.String)">
+            <summary>
+            Adds errors from the database to the worksheet
+            </summary>
+            <param name="details">The string to parse for errors</param>
+            <param name="sheetName">The sheet to add the error cells to</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.ParseColumns(System.String,System.String)">
+            <summary>
+            Parses the columns from the error report and adds them to the sheet
+            </summary>
+            <param name="details">Json serialized data table</param>
+            <param name="sheetName">The sheet to add the error cells to</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.ParseRows(System.String,System.String)">
+            <summary>
+            Parses the row data and adds it to the worksheet in bulk
+            </summary>
+            <param name="details">Json serialized data table</param>
+            <param name="sheetName">The sheet to add the error cells to</param>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.MaxRows">
+            <summary>
+            Gets the max number of rows this workbook will write
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.FileManagement.LoadStatusWorkbook.RowsWritten">
+            <summary>
+            Gets the number of rows written to the file.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.GenericConnectionAdapter">
+            <summary>
+            Adapter so GenericConnection can be used with dependency injection.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.GenericConnectionAdapter.#ctor(Infor.CPMImport.DataAccess.IModelSelector)">
+            <summary>
+            Initializes a new instance of the GenericConnectionAdapter class
+            and opens the connection.
+            </summary>
+            <param name="model">Model to create a connection to</param>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.CachingSessionFactoryFactory">
+            <summary>
+            A <see cref="T:Infor.CPMImport.DataAccess.Hibernate.ISessionFactoryFactory"/> that caches instances created by
+            another ISessionFactoryFactory.  The cache should support multi-threaded
+            access and is most effective when it is long lived.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.ISessionFactoryFactory">
+            <summary>
+            Creates NHibernate session factories.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.ISessionFactoryFactory.Create">
+            <summary>
+            Creates a NHibernate session factory for the provided model.
+            </summary>
+            <returns>A session factory for a specific model.</returns>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.CachingSessionFactoryFactory.logger">
+            <summary>
+            Our logger.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.CachingSessionFactoryFactory.factory">
+            <summary>
+            Factory that can create real session factory instances.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.CachingSessionFactoryFactory.cache">
+            <summary>
+            Cache of already created session factories.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.CachingSessionFactoryFactory.modelSelector">
+            <summary>
+            Model selection.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.CachingSessionFactoryFactory.#ctor(Infor.CPMImport.DataAccess.Hibernate.ISessionFactoryFactory,Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache,Infor.CPMImport.DataAccess.IModelSelector,log4net.ILog)">
+            <summary>
+            Initializes a new instance of the CachingSessionFactoryFactory class.
+            </summary>
+            <param name="factory">Factory used to create new instances.</param>
+            <param name="cache">Backing store for the cache</param>
+            <param name="modelSelector">Model selector</param>
+            <param name="logger">Logger to use.</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.CachingSessionFactoryFactory.Create">
+            <inheritdoc/>
+            <summary>
+            Returns a cached factory, creating one if needed.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.Mapping.ErrorReportMap">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.Mapping.ErrorReportMap.#ctor">
+            <summary>
+            Initializes a new instance of the ErrorReportMap class
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.Mapping.DataFilterMap">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.Mapping.DataFilterMap.#ctor">
+            <summary>
+            Initializes a new instance of the DataFilterMap class
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache">
+            <summary>
+            Cache for session factories, straightforward except this cache also
+            provides a ReaderWriterLockSlim for each cache entry.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache.locksLock">
+            <summary>
+            Lock used to ensure we don't create multiple ReaderWriterLocks for
+            the same cache key.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache.cache">
+            <summary>
+            Session factory cache.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache.locks">
+            <summary>
+            Read/write locks
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache.ContainsKey(System.String)">
+            <summary>
+            Does this cache contain a value for the provided key.
+            </summary>
+            <param name="key">Cache key</param>
+            <returns>True if the cache contains a value for the key, otherwise false</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache.GetLock(System.String)">
+            <summary>
+            Gets the read/write lock for a key.
+            </summary>
+            <param name="key">Cache key</param>
+            <returns>Read/write lock for the key</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache.Dispose(System.Boolean)">
+            <summary>
+            Required by CA1063 : Microsoft.Design : Provide an overridable
+            implementation of Dispose(bool) on 'SessionFactoryCache' or mark
+            the type as sealed. A call to Dispose(false) should only clean up
+            native resources. A call to Dispose(true) should clean up both
+            managed and native resources.
+            </summary>
+            <param name="disposeManagedResources">Should managed resources be cleaned up</param>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryCache.Item(System.String)">
+            <summary>
+            Gets or sets the asdfasdf.
+            </summary>
+            <param name="key">Cache key</param>
+            <returns>Session factory</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.IModelConnectionDefinitions">
+            <summary>
+            Connection definitions associated with a model.  In the case of Web
+            Architect there will always be two base definitions for each model,
+            one for XMLA and another for the underlying relational database.  A
+            third, for Hibernate, is created from the first two and is what most
+            consumers should use.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.IModelConnectionDefinitions.Xmla">
+            <summary>
+            Gets the connection definition for Xmla, this is the one referenced
+            by IModelSelector's model name.  It always points to the production
+            database because XMLA doesn't support authorized.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.IModelConnectionDefinitions.Relational">
+            <summary>
+            Gets the relational definition contained within the XMLA definition.
+            It always points to the production database because it is unmodified
+            from what is acquired from ConnectionDefinitionManager.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.IModelConnectionDefinitions.Hibernate">
+            <summary>
+            Gets the hibernate definition for the database referenced by the
+            relational definition.  It may point to either the authorized or
+            production database depending on the request.  Typically this is
+            synthesized from the relational, but in theory it could be the same
+            definition.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseCredential">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseCredential.UserName">
+            <summary>
+            Gets or sets the database user name
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseCredential.Password">
+            <summary>
+            Gets or sets the database password
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseCredential.Integrated">
+            <summary>
+            Gets or sets a value indicating whether Integrated is true or false
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter.Equals(System.Object)">
+            <summary>
+            Object compare method
+            </summary>
+            <param name="obj">Object to compare</param>
+            <returns>Result of the comparison</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter.GetHashCode">
+            <summary>
+            Get hash code method
+            </summary>
+            <returns>Hash code of the object</returns>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter.Id">
+            <summary>
+            Gets or sets load id
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter.FilterName">
+            <summary>
+            Gets or sets filter name
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter.LoadDefinition">
+            <summary>
+            Gets or sets load definition
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter.FilterOperator">
+            <summary>
+            Gets or sets filter operator 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter.FilterValues">
+            <summary>
+            Gets or sets filter values
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter.CaseInsensitive">
+            <summary>
+            Gets or sets case insensitive
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter.ValueSubstring">
+            <summary>
+            Gets or sets value substring
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport.#ctor">
+            <summary>
+            Initializes a new instance of the ErrorReport class
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport.Id">
+            <summary>
+            Gets or sets the load id 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport.LoadDefinition">
+            <summary>
+            Gets or sets load definition
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport.Audit">
+            <summary>
+            Gets or sets the detail information about a load
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ErrorReport.DetailData">
+            <summary>
+            Gets or sets the detail data in a load
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.MicrosoftSqlServerDatabaseSchema">
+            <summary>
+            Microsoft SQL Server schema information, where we have two databases
+            each of which contains one schema.
+            </summary>
+            <seealso cref="T:Infor.CPMImport.DataAccess.OracleDatabaseSchema"/>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.MicrosoftSqlServerDatabaseSchema.authorizedSchema">
+            <summary>
+            Fully qualified authorized schema.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.MicrosoftSqlServerDatabaseSchema.productionSchema">
+            <summary>
+            Fully qualified production schema.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.MicrosoftSqlServerDatabaseSchema.#ctor(Infor.CPMImport.DataAccess.IModelConnectionDefinitions)">
+            <summary>
+            Initializes a new instance of the MicrosoftSqlServerDatabaseSchema class.
+            </summary>
+            <param name="connectionDefinitions">Connection definitions</param>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.MicrosoftSqlServerDatabaseSchema.ProductionSchema">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.MicrosoftSqlServerDatabaseSchema.AuthorizedSchema">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.ModelConnectionDefinitions">
+            <summary>
+            Looks up the connection definition information for a given model.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.ModelConnectionDefinitions.xmla">
+            <summary>
+            XMLA connection definition.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.ModelConnectionDefinitions.relational">
+            <summary>
+            Relational connection definition.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.ModelConnectionDefinitions.hibernate">
+            <summary>
+            Hibernate connection definition.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.ModelConnectionDefinitions.#ctor(Infor.CPMImport.DataAccess.IModelSelector)">
+            <summary>
+            Initializes a new instance of the ModelConnectionDefinitions class.
+            </summary>
+            <param name="model">Model for which to get connection definitions.</param>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.ModelConnectionDefinitions.Xmla">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.ModelConnectionDefinitions.Relational">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.ModelConnectionDefinitions.Hibernate">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.OracleDatabaseSchema">
+            <summary>
+            Oracle schema information, where we have one database that contains
+            two schemas.
+            </summary>
+            <seealso cref="T:Infor.CPMImport.DataAccess.MicrosoftSqlServerDatabaseSchema"/>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.OracleDatabaseSchema.authorizedSchema">
+            <summary>
+            Fully qualified authorized schema.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.OracleDatabaseSchema.productionSchema">
+            <summary>
+            Fully qualified production schema.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.OracleDatabaseSchema.#ctor(Infor.CPMImport.DataAccess.IModelConnectionDefinitions)">
+            <summary>
+            Initializes a new instance of the OracleDatabaseSchema class.
+            </summary>
+            <param name="connectionDefinitions">Connection definitions</param>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.OracleDatabaseSchema.ProductionSchema">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.OracleDatabaseSchema.AuthorizedSchema">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Query.GenericConnectionSystemParameterQuery">
+            <summary>
+            Query to get system parameters using GenericConnection.
+            </summary>
+            <remarks>
+            Using NHiberate for this is problematic as one reason to get these
+            parameters is to determine if the database schema matches, something
+            that needs to occur prior to creating a NHibernate session factory.
+            </remarks>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Query.ISystemParameterQuery">
+            <summary>
+            Provides queries to get system parameters, for CPM this includes
+            system, non-structure, and authorized parameters.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.ISystemParameterQuery.GetSystemParameters(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns the values for one or more system parameters, if the key
+            is not a valid parameter it will NOT be in the result.
+            </summary>
+            <param name="keys">System parameter names</param>
+            <returns>Names and their values</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.ISystemParameterQuery.GetAuthorizedParameters(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns the values for one or more authorized parameters, if the key
+            is not a valid parameter it will NOT be in the result.
+            </summary>
+            <param name="keys">Authorized parameter names</param>
+            <returns>Names and their values</returns>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Query.GenericConnectionSystemParameterQuery.connection">
+            <summary>
+            Database connection
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Query.GenericConnectionSystemParameterQuery.schemaInfo">
+            <summary>
+            Database schema information
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.GenericConnectionSystemParameterQuery.#ctor(Infor.PM.Common.GenericDatabase.GenericConnection,Infor.CPMImport.DataAccess.IDatabaseSchema)">
+            <summary>
+            Initializes a new instance of the GenericConnectionSystemParameterQuery class.
+            </summary>
+            <param name="connection">Database connection</param>
+            <param name="schema">Database schema information</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.GenericConnectionSystemParameterQuery.#ctor">
+            <summary>
+            Prevents a default instance of the GenericConnectionSystemParameterQuery class from being created.
+            </summary>
+            <remarks>
+            Required by CA1812
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.GenericConnectionSystemParameterQuery.GetSystemParameters(System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.GenericConnectionSystemParameterQuery.GetAuthorizedParameters(System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.GenericConnectionSystemParameterQuery.GetParameters(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Gets the requested parameters from a specific parameters table.
+            </summary>
+            <param name="schema">Database schema holding the table</param>
+            <param name="table">Database table containing parameters</param>
+            <param name="keys">Parameter key values to get</param>
+            <returns>All of the valid requested parameter keys and their values</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Query.GenericConnectionUserRoleQuery">
+            <summary>
+            User role query that by passes Hibernate so it can be used when we know
+            the model, but aren't within a transaction/Hibernate scope.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Query.IUserRoleQuery">
+            <summary>
+            This is a special query for the permissions system to determine a
+            user's roles in the production system.  In other words this query
+            does NOT participate in any parallel models that may exist.
+            Additionally implementations should make all effort to determine the roles
+            including the absence of a transaction, Hibernate session factory, or
+            other configuration beyond a valid model.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.IUserRoleQuery.GetRoles(System.String)">
+            <summary>
+            Determines the production roles for the given user, work in process
+            is not relevant for this query.
+            </summary>
+            <param name="user">user name</param>
+            <returns>All the roles for the user, if any.</returns>
+            <exception cref="T:Infor.CPMImport.DataAccess.Query.UserNameNotFoundException">If the user name doesn't exist</exception>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Query.GenericConnectionUserRoleQuery.connection">
+            <summary>
+            Database connection
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Query.GenericConnectionUserRoleQuery.database">
+            <summary>
+            The database...
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Query.GenericConnectionUserRoleQuery.schema">
+            <summary>
+            Database schema information.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Query.GenericConnectionUserRoleQuery.logger">
+            <summary>
+            Our logger.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.GenericConnectionUserRoleQuery.#ctor(Infor.PM.Common.GenericDatabase.GenericConnection,Infor.PM.Common.GenericDatabase.IGenericDatabase,Infor.CPMImport.DataAccess.IDatabaseSchema,log4net.ILog)">
+            <summary>
+            Initializes a new instance of the GenericConnectionUserRoleQuery class.
+            </summary>
+            <param name="connection">database connection</param>
+            <param name="database">generic database</param>
+            <param name="schema">Database schema information</param>
+            <param name="logger">Our logger</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.GenericConnectionUserRoleQuery.GetRoles(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Query.ObjectNotFoundException">
+            <summary>
+            Thrown when a specific entity can't be found.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.ObjectNotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the ObjectNotFoundException class,
+            avoid using, provide a message to another constructor.
+            Present only because CA1032 (http://msdn.microsoft.com/en-us/library/ms182151.aspx)
+            requires it.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.ObjectNotFoundException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ObjectNotFoundException class.
+            </summary>
+            <param name="message">Exception message</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.ObjectNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the ObjectNotFoundException class.
+            </summary>
+            <param name="message">Exception message</param>
+            <param name="root">Root exception</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.ObjectNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+            <remarks>
+            Required by CA1032 (http://msdn.microsoft.com/en-us/library/ms182151.aspx).
+            </remarks>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Query.UserNameNotFoundException">
+            <summary>
+            Thrown when a specific or requested user name doesn't exist.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.UserNameNotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the UserNameNotFoundException class,
+            do not use, provide the unknown user name to another constructor.
+            Present only because CA1032 (http://msdn.microsoft.com/en-us/library/ms182151.aspx)
+            requires it.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.UserNameNotFoundException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the UserNameNotFoundException class
+            based on the provided unknown user name.
+            </summary>
+            <param name="userName">Unknown user name</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.UserNameNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the UserNameNotFoundException class.
+            </summary>
+            <param name="userName">Unknown user name</param>
+            <param name="root">Root exception</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.UserNameNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+            <remarks>
+            Required by CA1032 (http://msdn.microsoft.com/en-us/library/ms182151.aspx).
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Query.UserNameNotFoundException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+            <remarks>
+            Required by CA2240 (Implement ISerializable correctly).
+            </remarks>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Query.UserNameNotFoundException.UserName">
+            <summary>
+            Gets the name of the unknown user.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Repository.IRepository">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Repository.IRepository.GetEntity``1(System.Guid)">
+            <summary>
+            Fetches a single entity by its UniqueName.
+            </summary>
+            <typeparam name="T">Interface type of the entity.</typeparam>
+            <param name="key">UniqueName of the entity to fetch, must match the type of T</param>
+            <returns>The matching entity.</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Repository.IRepository.FindEntity``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Gets a single entity based on a Linq expression
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="expression">Linq expression that object must meet</param>
+            <returns>Single entity</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Repository.IRepository.GetEntities``1">
+            <summary>
+            Fetches all entities of type T, where T is an interface, e.g. IYear.
+            </summary>
+            <typeparam name="T">Interface type of the entities to fetch.</typeparam>
+            <returns>An instance for each entity with with an interface of T</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Repository.IRepository.GetEntities``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Fetches entities of type T, where T is an interface (e.g. IYear), that
+            match the provided filter.
+            </summary>
+            <typeparam name="T">Interface type of the entities to fetch.</typeparam>
+            <param name="expression">Linq expression to filter on</param>
+            <returns>An instance for each entity with with an interface of T matching the filter</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Repository.IRepository.AddEntity``1(``0)">
+            <summary>
+            Adds a single item
+            </summary>
+            <typeparam name="T">Item's Class</typeparam>
+            <param name="item">Instance of the item</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Repository.IRepository.AddEntities``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Adds a collection of items
+            </summary>
+            <typeparam name="T">Item's Class</typeparam>
+            <param name="items">The item list</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Repository.IRepository.RemoveEntity``1(``0)">
+            <summary>
+            Removes a single item
+            </summary>
+            <typeparam name="T">Item's Class</typeparam>
+            <param name="item">Instance of the item type</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Repository.IRepository.RemoveEntities``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Removes a single item
+            </summary>
+            <typeparam name="T">Item's Class</typeparam>
+            <param name="items">Instance of the item type</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Repository.IRepository.UpdateEntity``1(``0)">
+            <summary>
+            Updates a single item
+            </summary>
+            <typeparam name="T">Item's class</typeparam>
+            <param name="item">Instance of the item type</param>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.BaseConnector">
+            <summary>
+            Base class for the database source type.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.BaseConnector.GetTables(Infor.PM.Common.GenericDatabase.GenericConnection)">
+            <summary>
+            Get a list of table names by a given connection information
+            </summary>
+            <param name="sourceConnection">The connection object used to access the database</param>
+            <returns>A table contains table names</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.BaseConnector.GetFields(Infor.PM.Common.GenericDatabase.GenericConnection,System.String)">
+            <summary>
+            Get a list of field names by a given table name and connection information
+            </summary>
+            <param name="sourceConnection">The connection object used to access the database</param>
+            <param name="tableName">The table name to retrieve fields</param>
+            <returns>A data table contains field names</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.BaseConnector.GetTableRestrictions(System.String)">
+            <summary>
+            Returns the database specific table restrictions array needed to get the table list.
+            </summary>
+            <param name="schemaName">The database name</param>
+            <returns>A the database specific table restrictions array</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.BaseConnector.GetFieldRestrictions(System.String,System.String)">
+            <summary>
+            Returns the database specific field restrictions array needed to get the field list.
+            </summary>
+            <param name="schemaName">The database name</param>
+            <param name="tableName">The table name</param>
+            <returns>A database specific field restrictions array</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.BaseConnector.NormalizeSchemaColumnNames(System.Data.DataTable)">
+            <summary>
+            Standarize schema column names across datasource types.
+            </summary>
+            <param name="schemaTable">The table to be normalized</param>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.DatabaseSourceHandler">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.ISourceHandler">
+            <summary>
+            Interface for source handler objects.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.ISourceHandler.CreateSourceDataTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Method that retrieves a data table from the source
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="mappings">List of ColumnMapping objects to get mapped data</param>
+            <param name="filters">List of DataFilter to get data filtered</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.ISourceHandler.CreatePreviewTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Method that retrieves a data table from the source for preview
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="filters">A list of DataFilter objects</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.ISourceHandler.CreateMappingPreviewTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping})">
+            <summary>
+            Method that retrieves a data table from the source for column mapping
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="mappings">A list of ColumnMapping objects</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.ISourceHandler.CreateFilterValueTable(Infor.CPMImport.Common.IEntity,System.String)">
+            <summary>
+            Method that retrieves a data table from the source for filter values
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="column">Column name used to get filter values</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.ISourceHandler.GetWhereText(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Get query where clause text for display purpose
+            </summary>
+            <param name="source">The source object to know how to build the text</param>
+            <param name="filters">The filter settings for building the where text</param>
+            <returns>A text contains where clause</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseSourceHandler.CreateSourceDataTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Helper method that handles retrieving the database source in datatable format
+            </summary>
+            <param name="source">Source containing the details to retrieve a dataset for</param>
+            <param name="mappings">A list of ColumnMapping objects to get mapped data</param>
+            <param name="filters">A list of DataFilter object to get data filtered</param>
+            <returns>DataTable of the loaded source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseSourceHandler.CreatePreviewTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Helper method that handles retrieving the database source in datatable format for preview
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="filters">A list of DataFilter objects</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseSourceHandler.CreateMappingPreviewTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping})">
+            <summary>
+            Helper method that handles retrieving the database source in datatable format for column mapping
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="mappings">A list of ColumnMapping objects</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseSourceHandler.CreateFilterValueTable(Infor.CPMImport.Common.IEntity,System.String)">
+            <summary>
+            Helper method that handles retrieving the database source in datatable format for filter values
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="column">Column name used to get filter values</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseSourceHandler.GetWhereText(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Get query where clause text for display purpose
+            </summary>
+            <param name="source">The source object to know how to build the text</param>
+            <param name="filters">The filter settings for building the where text</param>
+            <returns>A text contains where clause</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.DB2Connector">
+            <summary>
+            Handle the DB2 source type.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DB2Connector.GetDataTable(Infor.PM.Common.GenericDatabase.GenericConnection,Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Read source table based on the connection info in the sourceProperties
+            </summary>
+            <param name="sourceConnection">The connection object used to access the database</param>
+            <param name="source">It's DatabaseSource object that contains database source properties</param>
+            <param name="mappings">The ColumnMapping object contains column mapping information</param>
+            <param name="filters">A list of filters to apply when getting data</param>
+            <param name="rules">The reading instructions on how to generate the data table. 
+                e.g. TableName/GlobalSettings;Fields/Col1,Col2;MaxRow/100;... </param>
+            <returns>Return a data table contain source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DB2Connector.FilterOnTableList(System.Data.DataTable,System.String)">
+            <summary>
+            Filter the table list by the given filter
+            </summary>
+            <param name="schemaTable">The table contains table names to be filter</param>
+            <param name="filter">The filter text</param>
+            <returns>A data table after filtering</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DB2Connector.GetFields(Infor.PM.Common.GenericDatabase.GenericConnection,System.String)">
+            <summary>
+            Get a list of field names by a given table name and connection information
+            </summary>
+            <param name="sourceConnection">The connection object used to access the database</param>
+            <param name="tableName">The table name to retrieve fields</param>
+            <returns>A data table contains field names</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DB2Connector.GetTableRestrictions(System.String)">
+            <summary>
+            Returns the database specific table restrictions array needed to get the table list.
+            </summary>
+            <param name="schemaName">The database name</param>
+            <returns>A database specific table restrictions array</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DB2Connector.GetFieldRestrictions(System.String,System.String)">
+            <summary>
+            Returns the database specific field restrictions array needed to get the field list.
+            </summary>
+            <param name="schemaName">The database name</param>
+            <param name="tableName">The table name</param>
+            <returns>A database specific field restrictions array</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DB2Connector.NormalizeSchemaColumnNames(System.Data.DataTable)">
+            <summary>
+            Standarize schema column names across datasource types.
+            </summary>
+            <param name="schemaTable">A table returned from the .NET GetSchema call</param>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.FileEncryption">
+            <summary>
+            Handles file source encryption tasks
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.IFileEncryption">
+            <summary>
+            Used to encrypt and decrypt files
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.IFileEncryption.EncryptFile(System.String)">
+            <summary>
+            Encryptes the file located at a given path
+            </summary>
+            <param name="filePath">The file to encrypt</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.IFileEncryption.EncryptFile(System.String,System.IO.StreamReader)">
+            <summary>
+            Encrypt a stream
+            </summary>
+            <param name="filePath">Locatin to save file</param>
+            <param name="input">Stream that needs encrypted</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.IFileEncryption.ReadEncryptedFile(System.String,System.Boolean)">
+            <summary>
+            Reads an encrypted file into memory as decrypted strings
+            </summary>
+            <param name="filePath">The path of the file</param>
+            <param name="encryptIfUnencrypted">Whether or not to encrypt if the file is unencrypted</param>
+            <returns>The file as an array of unencrypted lines</returns>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Source.FileEncryption.Logger">
+            <summary>
+            Log4net logger
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Source.FileEncryption.EncryptionEnabled">
+            <summary>
+            Whether or not the data should be encrypted
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileEncryption.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the FileEncryption class.
+            </summary>
+            <param name="logger">Object to log to</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileEncryption.EncryptFile(System.String)">
+            <summary>
+            Encryptes the file located at a given path
+            </summary>
+            <param name="filePath">The file to encrypt</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileEncryption.EncryptFile(System.String,System.IO.StreamReader)">
+            <summary>
+            Encrypt a stream
+            </summary>
+            <param name="filePath">Locatin to save file</param>
+            <param name="input">Stream that needs encrypted</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileEncryption.ReadEncryptedFile(System.String,System.Boolean)">
+            <summary>
+            Reads an encrypted file into memory as decrypted strings
+            </summary>
+            <param name="filePath">The path of the file</param>
+            <param name="encryptIfUnencrypted">Whether or not to encrypt if the file is unencrypted</param>
+            <returns>The file as an array of unencrypted lines</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.FileSourceHandler">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileSourceHandler.CreateSourceDataTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Helper method that handles retrieving the file source in datatable format
+            </summary>
+            <param name="source">Source containing the details to retrieve a dataset for</param>
+            <param name="mappings">A list of ColumnMapping objects to get mapped data</param>
+            <param name="filters">A list of DataFilter to get data filtered</param>
+            <returns>DataTable of the loaded source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileSourceHandler.CreatePreviewTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Method that retrieves a data table from the source for preview
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="filters">A list of DataFilter objects</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileSourceHandler.CreateMappingPreviewTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping})">
+            <summary>
+            Method that retrieves a data table from the source for column mapping
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="mappings">A list of ColumnMapping objects</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileSourceHandler.CreateFilterValueTable(Infor.CPMImport.Common.IEntity,System.String)">
+            <summary>
+            Method that retrieves a data table from the source for filter values
+            </summary>
+            <param name="source">Source details to read from</param>
+            <param name="column">Column name used to get filter values</param>
+            <returns>Datatable from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileSourceHandler.GetWhereText(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Get query where clause text for display purpose
+            </summary>
+            <param name="source">The source object to know how to build the text</param>
+            <param name="filters">The filter settings for building the where text</param>
+            <returns>A text contains where clause</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.IDatabaseConnector">
+            <summary>
+            Handles database access for getting tables and fields
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.IDatabaseConnector.GetTables(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Get a data table contains list of table names by a given connection information
+            </summary>
+            <param name="source">The database source object used to connect to the database</param>
+            <returns>A data table has list of table names</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.IDatabaseConnector.GetFields(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource,System.String)">
+            <summary>
+            Get a data table contains list of field names by a given table name and connection information
+            </summary>
+            <param name="source">The database source object used to connect to the database</param>
+            <param name="tableName">The table name that needed to retrieve fields</param>
+            <returns>A data table has list of field names</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.IDatabaseConnector.TestCredential(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Try connection by given connection information with credential
+            </summary>
+            <param name="source">DatabaseSource object contains connection information</param>
+            <returns>True if connection successful or false if connection fails</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.ISourceHandlerFactory">
+            <summary>
+            Factory to isolate the creation of the source handler
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.ISourceHandlerFactory.Create(Infor.CPMImport.Common.SourceType)">
+            <summary>
+            Create a source handler
+            </summary>
+            <param name="sourceType">The load definition source type to create a handler for</param>
+            <returns>Source Handler for retrieving source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.ISourceHandlerFactory.Create(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Create a source handler from a load definition
+            </summary>
+            <param name="definition">The load definition to create a handler for</param>
+            <returns>Source Handler for retrieving source data</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.ISourceHandlerMetadata">
+            <summary>
+            Metadata used by Autofac to determine source handler to use
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Source.ISourceHandlerMetadata.SourceType">
+            <summary>
+            Gets the source type that will be linked to a source handler
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.ConnectionDefinitionConvertor">
+            <summary>
+            Convert a ConnectionDefinition into a HibernateConnectionDefinition.
+            </summary>
+            <remarks>
+            sealed due to CA1052, if any methods become non-static the class should
+            be unsealed.
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.ConnectionDefinitionConvertor.#ctor">
+            <summary>
+            Prevents a default instance of the ConnectionDefinitionConvertor class from being created.
+            </summary>
+            <remarks>
+            Required by CA1053
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.ConnectionDefinitionConvertor.ToHibernate(Infor.CPMImport.DataAccess.IModelSelector)">
+            <summary>
+            Creates/retrieves the HibernateConnectionDefinition for the provided model.
+            </summary>
+            <param name="modelSelector">Model selector</param>
+            <returns>Hibernate connection definition</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.ConnectionDefinitionConvertor.ToHibernate(Infor.PM.Common.ConnectionDefinitions.SqlServerConnectionDefinition)">
+            <summary>
+            Initializes a new instance of the HibernateConnectionDefinitionAdapter class
+            from the provided connection definition.
+            </summary>
+            <param name="definition">Connection definition to convert</param>
+            <returns>HibernateConnectionDefintion to connect to the provided connection definition</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.ConnectionDefinitionConvertor.ToHibernate(Infor.PM.Common.ConnectionDefinitions.OracleConnectionDefinition)">
+            <summary>
+            Initializes a new instance of the HibernateConnectionDefinitionAdapter class
+            from the provided connection definition.
+            </summary>
+            <param name="definition">Connection definition to convert</param>
+            <returns>HibernateConnectionDefintion to connect to the provided connection definition</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.ConnectionDefinitionConvertor.ToHibernate(Infor.PM.Common.ConnectionDefinitions.XmlaRelationalConnectionDefinition)">
+            <summary>
+            Xmla definitions have an internal relational definition, use that
+            to reach or create a HibernateConnectionDefinition.
+            </summary>
+            <param name="xmlaDefinition">XMLA connection definition</param>
+            <returns>Hibernate connection definition</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.ConnectionDefinitionConvertor.ToHibernate(Infor.PM.Common.ConnectionDefinitions.HibernateConnectionDefinition)">
+            <summary>
+            Returns the provided connection definition because it's already what
+            we want.
+            </summary>
+            <param name="definition">Hibernate connection definition</param>
+            <returns>The provided connection definition</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.ConnectionDefinitionConvertor.ToHibernate(Infor.PM.Common.ConnectionDefinitions.ConnectionDefinition)">
+            <summary>
+            Initializes a new instance of the HibernateConnectionDefinitionAdapter class
+            for an unknown ConnectionDefinition which will always throw an exception.
+            </summary>
+            <param name="definition">Unknown Connection definition</param>
+            <exception cref="T:System.InvalidOperationException">Always thrown.</exception>
+            <returns>Never returns, always throws an exception.</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.DataAccessConstants">
+            <summary>
+            List of data access constants
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.TextFile">
+            <summary>
+            Indicates text file type
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.CsvFile">
+            <summary>
+            Indicated csv file type
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.DefaultFieldsDelimiter">
+            <summary>
+            The character used for fields delimeter
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.DefaultValuesDelimiter">
+            <summary>
+            The character used for value related delimeter
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.FilterSubstringDelimiter">
+            <summary>
+            The delimiter for filter substring option
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.SchemaColumn">
+            <summary>
+            The column name used in schema table when it's normalized
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.TableColumn">
+            <summary>
+            The column name used in schema table when it's normalized
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.TypeColumn">
+            <summary>
+            The column name used in schema table when doing filter
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.ColumnName">
+            <summary>
+            The column name used in schema table when it's normalized for DB2
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.FileSource">
+            <summary>
+            The file source type 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.SqlServerSource">
+            <summary>
+            The Sql source type 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.OracleSource">
+            <summary>
+            The Oracle source type 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.DB2Source">
+            <summary>
+            The DB2 source type 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.MemberType">
+            <summary>
+            The column member type 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.DefaultType">
+            <summary>
+            The column default type
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.FilterName">
+            <summary>
+            The filter name 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.FilterOperator">
+            <summary>
+            The filter operator 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.FilterValue">
+            <summary>
+            The filter value 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.CaseInsensitive">
+            <summary>
+            The CaseInsensitive flag 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.ValueSubstring">
+            <summary>
+            The ValueSubstring flag 
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.DataAccessConstants.SingleQuote">
+            <summary>
+            Indicate the text qualifier is single quote
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.GenericDatabaseConfigurer">
+            <summary>
+            Configure Hibernate via Fluent Hibernate via information from a CPM
+            <see cref="T:Infor.PM.Common.ConnectionDefinitions.ConnectionDefinition"/>.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.GenericDatabaseConfigurer.connectionDefinitionName">
+            <summary>
+            Connection definition name from the top level definition, typically
+            the XMLA definition.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.GenericDatabaseConfigurer.hibernateConnectionDefinition">
+            <summary>
+            Hibernate connection definition we'll use, may be the same as the
+            provided one, but this is highly unlikely.  In most cases this will
+            be created from the <see cref="F:Infor.CPMImport.DataAccess.Hibernate.GenericDatabaseConfigurer.connectionDefinitionName"/>.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.GenericDatabaseConfigurer.connectionCredential">
+            <summary>
+            The credentials to use when connecting to the database.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.GenericDatabaseConfigurer.#ctor(Infor.CPMImport.DataAccess.IModelConnectionDefinitions,Infor.CPMImport.DataAccess.IModelSelector)">
+            <summary>
+            Initializes a new instance of the GenericDatabaseConfigurer class
+            using the provided connection definitions and model credentials.
+            </summary>
+            <param name="connectionDefinitions">Connection definition information</param>
+            <param name="model">Model information, in particular the credentials, to use</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.GenericDatabaseConfigurer.ConfigureProperties(NHibernate.Cfg.Configuration)">
+            <summary>
+            Set the properties on the provided configuration to enable connecting
+            to our connection definition.
+            </summary>
+            <param name="nhibernateConfig">NHibernate configuration to configure</param>
+            <returns>The configuration with all of the required connection properties set</returns>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Hibernate.GenericDatabaseConfigurer.Schema">
+            <summary>
+            Gets the schema used by this database.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.Mapping.ColumnMappingMap">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.Mapping.ColumnMappingMap.#ctor">
+            <summary>
+            Initializes a new instance of the ColumnMappingMap class
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.Mapping.DatabaseSourceMap">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.Mapping.DatabaseSourceMap.#ctor">
+            <summary>
+            Initializes a new instance of the DatabaseSourceMap class
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.Mapping.FileSourceMap">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.Mapping.FileSourceMap.#ctor">
+            <summary>
+            Initializes a new instance of the FileSourceMap class
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.Mapping.LoadGroupMap">
+            <summary>
+            NHibernate mapping for the LoadDefinition class
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.Mapping.LoadGroupMap.#ctor">
+            <summary>
+            Initializes a new instance of the LoadGroupMap class
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.Mapping.LoadSettingMap">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.Mapping.LoadSettingMap.#ctor">
+            <summary>
+            Initializes a new instance of the LoadSettingMap class
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.Mapping.LoadStatusMap">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.Mapping.LoadStatusMap.#ctor">
+            <summary>
+            Initializes a new instance of the LoadStatusMap class
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.SchemaConvention">
+            <summary>
+            Applies a schema to all mappings.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.SchemaConvention.schema">
+            <summary>
+            Database schema name.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.SchemaConvention.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SchemaConvention class.
+            </summary>
+            <param name="schema">Database schema.</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.SchemaConvention.Apply(FluentNHibernate.Conventions.Instances.IClassInstance)">
+            <summary>
+            Sets the instance.Schema.
+            </summary>
+            <param name="instance">Instance to modify</param>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryFactory">
+            <summary>
+            used to generate ISessionFactory objects for Nhibernate
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryFactory.sessionMutex">
+            <summary>
+            Used to prevent simultaneous attempts to create a session
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryFactory.logger">
+            <summary>
+            Our logger.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryFactory.modelSelector">
+            <summary>
+            Model selection.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryFactory.databaseConfigurer">
+            <summary>
+            Fluent database configuration.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryFactory.parameterQuery">
+            <summary>
+            Query to get system parameters, used to ensure the database schema
+            version matches what we expect.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryFactory.#ctor(log4net.ILog,Infor.CPMImport.DataAccess.IModelSelector,Infor.CPMImport.DataAccess.Hibernate.GenericDatabaseConfigurer,Infor.CPMImport.DataAccess.Query.ISystemParameterQuery)">
+            <summary>
+            Initializes a new instance of the SessionFactoryFactory class.
+            </summary>
+            <param name="logger">Logger to use.</param>
+            <param name="modelSelector">Model selector</param>
+            <param name="databaseConfigurer">Fluent database configuration</param>
+            <param name="parameterQuery">Query to get system parameters</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.SessionFactoryFactory.Create">
+            <summary>
+            Creates an ISessionFactory object
+            </summary>
+            <returns>ISessionFactory object</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.HibernateSessionState">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Hibernate.HibernateSessionState.Session">
+            <summary>
+            Gets or sets the currently active NHiberate session.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Hibernate.HibernateSessionState.Transaction">
+            <summary>
+            Gets or sets the currently active NHiberate transaction.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Hibernate.HibernateSessionState.Schema">
+            <summary>
+            Gets or sets the database schema being used by this session.  Not
+            certain if here is the best place to hold this information.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.IModelSelector">
+            <summary>
+            Given information on the current state, determine which CPM model
+            should be used.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.IModelSelector.ModelName">
+            <summary>
+            Gets the model name (aka connection definition name) that should be used.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.IModelSelector.ModelCredential">
+            <summary>
+            Gets the credentials for the model.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.IModelSelector.ForceBasicAuthentication">
+            <summary>
+            Gets a value indicating whether the use of basic authentication
+            should be forced instead of using the default from the connection
+            definition.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.Mapping.LoadDefinitionMap">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.Mapping.LoadDefinitionMap.#ctor">
+            <summary>
+            Initializes a new instance of the LoadDefinitionMap class
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.session">
+            <summary>
+            Session state.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.#ctor(Infor.CPMImport.DataAccess.Hibernate.HibernateSessionState)">
+            <summary>
+            Initializes a new instance of the NHibernateRepository class.
+            </summary>
+            <param name="session">Session and transaction state to use.</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.#ctor">
+            <summary>
+            Initializes a new instance of the NHibernateRepository class.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.FindBy``1(System.Int32)">
+            <summary>
+            Returns the item specified by the id if it exists
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="id">Id of the object to retrieve</param>
+            <returns>Database item found</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.UpdateEntity``1(``0)">
+            <summary>
+            Updates a single item in the data source
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="item">Item to update</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.UpdateEntities``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Updates a list of items
+            </summary>
+            <typeparam name="T">Item's class</typeparam>
+            <param name="items">Collection of items to update</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.RemoveEntity``1(``0)">
+            <summary>
+            Deletes a single item from the data source
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="item">Item to delete</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.RemoveEntities``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Deletes a set of items from the data source
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="items">Items to delete</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.AddEntity``1(``0)">
+            <summary>
+            Add a single item to the data source
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="item">Item to add</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.AddEntities``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Add a set of items to the data source
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="items">Collection of items to add</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.GetEntities``1">
+            <summary>
+            Returns the full set of items from the data source
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <returns>All entities of that type</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.FindEntity``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Gets a single entity based on a Linq expression
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="expression">Linq expression that object must meet</param>
+            <returns>Single entity</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.GetEntities``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Gets a set of items based on a filter
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="expression">Linq expression that objects must meet</param>
+            <returns>Collection of found items</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.GetEntity``1(System.Guid)">
+            <summary>
+            Locates a single item based on an int key
+            </summary>
+            <typeparam name="T">Object type to map to</typeparam>
+            <param name="key">The key to identify the object by</param>
+            <returns>A single item located by the key</returns>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Hibernate.NHibernateRepository.Session">
+            <summary>
+            Gets or sets the Session used by the repository
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping">
+            <summary>
+            ColumnMapping object.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping.Equals(System.Object)">
+            <summary>
+            Object compare method
+            </summary>
+            <param name="obj">Object to compare</param>
+            <returns>Result of the comparison</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping.GetHashCode">
+            <summary>
+            Get hash code method
+            </summary>
+            <returns>Hash code of the object</returns>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping.Id">
+            <summary>
+            Gets or sets load id
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping.DestinationColumn">
+            <summary>
+            Gets or sets destination column
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping.LoadDefinition">
+            <summary>
+            Gets or sets load definition
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping.SourceColumn">
+            <summary>
+            Gets or sets source column 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping.SourceType">
+            <summary>
+            Gets or sets source type
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping.MemberFormat">
+            <summary>
+            Gets or sets member format
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource.#ctor">
+            <summary>
+            Initializes a new instance of the DatabaseSource class
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource.Id">
+            <summary>
+            Gets or sets the task id 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource.LoadDefinition">
+            <summary>
+            Gets or sets task defintion 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource.DatasourceName">
+            <summary>
+            Gets or sets the db datasuorce name
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource.SchemaName">
+            <summary>
+            Gets or sets the schema name
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource.TableName">
+            <summary>
+            Gets or sets the table name
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource.Fields">
+            <summary>
+            Gets or sets the fields
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource.SortList">
+            <summary>
+            Gets or sets the sort list
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource.DatabaseCredential">
+            <summary>
+            Gets or sets the database credential
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.#ctor">
+            <summary>
+            Initializes a new instance of the FileSource class
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.Id">
+            <summary>
+            Gets or sets the id 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.LoadDefinition">
+            <summary>
+            Gets or sets task definition
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.FilePath">
+            <summary>
+            Gets or sets the file name
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.Header">
+            <summary>
+            Gets or sets the hearder
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.StartDataRow">
+            <summary>
+            Gets or sets the start data row
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.EndDataRow">
+            <summary>
+            Gets or sets the end data row
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.Delimiter">
+            <summary>
+            Gets or sets the delimiter
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.TextQualifier">
+            <summary>
+            Gets or sets the text qualifier
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.FileSource.SortList">
+            <summary>
+            Gets or sets the sort list
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.#ctor">
+            <summary>
+            Initializes a new instance of the LoadDefinition class
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.Id">
+            <summary>
+            Gets or sets the id 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.LoadGroup">
+            <summary>
+            Gets or sets load group id
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.DatabaseSource">
+            <summary>
+            Gets or sets database source
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.FileSource">
+            <summary>
+            Gets or sets file source
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.LoadSettings">
+            <summary>
+            Gets or sets load settings
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.LoadStatus">
+            <summary>
+            Gets or sets load status
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.ColumnMappings">
+            <summary>
+            Gets or sets column mapping
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.DataFilters">
+            <summary>
+            Gets or sets data filter
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.Name">
+            <summary>
+            Gets or sets the name
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.Description">
+            <summary>
+            Gets or sets the description
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.LoadType">
+            <summary>
+            Gets or sets the load type
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.SourceType">
+            <summary>
+            Gets or sets the source type
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.UserCreated">
+            <summary>
+            Gets or sets the user who created record
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.TimeCreated">
+            <summary>
+            Gets or sets the time the record is created
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.UserLastUpdated">
+            <summary>
+            Gets or sets the user who late updated the record
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition.TimeLastUpdated">
+            <summary>
+            Gets or sets the timestamp the record is last updated
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.#ctor">
+            <summary>
+            Initializes a new instance of the LoadGroup class
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.Id">
+            <summary>
+            Gets or sets the id 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.LoadDefinitions">
+            <summary>
+            Gets or sets list of task definition
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.Name">
+            <summary>
+            Gets or sets the name
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.Description">
+            <summary>
+            Gets or sets the description
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.ImportType">
+            <summary>
+            Gets or sets the type
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.UserCreated">
+            <summary>
+            Gets or sets the user who created record
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.TimeCreated">
+            <summary>
+            Gets or sets the time the record is created
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.UserLastUpdated">
+            <summary>
+            Gets or sets the user who late updated the record
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup.TimeLastUpdated">
+            <summary>
+            Gets or sets the timestamp the record is last updated
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.LoadSetting">
+            <summary>
+            LoadSetting object
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.LoadSetting.Equals(System.Object)">
+            <summary>
+            Object compare method
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>Results of the comparison</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.LoadSetting.GetHashCode">
+            <summary>
+            Get hash code method
+            </summary>
+            <returns>Hash code of the object</returns>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadSetting.Id">
+            <summary>
+            Gets or sets the property set id 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadSetting.Key">
+            <summary>
+            Gets or sets the key name
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadSetting.LoadDefinition">
+            <summary>
+            Gets or sets load definition
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadSetting.Value">
+            <summary>
+            Gets or sets the key value
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.#ctor">
+            <summary>
+            Initializes a new instance of the LoadStatus class
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.Id">
+            <summary>
+            Gets or sets the load id 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.LoadDefinition">
+            <summary>
+            Gets or sets load definition
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.RunBy">
+            <summary>
+            Gets or sets the user who runs the load
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.StartRun">
+            <summary>
+            Gets or sets the timestamp when load runs
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.EndRun">
+            <summary>
+            Gets or sets the timestamp when load run ends
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.StatusCode">
+            <summary>
+            Gets or sets status code
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.RecordsRead">
+            <summary>
+            Gets or sets records read
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.RecordsLoaded">
+            <summary>
+            Gets or sets records loaded
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.LoadDefinitions.LoadStatus.RecordsInError">
+            <summary>
+            Gets or sets records in error
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.FileConnector">
+            <summary>
+            Handles the file source type.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.IDataConnector">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.IDataConnector.GetDataTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Get a data table populated according to the reading rules
+            </summary>
+            <param name="sourceProperties">The source table object: FileSource or DatabaseSource</param>
+            <param name="mappings">The list of ColumnMapping object</param>
+            <param name="filters">A list of DataFilter object</param>
+            <param name="rules">The reading instructions. e.g. TableName/GlobalSettings;Fields/Col1,Col2;MaxRow/100;...</param>
+            <returns>A data table populated based on the rules</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.IDataConnector.GetWhereText(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Get query where clause text for display purpose
+            </summary>
+            <param name="source">The source object to know how to build the text</param>
+            <param name="filters">The filter settings for building the where text</param>
+            <returns>A text contains where clause</returns>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Source.FileConnector.NumericColumnPrefix">
+            <summary>
+            Prefix of the numeric duplicate columns
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Source.FileConnector.Logger">
+            <summary>
+            Log4Net logger
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.CreateTable(System.String,System.String[])">
+            <summary>
+            Create a empty table by given table name and columns
+            </summary>
+            <param name="tableName">The name of the table to create</param>
+            <param name="columns">The columns contained in the table</param>
+            <returns>An empty data table with given name and columns</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.GetWhereText(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Get query where clause text for display purpose
+            </summary>
+            <param name="source">The source object to know how to build the text</param>
+            <param name="filters">The filter settings for building the where text</param>
+            <returns>A text contains where clause</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.GetDataTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Read source file line by line and convert it to rows and copy into a data table
+            </summary>
+            <param name="sourceProperties">It's FileSource object that contains file source properties</param>
+            <param name="mappings">A list of ColumnMapping object contains column mapping information</param>
+            <param name="filters">A list of filters to apply when getting data</param>
+            <param name="rules">The reading instructions on how to generate the data table. 
+                e.g. TableName/GlobalSettings;Fields/Col1,Col2;MaxRow/100;... </param>
+            <returns>Return a data table contain source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.ReadData(System.Data.DataTable,System.String[],Infor.CPMImport.DataAccess.LoadDefinitions.FileSource,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Read data from source and convert line by line to data row and add to the table
+            </summary>
+            <param name="emptyTable">The table used to add data rows</param>
+            <param name="source">The source to convert to data rows</param>
+            <param name="fileProperties">The properties about file</param>
+            <param name="mappings">A list of ColumnMapping objects contains column mapping information</param>
+            <param name="filters">A list of DataFilter objects to get data filtered</param>
+            <param name="rules">The read instructions</param>
+            <returns>A data table contain source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.AddRowsToTable(System.Data.DataTable,System.String[],System.Char,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Processes lines and converts lines to rows and add them to data table
+            </summary>
+            <param name="returnTable">Table will contain rows</param>
+            <param name="source">The source lines to be processed</param>
+            <param name="textQualifier">The text qualifier used in the field</param>
+            <param name="delimiter">The delimiter to seperate fields</param>
+            <param name="startRow">The start row to read</param>
+            <param name="endRow">The end row to read</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.FilterAndSortData(System.Data.DataTable,Infor.CPMImport.DataAccess.LoadDefinitions.FileSource,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter},System.Int32)">
+            <summary>
+            Handles filter and sort on the data table
+            </summary>
+            <param name="sourceTable">The source table to be filter and sort</param>
+            <param name="fileProperties">The FileSource object contains file property information</param>
+            <param name="filter">A list of DataFilter objects to get data filtered</param>
+            <param name="returnRows">The number of rows to return</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.IsNumeric(System.Data.DataTable,System.String)">
+            <summary>
+            Checks to see if a column is numeric by attempting to parse all values in that column.
+            </summary>
+            <param name="sourceTable">Table to check</param>
+            <param name="columnName">Column to check</param>
+            <returns>True if the field was numeric</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.TryParseDouble(System.String,System.Double@)">
+            <summary>
+            Attempts to parse the double from various valid formats.
+            </summary>
+            <param name="value">String to attempt to parse</param>
+            <param name="numericValue">The parsed value that is output</param>
+            <returns>True if it was able to parse as a double, or is empty</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.AddNumericColumn(System.Data.DataTable,System.String)">
+            <summary>
+            Adds a numeric column to the end of the data set and parses the values into that column
+            </summary>
+            <param name="sourceTable">The source table</param>
+            <param name="columnName">The name of the column to make a numeric duplicate of</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.StripNumericColumns(System.Data.DataTable)">
+            <summary>
+            Strip all extra numeric columns from the data set
+            </summary>
+            <param name="sourceTable">The table to remove all extra fields from</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.MapColumns(System.Data.DataTable,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping})">
+            <summary>
+            Handles column mapping
+            </summary>
+            <param name="sourceTable">The source table for mapping</param>
+            <param name="mappings">A list of ColumnMapping objects contains column mapping information</param>
+            <returns>A data table contain column mapped source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.FileConnector.GetFilterValues(System.Data.DataTable,System.String)">
+            <summary>
+            Get data by given table and column
+            </summary>
+            <param name="sourceTable">Table contains data</param>
+            <param name="columnName">Column name to get data from</param>
+            <returns>A data table with the data asking for</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.DatabaseConnector">
+            <summary>
+            Handle the database source type.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Source.DatabaseConnector.Logger">
+            <summary>
+            Log4Net logger
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseConnector.TestCredential(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Try connection by given connection information with credential
+            </summary>
+            <param name="source">DatabaseSource object contains connection information</param>
+            <returns>True if connection successful or false if connection fails</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseConnector.GetDataTable(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Read source table based on the connection info in the sourceProperties
+            </summary>
+            <param name="sourceProperties">It's DatabaseSource object that contains database source properties</param>
+            <param name="mappings">A list of ColumnMapping objects contains column mapping information</param>
+            <param name="filters">A list of filters to apply when getting data</param>
+            <param name="rules">The reading instructions on how to generate the data table. 
+                e.g. TableName/GlobalSettings;Fields/Col1,Col2;MaxRow/100;... </param>
+            <returns>Return a data table contain source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseConnector.GetTables(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Get a list of table names by a given database connection
+            </summary>
+            <param name="source">The database source used to access database.</param>
+            <returns>A table contains list of table names</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseConnector.GetFields(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource,System.String)">
+            <summary>
+            Get a list of field names by a given table name and database connection
+            </summary>
+            <param name="source">The database source object used to access database.</param>
+            <param name="tableName">The table name to retrieve fields.</param>
+            <returns>A data table contains list of field names</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.DatabaseConnector.GetWhereText(Infor.CPMImport.Common.IEntity,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Get query where clause text for display purpose
+            </summary>
+            <param name="source">The source object to know how to build the text</param>
+            <param name="filters">The filter settings for building the where text</param>
+            <returns>A text contains where clause</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.OracleConnector">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.OracleConnector.GetDataTable(Infor.PM.Common.GenericDatabase.GenericConnection,Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Read source table based on the connection info in the sourceProperties
+            </summary>
+            <param name="sourceConnection">The connection object used to access the database</param>
+            <param name="source">It's DatabaseSource object that contains database source properties</param>
+            <param name="mappings">The ColumnMapping object contains column mapping information</param>
+            <param name="filters">A list of filters to apply when getting data</param>
+            <param name="rules">The reading instructions on how to generate the data table. 
+                e.g. TableName/GlobalSettings;Fields/Col1,Col2;MaxRow/100;... </param>
+            <returns>Return a data table contain source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.OracleConnector.GetTableRestrictions(System.String)">
+            <summary>
+            Returns the database specific table restrictions array needed to get the table list.
+            </summary>
+            <param name="schemaName">database name</param>
+            <returns>A database specific table restrictions array</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.OracleConnector.GetFieldRestrictions(System.String,System.String)">
+            <summary>
+            Returns the database specific field restrictions array needed to get the field list.
+            </summary>
+            <param name="schemaName">Database name</param>
+            <param name="tableName">Table name</param>
+            <returns>A database specific fileld restrictions array</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.OracleConnector.NormalizeSchemaColumnNames(System.Data.DataTable)">
+            <summary>
+            Standarize schema column names across datasource types.
+            </summary>
+            <param name="schemaTable">A table returned from the .NET GetSchema call</param>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.SourceHandlerFactory">
+            <summary>
+            Creates a source handler for the specified type
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.DataAccess.Source.SourceHandlerFactory.Log">
+            <summary>
+            Log4Net logger object
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.SourceHandlerFactory.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the SourceHandlerFactory class
+            </summary>
+            <param name="log">Log4Net logger</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.SourceHandlerFactory.Create(Infor.CPMImport.Common.SourceType)">
+            <summary>
+            Generates the appropriate source handler
+            </summary>
+            <param name="sourceType">SourceType to generate a Handler for</param>
+            <returns>SourceHandler to generate datasets from the source</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.SourceHandlerFactory.Create(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Generates the appropriate source handler
+            </summary>
+            <param name="definition">Load Definition the source handler will be provided for</param>
+            <returns>SourceHandler to generate datasets from the source</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.SqlConnector">
+            <summary>
+            Handle the sql server source type.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.SqlConnector.GetDataTable(Infor.PM.Common.GenericDatabase.GenericConnection,Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping},System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Read source table based on the connection info in the sourceProperties
+            </summary>
+            <param name="sourceConnection">The connection object used to access the database</param>
+            <param name="source">It's DatabaseSource object that contains database source properties</param>
+            <param name="mappings">The ColumnMapping object contains column mapping information</param>
+            <param name="filters">A list of filters to apply when getting data</param>
+            <param name="rules">The reading instructions on how to generate the data table. 
+                e.g. TableName/GlobalSettings;Fields/Col1,Col2;MaxRow/100;... </param>
+            <returns>Return a data table contain source data</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.SqlConnector.GetTableRestrictions(System.String)">
+            <summary>
+            Returns the database specific table restrictions array needed to get the table list.
+            </summary>
+            <param name="schemaName">The database name</param>
+            <returns>A database specific table restrictions array</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.SqlConnector.GetFieldRestrictions(System.String,System.String)">
+            <summary>
+            Returns the database specific field restrictions array needed to get the field list.
+            </summary>
+            <param name="schemaName">The database name</param>
+            <param name="tableName">The table name</param>
+            <returns>A database specific field restrictions array</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.SqlConnector.NormalizeSchemaColumnNames(System.Data.DataTable)">
+            <summary>
+            Standarize schema column names across datasource types.
+            </summary>
+            <param name="schemaTable">A table returned from the .NET GetSchema call</param>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Source.Utilities">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.Utilities.TestCredential(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Test connection by given connection information with credentials
+            </summary>
+            <param name="source">DatabaseSource object contains connection information</param>
+            <returns>True if connection is successfull or false if connection fails</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.Utilities.GetWhereText(System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter},System.String)">
+            <summary>
+            Get where clause text
+            </summary>
+            <param name="filters">The filter settings for building the where text</param>
+            <param name="sourceType">The type of source: File, Sql, Oracle or DB2</param>
+            <returns>A string contains where clause</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.Utilities.EscapeStringWithDoubleQuotes(System.String)">
+            <summary>
+            Escapes a string part with double quotes.
+            </summary>
+            <param name="noEscapedText">A string needs to escape double quotes</param>
+            <returns>A string with double quotes</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.Utilities.EscapeStringWithSingleQuotes(System.String)">
+            <summary>
+            Escapes a SQL string part with single quotes.
+            </summary>
+            <param name="noEscapedText">A string needs to escape single quotes</param>
+            <returns>A string with single quotes</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.Utilities.UnescapeString(System.String)">
+            <summary>
+            Unescape a string that is escaped with either double or single quotes.
+            </summary>
+            <param name="escapedText">A string with double quotes</param>
+            <returns>A unescaped string</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.Utilities.GetFilterProperties(System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            To separate DataFilter fields to a single string array for filters, operators, values and options 
+            </summary>
+            <param name="filters"> A list of DataFilter objects</param>
+            <returns> A key pair list with all filter inforamtion:
+            FilterName, filter name array
+            FilterOperator: operator array
+            FilterValue: value array
+            FilterOption: option array</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.Utilities.BuildFilterText(System.String[],System.String[],System.String[],System.String[],System.String[],System.String)">
+            <summary>
+            Build filter text
+            </summary>
+            <param name="filterNames">A list of column names </param>
+            <param name="filterOperators">A list of filter operators </param>
+            <param name="filterValues">A list of filter values </param>
+            <param name="filterCaseInsensitive">A list of flags to indicate filter case insensitive </param>
+            <param name="filterSubstring">A list of flags to indicate filter substring </param>
+            <param name="sourceType">The type of source: FILE or DATABASE</param>
+            <returns>A string contains filter expression</returns>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Source.Utilities.GetFilterText(System.Text.StringBuilder,System.String,System.String,System.String)">
+            <summary>
+            Construct the where clause condition part of the text
+            </summary>
+            <param name="filterBuilder">String to build on the conditions for the where clause</param>
+            <param name="filterName">The column name needs filter</param>
+            <param name="filterOperator">The filter operator</param>
+            <param name="filterValue">The filter value to match</param>
+            <returns>A string for where clause</returns>
+        </member>
+        <member name="T:Infor.CPMImport.DataAccess.Exceptions.UnsupportedConnectionTypeException">
+            <summary>
+            Thrown when the ConnectionType is unsupported.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Exceptions.UnsupportedConnectionTypeException.#ctor(Infor.PM.Common.ConnectionDefinitions.ConnectionType)">
+            <summary>
+            Initializes a new instance of the UnsupportedConnectionTypeException class.
+            </summary>
+            <param name="connectionType">Unsupported type</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Exceptions.UnsupportedConnectionTypeException.#ctor">
+            <summary>
+            Initializes a new instance of the UnsupportedConnectionTypeException class,
+            do not use, provide the details to another constructor.
+            Present only because CA1032 (http://msdn.microsoft.com/en-us/library/ms182151.aspx)
+            requires it.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Exceptions.UnsupportedConnectionTypeException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the UnsupportedConnectionTypeException class,
+            do not use, provide the details to another constructor.
+            Present only because CA1032 (http://msdn.microsoft.com/en-us/library/ms182151.aspx)
+            requires it.
+            </summary>
+            <param name="message">Message that describes the error.</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Exceptions.UnsupportedConnectionTypeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the UnsupportedConnectionTypeException class,
+            do not use, provide the details to another constructor.
+            Present only because CA1032 (http://msdn.microsoft.com/en-us/library/ms182151.aspx)
+            requires it.
+            </summary>
+            <param name="message">Message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the
+            current exception or null.</param>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Exceptions.UnsupportedConnectionTypeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+            <remarks>
+            Required by CA1032 (http://msdn.microsoft.com/en-us/library/ms182151.aspx).
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.DataAccess.Exceptions.UnsupportedConnectionTypeException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+            <remarks>
+            Required by CA2240 (Implement ISerializable correctly).
+            </remarks>
+        </member>
+        <member name="P:Infor.CPMImport.DataAccess.Exceptions.UnsupportedConnectionTypeException.ConnectionType">
+            <summary>
+            Gets the connection type that is not supported.
+            </summary>
+        </member>
+    </members>
+</doc>

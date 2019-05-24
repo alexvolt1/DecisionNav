@@ -1,0 +1,147 @@
+        body {
+            margin: 0;
+            font: 100% sans-serif;
+        }
+
+        .hide {
+           display: none;
+        }
+
+
+
+        .cf:after {
+            content: ' ';
+            height: 0;
+            visibility: hidden;
+            display: block;
+            clear: both;
+        }
+
+        .cf {
+            zoom: 1;
+        }
+
+        .filterselect-wrapper {
+            width: 700px;
+            height:600px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+            -moz-box-shadow: 0px 0px 15px black;
+            -webkit-box-shadow: 0px 0px 15px black;
+            box-shadow: 0px 0px 15px black;
+            color:#555;
+            background-color:#fff;
+            position:relative;
+            z-index:10000;
+            /*float:right;*/
+        }
+
+            .filterselect-wrapper .filterselect-header {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                background-color: #f4f4f4;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .filterselect-wrapper .filterselect-header-item {
+                float: left;
+                padding: 10px 20px;
+                font-size: 24px;
+                text-align: center;
+                color: #666;
+            }
+
+            .filterselect-wrapper .filterselect-header .activated {
+                color: #000;
+            }
+
+            .filterselect-wrapper .filterselect-header .active {
+                color: #0af;
+            }
+
+            .filterselect-wrapper .filterselect-body .filterselect-body-item {
+                display: none;
+                height: 478px;
+                overflow-y:auto;
+                padding:0;
+            }
+
+         .filterselect-wrapper .filterselect-filters .active {
+                color: #fff;
+                background-color: #27b161;
+            }
+
+         .filterselect-filters {
+            width:250px;
+            position:absolute;
+            background-color: #fff;
+            margin:16px 0;
+            padding: 0;
+            /*border:1px solid red;*/
+          
+        }
+        .filterselect-filter-item {
+            list-style: none;
+            padding: 9px 12px;
+            cursor:pointer;
+        }
+       .filterselect-wrapper .filterselect-body .filter-data-items {
+          margin-left:250px;
+          list-style: none;
+          cursor:pointer;
+         }
+
+          .filterselect-wrapper .filterselect-body ul.filter-data-items li {
+          padding:3px 32px;
+          border:1px solid #fff;
+          background-image:url("../../images/unchecked.gif");
+          background-position:3px 8px;
+          background-repeat:no-repeat;
+          }
+         .filterselect-wrapper .filterselect-body ul.filter-data-items li.checked{
+          background-image:url("../../images/tick.gif");
+         }
+        .filterselect-wrapper .filterselect-body ul.filter-data-items.single li {
+               background-image:url("../../images/radiobutton_no.png");
+          }
+         .filterselect-wrapper .filterselect-body ul.filter-data-items.single li.checked {
+               background-image:url("../../images/tick.gif");
+          }
+         .filterselect-wrapper .filterselect-body .filter-data-item:hover {
+            border:1px solid #ccc;
+         }
+
+
+
+        .filterselect-wrapper .filterselect-body .active {
+                display: block;
+        }
+
+        .filterselect-wrapper .filterselect-footer {
+                padding: 20px 15px 20px 0;
+                text-align: right;
+                background-color: #f4f4f4;
+                border-top: 1px solid #ccc;
+                cursor: default;
+         }
+
+         .filterselect-wrapper .filterselect-footer .filterselect-btn {
+                    display: inline-block;
+                    margin-right: 5px;
+                    height: 30px;
+                    padding: 0 15px;
+                    font-size: 16px;
+                    line-height: 30px;
+                    text-decoration: none;
+                    background-color: #fafafa;
+                    color: #555;
+                    border: 1px solid #ddd;
+          }
+
+          .filterselect-wrapper .filterselect-footer .filterselect-btn:hover {
+                        color: #000;
+                        border-color: #d0d0d0;
+                        box-shadow: 0 1px 2px -1px #ccc;
+           }

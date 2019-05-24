@@ -1,0 +1,143 @@
+﻿
+
+/****** Object:  StoredProcedure [dbo].[spGetReportData]    Script Date: 8/10/2017 11:43:49 AM ******/
+/*
+exec [dbo].[spGetReportData2] 1, 100
+exec [dbo].[spGetReportData2] 101, 200
+exec [dbo].[spGetReportData2] 500, 100
+exec [dbo].[spGetReportData2] 50150
+exec [dbo].[spGetReportData2] 50300
+exec [dbo].[spGetReportData2] 50450
+exec [dbo].[spGetReportData2] 50600
+*/
+SET ANSI_NULLS OFF
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+ALTER PROCEDURE [dbo].[spGetReportData2]
+ @Start INT = 0,
+ @Count INT = 150,
+ @OrderBy varchar(300)  = ' ',
+ @TableName varchar(200),
+ @Columns varchar(5000),
+ @Where varchar(1000)=' ',
+ @GroupBy varchar(1000) = ' '
+
+AS
+declare @s varchar(8000);
+set @s =
+'WITH result_set AS (
+  SELECT
+    ROW_NUMBER() OVER (' + @OrderBy + ') AS [id],
+    ' + @Columns + '
+  FROM
+    ' + @TableName +'
+    ' + @Where + '
+	' + @GroupBy + '
+) SELECT
+  *
+FROM
+  result_set
+WHERE
+  [id] BETWEEN ' + Convert(varchar(50),@Start) + ' AND ' + Convert(varchar(50),@Start + @Count-1)
+
+
+exec(@s);
+GO
+
+
+
+
+     // internal static DataSet GetReportMembersCollection(string connectionstring)
+       //{
+       //    string sourceTable = string.Empty;
+       //    string hierName = string.Empty;
+       //    string hierId = string.Empty;
+       //    DataSet ds = null;
+       //    using (DataSet hierTypesDS = GetHierTypes(connectionstring))
+       //    {
+       //        ds = new DataSet();
+       //        foreach (DataRow row in hierTypesDS.Tables[0].Rows)
+       //        {
+       //            sourceTable = row["SourceTable"].ToString();
+       //            hierName = row["HierName"].ToString();
+       //            using (DataSet dtemp = GetMembers(sourceTable, connectionstring))
+       //            {
+       //                if (dtemp.Tables.Count > 0)
+       //                {
+       //                    DataTable dt = dtemp.Tables[0].Copy();
+       //                    dt.TableName = hierName;
+       //                    dt.Columns.Add("id");
+       //                    for (int i = 0; i < dt.Rows.Count; i++)
+       //                    {
+       //                        dt.Rows[i]["id"] = i;
+       //                    }
+       //                    ds.Tables.Add(dt);
+       //                }
+       //            }
+       //        }
+       //    }
+       //    return ds;
+       //}
+
+
+	          "<div class='filterselect-body'>",
+        "<div id='step1' class='filterselect-body-item active'>",
+         "<ul class='filterselect-filters'>",
+           "<li class='filterselect-filter-item active' data-body='#filter11'>Risk Rating Type</li>",
+           "<li class='filterselect-filter-item' data-body='#filter12'>Report Type</li>",
+           "<li class='filterselect-filter-item' data-body='#filter13'>Time Period</li>",
+         "</ul>",
+          "<ul id='filter11' class='filter-data-items'>",
+             "<li class='filter-data-item checked'>All</li>",
+             "<li class='filter-data-item'>Alabama 862</li>",
+             "<li class='filter-data-item'>Central PA 280</li>",
+             "<li class='filter-data-item'>Corporate 511</li>",
+             "<li class='filter-data-item'>Corporate 512</li>",
+             "<li class='filter-data-item'>Corporate 522</li>",
+          "</ul>",
+           "<ul id='filter12' class='filter-data-items single hide'>",
+             "<li class='filter-data-item checked'>Upgrades</li>",
+             "<li class='filter-data-item'>Downgrades</li>",
+           "</ul>",
+           "<ul id='filter13' class='filter-data-items hide'>",
+             "<li class='filter-data-item checked'>Current Month</li>",
+             "<li class='filter-data-item'>Quarter 1</li>",
+             "<li class='filter-data-item'>Quarter 2</li>",
+             "<li class='filter-data-item'>Quarter 3</li>",
+             "<li class='filter-data-item'>Quarter 4</li>",
+             "<li class='filter-data-item'>Year-to-Date</li>",
+             "<li class='filter-data-item'>Year-to-Year</li>",
+           "</ul>",
+          "</div>",
+        "<div id='step2' class='filterselect-body-item'>",
+         "<ul class='filterselect-filters'>",
+          "<li class='filterselect-filter-item active' data-body='#filter21'>Frequency</li>",
+         "</ul>",
+          "<ul id='filter21' class='filter-data-items single'>",
+             "<li class='filter-data-item checked'>Monthly</li>",
+             "<li class='filter-data-item'>Weekly</li>",
+          "</ul>",
+        "</div>",
+     "</div>"
+
+
+
+	 	          "<div class='filterselect-body'>",
+	                    //"<ul class='filterselect-filters'>",
+                        //    "<li class='filterselect-filter-item active' data-body='#filter"+ i +"1'>Filter"+ i + "1</li>",
+                        //    "<li class='filterselect-filter-item' data-body='#filter" + i + "2'>Filter" + i +"2</li>",
+                        //"</ul>",
+
+                        //"<ul id='filter"+ i + "1' class='filter-data-items'>",
+                        //    "<li class='filter-data-item'>item" + i +"1</li>",
+                        //    "<li class='filter-data-item'>item" + i +"2</li>",
+                        //"</ul>",
+
+                        //"<ul id='filter" + i + "2' class='filter-data-items hide'>",
+                        //    "<li class='filter-data-item'>item" + i + "21</li>",
+                        //    "<li class='filter-data-item'>item" + i + "22</li>",
+                        //"</ul>",
+			     "</div>",

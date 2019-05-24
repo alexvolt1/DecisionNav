@@ -1,0 +1,877 @@
+﻿<view version="1.0.0" omitMissing="None" private="true" writebackEnabled="false" cellNotesEnabled="true" textSeparator=" - ">
+  <dimensions>
+    <dimension name="Collateral" uniqueName="[Collateral]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Collateral].[Collateral].[All Collateral]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Collateral].[Collateral].[All Collateral]</MemberUniqueName>
+          <Hierarchy>[Collateral].[Collateral]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Deal Size" uniqueName="[Deal Size]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Deal Size].[Deal Size].[All Deal Sizes]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Deal Size].[Deal Size].[All Deal Sizes]</MemberUniqueName>
+          <Hierarchy>[Deal Size].[Deal Size]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="EL" uniqueName="[EL]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[EL].[EL].[All ELs]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[EL].[EL].[All Valid ELs]</MemberUniqueName>
+          <Hierarchy>[EL].[EL]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Geography" uniqueName="[Geography]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="InPlace" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Geography].[Geography].&amp;[201]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Geography].[Geography].&amp;[201]</MemberUniqueName>
+          <Hierarchy>[Geography].[Geography]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>-1</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Industry" uniqueName="[Industry]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="InPlace" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Industry].[NAICS].[All Industries]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Industry].[NAICS].[All Industries]</MemberUniqueName>
+          <Hierarchy>[Industry].[NAICS]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="LGD" uniqueName="[LGD]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[LGD].[LGD].[All LGDs]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[LGD].[LGD].[All LGDs]</MemberUniqueName>
+          <Hierarchy>[LGD].[LGD]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Market" uniqueName="[Market]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Market].[Line of Business].[All Markets]" keyword="" />
+      </activeMember>
+      <allowedMembers>
+        <Selection>
+          <MemberUniqueName>[Market].[Line of Business].[All Markets]</MemberUniqueName>
+          <Hierarchy>[Market].[Line of Business]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </allowedMembers>
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Market].[Line of Business].[All Markets]</MemberUniqueName>
+          <Hierarchy>[Market].[Line of Business]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Measures" uniqueName="[Measures]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Measures].[WALGD - Outstanding]" keyword="" />
+      </activeMember>
+      <allowedMembers>
+        <Selection>
+          <MemberUniqueName>[Measures].[Loan Outstanding, Original]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[Loan Outstanding, Beginning]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[Loan Outstanding, End]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WARR - Outstanding N]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WARR - Outstanding D]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WARR - Outstanding]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAPD - Outstanding N]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAPD - Outstanding D]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAPD - Outstanding]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAPD - Outstanding Variance]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WALGD - Outstanding N]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WALGD - Outstanding D]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WALGD - Outstanding]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAEL - Outstanding N]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAEL - Outstanding D]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAEL - Outstanding]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[Exposure, Original]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[Exposure, End]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WARR - Exposure N]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WARR - Exposure D]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WARR - Exposure]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAPD - Exposure N]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAPD - Exposure D]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAPD - Exposure]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAPD - Exposure Variance]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WALGD - Exposure N]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WALGD - Exposure D]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WALGD - Exposure]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAEL - Exposure N]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAEL - Exposure D]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[WAEL - Exposure]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[Net Charge-Offs]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[% Net Charge-Offs]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[# Net Charge-Offs]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[Gross Charge-Offs]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[% Gross Charge-Offs ]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[# Gross Charge-Offs]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[# Commitments]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[# Loans]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[Usage Ratio]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Measures].[AFS Performance Indicator]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </allowedMembers>
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Measures].[Loan Outstanding, End]</MemberUniqueName>
+          <Hierarchy>[Measures]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>0</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats>
+        <memberFormat uniqueName="[Measures].[% Gross Charge-Offs ]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[% Net Charge-Offs]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[AFS Performance Indicator]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[Exposure, End]" style="dcff3b16-06ce-4daf-8389-2d7637120ec3" />
+        <memberFormat uniqueName="[Measures].[Usage Ratio]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[WAEL - Exposure]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[WAEL - Outstanding]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[WALGD - Exposure]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[WALGD - Outstanding]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[WAPD - Exposure Variance]" style="1416e7fd-cc0e-443a-b89a-146f14fbebbe" />
+        <memberFormat uniqueName="[Measures].[WAPD - Exposure]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[WAPD - Outstanding Variance]" style="1416e7fd-cc0e-443a-b89a-146f14fbebbe" />
+        <memberFormat uniqueName="[Measures].[WAPD - Outstanding]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Measures].[WARR - Exposure]" style="dcff3b16-06ce-4daf-8389-2d7637120ec3" />
+        <memberFormat uniqueName="[Measures].[WARR - Outstanding]" style="dcff3b16-06ce-4daf-8389-2d7637120ec3" />
+      </memberFormats>
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="New Renewed" uniqueName="[New Renewed]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[New Renewed].[Credit Decision].[All Deals]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[New Renewed].[Credit Decision].[All Deals]</MemberUniqueName>
+          <Hierarchy>[New Renewed].[Credit Decision]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>0</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[New Renewed].[Credit Decision].[New &amp; Renewed]</MemberUniqueName>
+          <Hierarchy>[New Renewed].[Credit Decision]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>0</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="PD" uniqueName="[PD]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[PD].[PD].[All PDs]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[PD].[PD].[All Valid PDs]</MemberUniqueName>
+          <Hierarchy>[PD].[PD]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Peers" uniqueName="[Peers]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Peers].[Peers].&amp;[1000000]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Peers].[Peers].&amp;[1000000]</MemberUniqueName>
+          <Hierarchy>[Peers].[Peers]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-2</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Performing Status" uniqueName="[Performing Status]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Performing Status].[Performing Status].[All Status]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Performing Status].[Performing Status].[All Status]</MemberUniqueName>
+          <Hierarchy>[Performing Status].[Performing Status]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Performing Status].[Performing Status].[% Non-Accruing]</MemberUniqueName>
+          <Hierarchy>[Performing Status].[Performing Status]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>-2</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats>
+        <memberFormat uniqueName="[Performing Status].[Performing Status].[% 30-89 Days Past Due]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Performing Status].[Performing Status].[% 90+ Days Past Due]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Performing Status].[Performing Status].[% Non-Accruing]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Performing Status].[Performing Status].[Non-Current Loans]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+        <memberFormat uniqueName="[Performing Status].[Performing Status].[Performance Indicator]" style="38752154-bb9a-4571-895b-dc6a9dfd74ee" />
+      </memberFormats>
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Product" uniqueName="[Product]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Product].[Prod Key].[All Products]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Product].[Prod Key].[All Products]</MemberUniqueName>
+          <Hierarchy>[Product].[Prod Key]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Risk Rating" uniqueName="[Risk Rating]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Risk Rating].[Risk Rating].[All Risk Ratings]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Risk Rating].[Risk Rating].[All Risk Ratings]</MemberUniqueName>
+          <Hierarchy>[Risk Rating].[Risk Rating]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>-1</SkipLevels>
+        </Selection>
+        <Selection>
+          <MemberUniqueName>[Risk Rating].[Risk Rating].[%Criticized]</MemberUniqueName>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>0</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers>
+        <calculation name="%Criticized" uniqueName="[Risk Rating].[Risk Rating].[%Criticized]" dimension="[Risk Rating]" hierarchy="[Risk Rating].[Risk Rating]" textDefinition="100 * Criticized / All Risk Ratings" calcString="100 * &quot;[Risk Rating].[Risk Rating].[Criticized]&quot; / &quot;[Risk Rating].[Risk Rating].[All Risk Ratings]&quot;" insertAfterMember="[Risk Rating].[Risk Rating].[All Risk Ratings]" description="%Criticized" precedence="0" />
+      </calculatedMembers>
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Time" uniqueName="[Time]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Time].[Calendar].[All Calendar Years].[Current Period]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Time].[Calendar].[1Q15]</MemberUniqueName>
+          <Hierarchy>[Time].[Calendar]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>-2</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+    <dimension name="Vintage" uniqueName="[Vintage]" customName="" expandDirection="Down" displayTextMode="custom" memberDisplayTextMode="description" locked="Locked" disableRotation="false" rowHeaderUseDefault="true" rowHeaderWidth="-1" rowHeaderWrapText="false" displayButton="true" displayLabel="true" memberOn="label" style="" drillMode="MemberSelect" staticChartableMembers="false">
+      <activeMember>
+        <member uniqueName="[Vintage].[Vintage].[All Vintages]" keyword="" />
+      </activeMember>
+      <allowedMembers />
+      <selectedMembers>
+        <Selection>
+          <MemberUniqueName>[Vintage].[Vintage].[All Vintages]</MemberUniqueName>
+          <Hierarchy>[Vintage].[Vintage]</Hierarchy>
+          <IncludeBase>True</IncludeBase>
+          <NumberOfLevels>1</NumberOfLevels>
+          <SkipLevels>0</SkipLevels>
+        </Selection>
+      </selectedMembers>
+      <writebackMembers />
+      <chartableMembers />
+      <calculatedMembers />
+      <customDescriptions />
+      <alternateOffGridMembers />
+      <reorderMembers />
+      <memberFormats />
+      <privateMemberFormats />
+      <attributeFormats />
+    </dimension>
+  </dimensions>
+  <orientation>
+    <axes>
+      <axis direction="Horizontal">
+        <group>
+          <dimension uniqueName="[Time]" />
+        </group>
+      </axis>
+      <axis direction="Vertical">
+        <group>
+          <dimension uniqueName="[Peers]" />
+          <dimension uniqueName="[Geography]" />
+        </group>
+      </axis>
+    </axes>
+    <slicers>
+      <dimension uniqueName="[Market]" />
+      <dimension uniqueName="[Collateral]" />
+      <dimension uniqueName="[Deal Size]" />
+      <dimension uniqueName="[Risk Rating]" />
+      <dimension uniqueName="[Industry]" />
+      <dimension uniqueName="[PD]" />
+      <dimension uniqueName="[LGD]" />
+      <dimension uniqueName="[EL]" />
+      <dimension uniqueName="[New Renewed]" />
+      <dimension uniqueName="[Performing Status]" />
+      <dimension uniqueName="[Product]" />
+      <dimension uniqueName="[Measures]" />
+      <dimension uniqueName="[Vintage]" />
+    </slicers>
+  </orientation>
+  <sorting>
+    <sort direction="Ascending" mode="None" />
+  </sorting>
+  <removedTuples />
+  <exceptions>
+    <reportExceptions>
+      <reportException name="RAS C&amp;I Outstanding Var7111" consecutiveRanges="True" microBar="NotSet">
+        <uniqueMemberNames>
+          <name>[Measures].[WAPD - Outstanding Variance]</name>
+        </uniqueMemberNames>
+        <memberRestrictions />
+        <ranges>
+          <range>
+            <bottomExtent value="-79228162514264337593543950335" inclusive="False" />
+            <topExtent value="-1" inclusive="True" />
+            <backcolor>0xFFFF0000</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="-1" inclusive="False" />
+            <topExtent value="-0.5" inclusive="True" />
+            <backcolor>0xFFB60000</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="-0.5" inclusive="False" />
+            <topExtent value="-0.00000001" inclusive="True" />
+            <backcolor>0xFFFFFF00</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="-0.00000001" inclusive="False" />
+            <topExtent value="0.00000001" inclusive="True" />
+            <backcolor>0xFF808080</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="0.00000001" inclusive="False" />
+            <topExtent value="0.5" inclusive="True" />
+            <backcolor>0xFFFFFF00</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="0.5" inclusive="False" />
+            <topExtent value="0.5" inclusive="True" />
+            <backcolor>0xFF00B600</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="0.5" inclusive="False" />
+            <topExtent value="79228162514264337593543950335" inclusive="False" />
+            <backcolor>0xFF00FF00</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+        </ranges>
+      </reportException>
+      <reportException name="RAS C&amp;I Exposure Var7111" consecutiveRanges="True" microBar="NotSet">
+        <uniqueMemberNames>
+          <name>[Measures].[WAPD - Exposure Variance]</name>
+        </uniqueMemberNames>
+        <memberRestrictions />
+        <ranges>
+          <range>
+            <bottomExtent value="-79228162514264337593543950335" inclusive="False" />
+            <topExtent value="-1" inclusive="True" />
+            <backcolor>0xFFFF0000</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="-1" inclusive="False" />
+            <topExtent value="-0.5" inclusive="True" />
+            <backcolor>0xFFB60000</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="-0.5" inclusive="False" />
+            <topExtent value="-0.0000001" inclusive="True" />
+            <backcolor>0xFFFFFF00</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="-0.0000001" inclusive="False" />
+            <topExtent value="0.0000001" inclusive="True" />
+            <backcolor>0xFF808080</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="0.0000001" inclusive="False" />
+            <topExtent value="0.5" inclusive="True" />
+            <backcolor>0xFFFFFF00</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="0.5" inclusive="False" />
+            <topExtent value="1" inclusive="True" />
+            <backcolor>0xFF00B600</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+          <range>
+            <bottomExtent value="1" inclusive="False" />
+            <topExtent value="79228162514264337593543950335" inclusive="False" />
+            <backcolor>0xFF00FF00</backcolor>
+            <forecolor>0xFF000000</forecolor>
+          </range>
+        </ranges>
+      </reportException>
+    </reportExceptions>
+  </exceptions>
+  <gauges />
+  <charts>
+    <chart id="0" x="0" y="0" height="200" width="300" style="788740aa-360a-43eb-a357-0209320bf009">
+      <members />
+    </chart>
+  </charts>
+  <overviews>
+    <overview id="0" x="0" y="0" style="7cbb7770-3ec6-4c46-9737-e6f8af976b97" width="650" height="375" projectedDirection="Down">
+      <members />
+    </overview>
+  </overviews>
+</view>

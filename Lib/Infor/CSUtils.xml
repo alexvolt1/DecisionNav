@@ -1,0 +1,69 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+CSUtils
+</name>
+</assembly>
+<members>
+<member name="M:CSUtils.CSUtils.ReadIniSection(System.String,System.String)">
+	<summary>
+ Reads an INI formatted file to find and return settings from a specific section.
+ </summary>
+	<param name="strINIFileName">name of file to read</param>
+	<param name="sectionKey">section key to look for, e.g.  'OPTIONS'</param>
+	<returns>string containing all settings for the specified section, or an empty string if the file or section is not found</returns>
+	<remarks></remarks>
+</member><member name="M:CSUtils.CSUtils.GetIniSetting(System.String,System.String)">
+	<summary>
+ Parses a string of INI formatted information for a specified key.
+ </summary>
+	<param name="sectionSettings">ini formatted string containig all settings for a section (as returned from ReadSectionValues() above)</param>
+	<param name="settingKey">setting to search for </param>
+	<returns>value for specified setting if found, empty string if not found </returns>
+	<remarks></remarks>
+</member><member name="M:CSUtils.TRUtils.GetDisplayApp(System.Web.UI.Page@)">
+	<summary>
+ Maintained only for backward compatibility -- for 10.2 always returns the default app anme
+ </summary>
+	<param name="oPage">current web page</param>
+	<returns>returns the app name</returns>
+	<remarks></remarks>
+</member><member name="M:CSUtils.TRUtils.LoadOptionsAndStyles(System.Web.UI.Page@,System.Boolean)">
+	<summary>
+ Load the options settings for the page, and store in Application object
+ </summary>
+	<param name="oPage">current web page</param>
+	<param name="Reload">used to force reload, even if settings were previously loaded</param>
+	<remarks></remarks>
+</member><member name="M:CSUtils.TRUtils.LoadOptionsAndStylesForApp(System.Web.UI.Page@,System.String,System.Boolean)">
+	<summary>
+ Loads option settings for the application, e.g. from Options.txt 
+ </summary>
+	<param name="oPage">current web page</param>
+	<param name="DummyAppName">no longer used, will default to CPM app</param>
+	<param name="Reload">if true, reloads the options even if previously loaded</param>
+	<remarks></remarks>
+</member><member name="M:CSUtils.TRUtils.OutputAppStyles(System.Web.UI.Page@,System.Boolean)">
+	<summary>
+ output the styles reference link for the current App
+ </summary>
+	<param name="oPage">current web page</param>
+	<param name="useCommonUIControls">True to output Infor CommonUI styles</param>
+	<remarks></remarks>
+</member><member name="M:CSUtils.TRUtils.OutputCSSLinkTags(System.Web.UI.Page@,System.String,System.Boolean)">
+	<summary>
+ Output the .css link tag for the default styles file
+ </summary>
+	<param name="oPage">current web page</param>
+	<param name="DummyOptionsFileName">no longer used (10.2), defaults to standard styles file</param>
+	<remarks></remarks>
+</member><member name="M:CSUtils.TRUtils.GetCSSLinkTags">
+	<summary>
+ reutnrs the virtual path for all files (css/js) that need to be included in a page.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

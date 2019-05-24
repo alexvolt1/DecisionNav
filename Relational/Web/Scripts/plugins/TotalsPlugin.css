@@ -1,0 +1,14 @@
+.total-spacer-row {
+    visibility: hidden;
+}
+.slick-cell.totals {
+    font-weight:bold;
+    border-top:solid 1px #0094ff;
+    background-color: rgb(221, 255, 221);
+    width:100%;
+}
+.slick-pane-left.slick-cell.totals {
+background-color: rgb(221, 255, 221);
+}
+
+

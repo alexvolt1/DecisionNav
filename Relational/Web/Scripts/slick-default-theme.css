@@ -1,0 +1,66 @@
+.slick-header-columns {
+	background: url("images/header-columns-bg.gif") repeat-x bottom; border-bottom-color: silver; border-bottom-width: 1px; border-bottom-style: solid;
+}
+.slick-header-column {
+	background: url("images/header-columns-bg.gif") repeat-x bottom; border-right-color: silver; border-right-width: 1px; border-right-style: solid;
+}
+.slick-header-column:hover {
+	background: url("images/header-columns-over-bg.gif") repeat-x bottom white;
+}
+.slick-header-column-active {
+	background: url("images/header-columns-over-bg.gif") repeat-x bottom white;
+}
+.slick-headerrow {
+	background: rgb(250, 250, 250);
+}
+.slick-headerrow-column {
+	background: rgb(250, 250, 250); height: 100%; border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none;
+}
+.ui-state-active.slick-row {
+	background: rgb(245, 247, 215);
+}
+.slick-row {
+	background: white; border: 0px currentColor; border-image: none; line-height: 20px; position: absolute;
+}
+.selected.slick-row {
+	background: rgb(223, 232, 246); z-index: 10;
+}
+.slick-cell {
+	padding-right: 4px; padding-left: 4px;
+}
+.slick-group {
+	border-bottom-color: silver; border-bottom-width: 2px; border-bottom-style: solid;
+}
+.slick-group-toggle {
+	width: 9px; height: 9px; margin-right: 5px;
+}
+.expanded.slick-group-toggle {
+	background: url("images/collapse.gif") no-repeat center;
+}
+.collapsed.slick-group-toggle {
+	background: url("images/expand.gif") no-repeat center;
+}
+.slick-group-totals {
+	background: white; color: gray;
+}
+.selected.slick-cell {
+	background-color: beige;
+}
+.active.slick-cell {
+	border-style: solid; border-color: gray;
+}
+.slick-sortable-placeholder {
+	background: silver !important;
+}
+.odd.slick-row {
+	background: rgb(250, 250, 250);
+}
+.ui-state-active.slick-row {
+	background: rgb(245, 247, 215);
+}
+.loading.slick-row {
+	opacity: 0.5;
+}
+.invalid.slick-cell {
+	border-color: red; -moz-animation-duration: 0.2s; -webkit-animation-duration: 0.2s; -moz-animation-name: slickgrid-invalid-hilite; -webkit-animation-name: slickgrid-invalid-hilite;
+}

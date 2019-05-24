@@ -1,0 +1,731 @@
+﻿        ////temporary data
+        ////var hierarchies = '{ "hierarchies" : [' +
+        ////'{ "HierName":"Portfolio Manager" , "HierID":"0" },' +
+        ////'{ "HierName":"Business Line" , "HierID":"1" },' +
+        ////'{ "HierName":"Portfolio Manager/Owner" , "HierID":"2" } ]}';
+
+        var hierarchies = '{ "hierarchies" : [{ "HierName":"Portfolio Manager" , "HierID":"0" }]}';
+        var objHier;
+        try {
+            objHier = JSON.parse(hierarchies);
+
+            if (objHier.hierarchies.length > 1) {
+                function getHierarchies(item, index) {
+                    $availlHierarchiesOpt = " <option value='" + objHier.hierarchies[index].HierID + "'>" + objHier.hierarchies[index].HierName + "</option>";
+                    $(".memsel-hierarchy-select select").append($availlHierarchiesOpt);
+                }
+
+                this.$hierarchies = $([
+               "<div class='memsel-hierarchy cf'>",
+                   " <span class='label-hierarchy-item'>Select Hierarchy</span>",
+                   " <div class='memsel-hierarchy-select'>",
+                       " <select>",
+                           " <option value='0'>Select All</option>",
+                       " </select>",
+                   "</div>",
+               "</div>",
+                ].join("\n")).appendTo(this.$el).ready(function () { objHier.hierarchies.forEach(getHierarchies), buildCustDropdown(), setWrapperHeight() });
+            }
+        } catch (e) {
+            alert('hierarchies is not a valid JSON string');
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+  SELECT *
+  FROM $system.MDSCHEMA_MEMBERS
+  WHERE [CUBE_NAME] ='OA DW'
+
+
+  SELECT [LEVEL_UNIQUE_NAME],[MEMBER_NAME],[PARENT_UNIQUE_NAME], [MEMBER_TYPE]
+  FROM $system.MDSCHEMA_MEMBERS
+  WHERE [CUBE_NAME] ='OA DW'
+
+
+
+    SELECT *
+  FROM $system.MDSCHEMA_MEMBERS
+  WHERE [CUBE_NAME] ='OA DW'
+
+
+  SELECT
+  [PARENT_UNIQUE_NAME]
+ ,[LEVEL_UNIQUE_NAME]
+ ,[MEMBER_NAME]
+ , [MEMBER_CAPTION]
+ ,[MEMBER_TYPE]
+  FROM $system.MDSCHEMA_MEMBERS
+  WHERE [CUBE_NAME] ='OA DW'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <%if(isDebugging){ %>
+       <!-- Console-->
+    <div id="debug" class="ui-widget-content">
+    <a href="#">Clear</a>
+     </div>
+    <%} %>
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+namespace Relational.Core.CONVERTERS
+{
+   internal class ToSQL
+   {
+
+
+
+#region DATA SELECT CONVERTERS
+       internal static void BuildDataSQL(IRelationalReport reportsession)
+       {
+           string numRecs = "";
+          // string variance = reportsession.reportDetails["ReportVariance"];
+           string whereStr = "";
+           //string extraFields = "";
+           string fieldList = reportsession.Columns;
+          // string groupBy = reportsession.reportDetails["ReportGroupBy"];
+          // string memSel = "";
+           //if (extraFields.Trim() != "")
+           //{
+           //    if (reportsession.reportDetails["ReportTableName"].IndexOf("updown") > 0)
+           //    {
+           //        fieldList = fieldList.Replace(",[Effective Date]", "," + extraFields + ",[Effective Date]");
+           //    }
+           //    else if (reportsession.reportDetails["ReportTableName"].IndexOf("NewExposure") > 0)
+           //    {
+           //        fieldList = fieldList.Replace(",[Facility Exposure - End]", "," + extraFields + ",[Facility Exposure - End]");
+           //    }
+           //}
+           numRecs = reportsession.reportDetails["ReportNumRecs"];
+           whereStr = reportsession.WhereClause == null ? reportsession.reportDetails["ReportWhereStr"] : reportsession.WhereClause;
+
+
+         
+           
+#region Generic Select  
+          
+           //string sql = "SELECT ";
+           //if (numRecs != "")
+           //{
+           //    sql = sql + "TOP " + numRecs; 
+           //}
+           //sql = sql + fieldList + " FROM " + tableName + " ";
+           //if (variance != "")
+           //{
+           //    int v = 0;
+           //    if (int.TryParse(variance, out v))
+           //    {
+           //        if (v > 0)
+           //        {
+           //            sql = sql + "WHERE " + order + " > " + variance + " ";
+           //        }
+           //        if (v < 0)
+           //        {
+           //            sql = sql + "WHERE " + order + " < " + variance + " ";
+           //        }
+           //    }
+           //    else
+           //    {
+           //            sql = sql + "WHERE " + order + " is not null ";
+           //    }
+           //}
+
+
+           //if (memSel != "")
+           //{
+           //    if (variance != "")
+           //    {
+           //        sql = sql + " AND " + memSel;
+           //    }
+           //    else
+           //    {
+           //        sql = sql + " WHERE " + memSel;
+           //    }
+           //}
+
+           //if (whereStr != "")
+           //{
+           //    if (variance != "" || memSel != "")
+           //    {
+           //        sql = sql + " AND " + whereStr + " ";
+           //    }
+           //    else
+           //    {
+           //        sql = sql + " WHERE " + whereStr + " ";
+           //    }
+           //}
+
+
+           //if (groupBy != "")
+           //{
+           //   sql = sql + "GROUP BY " + groupBy + " ";
+             
+           //}
+           //   sql = sql + "ORDER BY " + order + "  " + orderDir;
+
+
+
+
+#endregion
+
+#region SQL Strings
+              string sqlselectString = "SELECT ";
+              string sqltopString = "";
+              if (numRecs != "")
+              {
+                  sqltopString = "TOP " + numRecs + " ";
+              }
+              reportsession.sqlfieldsString = fieldList + " ";
+
+              string sqlfromString = "FROM " + reportsession.reportTableName + " ";
+             // string sqlwhereString = "";
+              //if (variance != "")
+              //{
+              //    int v = 0;
+              //    if (int.TryParse(variance, out v))
+              //    {
+              //        if (v > 0)
+              //        {
+              //            sqlwhereString = "WHERE " + reportsession.orderColumn + " > " + variance + " ";
+              //        }
+              //        if (v < 0)
+              //        {
+              //            sqlwhereString = "WHERE " + reportsession.orderColumn + " < " + variance + " ";
+              //        }
+              //    }
+              //    else
+              //    {
+              //        sqlwhereString = "WHERE " + reportsession.orderColumn + " is not null ";
+              //    }
+              //}
+
+              //if (memSel != "")
+              //{
+              //    if (variance != "")
+              //    {
+              //        sqlwhereString = sqlwhereString + " AND " + memSel;
+              //    }
+              //    else
+              //    {
+              //        sqlwhereString = sqlwhereString + " WHERE " + memSel;
+              //    }
+              //}
+
+              //if (whereStr != "")
+              //{
+              //    if (variance != "" || memSel != "")
+              //    {
+              //        sqlwhereString = sqlwhereString + " AND " + whereStr + " ";
+              //    }
+              //    else
+              //    {
+              //        sqlwhereString = sqlwhereString + " WHERE " + whereStr + " ";
+              //    }
+              //}
+
+
+             // reportsession.sqlWhereString = sqlwhereString;
+              //string sqlgroupbyString = "";
+              //if (groupBy != "")
+              //{
+              //    sqlgroupbyString = "GROUP BY " + groupBy + " ";
+
+              //}
+             // reportsession.sqlgroupbyString = sqlgroupbyString;
+              reportsession.sqlOrderByString = "ORDER BY " + reportsession.orderColumn + "  " + reportsession.orderDir;
+#endregion
+
+#region DATA SQL TEMPLATE
+            //  string sqltemplate = sqlselectString + sqltopString + reportsession.sqlfieldsString + sqlfromString + reportsession.sqlWhereString + reportsession.sqlgroupbyString + reportsession.sqlOrderByString;
+                string sqltemplate = sqlselectString + sqltopString + reportsession.sqlfieldsString + sqlfromString + reportsession.WhereClause + reportsession.sqlgroupbyString + reportsession.sqlOrderByString;
+           reportsession.ReportSQL = sqltemplate; //To BE complete paging components 
+#endregion
+
+#region COUNT AND TOTALS 
+              reportsession.ReportTableSCHEMASQL = " SELECT COLUMN_NAME,  DATA_TYPE" +
+                                        " FROM INFORMATION_SCHEMA.COLUMNS " +
+                                        " WHERE TABLE_NAME = N'" + reportsession.reportTableName + "' " +
+                                        " and COLUMN_NAME in(" + reportsession.sqlfieldsString.Replace("[", "'").Replace("]", "'").Trim() + ")";
+             
+             reportsession.sqlTableSchema = DATA.ReportData.GetTableSchema(reportsession.ReportTableSCHEMASQL, reportsession.Connect );
+
+             List<string> decimalcolumns = (from a in reportsession.sqlTableSchema where a.Value == "decimal" select a.Key).ToList();
+           //  reportsession.TotalsSQL = "select COUNT(1) as RecordCount " + RendertotalSQLString(decimalcolumns) + " from " + reportsession.reportTableName; 
+           reportsession.TotalsSQL = "select COUNT(1) as RecordCount " + RendertotalSQLString(decimalcolumns) + " from " + reportsession.reportTableName  + reportsession.WhereClause;
+#endregion
+
+       }
+
+      
+#region Generic CONVERTERS
+
+        
+
+       private static string RendertotalSQLString(List<string> decimalcolumns)
+       {
+           List<string> result = new List<string>();
+           foreach (string s in decimalcolumns)
+           {
+               result.Add(String.Format(" SUM([{0}]) as '[{0}]'", s));
+           }
+           if (result.Count > 0)
+           {
+               return "," +  string.Join(",", result.ToArray());
+           }
+           return "";
+       }
+       #endregion
+       internal static void WhereClause(IRelationalReport reportsession)
+       {
+          WhereClause(reportsession, null);
+       }
+
+       internal static void WhereClause(IRelationalReport reportsession, IUserReport userreport)
+       {
+           
+           reportsession.ReportMembersCollection.ParseMembers(userreport.SelectedMembers);
+           reportsession.ReportFiltersCollection.ParseFilters(userreport.SelectedFilters); //<--userreport parsing goes here
+           string sql = "";
+           string sql2 = "";
+           string memSQL = "";
+           string filtSQL = "";
+           string searchsql = "";
+           memSQL = reportsession.ReportMembersCollection.ToSql();
+           filtSQL = reportsession.ReportFiltersCollection.ToSql();
+           searchsql = reportsession.ReportMembersCollection.SearchStringsToSQL(userreport.SelectedSearchStrings);
+           string join = memSQL != "" && filtSQL != "" ? " AND " : "";
+           sql = memSQL + join + filtSQL;
+           string join2 = sql != "" && searchsql != "" ? " AND " : "";
+           sql2 = sql + join2 + searchsql; 
+           reportsession.WhereClause = sql2==""?"":" WHERE " + sql2;
+       
+       }
+
+
+  
+
+       #endregion
+
+
+#region MEMBER SELECT CONVERTERS
+
+
+        internal static string MemSelToSQL(IRelationalReport rr, List<Memsel> memsel)
+        {
+            int startmember = 1;
+            if (memsel.Count > startmember)
+            {
+
+                string[] levelNames = rr.Members.Tables[int.Parse(memsel[startmember].hid)].Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
+                TreeNode<LevelItemExtended> levels = new TreeNode<LevelItemExtended>(new LevelItemExtended(memsel[startmember].value));
+                Action<TreeNode<LevelItemExtended>> action;
+                foreach (Memsel selectedmember in memsel)
+                {
+                    int level = -1;
+                    if (selectedmember.level != null && int.TryParse(selectedmember.level, out level))
+                    {
+                        if (level > 0)
+                        {
+                            LevelItemExtended item = new LevelItemExtended(selectedmember.value);
+                            item.LevelName = levelNames[level - 1];
+                            item.ParentName = selectedmember.parent;
+                            action = delegate(TreeNode<LevelItemExtended> l)
+                            {
+                                AddChilds(l, item);
+                            };
+                            levels.Traverse(action);
+                        }
+                    }
+                }
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                foreach (var item in levels.Children)
+                {
+                    Render2(item, ref sb);
+                }
+                return sb.ToString();
+            }
+
+            return "";
+
+        }
+
+        private static void Render2(TreeNode<LevelItemExtended> item, ref System.Text.StringBuilder sb)
+        {
+            if (item.Parent.Children[0] != item)
+            {
+                sb.Append(" OR ");
+            }
+
+            sb.Append(String.Format("[{0}] = '{1}'", item.Value.LevelName, item.Value.Name));
+
+            if (item.Children.Count > 0)
+            {
+                sb.Append(" AND (");
+                foreach (var v in item.Children)
+                {
+                    Render2(v, ref sb);
+                }
+                sb.Append(")");
+            }
+        }
+
+        private static void AddChilds(TreeNode<LevelItemExtended> l, LevelItemExtended item)
+        {
+
+            if (l.Value.Name == item.ParentName)
+            {
+                l.AddChild(item);
+            }
+
+        }
+
+       #endregion
+
+
+#region FILTER CONVERTERS
+
+
+
+     //internal static void WhereClause(IRelationalReport reportsession, IUserReport userreport)
+       //{
+
+
+       //    reportsession.ReportFiltersCollection.ParseFilters(); //<--userreport
+
+
+
+
+
+       //    string sql = "";
+       //    if ((userreport.SelectedMembers != null && userreport.SelectedMembers.Count > 0) || (userreport.SelectedMembers != null && userreport.SelectedMembers.Count > 0))
+       //    {
+       //        var members = userreport.SelectedMembers.ToList();
+       //        var filters = userreport.SelectedFilters.ToList();
+
+       //        string memSQL = "";
+       //        string filtSQL = "";
+       //        if (members.Count > 0)
+       //        {
+       //            memSQL = CONVERTERS.ToSQL.MemSelToSQL(reportsession, members);
+       //        }
+
+
+
+       //        if (filters.Count > 0)
+       //        {
+       //            filtSQL = CONVERTERS.ToSQL.PrevFilterToSQL(reportsession, filters);
+       //        }
+       //        string join = memSQL != "" && filtSQL != "" ? " AND " : "";
+       //        sql = memSQL + join + filtSQL;
+       //    }
+       //    reportsession.WhereClause = sql;
+       //}
+
+        #region For Delete
+
+        internal static string PrevFilterToSQL(IRelationalReport rr, List<Memsel> prevFilters)
+        {
+            if (prevFilters != null)
+            {
+                Memsel prev = null;
+                List<string> sqlnode = new List<string>();
+                List<string> sqlnodes = new List<string>();
+
+                foreach (Memsel selectedmember in prevFilters)
+                {
+                    if (selectedmember.leaf)
+                    {
+                        bool samenode = sqlnode.Count == 0 || prev.parent == selectedmember.parent;
+                        if (!samenode)
+                        {
+                            if (sqlnode.Count == 1)
+                            {
+                                sqlnodes.Add(sqlnode[0]);
+                                sqlnode.Clear();
+                            }
+                            if (sqlnode.Count > 1)
+                            {
+                                sqlnodes.Add(string.Format("({0})", string.Join(" OR ", sqlnode.ToArray())));
+                                sqlnode.Clear();
+                            }
+                        }
+
+                        //add to node
+                        AddToNode(sqlnode, selectedmember);
+                        prev = selectedmember;
+                        //
+                    }
+                }
+
+                if (sqlnode.Count > 0)
+                {
+                    sqlnodes.Add(string.Format("({0})", string.Join(" OR ", sqlnode.ToArray())));
+                }
+                return string.Join(" AND ", sqlnodes.ToArray());
+            }
+            return "";
+        }
+        private static void AddToNode(List<string> sqlnode, Memsel selectedmember)
+        {
+            switch (selectedmember.fieldtype)
+            {
+                case "1": sqlnode.Add(string.Format(" [{0}] = '{1}' ", selectedmember.parent.Trim(), selectedmember.value.Trim()));
+                    break;
+                case "2": sqlnode.Add(string.Format(" ([{0}] BETWEEN {1} AND {2}) ", selectedmember.parent.Trim(), selectedmember.rmin, selectedmember.rmax));
+                    break;
+            }
+
+        }
+        #endregion
+
+#endregion
+
+
+
+   }
+
+}
+
+
+
+
+
+
+                                string currUpDownRiskID = "";
+                                string currUpDownSign = "";
+                                string tempFilterStr = "";
+
+                                if (f.Name.Trim().ToUpper() == "FRR" 
+                                    || f.Name.Trim().ToUpper() == "LOAN GRADE"
+                                    || f.Name.Trim().ToUpper() == "LGD/FR" 
+                                    || f.Name.Trim().ToUpper() == "LQC/GAAP")
+                                    currUpDownRiskID = "M";
+                                else if (f.Name.Trim().ToUpper() == "ORR" 
+                                    || f.Name.Trim().ToUpper() == "PD/RR"
+                                    || f.Name.Trim().ToUpper() == "RRR")
+                                    currUpDownRiskID = "O";
+                                else if (f.Name.Trim().ToUpper() == "CW")
+                                    currUpDownRiskID = "C";
+
+
+
+                                if (f.Name.Trim().ToUpper() == "FRR"
+                                 || f.Name.Trim().ToUpper() == "LOAN GRADE"
+                                 || f.Name.Trim().ToUpper() == "LGD/FR"
+                                 || f.Name.Trim().ToUpper() == "ORR"
+                                 || f.Name.Trim().ToUpper() == "PD/RR"
+                                 || f.Name.Trim().ToUpper() == "CW"
+                                 || f.Name.Trim().ToUpper() == "LQC/GAAP"
+                                 || f.Name.Trim().ToUpper() == "RRR")
+                                {
+                                    string ExtraFieldsVal = "";
+                                    string otherRiskTypes = "";
+                                    string UDLF = "Facility";
+
+                                    string currUpDownRiskName = f.Name.Trim().ToUpper();
+                                    if (f.Name.Trim().ToUpper() == "FRR"
+                                     || f.Name.Trim().ToUpper() == "LOAN GRADE"
+                                     || f.Name.Trim().ToUpper() == "LGD/FR"
+                                     || f.Name.Trim().ToUpper() == "LQC/GAAP")
+                                        currUpDownRiskName += " (" + UDLF + ")";
+
+                                    // foreach selected thing
+                                    //Do something from 660
+
+                                    //Make the comparison fields the same as the display fields i.e. M1-M15
+                                    string currUpDownRiskCompID = currUpDownRiskID;
+                                    if (f.OrderField == "Y")//This strange thing makes it "ON"
+                                        currUpDownRiskCompID += "N";
+
+                                 int currmonth = DATA.ReportData.GetCurrentMonth(reportsession);
+                                 if (currmonth > 0)
+                                 {
+                                     //Check if they want upgrades or downgrades
+                                     if (f.Name.Trim().ToUpper() == "UPGRADES")
+                                         currUpDownSign = ">";
+                                     else if (f.Name.Trim().ToUpper() == "DOWNGRADES")
+                                         currUpDownSign = "<";
+                                                                         //Check for a given time period
+                                     else if (f.Name.Substring(0, 2).ToUpper() == "CU"
+                                         || f.Name.Substring(0, 2).ToUpper() == "QU"
+                                         || f.Name.Substring(0, 2).ToUpper() == "YE")
+                                     {
+
+                                         int startMonth = getStartMonth(f.Name, currmonth);
+                                         int endMonth = getEndMonth(f.Name, currmonth);
+                                         ExtraFieldsVal = "[" + currUpDownRiskID + endMonth.ToString() + "] As [Current " + currUpDownRiskName + "],  datename(m,case ";
+                                         for (int currCompMonth = endMonth - 1; currCompMonth >= startMonth; currCompMonth--)
+                                         {
+                                             int currMonthNameID = currmonth - (15 - (currCompMonth + 1)); //Find the numeric month we're comparing (1-12)
+                                             if (currMonthNameID <= 0) currMonthNameID += 12; //If the search went to zero or negative, add 12
+                                             ExtraFieldsVal += "when [" + currUpDownRiskID + endMonth.ToString() + "] <> ["
+                                                            + currUpDownRiskID + currCompMonth.ToString() + "] then ''"
+                                                            + currMonthNameID.ToString() + "'' ";
+                                         }
+                                         ExtraFieldsVal += "end + ''/1/2000'') As [Month " + currUpDownRiskName + " Effective], ["
+                                            + currUpDownRiskID + startMonth.ToString() + "] As [Previous " + currUpDownRiskName + "]" + otherRiskTypes;
+                                         ExtraFieldsVal = ExtraFieldsVal.Replace("CW", "Class/ Watch");
+                                         tempFilterStr += "[" + currUpDownRiskCompID + startMonth.ToString() + "] "
+                                      + currUpDownSign + " [" + currUpDownRiskCompID + endMonth.ToString() + "]";
+                                     }
+                                 }
+                                
+                                
+                              }//
+
+
+
+
+
+
+
+
+
+
+
+
+							                                  foreach (var v in selected)
+                                {
+                                    val = v.Name.Trim().ToUpper();
+                                    if (name == "Risk Rating Type" || name == "Report Type" || name == "Time Periods")
+                                    {
+                                        if (name == "Risk Rating Type")
+                                        {
+                                           //[Risk Rating Type] = ''ORR''
+
+                                            if (val == "FRR"
+                                                || val == "LOAN GRADE"
+                                                || val == "LGD/FR"
+                                                || val == "LQC/GAAP")
+                                            {
+                                                currUpDownRiskID = "M";
+                                            }
+                                            else if (val == "ORR"
+                                               || val == "PD/RR"
+                                               || val == "RRR")
+                                            {
+                                                currUpDownRiskID = "O";
+                                                currUpDownRiskName = val;
+                                            }
+
+                                            else if (val == "CW")
+                                                currUpDownRiskID = "C";
+
+                                            currUpDownRiskCompID = currUpDownRiskID;
+                                            if (f.OrderField == "Y")
+                                                currUpDownRiskCompID += "N";
+
+                                      } //end [Risk Rating Type] = ''ORR''
+
+                                        if (name == "Report Type")//[Report Type] = ''Upgrades''
+                                        {
+                                            if (val == "UPGRADES")
+                                            {
+                                                currUpDownSign = ">";
+                                            }
+                                            if (val == "DOWNGRADES")
+                                            {
+                                                currUpDownSign = "<";
+                                            }
+                                        }
+                                        if (name == "Time Periods")
+                                        {
+                                            if (currMonth > 0 )  
+                                           {
+                                               List<SQLField> fields = new List<SQLField>();
+                                               startMonth = getStartMonth(val, currMonth);
+                                               endMonth = getEndMonth(val, currMonth);
+                                         
+                                                   SQLField field;
+                                                   field = new SQLField();
+                                                   field.Name = "Current " + currUpDownRiskName;
+                                                   field.Expression = "[" + currUpDownRiskID + endMonth.ToString() + "]";
+                                                   fields.Add(field);
+
+                                                   field = new SQLField();
+                                                   field.Name = "Month " + currUpDownRiskName + " Effective";
+
+                                                   string expMonthEffective = "datename(m,case ";
+                                                   for (int currCompMonth = endMonth - 1; currCompMonth >= startMonth; currCompMonth--)
+                                                   {
+                                                       int currMonthNameID = currMonth - (15 - (currCompMonth + 1)); //Find the numeric month we're comparing (1-12)
+                                                       if (currMonthNameID <= 0) currMonthNameID += 12; //If the search went to zero or negative, add 12
+                                                       expMonthEffective += "when [" + currUpDownRiskID + endMonth.ToString() + "] <> ["
+                                                                      + currUpDownRiskID + currCompMonth.ToString() + "] then '"
+                                                                      + currMonthNameID.ToString() + "' ";
+                                                   }
+                                                   expMonthEffective += "end + '/1/2000')";
+                                                   field.Expression = expMonthEffective;
+                                                   fields.Add(field);
+
+                                                   field = new SQLField();
+                                                   field.Name = "Previous " + currUpDownRiskName;
+                                                   field.Expression = "[" + currUpDownRiskID + startMonth.ToString() + "]";
+                                                   fields.Add(field);
+                                                   reportsession.ReportColumns.ApplyExtraFields(fields);
+
+                                                   nodes.Add(string.Format("([{0}] {1} [{2}])", currUpDownRiskCompID + startMonth.ToString()
+                                                     ,currUpDownSign, currUpDownRiskCompID + endMonth.ToString()));
+                                            }
+                                        }//
+                                    }
+                                    else
+                                    {
+                                       nodes.Add(string.Format("({0} = '{1}')", SQLHelper.WrapSQLName(f.SourceField), selected[0].Name.Trim()));
+                                    }
+                                 }
+
+
+
+
+
+
+
+           //mockup
+            //using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            //{
+            //    System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            //    try
+            //    {
+            //      bf.Serialize(ms, connectionDefinition);
+            //      string v = Convert.ToBase64String(ms.ToArray());
+            //        System.IO.File.WriteAllText(@"c:\TEMP\connectionDefinition.txt", v);
+            //    }
+            //    catch(Exception ex)
+            //    {
+
+
+            //    }
+                
+            //}

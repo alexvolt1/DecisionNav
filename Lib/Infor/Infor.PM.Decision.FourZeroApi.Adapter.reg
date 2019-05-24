@@ -1,0 +1,105 @@
+REGEDIT4
+
+[HKEY_CLASSES_ROOT\DWSERVERLib.DWView]
+@="DWSERVERLib.DWView"
+
+[HKEY_CLASSES_ROOT\DWSERVERLib.DWView\CLSID]
+@="{7C27077B-39B8-4E23-B7E2-CC061D0B6B67}"
+
+[HKEY_CLASSES_ROOT\CLSID\{7C27077B-39B8-4E23-B7E2-CC061D0B6B67}]
+@="DWSERVERLib.DWView"
+
+[HKEY_CLASSES_ROOT\CLSID\{7C27077B-39B8-4E23-B7E2-CC061D0B6B67}\InprocServer32]
+@="mscoree.dll"
+"ThreadingModel"="Both"
+"Class"="DWSERVERLib.DWView"
+"Assembly"="Infor.PM.Decision.FourZeroApi.Adapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+
+[HKEY_CLASSES_ROOT\CLSID\{7C27077B-39B8-4E23-B7E2-CC061D0B6B67}\InprocServer32\1.0.0.0]
+"Class"="DWSERVERLib.DWView"
+"Assembly"="Infor.PM.Decision.FourZeroApi.Adapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+
+[HKEY_CLASSES_ROOT\CLSID\{7C27077B-39B8-4E23-B7E2-CC061D0B6B67}\ProgId]
+@="DWSERVERLib.DWView"
+
+[HKEY_CLASSES_ROOT\CLSID\{7C27077B-39B8-4E23-B7E2-CC061D0B6B67}\Implemented Categories\{62C8FE65-4EBB-45E7-B440-6E39B2CDBF29}]
+
+[HKEY_CLASSES_ROOT\DWSERVERLib.DWVirtualGrid]
+@="DWSERVERLib.DWVirtualGrid"
+
+[HKEY_CLASSES_ROOT\DWSERVERLib.DWVirtualGrid\CLSID]
+@="{F475A94C-4D0B-42C5-BB48-20048D62F241}"
+
+[HKEY_CLASSES_ROOT\CLSID\{F475A94C-4D0B-42C5-BB48-20048D62F241}]
+@="DWSERVERLib.DWVirtualGrid"
+
+[HKEY_CLASSES_ROOT\CLSID\{F475A94C-4D0B-42C5-BB48-20048D62F241}\InprocServer32]
+@="mscoree.dll"
+"ThreadingModel"="Both"
+"Class"="DWSERVERLib.DWVirtualGrid"
+"Assembly"="Infor.PM.Decision.FourZeroApi.Adapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+
+[HKEY_CLASSES_ROOT\CLSID\{F475A94C-4D0B-42C5-BB48-20048D62F241}\InprocServer32\1.0.0.0]
+"Class"="DWSERVERLib.DWVirtualGrid"
+"Assembly"="Infor.PM.Decision.FourZeroApi.Adapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+
+[HKEY_CLASSES_ROOT\CLSID\{F475A94C-4D0B-42C5-BB48-20048D62F241}\ProgId]
+@="DWSERVERLib.DWVirtualGrid"
+
+[HKEY_CLASSES_ROOT\CLSID\{F475A94C-4D0B-42C5-BB48-20048D62F241}\Implemented Categories\{62C8FE65-4EBB-45E7-B440-6E39B2CDBF29}]
+
+[HKEY_CLASSES_ROOT\DWServer.DWView]
+@="DWServer.DWView"
+
+[HKEY_CLASSES_ROOT\DWServer.DWView\CLSID]
+@="{135925DC-D36F-4F36-8819-EBCC83B51536}"
+
+[HKEY_CLASSES_ROOT\CLSID\{135925DC-D36F-4F36-8819-EBCC83B51536}]
+@="DWServer.DWView"
+
+[HKEY_CLASSES_ROOT\CLSID\{135925DC-D36F-4F36-8819-EBCC83B51536}\InprocServer32]
+@="mscoree.dll"
+"ThreadingModel"="Both"
+"Class"="DWServer.DWView"
+"Assembly"="Infor.PM.Decision.FourZeroApi.Adapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+
+[HKEY_CLASSES_ROOT\CLSID\{135925DC-D36F-4F36-8819-EBCC83B51536}\InprocServer32\1.0.0.0]
+"Class"="DWServer.DWView"
+"Assembly"="Infor.PM.Decision.FourZeroApi.Adapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+
+[HKEY_CLASSES_ROOT\CLSID\{135925DC-D36F-4F36-8819-EBCC83B51536}\ProgId]
+@="DWServer.DWView"
+
+[HKEY_CLASSES_ROOT\CLSID\{135925DC-D36F-4F36-8819-EBCC83B51536}\Implemented Categories\{62C8FE65-4EBB-45E7-B440-6E39B2CDBF29}]
+
+[HKEY_CLASSES_ROOT\DWServer.DWVirtualGrid]
+@="DWServer.DWVirtualGrid"
+
+[HKEY_CLASSES_ROOT\DWServer.DWVirtualGrid\CLSID]
+@="{9E56BDD0-6F0F-4FFA-9A25-9CB8E2B07EDC}"
+
+[HKEY_CLASSES_ROOT\CLSID\{9E56BDD0-6F0F-4FFA-9A25-9CB8E2B07EDC}]
+@="DWServer.DWVirtualGrid"
+
+[HKEY_CLASSES_ROOT\CLSID\{9E56BDD0-6F0F-4FFA-9A25-9CB8E2B07EDC}\InprocServer32]
+@="mscoree.dll"
+"ThreadingModel"="Both"
+"Class"="DWServer.DWVirtualGrid"
+"Assembly"="Infor.PM.Decision.FourZeroApi.Adapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+
+[HKEY_CLASSES_ROOT\CLSID\{9E56BDD0-6F0F-4FFA-9A25-9CB8E2B07EDC}\InprocServer32\1.0.0.0]
+"Class"="DWServer.DWVirtualGrid"
+"Assembly"="Infor.PM.Decision.FourZeroApi.Adapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+
+[HKEY_CLASSES_ROOT\CLSID\{9E56BDD0-6F0F-4FFA-9A25-9CB8E2B07EDC}\ProgId]
+@="DWServer.DWVirtualGrid"
+
+[HKEY_CLASSES_ROOT\CLSID\{9E56BDD0-6F0F-4FFA-9A25-9CB8E2B07EDC}\Implemented Categories\{62C8FE65-4EBB-45E7-B440-6E39B2CDBF29}]

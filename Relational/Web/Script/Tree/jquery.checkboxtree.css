@@ -1,0 +1,57 @@
+.ui-widget-checkboxTree li {
+    list-style-type: none;
+    position: relative;
+    font-family:Verdana,sans-serif;
+    font-size:12px;
+    margin:5px;
+    margin-left:0;
+   
+}
+
+.ui-widget-checkboxTree li span {
+    cursor: default;
+    position: absolute;
+    top: -1px;
+    left: -26px;
+}
+
+.ui-widget-checkboxTree li div.checkbox {
+    cursor:pointer;
+    position:absolute;
+    height:12px;
+    width:10px;
+    left: -11px;
+    background-image:url(../../images/unchecked.gif);
+    background-repeat:no-repeat;
+    background-position:0px 2px;
+}
+
+.ui-widget-checkboxTree li div.checkbox.checked {
+
+    background-image:url(../../images/tick.gif);
+    
+}
+
+.ui-widget-checkboxTree li div.checkbox.radio {
+
+    background-image:url(../../images/radiobutton_no.png);
+    
+}
+.ui-widget-checkboxTree li div.checkbox.checked.radio {
+
+    background-image:url(../../images/radiobutton_yes.png);
+    
+}
+
+.ui-widget-checkboxTree {
+    background:none;
+    border:none;
+    margin-top:5px;
+
+
+}
+.ui-widget-checkboxTree ul {
+
+margin-left:15px;padding:1px;
+}
+ 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="aecf6b89-bdd4-436c-9ebc-cb8e97d8a8c2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/RelationalInternal2/RelationalService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RelationalService.wsdl" MetadataType="Wsdl" ID="98ffc3d2-a208-4366-86e0-b6e0498b26f4" SourceId="1" SourceUrl="http://localhost/RelationalInternal2/RelationalService.svc?wsdl" />
+    <MetadataFile FileName="RelationalService.disco" MetadataType="Disco" ID="b8ded38f-9f0d-4240-be73-c0afbde78331" SourceId="1" SourceUrl="http://localhost/RelationalInternal2/RelationalService.svc?disco" />
+    <MetadataFile FileName="RelationalService.xsd" MetadataType="Schema" ID="70896b33-57eb-4fb2-94cd-5958e8e986d1" SourceId="1" SourceUrl="http://localhost/RelationalInternal2/RelationalService.svc?xsd=xsd2" />
+    <MetadataFile FileName="RelationalService1.xsd" MetadataType="Schema" ID="2e244800-d079-4864-9d1e-074d9fa07878" SourceId="1" SourceUrl="http://localhost/RelationalInternal2/RelationalService.svc?xsd=xsd1" />
+    <MetadataFile FileName="RelationalService2.xsd" MetadataType="Schema" ID="91186544-1e36-43d0-ad53-3818bae6b9a0" SourceId="1" SourceUrl="http://localhost/RelationalInternal2/RelationalService.svc?xsd=xsd3" />
+    <MetadataFile FileName="RelationalService3.xsd" MetadataType="Schema" ID="b09bbe27-369a-4da7-8e99-ee5fa15d9e90" SourceId="1" SourceUrl="http://localhost/RelationalInternal2/RelationalService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

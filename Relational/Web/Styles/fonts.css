@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'TheSerifBold';
+    src: url('../fonts/TheSerif_cls_700_.eot');
+    src: url('../fonts/TheSerif_cls_700_.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/TheSerif_cls_700_.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'TheSerifPlain';
+    src: url('../fonts/TheSerif_cls_3_.eot');
+    src: url('../fonts/TheSerif_cls_3_.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/TheSerif_cls_3_.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'TheSerifSemiBold';
+    src: url('../fonts/TheSerif_cls_500.eot');
+    src: url('../fonts/TheSerif_cls_500.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/TheSerif_cls_500.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'TheSerifSemiBoldPlain';
+    src: url('../fonts/TheSerif_cls_500.eot');
+    src: url('../fonts/TheSerif_cls_500.eot?#iefix') format('embedded-opentype'),
+         url('..fonts/TheSerif_cls_500.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TheSans';
+    src: url('../fonts/TheSans_TT6_.eot');
+    src: url('../fonts/TheSans_TT6_.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/TheSans_TT6_.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

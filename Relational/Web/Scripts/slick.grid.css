@@ -1,0 +1,112 @@
+.ui-state-default.slick-header {
+	width: 100%; overflow: hidden; border-left-color: currentColor; border-left-width: 0px; border-left-style: none;
+}
+.ui-state-default.slick-headerrow {
+	width: 100%; overflow: hidden; border-left-color: currentColor; border-left-width: 0px; border-left-style: none;
+}
+.slick-header-columns {
+	overflow: hidden; white-space: nowrap; position: relative; cursor: default;
+}
+.slick-headerrow-columns {
+	overflow: hidden; white-space: nowrap; position: relative; cursor: default;
+}
+.ui-state-default.slick-header-column {
+	border-width: 0px 1px 0px 0px; border-style: none solid none none; border-color: currentColor silver currentColor currentColor; margin: 0px; padding: 4px; height: 16px; line-height: 16px; overflow: hidden; float: left; display: inline-block; position: relative; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.ui-state-default.slick-headerrow-column {
+	padding: 4px;
+}
+.slick-header-column-sorted {
+	font-style: italic;
+}
+.slick-sort-indicator {
+	width: 8px; height: 5px; margin-top: 6px; margin-left: 4px; float: left; display: inline-block;
+}
+.slick-sort-indicator-desc {
+	background: url("images/sort-desc.gif");
+}
+.slick-sort-indicator-asc {
+	background: url("images/sort-asc.gif");
+}
+.slick-resizable-handle {
+	top: 0px; width: 4px; height: 100%; right: 0px; font-size: 0.1px; display: block; position: absolute; cursor: col-resize;
+}
+.slick-resizable-handle-hover {
+	background-color: rgb(204, 204, 204);
+}
+.slick-sortable-placeholder {
+	background: silver;
+}
+.grid-canvas {
+	outline: 0px; overflow: hidden; position: relative;
+}
+.ui-widget-content.slick-row {
+	border: 0px currentColor; border-image: none; width: 100%; position: absolute;
+}
+.ui-state-active.slick-row {
+	border: 0px currentColor; border-image: none; width: 100%; position: absolute;
+}
+.slick-cell {
+	border-width: 1px; border-style: solid dotted solid solid; border-color: transparent silver silver transparent; margin: 0px; padding: 1px 2px 2px 1px; border-image: none; overflow: hidden; vertical-align: middle; white-space: nowrap; position: absolute; z-index: 1; cursor: default; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.slick-headerrow-column {
+	border-width: 1px; border-style: solid dotted solid solid; border-color: transparent silver silver transparent; margin: 0px; padding: 1px 2px 2px 1px; border-image: none; overflow: hidden; vertical-align: middle; white-space: nowrap; position: absolute; z-index: 1; cursor: default; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.slick-group {
+	
+}
+.slick-group-toggle {
+	display: inline-block;
+}
+.highlighted.slick-cell {
+	background: rgba(0, 0, 255, 0.2); transition:0.5s; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;
+}
+.flashing.slick-cell {
+	border: 1px solid red !important; border-image: none !important;
+}
+.editable.slick-cell {
+	background: white; border-style: solid; border-color: black; overflow: visible; z-index: 11;
+}
+.slick-cell:focus {
+	
+}
+.slick-reorder-proxy {
+	background: blue; display: inline-block; cursor: move; opacity: 0.15;
+}
+.slick-reorder-guide {
+	background: blue; height: 2px; display: inline-block; opacity: 0.7;
+}
+.slick-selection {
+	border: 2px dashed black; border-image: none; position: absolute; z-index: 10;
+}
+.slick-pane {
+	outline: 0px; width: 100%; overflow: hidden; position: absolute;
+}
+
+
+/* Frozen Column*/
+
+ .slick-pane-left .slick-cell {
+	 background-color:RGB(245,245,220);
+}
+
+
+
+.slick-pane-header {
+	display: block;
+}
+.slick-header {
+	overflow: hidden; position: relative;
+}
+.slick-headerrow {
+	overflow: hidden; position: relative;
+}
+.slick-top-panel-scroller {
+	overflow: hidden; position: relative;
+}
+.slick-top-panel {
+	width: 10000px;
+}
+.slick-viewport {
+	outline: 0px; width: 100%; position: relative;
+}

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<DecisionNav.Models.BankVars.Bank>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BankName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BankAlias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DBServer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RMTools)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HAT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lockout_RMTools)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustSearch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportList)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lockout_RMWeekly)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lockout_RMMonthly)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DBServerDataNetwork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BatchProcessed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OnDemand)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankAlias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DBServer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RMTools)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HAT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lockout_RMTools)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustSearch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportList)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lockout_RMWeekly)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lockout_RMMonthly)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DBServerDataNetwork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatchProcessed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnDemand)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BankID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BankID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BankID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

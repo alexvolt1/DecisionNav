@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RelationalInternal.UniqueID" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Crypto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RelationalInternal.EncDec" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Crypto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RelationalInternal.PasswordHash" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAgEAhCIAAAQAAAAAIAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Crypto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RelationalInternal.DBLocation" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DBLocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RelationalInternal.DWCredentials" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAEAAEAAAAACAACAAAAEAACAEAAgACJQBAAAIAAAE=</HashCode>
+      <FileName>DWCredentials.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RelationalInternal.RelationalService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAIAAAAAAAAAAAAAABAEQHgAAAIABEAAAAA=</HashCode>
+      <FileName>RelationalService.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RelationalInternal.SecureConnection" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAQAAAAAAAIAACAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SecureConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter02.Generator1" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Generator1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter02.Workbook" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter02.Worksheet" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAQAAQAAAAAAAAAAAQgAAAA=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter02.Row" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter02.Column" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAEAAAAEBAAAAAAAAABAAAAgAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter02.Cell" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAgAAAAAKAAAAABAAAAAAAAAAAAAAAgAAAAAAE=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter02.SpreadsheetWriter" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAgEAAAkAAAAAAAQAAAAAIQAAAACgAAAGAAAg=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter02.SpreadsheetWriterInternalException" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter02.InvalidSheetNameException" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter.Generator2" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABIAAACAAAAAAAAQAAAAAAEAAAAAAAAAEAAAAg=</HashCode>
+      <FileName>Generator2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter.Workbook" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter.Worksheet" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAQAAQAAAAAAAAAAAQgAAAA=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter.Row" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter.Column" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAEAAAAEBAAAAAAAAABAAAAgAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter.Cell" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAgAAAAAKAAAAABAAAAAAAAAAAAAAAgAAAAAAE=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter.SpreadsheetWriter" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAgEAAAkAAAAAAAQAAAAAIQAAAACgAAAGAAAg=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter.SpreadsheetWriterInternalException" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenXmlPowerTools.SpreadsheetWriter.InvalidSheetNameException" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManagementConsole.Components.Security" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAQAAAAAAAAAACAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="RelationalInternal.IRelationalService" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAQHgAAAIABAAAAAA=</HashCode>
+      <FileName>RelationalService.svc.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="OpenXmlPowerTools.SpreadsheetWriter02.HorizontalCellAlignment" Collapsed="true">
+    <Position X="4" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAIAAA=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OpenXmlPowerTools.SpreadsheetWriter02.CellDataType" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAQEAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter02.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OpenXmlPowerTools.SpreadsheetWriter.HorizontalCellAlignment" Collapsed="true">
+    <Position X="5.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAIAAA=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OpenXmlPowerTools.SpreadsheetWriter.CellDataType" Collapsed="true">
+    <Position X="2.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAQEAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>SpreadsheetWriter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

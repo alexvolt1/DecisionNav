@@ -1,0 +1,3388 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Infor.CPMImport.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Infor.CPMImport.Web.AppStart.AutofacMvc3">
+            <summary>
+            Setup MVC3 hooks for Autofac, see http://code.google.com/p/autofac/wiki/Mvc3Integration
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.AppStart.AutofacMvc3.logger">
+            <summary>
+            Our logger, obviously can't be injected as the DI framework hasn't been started yet.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.AppStart.AutofacMvc3.container">
+            <summary>
+            Autofac container.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AppStart.AutofacMvc3.Start">
+            <summary>
+            Creates the Autofac container and hooks it into MVC3.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AppStart.AutofacMvc3.Stop">
+            <summary>
+            Performs any shutdown needed for the Autofac container.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.AppStart.DelayedDependencyResolver">
+            <summary>
+            Works around a catch-22 with respect to RequiredPermissionFilter and
+            the IDependencyResolver.  The filter needs a resolver, but when it's
+            created during the container build (see RegisterGlobalFilters) Autofac
+            has not yet been registered as the DependencyResolver.  This class
+            is a dependency resolver, but it always looks up the current one.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AppStart.DelayedDependencyResolver.GetService(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AppStart.DelayedDependencyResolver.GetServices(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.Web.AppStart.Log4NetConfiguration">
+            <summary>
+            Configures log4net at application initialization (via WebActivator).
+            Must be ordered prior to other startup code that depends on logging
+            (e.g. Autofac).
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AppStart.Log4NetConfiguration.Configure">
+            <summary>
+            Configures log4net using ${CommonApplicationData}/Infor/CPM/Import/CPMImport.config.
+            The log4net repository is set in AssemblyInfo so the LogManager
+            calls do not need to specify it.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.AppStart.LogInjectionModule">
+            <summary>
+            Resolve ILog parameters using the appropriate logger for the class,
+            see http://code.google.com/p/autofac/wiki/Log4NetIntegration
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.AppStart.LogInjectionModule.logger">
+            <summary>
+            Our logger.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AppStart.LogInjectionModule.AttachToComponentRegistration(Autofac.Core.IComponentRegistry,Autofac.Core.IComponentRegistration)">
+            <summary>
+            Add our handler to the IComponentRegistration.Preparing list.
+            </summary>
+            <param name="componentRegistry">Component registry, not used here</param>
+            <param name="registration">Component registration</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AppStart.LogInjectionModule.OnComponentPreparing(System.Object,Autofac.Core.PreparingEventArgs)">
+            <summary>
+            Resolve ILog parameters using the appropriate logger for the class.
+            </summary>
+            <param name="sender">Event sender</param>
+            <param name="e">Event details</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.DataLoadFactory">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IDataLoadFactory">
+            <summary>
+            Factory used to generate a specific instance of a data load
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IDataLoadFactory.Create">
+            <summary>
+            Creates the instance based off of the "importType" and "connectionDefinitionName" in the request context
+            </summary>
+            <returns>DataLoad object</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IDataLoadFactory.Create(Infor.CPMImport.Common.Import.ImportType)">
+            <summary>
+            Creates a DataLoad instance based on a specific type request.
+            </summary>
+            <param name="type">Type of import dataload class to request</param>
+            <returns>DataLoad object</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IDataLoadFactory.Create(System.String)">
+            <summary>
+            Creates a DataLoad instance based on a specific type request.
+            </summary>
+            <param name="type">Type of import dataload class to request</param>
+            <returns>DataLoad object</returns>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.DataLoadFactory.Log">
+            <summary>
+            Log4Net logger object
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.DataLoadFactory.Context">
+            <summary>
+            Context of the request
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.DataLoadFactory.#ctor(log4net.ILog,System.Web.HttpContextBase)">
+            <summary>
+            Initializes a new instance of the DataLoadFactory class
+            </summary>
+            <param name="log">Log4Net logger</param>
+            <param name="context">Request context</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.DataLoadFactory.Create">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.DataLoadFactory.Create(Infor.CPMImport.Common.Import.ImportType)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.DataLoadFactory.Create(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TranslationGlobalFilter">
+            <summary>
+            Sets the thread's culture for all calls based on the WebClientUserLocale settings.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IGlobalFilter">
+            <summary>
+            Marker interface denoting MVC3 filters that should be registered as
+            global filters.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TranslationGlobalFilter.areaRegistration">
+            <summary>
+            MVC3 area information
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TranslationGlobalFilter.logger">
+            <summary>
+            Our logger;
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TranslationGlobalFilter.#ctor(System.Web.Mvc.AreaRegistration)">
+            <summary>
+            Initializes a new instance of the TranslationGlobalFilter class.
+            </summary>
+            <param name="areaRegistration">MVC3 area registration within which to confine this filter</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TranslationGlobalFilter.OnActionExecuting(System.Web.Mvc.ActionExecutingContext)">
+            <summary>
+            This method sets the thread's culture to that specified by the WebClientUserLocale settings
+            </summary>
+            <param name="filterContext">Provides context on the controller action, e.g. parameter info, method name, etc.</param>
+            <remarks>Although this method is called OnActionExecuting it really it is called before the controller action is invoked</remarks>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TranslationGlobalFilter.OnActionExecuted(System.Web.Mvc.ActionExecutedContext)">
+            <summary>
+            Does nothing.
+            </summary>
+            <param name="filterContext">This parameter is not used.</param>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TranslationGlobalFilter.AllowMultiple">
+            <summary>
+            Gets a value indicating whether 1 == 0.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TranslationGlobalFilter.Order">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.CredentialOverrideModelSelector">
+            <summary>
+            A ModelSelector that will optionally override the credentials
+            information with those from request parameters.  This override is
+            needed when a user wants to import to a model for which they don't have
+            access, but they have a username/password that does.  The particular
+            use case is when an admin running Model Builder is doing an import to a
+            new model.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ModelSelector">
+            <summary>
+            Determines the model name for a given HTTP request.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ModelSelector.selectedConnectionDefinitionName">
+            <summary>
+            Temporary hack, store a guessed connection definition name
+            until we can correctly determine one.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ModelSelector.modelCredential">
+            <summary>
+            Store the credentials to use along with the model name.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ModelSelector.#ctor(System.Web.HttpRequestBase,Infor.PM.Security.ICredentials)">
+            <summary>
+            Initializes a new instance of the ModelSelector class.
+            </summary>
+            <param name="request">Request from which to determine the model.</param>
+            <param name="credentials">Credential information for the model</param>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ModelSelector.ModelName">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ModelSelector.ModelCredential">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ModelSelector.ForceBasicAuthentication">
+            <inheritdoc/>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.CredentialOverrideModelSelector.usingCustomCredentials">
+            <summary>
+            True if using custom credentials provided via request parameters,
+            false when using the normal PM Credentials information.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.CredentialOverrideModelSelector.#ctor(System.Web.HttpRequestBase,Infor.PM.Security.ICredentials)">
+            <summary>
+            Initializes a new instance of the CredentialOverrideModelSelector class,
+            if the request contains a username parameter then it, and the password
+            parameter, are used to override the provided credential information.
+            </summary>
+            <param name="request">Request from which to determine the model.</param>
+            <param name="credentials">Credential information for the model</param>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.CredentialOverrideModelSelector.ForceBasicAuthentication">
+            <summary>
+            If the request includes specific credential parameters then this will
+            return true, otherwise false.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser">
+            <summary>
+            Impersonation is the ability of a server application to take on the identity of the client.
+            It is common for services to use impersonation when validating access to resources.
+            The server application runs using a service account, but when the server accepts a client connection,
+            it impersonates the client so that access checks are performed using the client's credentials.
+            </summary>
+            <remarks>The link described above is dead and I found useful information http://msdn.microsoft.com/en-us/library/ms788971.aspx </remarks>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.logger">
+            <summary>
+            The logger used for logging
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.userName">
+            <summary>
+            The userName of the user we are impersonating
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.domain">
+            <summary>
+            The domain of the user we are impersonating
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.password">
+            <summary>
+            The password of the user we are impersonating
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.disposed">
+            <summary>
+            Whether or not the managed resources of a token have been disposed of or not
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.originalUsersWindowsIdentity">
+            <summary>
+            The original identity of the user who is doing the impersonating
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.impersonatedUsersWindowsIdentity">
+            <summary>
+            The user we are impersonating
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.usersImpersonationContext">
+            <summary>
+            The the Windows user prior to an impersonation operationg
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ImpersonateUser class, which can be used to impersonate a user.
+            </summary>
+            <param name="domain">The domain name of the domain or server whose account database contains
+            user's account. If this parameter is null, the user name must be specified in UPN format.
+            If this parameter is ".", the function validates the account using only the local account database.</param>
+            <param name="userName">This is the name of the user account to impersonate. If you use the UPN format,
+            user@DNS_domain_name, the domain parameter must be null.  The user account must have Log On Locally permission
+            on the local computer. This permission is granted to all users on workstations and servers, but only to
+            administrators on domain controllers.</param>
+            <param name="password">The Password associated with the user account.</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.RevertToSelf">
+            <summary>
+            Ends any impersonation that is occuring.  This should not be called to undo a previous Impersonate
+            call.  To undo a previous Impersonate call you should call Undo.  This method should be called when
+            you are executing as a user that you didn't impersonate and you want to stop impersonating them.
+            </summary>
+            <returns>A WindowsImpersonationContext of the user being impersonated when this method was called.
+            This object can be used to reimpersonate the user after having called RevertToSelf.</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.Dispose">
+            <summary>
+            Disposes of the user token that is created when this object was created.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.Impersonate">
+            <summary>
+            Impersonates the user specified in the constructor.  You must call Undo to stop
+            impersonating after calling Impersonate.  After calling Undo you can call Impersonate
+            again to re-impersonate the user.  When done using this object you should call Dispose
+            to free resources used by the object.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.Undo">
+            <summary>
+            Ends the impersonation that was started by calling Impersonate.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.CreateWindowsIdentity">
+            <summary>
+            Verifies the validity of the user account and creates the WindowsIdentity for the
+            user that can be used to impersonate the user.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.Dispose(System.Boolean)">
+            <summary>
+            Disposes of the token handle created when logging in as the user specified in
+            in the constructor.
+            </summary>
+            <param name="disposing">If true, the method has been called directly or indirectly by
+            user code.  Managed and unmanaged resources can be disposed.  If false, the method
+            has been called by the runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.</param>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.IsImpersonating">
+            <summary>
+            Gets a value indicating whether we're currently impersonating the user or not.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonType">
+            <summary>
+            The type of logon we are doing
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonType.LOGON32_LOGON_INTERACTIVE">
+            <summary>
+            For users who will be interactively using the computer, such as a user being logged on by a terminal server, remote shell, or similar process.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonType.LOGON32_LOGON_NETWORK">
+            <summary>
+            For high performance servers to authenticate plaintext passwords
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonType.LOGON32_LOGON_BATCH">
+            <summary>
+            For batch servers, where processes may be executing on behalf of a user without their direct intervention
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonType.LOGON32_LOGON_SERVICE">
+            <summary>
+            Indicates a service-type logon. The account provided must have the service privilege enabled.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonType.LOGON32_LOGON_UNLOCK">
+            <summary>
+            GINAs are no longer supported.
+            Windows Server 2003, Windows XP, and Windows 2000:
+            This logon type is for GINA DLLs that log on users who will be interactively using the computer.
+            This logon type can generate a unique audit record that shows when the workstation was unlocked.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonType.LOGON32_LOGON_NETWORK_CLEARTEXT">
+            <summary>
+            This logon type preserves the name and password in the authentication package, which allows the server to make connections to other network servers while impersonating the client.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonType.LOGON32_LOGON_NEW_CREDENTIALS">
+            <summary>
+            Allows the caller to clone its current token and specify new credentials for outbound connections
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonProvider">
+            <summary>
+            Specifies the logon provider
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonProvider.LOGON32_PROVIDER_DEFAULT">
+            <summary>
+            Use the standard logon provider for the system.
+            The default security provider is negotiate, unless you pass NULL for the domain name
+            and the user name is not in UPN format. In this case, the default provider is NTLM.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonProvider.LOGON32_PROVIDER_WINNT35">
+            <summary>
+            Use the Windows NT 3.5 logon provider
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonProvider.LOGON32_PROVIDER_WINNT40">
+            <summary>
+            Use the NTLM logon provider
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.LogonProvider.LOGON32_PROVIDER_WINNT50">
+            <summary>
+            Use the negotiate logon provider
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.ImpersonationLevel">
+            <summary>
+            Defines the transport security level
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.ImpersonationLevel.SecurityAnonymous">
+            <summary>
+            The server application does not attempt to impersonate the client.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.ImpersonationLevel.SecurityIdentification">
+            <summary>
+            The server application knows the client's identity and can perform access validation against the client's credentials,
+            but cannot impersonate the client
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.ImpersonationLevel.SecurityImpersonation">
+            <summary>
+            The server application can access resources on the server machine as the client in addition to performing access checks.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ImpersonateUser.ImpersonationLevel.SecurityDelegation">
+            <summary>
+            In addition to having the same capabilities as Impersonate, the Delegate impersonation level also enables the server application
+            to access resources on remote machines using the client's identity and to pass the identity to other applications.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.SerializationUtilities">
+            <summary>
+            Contains methods to centralize converting certain objects to the json (or json friendly) version
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.SerializationUtilities.ParseDate(System.Nullable{System.DateTime})">
+            <summary>
+            Returns a string to use in a json serialization for the date
+            </summary>
+            <param name="date">Date to convert</param>
+            <returns>Date converted to the format the UI expects</returns>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions">
+            <summary>
+            A set of extension methods for the LoadDefinition object.
+            </summary>
+            A quick note on the purpose of this class:
+            These are all generally straight forward and very simple.  Previously this behavior was all nested within a large linq query, 
+            however, which made reading the query difficult.  Multiple methods were also performing the same behavior.  Keeping them in small
+            pieces should allow future controller methods to continue to pick and choose what properties they want to return, where a custom json
+            serializer for load definitions would have left less room for differences between methods.
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetConnectionDefinitionName(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Retrieve the connection definition name if it exists
+            </summary>
+            <param name="load">The load definition to retrieve from</param>
+            <returns>The name of the connection definition if one is saved</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetSourceName(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the primary source's name
+            </summary>
+            <param name="load">The load definition to retrieve from</param>
+            <returns>The name of the file if the source is a file or the name of the table if the source is a database</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetIgnoreErrorsSetting(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the stored ignore errors setting
+            </summary>
+            <param name="load">The load definition to retrieve from</param>
+            <returns>Returns the stored ignore error setting or a default of No</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetUserLastRan(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the last user to run the load
+            </summary>
+            <param name="load">The load definition to retrieve from</param>
+            <returns>The last user to run the load definition or null</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetStatusCode(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the status code from the last run
+            </summary>
+            <param name="load">The load definition to retrieve from</param>
+            <returns>The status code for load definition</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetRecordsRead(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the number of records read
+            </summary>
+            <param name="load">The load definition to retrieve from</param>
+            <returns>The number of records read</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetRecordsLoaded(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the number of records loaded
+            </summary>
+            <param name="load">The load definition to retrieve from</param>
+            <returns>The number of records loaded</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetRecordsInError(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the number of records in error
+            </summary>
+            <param name="load">The load definition to retrieve from</param>
+            <returns>The number of records in error</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetStartTime(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the start time of the load run
+            </summary>
+            <param name="load">The load definition to retrieve status from</param>
+            <returns>The start time in correctly parsed format, or null</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetEndTime(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the end time of the load run
+            </summary>
+            <param name="load">The load definition to retrieve status from</param>
+            <returns>The end time in correctly parsed format, or null</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadDefinitionExtensions.GetLoadTime(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Gets the time elapsed between the start time and the end time
+            </summary>
+            <param name="load">The load definition to retrieve status from</param>
+            <returns>The time elapsed between start and end times</returns>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadGroupExtensions">
+            <summary>
+            Extension methods for the LoadGroup object, kept outside of the original object in order to keep the Hibernate mapping object pure
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadGroupExtensions.GetLoadStatus(Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup)">
+            <summary>
+            Determines the text to display for the load status for a given load group
+            based on the load statuses of its load defintions
+            </summary>
+            <param name="loadGroup">Load group to determine status for</param>
+            <returns>Load group status</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.LoadGroupExtensions.AssignDefaultName(Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup})">
+            <summary>
+            Assigns a default name to the load group
+            </summary>
+            <param name="group">The group to assign a default name to</param>
+            <param name="allGroups">The full collection of load groups that should be checked</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods">
+            <summary>
+            A set of methods that are exposed from an unmanaged dll as a static entry point
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SQLGetInstalledDrivers(System.Char[],System.Int16,System.Int32@)">
+            <summary>
+            Reads the [ODBC Drivers] section of the system information and returns a list
+            of descriptions of the installed drivers.
+            </summary>
+            <param name="lpszBuf">List of descriptions of the installed drivers</param>
+            <param name="cbBufMax">Length of lpszBuf</param>
+            <param name="pcbBufOut">Total number of bytes (excluding the null-termination byte)
+            returned in lpszBuf. If the number of bytes available to return is greater than
+            or equal to cbBufMax, the list of driver descriptions in lpszBuf is truncated to
+            cbBufMax minus the null-termination character. The pcbBufOut argument can be a
+            null pointer.</param>
+            <returns>The function returns TRUE if it is successful, FALSE if it fails.</returns>
+            <see href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms714005%28v=vs.85%29.aspx">MSDN Doc</see>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SQLInstallerError(System.Int16,System.Int32@,System.Text.StringBuilder,System.Int16,System.Int32@)">
+            <summary>
+            Determines the error or status information for the ODBC installer functions.
+            </summary>
+            <param name="iError">[Input] Error record number. Valid numbers are from 1 through 8.</param>
+            <param name="pfErrorCode">[Output] Installer error code.</param>
+            <param name="lpszErrorMsg">[Output] Pointer to storage for the error message text.</param>
+            <param name="cbErrorMsgMax">[Input] Maximum length of the szErrorMsg buffer.</param>
+            <param name="pcbErrorMsg">[Output] Pointer to the total number of bytes (excluding the null-termination character) available to return in lpszErrorMsg.</param>
+            <returns>Error or status information for the ODBC installer functions.</returns>
+            <see href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms715450%28v=vs.85%29.aspx">MSDN Doc</see>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.LogonUser(System.String,System.String,System.String,System.Int32,System.Int32,System.IntPtr@)">
+            <summary>
+            The LogonUser function attempts to log a user on to the local computer. The local computer is the computer from which LogonUser was called.
+            </summary>
+            <param name="username">A pointer to a null-terminated string that specifies the name of the user.
+            This is the name of the user account to log on to.</param>
+            <param name="domain">A pointer to a null-terminated string that specifies the name of the domain
+            or server whose account database contains the lpszUsername account.</param>
+            <param name="password">A pointer to a null-terminated string that specifies the plaintext password for the user account specified by lpszUsername.</param>
+            <param name="logonType">The type of logon operation to perform.</param>
+            <param name="logonProvider">Specifies the logon provider.</param>
+            <param name="tokenHandle">A pointer to a handle variable that receives a handle to a token that represents the specified user.</param>
+            <returns>If the function succeeds, the function returns nonzero.</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.CloseHandle(System.IntPtr)">
+            <summary>
+            Closes an open object handle.
+            </summary>
+            <param name="tokenHandle">A valid handle to an open object.</param>
+            <returns>If the function succeeds, the return value is nonzero. </returns>
+            <see href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms724211%28v=vs.85%29.aspx">MSDN Doc</see>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.DuplicateToken(System.IntPtr,System.Int32,System.IntPtr@)">
+            <summary>
+            Creates a new access token that duplicates one already in existence.
+            </summary>
+            <param name="hToken">A handle to an access token opened with TOKEN_DUPLICATE access.</param>
+            <param name="impersonationLevel">Specifies a SECURITY_IMPERSONATION_LEVEL enumerated type that supplies the impersonation level of the new token.</param>
+            <param name="hNewToken">A pointer to a variable that receives a handle to the duplicate token.
+            This handle has TOKEN_IMPERSONATE and TOKEN_QUERY access to the new token.</param>
+            <returns>If the function succeeds, the return value is nonzero.</returns>
+            <remarks>When you have finished using the new token, call the CloseHandle function to close the token handle.</remarks>
+            <see href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa446616%28v=vs.85%29.aspx">DuplicateToken MSDN Doc</see>
+            <see href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms721532%28v=vs.85%29.aspx#_security_access_token_gly">Access Token MSDN Doc</see>
+            <see href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa379572%28v=vs.85%29.aspx">SECURITY_IMPERSONATION_LEVEL MSDN Doc</see>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SqlReturnCode">
+            <summary>
+            A enumeration of some ODBC return codes.
+            </summary>
+            <see href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms716219%28v=vs.85%29.aspx">MSDN Doc</see>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SqlReturnCode.SQL_ERROR">
+            <summary>
+            Function failed. The contents of any output arguments to the function are undefined.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SqlReturnCode.SQL_INVALID_HANDLE">
+            <summary>
+            Function failed due to an invalid environment, connection, statement, or descriptor handle.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SqlReturnCode.SQL_SUCCESS">
+            <summary>
+            Function completed successfully.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SqlReturnCode.SQL_SUCCESS_WITH_INFO">
+            <summary>
+            Function completed successfully, possibly with a nonfatal error (warning).
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SqlReturnCode.SQL_STILL_EXECUTING">
+            <summary>
+            A function that was started asynchronously is still executing.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SqlReturnCode.SQL_NEED_DATA">
+            <summary>
+            More data is needed, such as when parameter data is sent at execution time
+            or additional connection information is required.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.NativeMethods.SqlReturnCode.SQL_NO_DATA">
+            <summary>
+            No more data was available. One or more driver-defined status records
+            in class 02xxx may be returned. Note: In ODBC 2.x, this return code was
+            named SQL_NO_DATA_FOUND.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit">
+            <summary>
+            An default, empty implementation of the IImportAudit interface used to represent an unsuccessful or unattempted import
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit.NumberOfRecordsWritten">
+            <summary>
+            Gets or sets written number of 0
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit.TotalNumberOfRecords">
+            <summary>
+            Gets or sets a total records of 0
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit.User">
+            <summary>
+            Gets or sets a null value for the user
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit.StartTime">
+            <summary>
+            Gets or sets a start time of now as the import did not run
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit.EndTime">
+            <summary>
+            Gets or sets an end time of now as the import did not run
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit.TotalLoadTime">
+            <summary>
+            Gets or sets an empty total time as no load was performed
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit.CurrentLoadStatus">
+            <summary>
+            Gets or sets a default load status of "Not Loaded"
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit.AllRecords">
+            <summary>
+            Gets a null value representing the non-existant data table
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.UnsuccessfulImportAudit.OnlyRecordsInError">
+            <summary>
+            Gets a null value representing the non-existant data table
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.EncryptionController">
+            <summary>
+            EncryptionController provides an API for Diffie-Hellman key exchange.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.EncryptionController.logger">
+            <summary>
+            Log4Net log object
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.EncryptionController.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the EncryptionController class.
+            </summary>
+            <param name="log">Logger to use</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.EncryptionController.GetKeyComponents(System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.EncryptionController.PostPublicKey(System.Guid,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.EncryptionController.RemoveClient(System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.EncryptionController.EnableEncryption">
+            <inheritdoc />
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.EncryptionController.Logger">
+            <summary>
+            Gets this controller's logging object
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.RestToolController">
+            <summary>
+            Controller methods for the REST API tool.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.RestToolController.logger">
+            <summary>
+            Our logger.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.RestToolController.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the RestToolController class.
+            </summary>
+            <param name="logger">Logger to use</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.RestToolController.AllRoutes">
+            <summary>
+            Gets the routes from MVC3 and returns them as JSON
+            </summary>
+            <returns>Routes in JSON format</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.RestToolController.ExtractUrlParameters(System.Web.Routing.Route)">
+            <summary>
+            Extract parameters contained in the route's URL, these may not be
+            part of the method signature.  A common one in Web Architect is
+            connectionDefinitionName.
+            </summary>
+            <param name="route">Route to examine</param>
+            <returns>List of all parameters denoted in the route's URL</returns>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ValidationController">
+            <summary>
+            Provides validation of the load definition settings against the source data
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ValidationController.dataLoad">
+            <summary>
+            Instance of IDataLoad
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ValidationController.repository">
+            <summary>
+            Hibernate repository
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ValidationController.sourceFactory">
+            <summary>
+            Factory to generate source handler based on source type
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ValidationController.credentials">
+            <summary>
+            Credentials of the logged in user
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ValidationController.#ctor(Infor.CPMImport.DataAccess.Repository.IRepository,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IDataLoadFactory,Infor.CPMImport.DataAccess.Source.ISourceHandlerFactory,Infor.PM.Security.ICredentials)">
+            <summary>
+            Initializes a new instance of the ValidationController class
+            </summary>
+            <param name="repository">Repository to access definition data</param>
+            <param name="factory">Data load factory</param>
+            <param name="sourceFactory">Factory used to create a source handler</param>
+            <param name="credentials">Credentials of the logged in user</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ValidationController.CheckValidForImport(System.Guid,Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Checks if the load definition is valid for importing
+            </summary>
+            <param name="definitionId">Id of the definition</param>
+            <param name="sourceConnection">DatabaseSource object with credentials if source is a database</param>
+            <returns>Validation status object containing any error messages</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ValidationController.PrepareSourceCredentials(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Updates the load definition provided with the correct source credentials if applicable
+            </summary>
+            <param name="def">The load definition to update</param>
+            <param name="sourceConnection">Source connection details provided from the client</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.CPMImportAreaRegistration">
+            <summary>
+            Register the area for Import
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.CPMImportAreaRegistration.RegisterCPMImportRoutes(System.Web.Mvc.AreaRegistrationContext)">
+            <summary>
+            Registers routes in the given context
+            </summary>
+            <param name="context">registration context</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.CPMImportAreaRegistration.RegisterArea(System.Web.Mvc.AreaRegistrationContext)">
+            <summary>
+            Register the routes and perform other actions whe requested
+            </summary>
+            <param name="context">registration context</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.CPMImportAreaRegistration.IncludeAndMinify">
+            <summary>
+             Used to include scripts and css and to automatically minify them in release mode.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.CPMImportAreaRegistration.AreaName">
+            <summary>
+            Create area name
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.AuthorizationCredentials">
+            <summary>
+            Class used to assist with identifying the proper authorized credentials for a user
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.AuthorizationCredentials.context">
+            <summary>
+            HttpContextBase from which to get credentials when using the
+            <see cref="T:Infor.PM.Security.ICredentials"/> interface properties.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.AuthorizationCredentials.credentials">
+            <summary>
+            The security credentials interface to pull authorization details from
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AuthorizationCredentials.#ctor(System.Web.HttpContextBase,Infor.PM.Security.Credentials)">
+            <summary>
+            Initializes a new instance of the AuthorizationCredentials class.
+            </summary>
+            <param name="context">Context from which to tell what type of credentials we need</param>
+            <param name="credentials">Infor PM Security credentials</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AuthorizationCredentials.GetDatabaseCredentials(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AuthorizationCredentials.GetDatabaseCredentials(System.Boolean)">
+            <summary>
+            Retrieves the NetworkCredential object to use for authorization.
+            </summary>
+            <param name="integrated">Whether or not the user is for an integrated database</param>
+            <returns>NetworkCredential to use for authorization</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AuthorizationCredentials.GetAuthorizationCredentials">
+            <summary>
+            Retrieves the NetworkCredential object to use for authorization.
+            </summary>
+            <returns>NetworkCredential to use for authorization</returns>
+        </member>
+        <member name="P:Infor.CPMImport.Web.AuthorizationCredentials.WebCredentials">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.Web.AuthorizationCredentials.DatabaseCredentials">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.Web.AutofacModule">
+            <summary>
+            Web module for Autofac.
+            http://code.google.com/p/autofac/wiki/StructuringWithModules
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.AutofacModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Register types needed for the controllers or other web-side class instances.
+            </summary>
+            <param name="builder">Builder to which we'll add our types.</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ExceptionHandlerFilter">
+            <summary>
+            This class handles the response when a exception is caught.  It sets the http response code and converts
+            the exception into JSON for the client to handle.
+            </summary>
+            <remarks>
+            Expected to be configured as a global filter.  This does have a minor
+            advantage in that it alleviates the need for a developer to remember to
+            apply this attribute to each controller.  The main bonus is a global
+            filter is able to catch exceptions that occur prior to the controller
+            call, such as errors initializing a controller or one of its
+            dependencies.
+            </remarks>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ExceptionHandlerFilter.logger">
+            <summary>
+            Our logger;
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ExceptionHandlerFilter.areaRegistration">
+            <summary>
+            MVC3 area information
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ExceptionHandlerFilter.#ctor(System.Web.Mvc.AreaRegistration)">
+            <summary>
+            Initializes a new instance of the ExceptionHandlerFilter class.
+            </summary>
+            <param name="areaRegistration">MVC3 area registration within which to confine this filter</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.ExceptionHandlerFilter.OnException(System.Web.Mvc.ExceptionContext)">
+            <summary>
+            Handles Converting the raw exceptions to JSON for proper reporting
+            </summary>
+            <param name="filterContext">Provides the environment that the exception occurred in.</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonConverter">
+            <summary>
+            Converts a datatable's rows and column names into a dataset used by the infor common control grid
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonConverter.CanConvert(System.Type)">
+            <summary>
+            Returns true for ValueType as that's the only thing we can convert.
+            </summary>
+            <param name="objectType">Object type to test against</param>
+            <returns>True if the provided type is ValueType, otherwise returns false</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Attempts to convert the incoming value to a Guid, if that fails then
+            convert to an int32 -- these are the only two types supported as
+            Event identifiers.
+            </summary>
+            <param name="reader">Reader, only the Value property is used</param>
+            <param name="objectType">Object type</param>
+            <param name="existingValue">The parameter is not used.</param>
+            <param name="serializer">The parameter is not used.</param>
+            <returns>The converted value as a Guid or int32</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Converts a dataset into the json format required by the common Grid control's dataset
+            </summary>
+            <param name="writer">The parameter is not used.</param>
+            <param name="value">The parameter is not used.</param>
+            <param name="serializer">The parameter is not used.</param>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonConverter.CanWrite">
+            <summary>
+            Gets the value false.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonConverter.CanRead">
+            <summary>
+            Gets the value true.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.FileUploadJsonResult">
+            <summary>
+            Extension of the JsonResult class that is used to return file upload statuses to a text area.
+            This is a bit of a hack, but so far the best solution to having an ajax-style call for uploading.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.FileUploadJsonResult.ExecuteResult(System.Web.Mvc.ControllerContext)">
+            <summary>
+            Creates a JsonResult wrapped in a text area.
+            </summary>
+            <param name="context">The Controller Context</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonResult">
+            <summary>
+            Class used to convert a datatable into a json result
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonResult.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the DataTableJsonResult class.
+            </summary>
+            <param name="value">Datatable object to convert</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonResult.ExecuteResult(System.Web.Mvc.ControllerContext)">
+            <summary>
+            Method is performed when the new action is created
+            </summary>
+            <param name="context">Context of the request</param>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.JsonSerialization.DataTableJsonResult.Data">
+            <summary>
+            Gets or sets the object to be converted
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic">
+            <summary>
+            Class to assist with handling updates to various property set components
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.Repository">
+            <summary>
+            Repository used to retrieve file property data
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.DataLoadFactory">
+            <summary>
+            Information about the load definition's import type
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.#ctor(Infor.CPMImport.DataAccess.Repository.IRepository,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IDataLoadFactory)">
+            <summary>
+            Initializes a new instance of the PropertySetUpdateLogic class
+            </summary>
+            <param name="repository">Repository to get additional details from</param>
+            <param name="factory">DataLoadFactory, specifically used to assign a default processing option</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.UpdateFileSource(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,Infor.CPMImport.DataAccess.LoadDefinitions.FileSource)">
+            <summary>
+            Updates a file source
+            </summary>
+            <param name="load">The load to retrieve additional information from</param>
+            <param name="newSource">The new details to update with</param>
+            <returns>A completely updated FileSource</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.UpdateDatabaseSource(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Updates a database source
+            </summary>
+            <param name="load">The load to retrieve additional information from</param>
+            <param name="newSource">The new details to update with</param>
+            <returns>A completely updated DatabaseSource</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.UpdateLoadSettings(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,System.Collections.Generic.IList{Infor.CPMImport.DataAccess.LoadDefinitions.LoadSetting})">
+            <summary>
+            Updates a set of load settings
+            </summary>
+            <param name="load">The load to retrieve additional information from</param>
+            <param name="settings">The list of new settings to update/add</param>
+            <returns>A completely updated LoadSetting list</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.UpdateColumnMappings(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,System.Collections.Generic.IList{Infor.CPMImport.DataAccess.LoadDefinitions.ColumnMapping})">
+            <summary>
+            Updates the column mappings
+            </summary>
+            <param name="actual">The existing load definition</param>
+            <param name="mappings">The new column mappings</param>
+            <returns>The new list of column mappings</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.UpdateDataFilters(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,System.Collections.Generic.IList{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Updates the column mappings
+            </summary>
+            <param name="actual">The existing load definition</param>
+            <param name="filters">The DataFilters to update</param>
+            <returns>The new list of column mappings</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.ValidateFileSource(Infor.CPMImport.DataAccess.LoadDefinitions.FileSource)">
+            <summary>
+            Validates a FileSource
+            </summary>
+            <param name="source">FileSource to validate</param>
+            <returns>Validated FileSource ready to save</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.ValidateDatabaseSource(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Validates a DatabaseSource
+            </summary>
+            <param name="source">DatabaseSource to validate</param>
+            <returns>Validated DatabaseSource ready to save</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.ValidateColumnMappings(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Validates each of the column mappings and makes sure they are properly assigned to the load
+            </summary>
+            <param name="load">Load to validate mappings for</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.ValidateDataFilters(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Validates each of the data filters and makes sure they are properly assigned to the load
+            </summary>
+            <param name="load">Load to validate filters for</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.ValidateLoadDefinition(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,System.String)">
+            <summary>
+            Verifies that load definition defaults are in place and nulls are set when full records aren't possible
+            </summary>
+            <param name="load">Load Definition to verify</param>
+            <param name="user">Name of the user</param>
+            <returns>LoadDefinition ready to save to database</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.UpdateLoadDefinition(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,System.String)">
+            <summary>
+            Updates an existing definition
+            </summary>
+            <param name="actualDefinition">Existing definition</param>
+            <param name="newDefinition">Definition object containing new details</param>
+            <param name="userName">The user to save as having performed the update</param>
+            <returns>Updated definition</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.ValidateLoadSettings(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Validates a set of LoadSettings
+            </summary>
+            <param name="load">LoadDefinition to validate settings for</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic.AssignLoadSettingDefaultIfEmpty(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition,System.String,System.String)">
+            <summary>
+            Searches the settings list for a particulary key and sets it to a given default if it does not exist
+            </summary>
+            <param name="load">LoadDefinition to search</param>
+            <param name="key">Key to search for</param>
+            <param name="value">Default value to set to if non-existant</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RegisterGlobalFilters">
+            <summary>
+            Registers all global filters with MVC3 on startup (triggered by Autofac).
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RegisterGlobalFilters.filters">
+            <summary>
+            Global filters to register on startup.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RegisterGlobalFilters.logger">
+            <summary>
+            Our logger.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RegisterGlobalFilters.#ctor(System.Collections.Generic.IEnumerable{Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IGlobalFilter},log4net.ILog)">
+            <summary>
+            Initializes a new instance of the RegisterGlobalFilters class.
+            </summary>
+            <param name="filters">All global filters</param>
+            <param name="logger">our logger</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RegisterGlobalFilters.Start">
+            <summary>
+            Registers all global filters supplied to our constructor with MVC3.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter">
+            <summary>
+            Validates that a user has the permission required to execute the
+            incoming request.  The permission itself is denoted as a value in the
+            route data.
+            </summary>
+            <remarks>
+            This is an IActionFilter, not an IAuthorizationFilter, even though
+            the latter makes more sense.  The problem stems from our support for
+            multiple databases and that the user's role (and hence permissions)
+            cannot be known without connecting to the database.  Thus this filter
+            needs to operating within the boundary of an active transaction.
+            Our TransactionAttribute is an IActionFilter and per MVC3 such filters
+            always run after all IAuthorizationFilters.  Meaning this filter either
+            needs to be within a TransactionAttribute scope or replicate that logic
+            here.  The former makes more sense overall.
+            </remarks>
+            <seealso cref="T:Infor.CPMImport.Common.Security.Permission"/>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter.areaRegistration">
+            <summary>
+            MVC3 area information
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter.resolver">
+            <summary>
+            factory for request scoped items we'll need, such as ICredentials.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter.logger">
+            <summary>
+            Our logger;
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter.#ctor(System.Web.Mvc.AreaRegistration,System.Web.Mvc.IDependencyResolver)">
+            <summary>
+            Initializes a new instance of the RequiredPermissionFilter class.
+            </summary>
+            <param name="areaRegistration">MVC3 area registration within which to confine this filter</param>
+            <param name="resolver">Where to get request scoped entities, such as the current user's credentials</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter.OnActionExecuting(System.Web.Mvc.ActionExecutingContext)">
+            <summary>
+            This method checks if we need to validate the current user's permission on the requested API endpoint.
+            </summary>
+            <param name="filterContext">Provides context on the controller action, e.g. parameter info, method name, etc.</param>
+            <remarks>Although this method is called OnActionExecuting it really it is called before the controller action is invoked</remarks>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter.OnActionExecuted(System.Web.Mvc.ActionExecutedContext)">
+            <summary>
+            Does nothing.
+            </summary>
+            <param name="filterContext">This parameter is not used.</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter.DeterminePermissions(System.String)">
+            <summary>
+            Determine the permissions for a specific user.
+            </summary>
+            <param name="username">User name</param>
+            <returns>Permissions for the user</returns>
+            <remarks>
+            Because some requests have no model we handle the exceptions if
+            IUserRoleQuery cannot be created due to ModelSelector throwing
+            an exception.  Unfortunately that exception is wrapped by the DI
+            framework (Autofac as of this writing) making it harder to spot.
+            </remarks>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter.AllowMultiple">
+            <summary>
+            Gets a value indicating whether 1 == 0.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.RequiredPermissionFilter.Order">
+            <inheritdoc/>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusIcon">
+            <summary>
+            Status icons that the status can take on
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusIcon.Ok">
+            <summary>
+            Ok icon
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusIcon.Warning">
+            <summary>
+            Warning icon
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusIcon.Error">
+            <summary>
+            Error icon
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus">
+            <summary>
+            A status object containing a message and other properties that can be read.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.TimeToExpire">
+            <summary>
+            The time a domain status message takes to expire, and be removed from the list
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.timer">
+            <summary>
+            A timer to determine when to remove this status from the statusManager
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.refToMainList">
+            <summary>
+            A reference to the list that this domain status is in.  Used to remove from list when status expires
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.#ctor">
+            <summary>
+            Initializes a new instance of the WebImportStatus class.  Creates an empty status Milestone.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.#ctor(System.String,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusType,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusAction,System.Boolean,System.Boolean,System.Boolean,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusIcon)">
+            <summary>
+            Initializes a new instance of the WebImportStatus class.  Creates a status item.
+            </summary>
+            <param name="message">Status item's message</param>
+            <param name="type">Status message databaseType (milestone or detail)</param>
+            <param name="action">Status action databaseType (add new or update last existing of this databaseType)</param>
+            <param name="working">Indicates whether or not the loading icon should be displayed for this status</param>
+            <param name="last">Indicates that this is the last status item in the current operation.</param>
+            <param name="final">Indicates that this is the final status item to be sent for the entire set of operations</param>
+            <param name="iconToken">Specifies the icon token</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.#ctor(System.String,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusType,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusAction,System.Boolean,System.Boolean,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusIcon)">
+            <summary>
+            Initializes a new instance of the WebImportStatus class.  Creates a status item.
+            </summary>
+            <param name="message">Status item's message</param>
+            <param name="type">Status message databaseType (milestone or detail)</param>
+            <param name="action">Status action databaseType (add new or update last existing of this databaseType)</param>
+            <param name="working">Indicates whether or not the loading icon should be displayed for this status</param>
+            <param name="last">Indicates that this is the last status item in the current operation.</param>
+            <param name="iconToken">Specifies the icon token</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.StartTimer(System.Collections.Concurrent.ConcurrentDictionary{System.Guid,System.Collections.ObjectModel.Collection{Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus}},System.Guid)">
+            <summary>
+            A method that times elements in the statusManager and removes expired ones
+            </summary>
+            <param name="mainList">The list that we will remove the status from if expires</param>
+            <param name="key">The key to the list of statuses</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.Elapsed_Event(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            The event that actually removes the status from the StatusManager
+            </summary>
+            <param name="sender">Who started the event</param>
+            <param name="e">Parameters that we don't use</param>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.Id">
+            <summary>
+            Gets or sets the unique Id to this status
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.Key">
+            <summary>
+            Gets or sets the key used to remove status from list when expired
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.MessageToken">
+            <summary>
+            Gets or sets the message token that can be sent to be translated on the client-side.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.MessageType">
+            <summary>
+            Gets or sets the Milestone or Detail, where Detail is a sub-item of a Milestone.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.IconToken">
+            <summary>
+            Gets or sets a string token that can be resolved into an Uri to a particular image.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.Action">
+            <summary>
+            Gets or sets AddNew or Update, where AddNew adds a new item to the collection and Update updates the last
+            object of this StatusType.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.IsLast">
+            <summary>
+            Gets or sets a value indicating whether or not this is the last object we send out in a series of sent objects.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.IsFinal">
+            <summary>
+            Gets or sets a value indicating whether or not this is the final status message to be received for this id
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus.Working">
+            <summary>
+            Gets or sets a value indicating whether a task is taking some time and the consumer of this object wants to display
+            some sort of notification.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusAction">
+            <summary>
+            Actions that AdministrationDomainStatus and OpenlinkDomainStatus can take on.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusAction.AddNew">
+            <summary>
+            Add a new item to the status tree
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusAction.UpdateCurrent">
+            <summary>
+            Update the current item of 'this' databaseType in the status tree
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusAction.Discard">
+            <summary>
+            Discard this item instead of adding it.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusManager">
+            <summary>
+            StatusManager allows us to add and retrieve status messages and lists which they compose.
+            It supports multiple concurrent consumers.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusManager.logger">
+            <summary>
+            Logging object which persists throughout all requests to the service.  Provides
+            multiple levels of logging support.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusManager.statusMap">
+            <summary>
+            Dictionary which manages status items for multiple users
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusManager.AddStatus(System.Guid,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.WebImportStatus)">
+            <summary>
+            Adds a status object to the guid-specific collection.
+            </summary>
+            <param name="key">UUID for consumer</param>
+            <param name="status">Status object</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusManager.GetAndRemoveStatuses(System.Guid)">
+            <summary>
+            Returns all statuses of a particular guid-specific collection and also removes them
+            from the current list of statuses.
+            </summary>
+            <param name="key">UUID of consumer</param>
+            <returns>New status objects since last request</returns>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusType">
+            <summary>
+            Status types that AdministrationDomainStatus and OpenlinkDomainStatus can take on.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusType.Milestone">
+            <summary>
+            Milestone item in a status tree
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusType.Detail">
+            <summary>
+            Detail sub-item in a status tree
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.Status.StatusType.Canceled">
+            <summary>
+            Cancelled item in a status tree
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TransactionAttribute">
+            <summary>
+            Class that handles cross cutting concerns with transaction support.
+            Methods/Classes that have this attribute will use NHibernate sessions
+            automatically.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TransactionAttribute.logger">
+            <summary>
+            Our logger, we aren't created by Autofac so this isn't injected.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TransactionAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the TransactionAttribute class.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TransactionAttribute.OnActionExecuting(System.Web.Mvc.ActionExecutingContext)">
+            <summary>
+            This method starts a NHibernate transaction scope.  When the function exits OnResultExcecuted will close the transaction scope.
+            </summary>
+            <param name="filterContext">Provides context on the controller action, e.g. parameter info, method name, etc.</param>
+            <seealso cref="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TransactionAttribute.OnResultExecuted(System.Web.Mvc.ResultExecutedContext)"/>
+            <remarks>Although this method is called OnActionExecuting it really it is called before the controller action is invoked</remarks>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TransactionAttribute.OnResultExecuted(System.Web.Mvc.ResultExecutedContext)">
+            <summary>
+            This method stops a NHibernate transaction scope that OnActionExecuting has opened.
+            </summary>
+            <param name="filterContext">Provides context on the controller action, e.g. parameter info, method name, etc.</param>
+            <seealso cref="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.TransactionAttribute.OnActionExecuting(System.Web.Mvc.ActionExecutingContext)"/>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatabaseSourceController">
+            <summary>
+            Handles database source type
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatabaseSourceController.#ctor(log4net.ILog,Infor.PM.Security.ICredentials)">
+            <summary>
+            Initializes a new instance of the DatabaseSourceController class.
+            </summary>
+            <param name="logger">Logger to use</param>
+            <param name="credentials">The credentials of the user accessing the service</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatabaseSourceController.DatasourceList">
+            <summary>
+            Gets a list of datasources
+            </summary>
+            <returns>JSON encoded datasource names list</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatabaseSourceController.GetTables(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Gets a list of table names by a given connection information
+            </summary>
+            <param name="sourceConnection">The database source object used to connect to source database</param>
+            <returns>JSON encoded table names list</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatabaseSourceController.GetFields(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource,System.String)">
+            <summary>
+            Gets a list of field names by a given table name and connection information
+            </summary>
+            <param name="sourceConnection">The database source object used to connect to source database</param>
+            <param name="tableName">The table name to retrive fields from it</param>
+            <returns>JSON encoded field names list</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatabaseSourceController.TestCredentials(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource)">
+            <summary>
+            Tests whether or not the given credentials work for the datasource
+            </summary>
+            <param name="source">DatabaseSource containing at least the connection definition name and credentials object</param>
+            <returns>Whether or not a test connection was successful</returns>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatabaseSourceController.Logger">
+            <summary>
+            Gets or sets the Logger.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatabaseSourceController.Credentials">
+            <summary>
+             Gets or sets the database credentials
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController">
+            <summary>
+            Handles communication with the IDataLoad implementation as well as retrieving data from the source
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.BusinessLayer">
+            <summary>
+            An IDataLoad implementation to access the business logic with
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.Repository">
+            <summary>
+            Repository to access the database objects
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.SourceHandlerFactory">
+            <summary>
+            SourceHandler creation factory
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.clientStatusGuid">
+            <summary>
+            Guid specified by the client at import time
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.#ctor(Infor.CPMImport.DataAccess.Repository.IRepository,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IDataLoadFactory,Infor.CPMImport.DataAccess.Source.ISourceHandlerFactory,Infor.PM.Security.ICredentials,log4net.ILog)">
+            <summary>
+            Initializes a new instance of the DataLoadController class.
+            </summary>
+            <param name="repository">Hibernate repository to communicate with for specific details about a load</param>
+            <param name="dataLoadFactory">Factory used to create correct instance of IDataLoad</param>
+            <param name="sourceHandlerFactory">Factory to create the source handler when needed</param>
+            <param name="credentials">The credentials of the user accessing the service</param>
+            <param name="logger">The logger to use</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.ImportTypes">
+            <summary>
+            Retrieves the list of possible import types
+            </summary>
+            <remarks>
+            Ideally this should be returned with Autofac instead of a hard coded list when we actually use this list in the future.
+            </remarks>
+            <returns>List of import type ids and translated names</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.LoadTypes">
+            <summary>
+            Retrieves the list of load types available for the import
+            </summary>
+            <returns>List of load types</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.TargetFields(System.String)">
+            <summary>
+            Retrieve the target fields for a given load type
+            </summary>
+            <param name="loadType">The load type</param>
+            <returns>Json formatted collection of target fields</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.ProcessingOptions(System.String)">
+            <summary>
+            Retrieves the processing options to display on the UI
+            </summary>
+            <param name="loadType">The type to get the processing options for</param>
+            <returns>An array of processing options in string format</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.SourcePreview(Infor.CPMImport.DataAccess.LoadDefinitions.FileSource,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Gets the source preview for a file
+            </summary>
+            <param name="source">The file source details to use for previewing</param>
+            <param name="filters">Data filters to apply to the source</param>
+            <returns>Preview details in JSON format</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.DatabaseSourcePreview(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource,System.Collections.Generic.ICollection{Infor.CPMImport.DataAccess.LoadDefinitions.DataFilter})">
+            <summary>
+            Gets preview data for database source
+            </summary>
+            <param name="sourceConnection">The database source details to use for previewing</param>
+            <param name="filters">Data filters to apply to the source</param>
+            <returns>The data for preview</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.GetAllStatuses(System.Guid)">
+            <summary>
+            Retrieves all statuses for a specified key. This request is not idempotent.
+            A request removes all statuses from the status queue and can not be retrieved again.
+            </summary>
+            <param name="key">The key for the specified statuses</param>
+            <returns>A list of statuses for a specified key</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.Import(System.Collections.ObjectModel.Collection{Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition},System.Guid)">
+            <summary>
+            Performs an import for a specific load definition
+            </summary>
+            <param name="loads">The load definitions with database credentials attached</param>
+            <param name="clientId">Client ID to register the import status for</param>
+            <returns>Success indication or any error</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.DatabaseSourceFilterValues(Infor.CPMImport.DataAccess.LoadDefinitions.DatabaseSource,System.String)">
+            <summary>
+            Gets a list of values by a given connection information and a column name
+            </summary>
+            <param name="sourceConnection">The DatabaseSource object contain connection information to the source database</param>
+            <param name="column">The column name to get vaules for</param>
+            <returns>JSON encoded filter value list</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.FileSourceFilterValues(Infor.CPMImport.DataAccess.LoadDefinitions.FileSource,System.String)">
+            <summary>
+            Gets a list of values by a given source file and a column name
+            </summary>
+            <param name="source">The FileSource object contain connection information to the source</param>
+            <param name="column">The column name to get vaules for</param>
+            <returns>JSON encoded filter value list</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.PrepareImportLoads(System.Collections.ObjectModel.Collection{Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition})">
+            <summary>
+            Prepares a List of LoadDefinitions in the correct order for import
+            </summary>
+            <param name="loads">The definitions to retrieve imports for, containing ID and database credentials</param>
+            <returns>An order-sensitive list of loads to be run</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.PrepareImportColumnMappings(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Prepares a List of ColumnMappings in the correct order for import
+            </summary>
+            <param name="load">The definition to retrieve mappings for</param>
+            <returns>An order-sensitive list of ColumnMappings</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.GetTargetFieldsForLoad(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Provides a list of target fields for the load with the member format already set
+            </summary>
+            <param name="load">Load definition to provide the list for</param>
+            <returns>Collection of ITargetFields</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.PerformImport(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Performs the import for a single load
+            </summary>
+            <param name="load">Load to run import on</param>
+            <returns>Audit details for the import</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.UpdateImportStatus(System.Object,Infor.CPMImport.Common.NewStatusEventArgs)">
+            <summary>
+            Event handler that collects status messages from the import process
+            </summary>
+            <param name="sender">Import process</param>
+            <param name="e">Factory Event Arguments holding the message</param>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.Logger">
+            <summary>
+            Gets or sets the Logger.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DataLoadController.Credentials">
+            <summary>
+             Gets or sets the database credentials
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatasourceController">
+            <summary>
+            Handles management of the datasources used by the load definitions
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatasourceController.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the DatasourceController class.
+            </summary>
+            <param name="logger">Logger to use</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatasourceController.Models">
+            <summary>
+            Returns a list of dimensions for the given connection definition
+            </summary>
+            <returns>JSON encoded dimensionName list</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatasourceController.Authorize">
+            <summary>
+            Used to verify a user's access to a selected database quickly before we attempt to load the rest of the data
+            </summary>
+            <remarks>This is marked as a transaction so it also checks the schema version before allowing access.</remarks>
+            <returns>True if user has access</returns>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.DatasourceController.Logger">
+            <summary>
+            Gets or sets the Logger.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.FileSourceController">
+            <summary>
+            Handles management of the datasources used by the load definitions
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.FileSourceController.Encryption">
+            <summary>
+            Encryption library used to save files in encrypted state
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.FileSourceController.#ctor(log4net.ILog,Infor.CPMImport.DataAccess.Source.IFileEncryption)">
+            <summary>
+            Initializes a new instance of the FileSourceController class.
+            </summary>
+            <param name="logger">Logger to use</param>
+            <param name="fileEncryption">FileEncryption logic to use on upload</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.FileSourceController.UploadFile(System.Web.HttpPostedFileBase)">
+            <summary>
+            Uploads a file to the File Sources directory
+            </summary>
+            <param name="sourceFile">File to upload</param>
+            <returns>Result of the upload attempt</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.FileSourceController.CopyFiles(System.String)">
+            <summary>
+            Copy sample files from specified language folder to the File Sources directory (UploadFiles folder)
+            </summary>
+            <param name="language">Language to copy from</param>
+            <returns>Result of the copy action</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.FileSourceController.FileList">
+            <summary>
+            Retrieves a list of all the uploaded files
+            </summary>
+            <returns>Json formatted list of files</returns>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.FileSourceController.Logger">
+            <summary>
+            Gets or sets the Logger.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController">
+            <summary>
+            Controller handles all load definition saving/updating/etc
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.Repository">
+            <summary>
+            Repository used to retrieve file property data
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.LoadUpdate">
+            <summary>
+            Update logic utility to handle performing saves and updates
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.ReportGenerator">
+            <summary>
+            Utiligy to create excel error files
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.Credentials">
+            <summary>
+            Security credentials from PM
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.Factory">
+            <summary>
+            An IDataLoad implementation to access the business logic with
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.#ctor(Infor.CPMImport.DataAccess.Repository.IRepository,log4net.ILog,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.IDataLoadFactory,Infor.PM.Security.ICredentials,Infor.CPMImport.Web.Areas.CPMImport.Controllers.ControllerSupport.PropertySetUpdateLogic,Infor.CPMImport.DataAccess.FileManagement.ILoadStatusWorkbook)">
+            <summary>
+            Initializes a new instance of the LoadDefinitionController class.
+            </summary>
+            <param name="repository">Repository used to access the load definition properties</param>
+            <param name="logger">Logger to use</param>
+            <param name="factory">Factory used to create correct instance of IDataLoad</param>
+            <param name="credentials">The credentials of the user accessing the service</param>
+            <param name="loadUpdate">LoadUpdate logic to be used</param>
+            <param name="reportGenerator">Utility used to general excel reports</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.GetLoadDefinition(System.Guid)">
+            <summary>
+            Gets the load definition properties for a given id
+            </summary>
+            <param name="definitionId">The load definition id</param>
+            <returns>Load definition details</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.GetLoadDefinitionId(System.String,System.String)">
+            <summary>
+            Gets the load definition id by a given name
+            </summary>
+            <param name="loadGroup">The group load name used to retrieve load defintion in that group</param>
+            <param name="definitionName">The load definition name to retrieve the object</param>
+            <returns>The load definition object</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.GetErrorReport(System.Guid,System.String)">
+            <summary>
+            Returns an xlsx workbook with the error details
+            </summary>
+            <param name="definitionId">Definition id of the load to return a report for</param>
+            <param name="reportType">Type of report to return</param>
+            <returns>Error workbook</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.GetLoadErrors(System.Guid,System.String)">
+            <summary>
+            Retrieves the load error details in json format
+            </summary>
+            <param name="definitionId">The load definition to retrieve errors for</param>
+            <param name="reportType">Type of report to return</param>
+            <returns>Json formatted grid settings and errors for the load status</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.GetLoadDefinitionList(System.Guid)">
+            <summary>
+            Gets the list of load definitions for a given load group
+            </summary>
+            <param name="groupId">Guid for the parent group</param>
+            <returns>Json formated list of load definitions</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.CreateLoadDefinition(System.Guid,Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Creates a new load definition with some basic properties
+            </summary>
+            <param name="groupId">Group the definition is associated with</param>
+            <param name="loadDefinition">The load definition to create</param>
+            <returns>The id of the newly created object</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.SaveLoadDefinition(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition)">
+            <summary>
+            Saves the load definition details
+            </summary>
+            <param name="loadDefinition">Load definition details to save</param>
+            <returns>ID of the created load definition</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.UpdateSettings(System.Collections.ObjectModel.Collection{Infor.CPMImport.DataAccess.LoadDefinitions.LoadSetting})">
+            <summary>
+            Updates load definition settings
+            </summary>
+            <param name="settings">List of settings to update</param>
+            <returns>Execution result</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.DeleteLoadDefinitions(Infor.CPMImport.DataAccess.LoadDefinitions.LoadDefinition[])">
+            <summary>
+            Deletes a load definition
+            </summary>
+            <param name="loadDefinitions">The definitions to be deleted</param>
+            <returns>Execution result</returns>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadDefinitionController.Logger">
+            <summary>
+            Gets or sets the Logger.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadGroupController">
+            <summary>
+            Controller handles all load definition saving/updating/etc
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadGroupController.Repository">
+            <summary>
+            Repository used to retrieve file property data
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadGroupController.#ctor(Infor.CPMImport.DataAccess.Repository.IRepository,log4net.ILog,Infor.PM.Security.ICredentials)">
+            <summary>
+            Initializes a new instance of the LoadGroupController class.
+            </summary>
+            <param name="repository">Repository used to access the load definition properties</param>
+            <param name="logger">Logger to use</param>
+            <param name="credentials">The credentials of the user accessing the service</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadGroupController.GetLoadGroups(System.String)">
+            <summary>
+            Gets the load definition properties for a given id
+            </summary>
+            <param name="loadType">The import type to filter the groups on</param>
+            <returns>List of load groups</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadGroupController.CreateLoadGroup(Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup)">
+            <summary>
+            Creates a new rough load group and returns it to the UI for fields to 
+            be updated there
+            </summary>
+            <param name="loadGroup">Load Group definition for the object being created</param>
+            <returns>Load group data for created object</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadGroupController.UpdateLoadGroup(Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup)">
+            <summary>
+            Saves load group details
+            </summary>
+            <param name="loadGroup">The group to save</param>
+            <returns>The updated details of the load group</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadGroupController.DeleteLoadGroups(Infor.CPMImport.DataAccess.LoadDefinitions.LoadGroup[])">
+            <summary>
+            Deletes a load group
+            </summary>
+            <param name="loadGroups">The load groups to be deleted</param>
+            <returns>Execution result</returns>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadGroupController.Logger">
+            <summary>
+            Gets or sets the Logger.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Areas.CPMImport.Controllers.LoadGroupController.Credentials">
+            <summary>
+            Gets or sets the ICredentials
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ResourceController">
+            <summary>
+            Handles various resource and utility calls needed by the UI
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ResourceController.ApplicationPrefix">
+            <summary>
+            The prefix for this particular MVC application's routes
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ResourceController.Logger">
+            <summary>
+            Repository used to retrieve file property data
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ResourceController.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the ResourceController class.
+            </summary>
+            <param name="logger">Logger to use</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ResourceController.Index">
+            <summary>
+            Returns the index viwe
+            </summary>
+            <returns>Index view</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ResourceController.Locale">
+            <summary>
+            Returns the locale for client side language resources
+            </summary>
+            <returns>JSON containing the user's locale</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ResourceController.GetStringResources(System.String)">
+            <summary>
+            Gives the string resources for translations
+            </summary>
+            <param name="resourceFile">The resource json file with translations</param>
+            <returns>Json containing all string resources</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Areas.CPMImport.Controllers.ResourceController.GenerateGuid">
+            <summary>
+            Generates a GUID
+            </summary>
+            <returns>string representation of GUID</returns>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Exceptions.DataImportException">
+            <summary>
+            Exception thrown when the Import Server occurs during the import process.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.DataImportException.#ctor">
+            <summary>
+            Initializes a new instance of the DataImportException class.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.DataImportException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DataImportException class.
+            </summary>
+            <param name="message">Exception message</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.DataImportException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the DataImportException class.
+            </summary>
+            <param name="message">Exception message</param>
+            <param name="innerException">Wrapped exception</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.DataImportException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the DataImportException class.
+            </summary>
+            <param name="info">Serialization information</param>
+            <param name="context">streaming context</param>
+            <remarks>
+            Required by CA1032.
+            </remarks>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Exceptions.PermissionViolationException">
+            <summary>
+            Exception thrown when a request cannot be handled due to an
+            authorization problem.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.PermissionViolationException.#ctor(Infor.CPMImport.Common.Security.Permission)">
+            <summary>
+            Initializes a new instance of the PermissionViolationException class.
+            </summary>
+            <param name="requiredPermission">Permission required but not possessed.</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.PermissionViolationException.#ctor">
+            <summary>
+            Initializes a new instance of the PermissionViolationException class.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.PermissionViolationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the PermissionViolationException class.
+            </summary>
+            <param name="message">Exception message</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.PermissionViolationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the PermissionViolationException class.
+            </summary>
+            <param name="message">Exception message</param>
+            <param name="innerException">Wrapped exception</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.PermissionViolationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the PermissionViolationException class.
+            </summary>
+            <param name="info">Serialization information</param>
+            <param name="context">streaming context</param>
+            <remarks>
+            Required by CA1032.
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Exceptions.PermissionViolationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+            <remarks>
+            Required by CA2240 (Implement ISerializable correctly).
+            </remarks>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Exceptions.PermissionViolationException.RequiredPermission">
+            <summary>
+            Gets the permission required for the requested action.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Initializer">
+            <summary>
+            Contains code that should only be executed once on application start.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Initializer.Initialize">
+            <summary>
+            Sets up CrystalReport's routes and filter information
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Initializer.RegisterGlobalFilters(System.Web.Mvc.GlobalFilterCollection)">
+            <summary>
+            Registers the global filters.
+            </summary>
+            <param name="filters">Collection of filters to register.</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.Initializer.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            Registers the routes.
+            </summary>
+            <param name="routes">A collection of routes.</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.NameCapturingRouteAdder">
+            <summary>
+            Helper for adding routes that captures the route name and stores it as
+            DataTokens["name"].  Otherwise the name of the route is not available
+            because the underlying frameworks don't expose it.
+            </summary>
+            <remarks>
+            Because the MapRoute calls used by Web Architect are MVC3 extension
+            methods, "overriding" them via a RouteCollection subclass is not
+            straightforward.  This solution is simplier and easier to follow.
+            </remarks>
+            <remarks>
+            Routes are added via the AreaRegistrationContext route methods
+            (apparently Microsoft also discovered that overriding extension methods
+            is hard).  Doing so causes DataTokens["area"] to be set as well.
+            </remarks>
+        </member>
+        <member name="F:Infor.CPMImport.Web.NameCapturingRouteAdder.areaRegistration">
+            <summary>
+            Area context, used to register routes.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.NameCapturingRouteAdder.#ctor(System.Web.Mvc.AreaRegistrationContext)">
+            <summary>
+            Initializes a new instance of the NameCapturingRouteAdder class.
+            </summary>
+            <param name="areaRegistration">Area in which to register routes</param>
+        </member>
+        <member name="M:Infor.CPMImport.Web.NameCapturingRouteAdder.MapRoute(System.String,System.String,System.Object,System.Object)">
+            <summary>
+            Maps the specified URL route and sets default route values and constraints,
+            the name of the route is captured as DataTokens["name"].
+            </summary>
+            <param name="name">The name of the route to map.</param>
+            <param name="url">The URL pattern for the route.</param>
+            <param name="defaults">An object that contains default route values.</param>
+            <param name="constraints">A set of expressions that specify values for the url parameter.</param>
+            <returns>A reference to the mapped route.</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.NameCapturingRouteAdder.MapRoute(System.String,System.String,System.Object,System.Object,System.String[])">
+            <summary>
+            Maps the specified URL route and sets default route values and constraints,
+            the name of the route is captured as DataTokens["name"].
+            </summary>
+            <param name="name">The name of the route to map.</param>
+            <param name="url">The URL pattern for the route.</param>
+            <param name="defaults">An object that contains default route values.</param>
+            <param name="constraints">A set of expressions that specify values for the url parameter.</param>
+            <param name="namespaces">Array of namespaces in which to look for controllers</param>
+            <returns>A reference to the mapped route.</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.NameCapturingRouteAdder.MapRoute(System.String,System.String,System.Object,System.String[])">
+            <summary>
+            Maps the specified URL route and sets default route values and constraints,
+            the name of the route is captured as DataTokens["name"].
+            </summary>
+            <param name="name">The name of the route to map.</param>
+            <param name="url">The URL pattern for the route.</param>
+            <param name="defaults">An object that contains default route values.</param>
+            <param name="namespaces">Array of namespaces in which to look for controllers</param>
+            <returns>A reference to the mapped route.</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.NameCapturingRouteAdder.MapRoute(System.String,System.String,System.Object)">
+            <summary>
+            Maps the specified URL route and sets default route values,
+            the name of the route is captured as DataTokens["name"].
+            </summary>
+            <param name="name">The name of the route to map.</param>
+            <param name="url">The URL pattern for the route.</param>
+            <param name="defaults">An object that contains default route values.</param>
+            <returns>A reference to the mapped route.</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Web.NameCapturingRouteAdder.IgnoreRoute(System.String)">
+            <summary>
+            Ignores the specified URL route for the given list of available routes.
+            </summary>
+            <param name="url">The URL pattern for the route to ignore.</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.NoOpCssMinify">
+            <summary>
+            This class does a noop css minify. It's used in debug so the css is
+            readable.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.NoOpCssMinify.Process(Microsoft.Web.Optimization.BundleResponse)">
+            <summary>
+            Process function for the noop css transform. Does nothing.
+            </summary>
+            <param name="bundle">The bundle being transformed</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.NoOpJavaScriptMinify">
+            <summary>
+            Used for the noop JavaScript minify. Used in debug
+            so the JavaScript is readable.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Web.NoOpJavaScriptMinify.Process(Microsoft.Web.Optimization.BundleResponse)">
+            <summary>
+            The process function for the noop JavaScript case.
+            </summary>
+            <param name="bundle">The bundle being transformed</param>
+        </member>
+        <member name="T:Infor.CPMImport.Web.Resources.ImportClient">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.AccessDenied">
+            <summary>
+              Looks up a localized string similar to User does not have access to this model. Administrator role is required for this function..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Anonymous">
+            <summary>
+              Looks up a localized string similar to Anonymous.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ApplicationTitle">
+            <summary>
+              Looks up a localized string similar to Workforce Budgeting Administration - Import.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Ascending">
+            <summary>
+              Looks up a localized string similar to Ascending.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.AuthenticationChecks">
+            <summary>
+              Looks up a localized string similar to Performing authentication checks.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.AutoMap">
+            <summary>
+              Looks up a localized string similar to Auto Map.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.BASIC_SOURCE_CONNECTION_SUCCESS">
+            <summary>
+              Looks up a localized string similar to Connection successful..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.BrowseSourceFile">
+            <summary>
+              Looks up a localized string similar to Upload File.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Cancel">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.CaseInsensitive">
+            <summary>
+              Looks up a localized string similar to Case insensitive.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Clear">
+            <summary>
+              Looks up a localized string similar to Clear.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ClearAndLoad">
+            <summary>
+              Looks up a localized string similar to Clear and load.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ClearAndLoad_Description">
+             <summary>
+               Looks up a localized string similar to Clear and load removes all existing target data and all dependent data before loading the new data.  
+            
+            Dependent information can include other definitions, assignments, or calculated budgets that reference the data being removed.  The deleted data cannot be retrieved..
+             </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ClickToAddNewSort">
+            <summary>
+              Looks up a localized string similar to Add sort on another column.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ClickToDecreaseSortPriority">
+            <summary>
+              Looks up a localized string similar to Decrease sort priority.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ClickToIncreaseSortPriority">
+            <summary>
+              Looks up a localized string similar to Increase sort priority.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ClickToRemoveSort">
+            <summary>
+              Looks up a localized string similar to Remove sort from selected columns.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ClientId">
+            <summary>
+              Looks up a localized string similar to Client Identifier.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Close">
+            <summary>
+              Looks up a localized string similar to Close.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ColumnMapping">
+            <summary>
+              Looks up a localized string similar to Column Mapping.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ColumnOption">
+            <summary>
+              Looks up a localized string similar to Column.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Component">
+            <summary>
+              Looks up a localized string similar to Component.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Connect">
+            <summary>
+              Looks up a localized string similar to Connect.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Connected">
+            <summary>
+              Looks up a localized string similar to Connected.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ConnectedToModel">
+            <summary>
+              Looks up a localized string similar to Connected.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ConnectingToDatasource">
+            <summary>
+              Looks up a localized string similar to Connecting to selected datasource.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ConnectionName">
+            <summary>
+              Looks up a localized string similar to Connection.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ConnectionNotFound">
+            <summary>
+              Looks up a localized string similar to The &apos;model&apos; parameter specified was not found..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.CPMDimConfig">
+            <summary>
+              Looks up a localized string similar to CPM Dimension Configuration.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.CPMMember">
+            <summary>
+              Looks up a localized string similar to CPM Member.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.CPMModel">
+            <summary>
+              Looks up a localized string similar to CPM Model.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Create">
+            <summary>
+              Looks up a localized string similar to Create.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.CreatedBy">
+            <summary>
+              Looks up a localized string similar to Created By.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.CreatedOn">
+            <summary>
+              Looks up a localized string similar to Created On.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.CreateNewDefinitionTip">
+            <summary>
+              Looks up a localized string similar to Click on the new icon above to create a load definition.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.CreateNewGroupTip">
+            <summary>
+              Looks up a localized string similar to Click on the new icon above to create a load group.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Database">
+            <summary>
+              Looks up a localized string similar to Database.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.DatabaseDescription">
+            <summary>
+              Looks up a localized string similar to Database Description.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.DatabaseSourceLogon">
+            <summary>
+              Looks up a localized string similar to Database Source Login.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Datasource">
+            <summary>
+              Looks up a localized string similar to Data Source.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.DateFormat">
+            <summary>
+              Looks up a localized string similar to Date Format.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.DecimalFormat">
+            <summary>
+              Looks up a localized string similar to Decimal Format.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.DefaultGroupName">
+            <summary>
+              Looks up a localized string similar to New Load Group.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.DefaultOption">
+            <summary>
+              Looks up a localized string similar to Default.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Delimiter">
+            <summary>
+              Looks up a localized string similar to Delimiter.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Descending">
+            <summary>
+              Looks up a localized string similar to Descending.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Description">
+            <summary>
+              Looks up a localized string similar to Description.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Details">
+            <summary>
+              Looks up a localized string similar to Details.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Dimensions">
+            <summary>
+              Looks up a localized string similar to Dimensions.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Dot">
+            <summary>
+              Looks up a localized string similar to ....
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.drag">
+            <summary>
+              Looks up a localized string similar to drag.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Edit">
+            <summary>
+              Looks up a localized string similar to Edit.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Employee">
+            <summary>
+              Looks up a localized string similar to Employee.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.EndOfData">
+            <summary>
+              Looks up a localized string similar to End Of Data.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.EndRowMustBeLargerThanStartRow">
+            <summary>
+              Looks up a localized string similar to The value of the end of data row must be greater than the value of the start of data row..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.EndTimestamp">
+            <summary>
+              Looks up a localized string similar to End Timestamp.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.EnterLoadGroupDescription">
+            <summary>
+              Looks up a localized string similar to Enter Load Group Description.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.EnterLoadGroupName">
+            <summary>
+              Looks up a localized string similar to Enter Load Group Name.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Error">
+            <summary>
+              Looks up a localized string similar to Error.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_BASIC_SOURCE_CONNECTION_FAILURE">
+            <summary>
+              Looks up a localized string similar to User name and password provided could not be used to log on.  Please try again..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_DELETE">
+            <summary>
+              Looks up a localized string similar to Error deleting the selected items..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_DOWNLOADING_SPREADSHEET">
+            <summary>
+              Looks up a localized string similar to Unable to download error report..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_FILE_FORMAT">
+            <summary>
+              Looks up a localized string similar to Files must be in .txt or .csv format.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_FILE_NOT_ON_SERVER">
+            <summary>
+              Looks up a localized string similar to Previously saved file could not be found on the server.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_FILE_SAVE">
+            <summary>
+              Looks up a localized string similar to Server was unable to save the file.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_FILE_SIZE">
+            <summary>
+              Looks up a localized string similar to File size limit exceeded.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_GETTING_FIELDS">
+            <summary>
+              Looks up a localized string similar to Could not retrieve field list from the table..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_GETTING_TABLES">
+            <summary>
+              Looks up a localized string similar to Unable to retrieve source table list.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_IMPORT_AUTHENTICATION_FAILED">
+            <summary>
+              Looks up a localized string similar to Successful datasource authentication must occur prior to import..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_INTEGRATED_SOURCE_CONNECTION_FAILURE">
+            <summary>
+              Looks up a localized string similar to Integrated log on failed for data source..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_LOADDEF_CREATE">
+            <summary>
+              Looks up a localized string similar to Load definition name must be unique..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_LOADDEF_SAVE">
+            <summary>
+              Looks up a localized string similar to Unable to save load definition details..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_LOADGROUP_CREATE">
+            <summary>
+              Looks up a localized string similar to Error creating load group..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_LOADING_LOAD_DEFINITIONS">
+            <summary>
+              Looks up a localized string similar to Unable to retrieve list of load definitions.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_MULT_LOAD_SELECTION">
+            <summary>
+              Looks up a localized string similar to Please select a single load definition.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_MULTI_GROUP_SELECTION">
+            <summary>
+              Looks up a localized string similar to Please select a single load group.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_RETRIEVING_CLIENT_ID">
+            <summary>
+              Looks up a localized string similar to Unable to retrieve client id from the server.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_RETRIEVING_ERROR_PREVIEW">
+            <summary>
+              Looks up a localized string similar to There was a problem generating the error report. Please see the CPMImport log for details..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_RETRIEVING_LOAD_GROUPS">
+            <summary>
+              Looks up a localized string similar to Unable to retrieve the load groups.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_RETRIEVING_LOAD_TYPES">
+            <summary>
+              Looks up a localized string similar to Unable to retrieve load types.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_SOURCES_UNDEFINED">
+            <summary>
+              Looks up a localized string similar to The following loads must have sources defined: .
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_UNMAPPED_COLUMNS">
+            <summary>
+              Looks up a localized string similar to All required columns must be mapped before the import can be run.  Missing columns: {0}.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ERROR_UPDATING_LOAD_GROUP">
+            <summary>
+              Looks up a localized string similar to Group details failed to save.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ErroredRecords">
+            <summary>
+              Looks up a localized string similar to Errored Records.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ErrorReport">
+            <summary>
+              Looks up a localized string similar to Error Report.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Field">
+            <summary>
+              Looks up a localized string similar to Field.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FieldMustBeUnique">
+            <summary>
+              Looks up a localized string similar to Field names must be unique.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Fields">
+            <summary>
+              Looks up a localized string similar to Fields.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FieldSelection">
+            <summary>
+              Looks up a localized string similar to Field Selection.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FieldsToMap">
+            <summary>
+              Looks up a localized string similar to Fields to Map.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.File">
+            <summary>
+              Looks up a localized string similar to File.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FileDescription">
+            <summary>
+              Looks up a localized string similar to File Description.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FileExportMaxRows">
+            <summary>
+              Looks up a localized string similar to This export file has hit the maximum of 50,000 rows..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FileFormat">
+            <summary>
+              Looks up a localized string similar to File Format.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FileSize">
+            <summary>
+              Looks up a localized string similar to File Size.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FileTooLargeToPreview">
+            <summary>
+              Looks up a localized string similar to Report is too large to preview..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FileTooLargeWarning">
+            <summary>
+              Looks up a localized string similar to The report selected is too large to preview. Please download the report in spreadsheet form to view..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FileUpload">
+            <summary>
+              Looks up a localized string similar to File Upload.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Filter">
+            <summary>
+              Looks up a localized string similar to Filter.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FilterOn">
+            <summary>
+              Looks up a localized string similar to Filter on:.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Finish">
+            <summary>
+              Looks up a localized string similar to Finish.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.FullReport">
+            <summary>
+              Looks up a localized string similar to Full Report.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Header">
+            <summary>
+              Looks up a localized string similar to Header.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Hierarchies">
+            <summary>
+              Looks up a localized string similar to Hierarchies.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Hourly">
+            <summary>
+              Looks up a localized string similar to Hourly.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IgnoreErrors">
+            <summary>
+              Looks up a localized string similar to Ignore Errors.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Import">
+            <summary>
+              Looks up a localized string similar to Import.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IMPORT_CONFIRMATION_LONG">
+            <summary>
+              Looks up a localized string similar to Are you sure you wish to import these load definitions?.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IMPORT_CONFIRMATION_SHORT">
+            <summary>
+              Looks up a localized string similar to The selected loads will be imported..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IMPORT_FLAG_CLEARANDLOAD">
+            <summary>
+              Looks up a localized string similar to Clear And Load.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IMPORT_FLAG_OVERWRITE">
+            <summary>
+              Looks up a localized string similar to Overwrite.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IMPORT_STATUS_BEGUN">
+            <summary>
+              Looks up a localized string similar to Import Started.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IMPORT_STATUS_ERROR">
+            <summary>
+              Looks up a localized string similar to There was an error importing the load, canceling remaining imports..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ImportComplete">
+            <summary>
+              Looks up a localized string similar to Import process complete..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ImportGroup">
+            <summary>
+              Looks up a localized string similar to Import Group.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ImportStatus">
+            <summary>
+              Looks up a localized string similar to Import Status.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ImportType">
+            <summary>
+              Looks up a localized string similar to Import Type.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ImportTypeNotFound">
+            <summary>
+              Looks up a localized string similar to The &apos;importtype&apos; parameter specified was not found..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.InitialConnectionMessage">
+            <summary>
+              Looks up a localized string similar to Please select a model.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Insert">
+            <summary>
+              Looks up a localized string similar to Insert.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Insert_Description">
+            <summary>
+              Looks up a localized string similar to Insert will only create new records and not update any existing records..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.InsertWithUpdate">
+            <summary>
+              Looks up a localized string similar to Insert With Update.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.InsertWithUpdate_Description">
+            <summary>
+              Looks up a localized string similar to Insert with updates adds new records and updates existing records..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.InvalidLengthValue">
+            <summary>
+              Looks up a localized string similar to Length number cannot be greater than the length of selected value..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.InvalidSelection">
+            <summary>
+              Looks up a localized string similar to Invalid Selection.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.InvalidStartOrLength">
+            <summary>
+              Looks up a localized string similar to Start number plus length exceeds the length of selected value..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.InvalidStartValue">
+            <summary>
+              Looks up a localized string similar to Start number cannot be greater than the length of selected value..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsBetween">
+            <summary>
+              Looks up a localized string similar to Is between.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsEqualTo">
+            <summary>
+              Looks up a localized string similar to Is equal to.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsGreaterThan">
+            <summary>
+              Looks up a localized string similar to Is greater than.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsGreaterThanOrEqualTo">
+            <summary>
+              Looks up a localized string similar to Is greater than or equal to.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsLessThan">
+            <summary>
+              Looks up a localized string similar to Is less than.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsLessThanOrEqualTo">
+            <summary>
+              Looks up a localized string similar to Is less than or equal to.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsLike">
+            <summary>
+              Looks up a localized string similar to Is like.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsNotEqualTo">
+            <summary>
+              Looks up a localized string similar to Is not equal to.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsNotLike">
+            <summary>
+              Looks up a localized string similar to Is not like.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsNotNull">
+            <summary>
+              Looks up a localized string similar to Is not null.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsNotOneOf">
+            <summary>
+              Looks up a localized string similar to Is not one of.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsNull">
+            <summary>
+              Looks up a localized string similar to Is null.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.IsOneOf">
+            <summary>
+              Looks up a localized string similar to Is one of.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LastRun">
+            <summary>
+              Looks up a localized string similar to Last Run.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LastUserToRun">
+            <summary>
+              Looks up a localized string similar to Last User To Run.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Length">
+            <summary>
+              Looks up a localized string similar to Length.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Load">
+            <summary>
+              Looks up a localized string similar to Load.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadDefault">
+            <summary>
+              Looks up a localized string similar to Load Default.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadDefinitionName">
+            <summary>
+              Looks up a localized string similar to Load Name.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadDefinitions">
+            <summary>
+              Looks up a localized string similar to Load Definition.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadDefSaveSuccessful">
+            <summary>
+              Looks up a localized string similar to Load definition has saved successfully..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadGroups">
+            <summary>
+              Looks up a localized string similar to Load Groups.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Loading">
+            <summary>
+              Looks up a localized string similar to Loading.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Loads">
+            <summary>
+              Looks up a localized string similar to Loads.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadStatus">
+            <summary>
+              Looks up a localized string similar to Load Status.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadStatus_Incomplete">
+            <summary>
+              Looks up a localized string similar to Incomplete.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadStatus_Loaded">
+            <summary>
+              Looks up a localized string similar to Loaded.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadStatus_NotRun">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadStatus_Unsuccessful">
+            <summary>
+              Looks up a localized string similar to Unsuccessful.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadTime">
+            <summary>
+              Looks up a localized string similar to Load Time.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.LoadType">
+            <summary>
+              Looks up a localized string similar to Load Type.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Member">
+            <summary>
+              Looks up a localized string similar to Member.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.MemberIDOption">
+            <summary>
+              Looks up a localized string similar to Member ID.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.MemberMapping">
+            <summary>
+              Looks up a localized string similar to Member Mapping.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.MemberOption">
+            <summary>
+              Looks up a localized string similar to Member.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.MemberSelection">
+            <summary>
+              Looks up a localized string similar to Member Selection.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.MESSAGE_LONG_DELETE_CONFIRMATION">
+            <summary>
+              Looks up a localized string similar to The data will be permanently removed and is not recoverable..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.MESSAGE_SHORT_DELETE_CONFIRMATION">
+            <summary>
+              Looks up a localized string similar to Are you sure you want to delete the selected items?.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ModifiedBy">
+            <summary>
+              Looks up a localized string similar to Modified By.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ModifiedOn">
+            <summary>
+              Looks up a localized string similar to Modified On.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Name">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.NameOption">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.NewGroupDescription">
+            <summary>
+              Looks up a localized string similar to New Load Group Description.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.NewLoadDefinition">
+            <summary>
+              Looks up a localized string similar to New Load Definition.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Next">
+            <summary>
+              Looks up a localized string similar to Next.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.NoFilter">
+            <summary>
+              Looks up a localized string similar to (no filter).
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.NoLoadStatusAvailable">
+            <summary>
+              Looks up a localized string similar to No load status available for this load..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.NoOption">
+            <summary>
+              Looks up a localized string similar to No.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.NoReportFound">
+            <summary>
+              Looks up a localized string similar to No report details found for this load..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.NotConnected">
+            <summary>
+              Looks up a localized string similar to Not Connected.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Ok">
+            <summary>
+              Looks up a localized string similar to Ok.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Open">
+            <summary>
+              Looks up a localized string similar to Open.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Options">
+            <summary>
+              Looks up a localized string similar to Options.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Order">
+            <summary>
+              Looks up a localized string similar to Order.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Password">
+            <summary>
+              Looks up a localized string similar to Password.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.PleaseSelectReport">
+            <summary>
+              Looks up a localized string similar to Please select a report type.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.PleaseWait">
+            <summary>
+              Looks up a localized string similar to Please Wait.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.PleasSelectLoad">
+            <summary>
+              Looks up a localized string similar to Please select a load.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Position">
+            <summary>
+              Looks up a localized string similar to Position.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Preview">
+            <summary>
+              Looks up a localized string similar to Preview.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Previous">
+            <summary>
+              Looks up a localized string similar to Previous.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ProcessingOptions">
+            <summary>
+              Looks up a localized string similar to Processing Options.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.PropertySetLoadTitle">
+            <summary>
+              Looks up a localized string similar to Load: {0}.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.RecordsLoaded">
+            <summary>
+              Looks up a localized string similar to Records Loaded.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.RecordsRead">
+            <summary>
+              Looks up a localized string similar to Records Read.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Salary">
+            <summary>
+              Looks up a localized string similar to Salary.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Save">
+            <summary>
+              Looks up a localized string similar to Save.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Schema">
+            <summary>
+              Looks up a localized string similar to Schema.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.SchemaMismatch">
+            <summary>
+              Looks up a localized string similar to Schema version mismatch.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.SchemaMismatchWithVersions">
+            <summary>
+              Looks up a localized string similar to CPM model/revision is {1}, should be {0}.  Use &lt;a href=&quot;/cpmx86/architect/modelmaintenance&quot;&gt;Model Maintenance&lt;/a&gt; to upgrade your model to the current version..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Select">
+            <summary>
+              Looks up a localized string similar to Select.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.SelectDatasource">
+            <summary>
+              Looks up a localized string similar to Please select a datasource.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.SelectFile">
+            <summary>
+              Looks up a localized string similar to Please select a file.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.SelectImportType">
+            <summary>
+              Looks up a localized string similar to Select the import type.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.SelectValue">
+            <summary>
+              Looks up a localized string similar to Select Value.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Sort">
+            <summary>
+              Looks up a localized string similar to Sort.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Source">
+            <summary>
+              Looks up a localized string similar to Source.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.SourceFile">
+            <summary>
+              Looks up a localized string similar to Source File.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.SourceRow">
+            <summary>
+              Looks up a localized string similar to Row.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.SourceType">
+            <summary>
+              Looks up a localized string similar to Source (table or file).
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Start">
+            <summary>
+              Looks up a localized string similar to Start.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.StartOfData">
+            <summary>
+              Looks up a localized string similar to Start Of Data.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.StartRowMustBeGreaterThanHeaderRow">
+            <summary>
+              Looks up a localized string similar to The value of the start of data row must be greater than the value of the header row..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.StartTimestamp">
+            <summary>
+              Looks up a localized string similar to Start Timestamp.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Status">
+            <summary>
+              Looks up a localized string similar to Status.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.StatusTypeMessage">
+            <summary>
+              Looks up a localized string similar to {0} - {1}.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Substring">
+            <summary>
+              Looks up a localized string similar to Substring.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Tab">
+            <summary>
+              Looks up a localized string similar to Tab.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Table">
+            <summary>
+              Looks up a localized string similar to Table.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.TextQualifier">
+            <summary>
+              Looks up a localized string similar to Text Qualifier.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Transfer">
+            <summary>
+              Looks up a localized string similar to Transfer.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Type">
+            <summary>
+              Looks up a localized string similar to Type.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Unsuccessful">
+            <summary>
+              Looks up a localized string similar to Unsuccessful.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Update">
+            <summary>
+              Looks up a localized string similar to Update.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Update_Description">
+            <summary>
+              Looks up a localized string similar to Update will only perform updates on records already existing in the database..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Upload">
+            <summary>
+              Looks up a localized string similar to Upload.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.UploadFile">
+            <summary>
+              Looks up a localized string similar to Please upload a file.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.User">
+            <summary>
+              Looks up a localized string similar to User.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Username">
+            <summary>
+              Looks up a localized string similar to User Name.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ValidatingSources">
+            <summary>
+              Looks up a localized string similar to Validating Sources.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.ValueEmptyError">
+            <summary>
+              Looks up a localized string similar to Filter value cannot be empty. Please select a filter value..
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Wait">
+            <summary>
+              Looks up a localized string similar to Please Wait.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.wfbimport">
+            <summary>
+              Looks up a localized string similar to Workforce Budgeting.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.WFDefaultSettings">
+            <summary>
+              Looks up a localized string similar to Workforce Default Settings.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.Working">
+            <summary>
+              Looks up a localized string similar to Working.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Web.Resources.ImportClient.YesOption">
+            <summary>
+              Looks up a localized string similar to Yes.
+            </summary>
+        </member>
+    </members>
+</doc>

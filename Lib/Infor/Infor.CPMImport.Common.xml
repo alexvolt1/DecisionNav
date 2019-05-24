@@ -1,0 +1,841 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Infor.CPMImport.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Infor.CPMImport.Common.ApplicationConfiguration">
+            <summary>
+            Provides various configuration settings to the entire project.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Common.ApplicationConfiguration.GetApplicationSetting(System.String)">
+            <summary>
+            Retrieves an application configuration setting from the config file
+            </summary>
+            <param name="setting">Setting to retrieve value for</param>
+            <returns>Application setting value</returns>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ApplicationConfiguration.FileStoragePath">
+            <summary>
+            Gets the location of the common directory we use for file storage.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ApplicationConfiguration.LanguageFileStoragePath">
+            <summary>
+            Gets the location of the common directory we use for file storage.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ApplicationConfiguration.ApplicationConfigurationPath">
+            <summary>
+            Gets the location of the appconfig file
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ApplicationConfiguration.AreaName">
+            <summary>
+            Gets the area name the project registers itself under
+            </summary>
+            <remarks>This is used in </remarks>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ApplicationConfiguration.EncryptionEnabled">
+            <summary>
+            Gets a value indicating whether or not file data should be encrypted
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.ExceptionResultPropertyAttribute">
+            <summary>
+            This class is used to decorate properties to allow specific information
+            to be returned as part of an exception. This will normally be returned
+            as a string Dictionary
+            </summary>
+            <remarks>
+            Sealed per CA1813
+            </remarks>
+        </member>
+        <member name="M:Infor.CPMImport.Common.ExceptionResultPropertyAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ExceptionResultPropertyAttribute class
+            Allow user to return specific property information in a dictionary in the case of an exception
+            </summary>
+            <param name="key">key to use for this item in dictionary</param>
+            <param name="value">optional value to override object properties value. Leave null or empty to return property's value</param>
+        </member>
+        <member name="M:Infor.CPMImport.Common.ExceptionResultPropertyAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ExceptionResultPropertyAttribute class
+            Allow user to return specific property information in a dictionary in the case of an exception
+            </summary>
+            <param name="key">Key to use for this item in dictionary</param>
+        </member>
+        <member name="M:Infor.CPMImport.Common.ExceptionResultPropertyAttribute.GetPropertyDictionary(System.Object)">
+            <summary>
+            Examines object and returns a dictionary of all properties marked with the
+            ExceptionResultProperty attribute
+            </summary>
+            <param name="valueToInterrogate">check this object to see if there are any attributes we want to return</param>
+            <returns>dictionary containing </returns>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ExceptionResultPropertyAttribute.AttributeKey">
+            <summary>
+            Gets key to use for attribute
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ExceptionResultPropertyAttribute.AttributeValue">
+            <summary>
+            Gets value to use for attribute. Leaving this null or empty will return the
+            objects value for the specified property
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.IEntity">
+            <summary>
+            Base object type used in Repository searches
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IEntity.Id">
+            <summary>
+            Gets or sets object identifier
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.IImportAudit">
+            <summary>
+            IImportAudit is responsible for describing the structure of audit information provided during 
+            and after a data import.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportAudit.NumberOfRecordsWritten">
+            <summary>
+            Gets or sets the number of records written to the target database.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportAudit.TotalNumberOfRecords">
+            <summary>
+            Gets or sets the total number of records in the data set.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportAudit.User">
+            <summary>
+            Gets or sets the user who ran the import.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportAudit.StartTime">
+            <summary>
+            Gets or sets the UTC time stamp of when the import started.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportAudit.EndTime">
+            <summary>
+            Gets or sets the UTC time stamp of when the import ended.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportAudit.TotalLoadTime">
+            <summary>
+            Gets or sets the time span of how long the import took.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportAudit.CurrentLoadStatus">
+            <summary>
+            Gets or sets the current load status.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportAudit.AllRecords">
+            <summary>
+            Gets the data set of records in error for the current import, returning all rows.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportAudit.OnlyRecordsInError">
+            <summary>
+            Gets the data set of records corresponding to only the rows containing errors
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.ILoadDefinitionType">
+            <summary>
+            ILoadDefinitionType is responsible for describing the structure of an import type.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ILoadDefinitionType.TranslatedTypeId">
+            <summary>
+            Gets the translated typed that is displayed to the user
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ILoadDefinitionType.TypeId">
+            <summary>
+            Gets the untranslated, internal ID of the component that is saved to the database 
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.IDataLoad">
+            <summary>
+            IDataLoad describes the interface to a data load supported by CPM Import.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Common.IDataLoad.GetTargetFields(System.String)">
+            <summary>
+            Retrieves the list of target fields for a specified type
+            </summary>
+            <param name="loadDefinitionType">The type of import.</param>
+            <returns>A collection of target fields</returns>
+            <remarks>Used to inform the column mapping UI of details for the target fields</remarks>
+        </member>
+        <member name="M:Infor.CPMImport.Common.IDataLoad.GetProcessingOptions(System.String)">
+            <summary>
+            Retrieves the list of supported processing options for the specified type
+            </summary>
+            <param name="loadDefinitionType">The type of import.</param>
+            <returns>A collection of processing options</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Common.IDataLoad.Import(System.String,System.Data.DataTable,System.Collections.Generic.ICollection{Infor.CPMImport.Common.ITargetField},System.Collections.Generic.ICollection{Infor.CPMImport.Common.IImportSetting})">
+            <summary>
+            Performs a single import
+            </summary>
+            <param name="loadDefinitionType">The load definition type</param>
+            <param name="dataTable">The data to import in DataTable form</param>
+            <param name="targetFields">The collection of target fields in the data set</param>
+            <param name="settings">Full set of load definition settings</param>
+            <returns>Import audit information</returns>
+        </member>
+        <member name="E:Infor.CPMImport.Common.IDataLoad.OnNewStatusEvent">
+            <summary>
+            An event fired whenever there is a new status message during import to provide status updates
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IDataLoad.ImportTypes">
+            <summary>
+            Gets the list of import types
+            </summary>
+            <returns>Collection of supported import types</returns>
+            <remarks>Used by the UI to provide the list to select from when creating a new load definition</remarks>
+        </member>
+        <member name="T:Infor.CPMImport.Common.IImportSetting">
+            <summary>
+            Base class for import settings, all of which should have a key to identify them with.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportSetting.Key">
+            <summary>
+            Gets or sets the setting key
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IImportSetting.Value">
+            <summary>
+            Gets or sets the setting value
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.Import.ImportType">
+            <summary>
+            MemberData describes the type of member data that is being loaded.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Import.ImportType.WorkforceBudgeting">
+            <summary>
+            Used to refer to "wfbimport" and the "CPM.Import.dll" data load
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.IStatus">
+            <summary>
+            IStatus is responsible for describing the structure of a status message that can be passed
+            into the web layer of an operation.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IStatus.Message">
+            <summary>
+            Gets or sets the Status' message.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IStatus.StatusType">
+            <summary>
+            Gets or sets a value indicating the Status' message type.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.MappingType">
+            <summary>
+            Enum used to define the mapping type
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.MappingType.Column">
+            <summary>
+            Indicates that the mapping type is a column
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.MappingType.Member">
+            <summary>
+            Indicates that the mapping type is a member
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.MappingType.Default">
+            <summary>
+            Indicates that the mapping type is a default value
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.MemberData">
+            <summary>
+            MemberData describes the type of member data that is being loaded.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.MemberData.Id">
+            <summary>
+            Indicates that the member data being loaded is a member id
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.MemberData.Name">
+            <summary>
+            Indicates that the member data being loaded is a member name
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.NewStatusEventArgs">
+            <summary>
+            NewStatusEventArgs is responsible for describing the arguments of a new status event as fired by
+            an implementation of IDataLoad.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Common.NewStatusEventArgs.#ctor(Infor.CPMImport.Common.IStatus)">
+            <summary>
+            Initializes a new instance of the NewStatusEventArgs class.  Assigns the event args.
+            </summary>
+            <param name="status">Status object to pass as event args</param>
+        </member>
+        <member name="P:Infor.CPMImport.Common.NewStatusEventArgs.Status">
+            <summary>
+            Gets or sets the status object that will be passed as event arguments.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.IPropertySet">
+            <summary>
+            IPropertySet is responsible for describing the structure and state of a property set
+            for a given load definition type.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IPropertySet.Type">
+            <summary>
+            Gets or sets the name of the property set
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.IPropertySet.Enabled">
+            <summary>
+            Gets or sets a value indicating whether or not the property set tab is enabled
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.ITargetField">
+            <summary>
+            ITargetField is responsible for describing the structure of a target field, which is a single
+            column name / header for a given load definition type.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.FieldName">
+            <summary>
+            Gets the identifying field name of the target, displayed to the user
+            </summary>
+            <remark>Field Names are used by column mapping and will use this to create data table column names</remark>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.Required">
+            <summary>
+            Gets a value indicating whether or not this target field is required to be mapped
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.RequiredTooltip">
+            <summary>
+            Gets a caption indicating the text that should go into a tooltip for a field
+            </summary>
+            <remark>This field is misnamed at this point, all fields display this tooltip</remark>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.FieldType">
+            <summary>
+            Gets the data type that the field should be representing
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.RequiredFields">
+            <summary>
+            Gets the collection of field names that are required to be mapped if this target field is mapped.
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.MappingDataType">
+            <summary>
+            Gets a value indicating whether this target field is for member data (so whether or not the data is a member id or name is a concern), column data, or default data
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.DimensionCode">
+            <summary>
+            Gets the unique identifier for a dimension, should this field be mappable to a dimension member
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.MemberDataType">
+            <summary>
+            Gets or sets a value indicating the member data type of this field.
+            </summary>
+            <remark>This is set when an import is performed, to tell the import code whether ID or Name was chosen if applicable</remark>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.DefaultLoadValues">
+            <summary>
+            Gets the default values for the target field 
+            </summary>
+        </member>
+        <member name="P:Infor.CPMImport.Common.ITargetField.DefaultValue">
+            <summary>
+            Gets the default for the list of defaults of the target field 
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.ProcessingOption">
+            <summary>
+            ProcessingOption describes the overall manner in which an import might handle the import record set
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.ProcessingOption.Update">
+            <summary>
+            Updates existing records only
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.ProcessingOption.Insert">
+            <summary>
+            Inserts existing records only, does NOT delete before insert
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.ProcessingOption.InsertWithUpdate">
+            <summary>
+            Inserts records, updating where key column values match
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.ProcessingOption.ClearAndLoad">
+            <summary>
+            Deletes all records in the target tables except for system defaults and inserts the new record set
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.ProcessingOption.Transfer">
+            <summary>
+            Deletes all data from a CPM database and loads the new data.  Preserves identities if provided.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.StatusMessageType">
+            <summary>
+            StatusMessageType represents the enumeration of status message types that an IStatus can contain.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.First">
+            <summary>
+            The first message, always a parent-level message, in a set of status messages.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.LastMilestoneOkay">
+            <summary>
+            The last message in a set of status messages, indicating the operation as a whole was a success.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.LastMilestoneWarning">
+            <summary>
+            The last message in a set of status messages, indicating the operation completed but with warnings.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.LastMilestoneError">
+            <summary>
+            The last message in a set of status messages, indicating the operation failed 
+            to complete or completed with errors.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.LastDetailOkay">
+            <summary>
+            The last message in a set of status messages, indicating the operation as a whole was a success.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.LastDetailWarning">
+            <summary>
+            The last message in a set of status messages, indicating the operation completed but with warnings.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.LastDetailError">
+            <summary>
+            The last message in a set of status messages, indicating the operation failed 
+            to complete or completed with errors.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.MilestoneOkay">
+            <summary>
+            A milestone that is neither first nor last, indicating success.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.MilestoneWarning">
+            <summary>
+            A milestone that is neither first nor last, indicating a warning.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.MilestoneError">
+            <summary>
+            A milestone that is neither first nor last, indicating an error.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.DetailOkay">
+            <summary>
+            A detail that is neither first nor last, indicating success.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.DetailWarning">
+            <summary>
+            A detail that is neither first nor last, indicating a warning.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.DetailError">
+            <summary>
+            A detail that is neither first nor last, indicating an error.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.UpdateMilestoneOkay">
+            <summary>
+            A milestone that is neither first nor last, indicating success.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.UpdateMilestoneWarning">
+            <summary>
+            A milestone that is neither first nor last, indicating a warning.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.UpdateMilestoneError">
+            <summary>
+            A milestone that is neither first nor last, indicating an error.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.UpdateDetailOkay">
+            <summary>
+            A detail that is neither first nor last, indicating success.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.UpdateDetailWarning">
+            <summary>
+            A detail that is neither first nor last, indicating a warning.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.StatusMessageType.UpdateDetailError">
+            <summary>
+            A detail that is neither first nor last, indicating an error.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.Logging">
+            <summary>
+            Log4Net logger for this solution.  
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Logging.lockObject">
+            <summary>
+            We'll use this lock to protect the initialization of logging.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Logging.Configure">
+            <summary>
+            Gets and initializes the logging object.
+            </summary>
+            <returns>The logging object we should use to log information to.</returns>
+        </member>
+        <member name="T:Infor.CPMImport.Common.PropertySetType">
+            <summary>
+            Enum used to define recognized property set types
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.PropertySetType.Definition">
+            <summary>
+            Property set handles all basic details such as name, description, etc.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.PropertySetType.Source">
+            <summary>
+            Property set that handles all source reading properties
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.PropertySetType.ColumnMapping">
+            <summary>
+            Property set that handles all column mappings
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.PropertySetType.Transformation">
+            <summary>
+            Property set that handles all transformations
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.Security.Permission">
+            <summary>
+            An enumeration of all permissions supported within Web Architect.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Permission.AccessApplication">
+            <summary>
+            May access the application, assigned to all authenticated users, a
+            generic permission used in lieu of a more specific permission.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Permission.AccessModel">
+            <summary>
+            May access a model, used in lieu of a more specific permission.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.Security.PermissionSet">
+            <summary>
+            Set of permissions, typically representing those assigned to a user.
+            </summary>
+            <remarks>
+            Ideally this would extend SortedSet (or similar), this is problematic
+            as this set should be read-only, but SortedSet doesn't permit overriding
+            some of the write methods.  For example we can override Clear, but not
+            Add.
+            </remarks>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.PermissionSet.authenticatedPermissions">
+            <summary>
+            Permissions all authenticated users receive.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.PermissionSet.permissionAssignments">
+            <summary>
+            Role to permission mapping.
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.PermissionSet.permissions">
+            <summary>
+            Permissions belonging to this set.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.#ctor(System.String,Infor.CPMImport.Common.Security.Role[])">
+            <summary>
+            Initializes a new instance of the PermissionSet class by creating
+            a set of permissions for a particular user and set of roles.
+            </summary>
+            <param name="userName">User name</param>
+            <param name="roles">Zero or more roles assigned to the user</param>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.Add(Infor.CPMImport.Common.Security.Permission)">
+            <summary>
+            Not supported, permission sets are read-only.
+            </summary>
+            <param name="item">Not used.</param>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.System#Collections#Generic#ISet{Infor#CPMImport#Common#Security#Permission}#Add(Infor.CPMImport.Common.Security.Permission)">
+            <summary>
+            Not supported, permission sets are read-only.
+            </summary>
+            <param name="item">Not used.</param>
+            <returns>Never returns</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.Clear">
+            <summary>
+            Not supported, permission sets are read-only.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.Contains(Infor.CPMImport.Common.Security.Permission)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.CopyTo(Infor.CPMImport.Common.Security.Permission[],System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.Remove(Infor.CPMImport.Common.Security.Permission)">
+            <summary>
+            Not supported, permission sets are read-only.
+            </summary>
+            <param name="item">Not used</param>
+            <returns>Never returns</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.ToString">
+            <summary>
+            Returns a string showing all of the permissions in this set.
+            </summary>
+            <returns>String containing all permissions of this set</returns>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.ExceptWith(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <summary>
+            Not supported, permission sets are read-only.
+            </summary>
+            <param name="other">Not used</param>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.IntersectWith(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <summary>
+            Not supported, permission sets are read-only.
+            </summary>
+            <param name="other">Not used</param>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.IsProperSubsetOf(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.IsProperSupersetOf(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.IsSubsetOf(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.IsSupersetOf(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.Overlaps(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.SetEquals(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.SymmetricExceptWith(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <summary>
+            Not supported, permission sets are read-only.
+            </summary>
+            <param name="other">Not used</param>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.PermissionSet.UnionWith(System.Collections.Generic.IEnumerable{Infor.CPMImport.Common.Security.Permission})">
+            <summary>
+            Not supported, permission sets are read-only.
+            </summary>
+            <param name="other">Not used</param>
+        </member>
+        <member name="P:Infor.CPMImport.Common.Security.PermissionSet.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:Infor.CPMImport.Common.Security.PermissionSet.IsReadOnly">
+            <summary>
+            Gets a value indicating whether true == true.
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.Security.Role">
+            <summary>
+            An enumeration of all the Roles that are supported for users in the database
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Role.Analyst">
+            <summary>
+            Can only view data.  Can't change data in any form.
+            Default should be the weakest
+            Mapped to Y in the database
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Role.Administrator">
+            <summary>
+            Primary driver of budget process or consolidation,
+            Monitors the database, different than DBA
+            Mapped to A in the database
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Role.Controller">
+            <summary>
+            Driver of consolidation and other financial processes
+            Mapped to C in the database
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Role.BudgetHolder">
+            <summary>
+            Data entry level, un-aggregated
+            Mapped to B in the database
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Role.Accountant">
+            <summary>
+            Enter adjustments and run journal reports
+            Mapped to T in the database
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Role.BudgetHolderAndAccount">
+            <summary>
+            Combined function of BudgetHolder and Accountant
+            Mapped to D in the database
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Role.BudgetHolderDetailBudgetingReadOnly">
+            <summary>
+            Same function as BudgetHolder, but has read only access to detail budgeting
+            Mapped to R in the database
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Role.BudgetHolderNoDetailBudgeting">
+            <summary>
+            Same function as BudgetHolder, but has no access to detail budgeting
+            Mapped to N in the database
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.Security.Role.DeletedUser">
+            <summary>
+            This role doesn't exist and is used only when deleting a user
+            Mapped to X in the database
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.Security.RoleExtensions">
+            <summary>
+            Extension methods for the Role enum (because enums aren't classes in
+            C# we can't extend them or similar).
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.RoleExtensions.ToRole(System.Char)">
+            <summary>
+            Determines the Role for a provided character role code.
+            </summary>
+            <param name="roleCode">Role code to lookup</param>
+            <returns>Corresponding role for a role code</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">thrown if the role code has no corresponding Role</exception>
+        </member>
+        <member name="M:Infor.CPMImport.Common.Security.RoleExtensions.ToChar(Infor.CPMImport.Common.Security.Role)">
+            <summary>
+            Extension method for a Role instance that returns the corresponding
+            role code.
+            </summary>
+            <param name="role">Role for which to return the corresponding role code</param>
+            <returns>Character role code for a Role</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">thrown if the Role is unknown</exception>
+        </member>
+        <member name="T:Infor.CPMImport.Common.SourceType">
+            <summary>
+            Enum used to define recognized property set types
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.SourceType.File">
+            <summary>
+            File source type
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.SourceType.Database">
+            <summary>
+            Database source type
+            </summary>
+        </member>
+        <member name="T:Infor.CPMImport.Common.SpecialFolderPatternConverter">
+            <summary>
+            Allows log4net to find our ProgramData directory.
+            </summary>
+        </member>
+        <member name="M:Infor.CPMImport.Common.SpecialFolderPatternConverter.Convert(System.IO.TextWriter,System.Object)">
+            <summary>
+            This was specifically created so paths to the Log4Net configuration in web.config
+            could use special folder names instead of hard coding c:\ProgramData.
+            </summary>
+            <param name="writer">Text writer</param>
+            <param name="state">Object State</param>
+        </member>
+        <member name="T:Infor.CPMImport.Common.TargetFieldType">
+            <summary>
+            Represents the data type expected for the target field.  Used for pre-validation purposes.
+            Enum values are a simplified, general list representing what is used in the schema documentation in SharePoint at:
+            http://development.home.infor.com/sites/NA/Operations/PME/Shared%20Documents/Forms/AllItems.aspx?RootFolder=/sites/NA/Operations/PME/Shared%20Documents/Version%2010.5
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.TargetFieldType.Numeric">
+            <summary>
+            Numeric field
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.TargetFieldType.Text">
+            <summary>
+            Character field
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.TargetFieldType.Binary">
+            <summary>
+            Binary field
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.TargetFieldType.Date">
+            <summary>
+            Date field
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.TargetFieldType.Guid">
+            <summary>
+            Universally Unique Identifier field
+            </summary>
+        </member>
+        <member name="F:Infor.CPMImport.Common.TargetFieldType.Unknown">
+            <summary>
+            Default to be used when type is unknown or not identifiable
+            </summary>
+        </member>
+    </members>
+</doc>

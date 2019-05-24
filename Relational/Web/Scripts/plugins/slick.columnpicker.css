@@ -1,0 +1,15 @@
+.slick-columnpicker {
+	background: rgb(240, 240, 240); padding: 6px; border: 1px solid rgb(113, 139, 183); border-image: none; cursor: default; min-width: 100px; box-shadow: 2px 2px 2px silver; -moz-box-shadow: 2px 2px 2px silver; -webkit-box-shadow: 2px 2px 2px silver;
+}
+.slick-columnpicker li {
+	background: none; list-style: none; margin: 0px; padding: 0px;
+}
+.slick-columnpicker input {
+	margin: 4px;
+}
+.slick-columnpicker li a {
+	padding: 4px; font-weight: bold; display: block;
+}
+.slick-columnpicker li a:hover {
+	background: white;
+}

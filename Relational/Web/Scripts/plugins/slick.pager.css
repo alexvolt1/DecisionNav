@@ -1,0 +1,36 @@
+.slick-pager {
+     position: absolute;
+    
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 12px;
+
+
+     left: 2px;
+     right: 2px;
+     bottom:2px;
+	 border-width: 0px 1px 1px;
+     border-style: none solid solid;
+     border-color: currentColor gray gray;
+     border-image: none;
+  
+     height: 26px;
+     vertical-align: middle;
+}
+.slick-pager .slick-pager-status {
+	padding: 6px; display: inline-block; 
+}
+.slick-pager .ui-icon-container {
+	border-color: gray; margin: 2px; display: inline-block;
+}
+.slick-pager .slick-pager-nav {
+	padding: 2px; float: left; display: inline-block;
+}
+.slick-pager .slick-pager-settings {
+	padding: 2px; float: right; display: block;
+}
+.slick-pager .slick-pager-settings * {
+	vertical-align: middle;
+}
+.slick-pager .slick-pager-settings a {
+	padding: 2px; text-decoration: underline; cursor: pointer;
+}

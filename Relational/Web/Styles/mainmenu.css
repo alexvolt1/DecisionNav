@@ -1,0 +1,148 @@
+#mainNav 
+{
+margin-left:auto;
+margin-right:auto;
+overflow:hidden;
+height:30px;
+background:url('../images/gradientSprite.jpg') 0 -110px repeat-x;
+border-bottom:solid 2px #E8D71A;
+}
+#mainNav li a {
+   color:#FFF;
+   display:block;
+   float:left;
+   font-family:TheSans,Trebuchet MS, Lucida Sans Unicode, Lucida Grande,Lucida Sans, Arial, sans-serif;
+   font-size:14px;
+   height:30px;   
+   line-height:30px;
+   
+   text-shadow: -0px -1px 0 rgba(4, 42, 73, 1);
+}
+#mainNav li{
+   border-right:1px solid #5987a9;  
+   float:left;
+   list-style:none;
+   position:relative;
+
+}
+#mainNav li.firstOne{
+   border-left:1px solid #5987a9;  
+}
+
+ #mainNav > li a:hover, #mainNav > li:hover a
+{
+	color:#0c3d61;
+}
+#mainNav li.hasSub a{
+   padding-left:10px;
+   padding-right:30px; 
+   background:url('../images/globalNav-down-arrow.png')  no-repeat;
+   background-position:right center;
+   
+}
+#mainNav ul{
+   background:#FFF;
+   border:1px solid #337baf;
+   border-top:none;
+   top:30px;
+   left:-45px;
+   position:absolute;
+	width: 300px; 
+	display:none;
+	z-index:99999;
+	
+	padding:0;  
+}
+
+
+#mainNav ul ul
+{
+    left:255px;					
+	top:2px; margin-top:0px; 
+	border-top:1px solid #337baf;
+	width:300px;
+}
+#mainNav ul ul.last 
+{
+    left:-335px;					
+	top:2px; margin-top:0px; 
+	border-top:1px solid #337baf;
+	width:300px;
+}
+
+#mainNav li:hover{
+   background:url('../images/gradientSprite.jpg') 0 -162px repeat-x;
+}
+#mainNav li.hasSub:hover ul{
+ display:block;
+}
+#mainNav li.hasSub:hover ul ul
+{
+	display:none;
+}
+#mainNav li ul li.hasSub:hover ul 
+{
+	display:block;
+}
+#mainNav li.hasSub li,#mainNav li.hasSub li a{
+   border:none;
+   float:none;
+}
+#mainNav li.hasSub li a{
+   /* border-bottom:1px solid #B8B8B8;*/
+   color:#003768;
+  height:25px;
+   padding-right:5px; padding-left:5px; /*modified on APR 03 2012 */
+   font-size:13px;
+ }
+#mainNav li.hasSub li li a
+{
+	font-size:13px;
+	height:25px;
+}
+#mainNav li.hasSub li.last a{
+   border-bottom:0px;
+}
+#mainNav li.hasSub li.last li a
+{
+   border-bottom:1px solid #B8B8B8;	
+}
+#mainNav li.hasSub li.last li.last a
+{
+	  border-bottom:none;
+}
+/*added on APR 03 2012 */
+#mainNav li.hasSub:hover ul li
+{
+	padding-top:0; padding-bottom:0;
+}
+#mainNav li.hasSub:hover ul li,#mainNav li.hasSub:hover ul li a{
+   background:none;
+   
+}
+/*added on APR 03 2012 */
+#mainNav li.hasSub:hover ul li a:hover, #mainNav li.hasSub:hover ul li.hasSub li a:hover
+{
+	background:#e1e9ef;
+}
+/*modified on APR 04 2012 */
+#mainNav li.hasSub:hover ul li.hasSub a
+{
+   background: url('../images/globalSubNav-down-arrow.png') no-repeat 255px -6px;	 
+}
+/*modified on APR 04 2012 */
+#mainNav li.hasSub:hover ul li.hasSub a:hover
+{
+	background:#e1e9ef url('../images/globalSubNav-down-arrow.png') no-repeat 255px -6px;	
+	 
+}
+#mainNav li.hasSub:hover ul li.hasSub ul li a
+{
+	 background:none;
+	
+}
+#mainNav li.hasSub li a:hover{
+   color:#000;
+}
+   	
+/*  End Navigation */

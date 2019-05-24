@@ -1,0 +1,625 @@
+﻿<chartStyle>
+  <backColor>0xFFFFFFFF</backColor>
+  <seriesDirection>ByColumn</seriesDirection>
+  <stacking>False</stacking>
+  <chartType>Bar</chartType>
+  <plotColor>1052688</plotColor>
+  <perspective>TwoD</perspective>
+  <horizontal>False</horizontal>
+  <seriesIncrement>1</seriesIncrement>
+  <markers />
+  <borders />
+  <candleStickHighLowStyle>False</candleStickHighLowStyle>
+  <backgroundImage>Stretch</backgroundImage>
+  <backgroundUrl></backgroundUrl>
+  <legend>
+    <backColor>0xFFCFCFCF</backColor>
+    <foreColor>0xFF000000</foreColor>
+    <fontName>Arial</fontName>
+    <fontSize>12</fontSize>
+    <layout>BottomCenter</layout>
+    <fontStyle bold="False" italic="False" />
+  </legend>
+  <chartTitle>
+    <foreColor>0xFF0A386C</foreColor>
+    <backColor>0x00101010</backColor>
+    <fontSize>16</fontSize>
+    <fontName>Arial</fontName>
+    <layout>TopCenter</layout>
+    <fontStyle bold="True" italic="False" />
+    <text></text>
+  </chartTitle>
+  <zones />
+  <series>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFFFF0000</seriesColor>
+      <borderColor>0xFFB60000</borderColor>
+      <gradientColor>0xFF00FF00</gradientColor>
+      <comboType>Area</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF00FF00</seriesColor>
+      <borderColor>0xFF00B600</borderColor>
+      <gradientColor>0xFF000000</gradientColor>
+      <comboType>Bar</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF0000FF</seriesColor>
+      <borderColor>0xFF0000B6</borderColor>
+      <gradientColor>0xFF000000</gradientColor>
+      <comboType>Line</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF00FFFF</seriesColor>
+      <borderColor>0xFF00B6B6</borderColor>
+      <gradientColor>0xFF000000</gradientColor>
+      <comboType>Area</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF3366FF</seriesColor>
+      <borderColor>0xFF2448B6</borderColor>
+      <gradientColor>0xFF000000</gradientColor>
+      <comboType>Bar</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF326496</seriesColor>
+      <borderColor>0xFF23486C</borderColor>
+      <gradientColor>0xFF000000</gradientColor>
+      <comboType>Line</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF144682</seriesColor>
+      <borderColor>0xFF0F315D</borderColor>
+      <gradientColor>0xFF000000</gradientColor>
+      <comboType>Area</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF008080</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFF000000</gradientColor>
+      <comboType>Bar</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF006432</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFF000000</gradientColor>
+      <comboType>Line</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFFC83232</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFF000000</gradientColor>
+      <comboType>Area</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>1</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF9999FF</seriesColor>
+      <borderColor>0xFF101010</borderColor>
+      <gradientColor>0xFF101010</gradientColor>
+      <comboType>Bar</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Disabled</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Auto</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Cylinder</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>4096</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFFCCCCCC</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFF009E00</gradientColor>
+      <comboType>Line</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Solid</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Hide</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Rectangle</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Times New Roman</fontName>
+        <fontSize>12</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>0</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF669966</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFF6A9BCC</gradientColor>
+      <comboType>Area</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Solid</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Hide</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Rectangle</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Times New Roman</fontName>
+        <fontSize>12</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>0</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFFFF6699</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFFC7558E</gradientColor>
+      <comboType>Bar</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Solid</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Hide</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Rectangle</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Times New Roman</fontName>
+        <fontSize>12</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>0</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF999900</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFF677BB5</gradientColor>
+      <comboType>Line</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Solid</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Hide</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Rectangle</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Times New Roman</fontName>
+        <fontSize>12</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>0</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF33FF66</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFF00D1CC</gradientColor>
+      <comboType>Area</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Solid</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Hide</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Rectangle</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Times New Roman</fontName>
+        <fontSize>12</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>0</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF9999FF</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFFA376D0</gradientColor>
+      <comboType>Bar</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Solid</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Hide</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Rectangle</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Times New Roman</fontName>
+        <fontSize>12</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>0</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFF993366</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFF99974B</gradientColor>
+      <comboType>Line</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Solid</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Hide</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Rectangle</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Times New Roman</fontName>
+        <fontSize>12</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>0</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFFFFFFCC</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFFF6B600</gradientColor>
+      <comboType>Area</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Solid</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Hide</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Rectangle</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Times New Roman</fontName>
+        <fontSize>12</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>0</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+    <chartSeriesStyle name="">
+      <seriesColor>0xFFCCFFFF</seriesColor>
+      <borderColor>0xFF000000</borderColor>
+      <gradientColor>0xFFA40062</gradientColor>
+      <comboType>Bar</comboType>
+      <connectStyle>Straight</connectStyle>
+      <lineStyle>Solid</lineStyle>
+      <marker>Disabled</marker>
+      <gradient>Hide</gradient>
+      <line2DThickness>3</line2DThickness>
+      <markerSize>10</markerSize>
+      <pieExplode>False</pieExplode>
+      <y2Axis>False</y2Axis>
+      <barStyle>Rectangle</barStyle>
+      <borderThickness>1</borderThickness>
+      <dataPointLabels>
+        <fontStyle bold="False" italic="False" />
+        <fontName>Times New Roman</fontName>
+        <fontSize>12</fontSize>
+        <foreColor>0xFF000000</foreColor>
+        <labels>0</labels>
+      </dataPointLabels>
+    </chartSeriesStyle>
+  </series>
+  <axes>
+    <chartAxisStyle name="" position="X">
+      <color>0xFF000000</color>
+      <lineThickness>0</lineThickness>
+      <label>
+        <foreColor>0xFF000000</foreColor>
+        <trunc>18</trunc>
+        <angle>70</angle>
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <fontStyle bold="False" italic="False" />
+        <layout>Center</layout>
+      </label>
+      <title>
+        <foreColor>0xFF000000</foreColor>
+        <fontSize>12</fontSize>
+        <text></text>
+        <fontName>Arial</fontName>
+        <fontStyle bold="False" italic="False" />
+      </title>
+      <grid>
+        <color>0xFF000000</color>
+        <lineThickness>1</lineThickness>
+      </grid>
+      <scale>
+        <type>Linear</type>
+        <layout>Automatic</layout>
+        <lower>0</lower>
+        <upper>0</upper>
+        <steps>0</steps>
+        <factor>1</factor>
+      </scale>
+    </chartAxisStyle>
+    <chartAxisStyle name="" position="Y">
+      <color>0xFF000000</color>
+      <lineThickness>0</lineThickness>
+      <label>
+        <foreColor>0xFF000000</foreColor>
+        <trunc>-1</trunc>
+        <angle>-1</angle>
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <fontStyle bold="False" italic="False" />
+        <layout>Center</layout>
+      </label>
+      <title>
+        <foreColor>0xFF000000</foreColor>
+        <fontSize>12</fontSize>
+        <text></text>
+        <fontName>Arial</fontName>
+        <fontStyle bold="False" italic="False" />
+      </title>
+      <grid>
+        <color>0xFF000000</color>
+        <lineThickness>1</lineThickness>
+      </grid>
+      <scale>
+        <type>Linear</type>
+        <layout>Automatic</layout>
+        <lower>0</lower>
+        <upper>0</upper>
+        <steps>0</steps>
+        <factor>1</factor>
+      </scale>
+    </chartAxisStyle>
+    <chartAxisStyle name="" position="Z">
+      <color>0xFF000000</color>
+      <lineThickness>0</lineThickness>
+      <label>
+        <foreColor>0xFF000000</foreColor>
+        <trunc>-1</trunc>
+        <angle>-1</angle>
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <fontStyle bold="False" italic="False" />
+        <layout>Center</layout>
+      </label>
+      <title>
+        <foreColor>0xFF000000</foreColor>
+        <fontSize>12</fontSize>
+        <text></text>
+        <fontName>Arial</fontName>
+        <fontStyle bold="False" italic="False" />
+      </title>
+      <grid>
+        <color>0xFF000000</color>
+        <lineThickness>1</lineThickness>
+      </grid>
+      <scale>
+        <type>Linear</type>
+        <layout>Automatic</layout>
+        <lower>0</lower>
+        <upper>0</upper>
+        <steps>0</steps>
+        <factor>1</factor>
+      </scale>
+    </chartAxisStyle>
+    <chartAxisStyle name="" position="Y2">
+      <color>0xFF000000</color>
+      <lineThickness>0</lineThickness>
+      <label>
+        <foreColor>0xFF000000</foreColor>
+        <trunc>-1</trunc>
+        <angle>-1</angle>
+        <fontName>Arial</fontName>
+        <fontSize>10</fontSize>
+        <fontStyle bold="False" italic="False" />
+        <layout>Center</layout>
+      </label>
+      <title>
+        <foreColor>0xFF000000</foreColor>
+        <fontSize>12</fontSize>
+        <text></text>
+        <fontName>Arial</fontName>
+        <fontStyle bold="False" italic="False" />
+      </title>
+      <grid>
+        <color>0xFF000000</color>
+        <lineThickness>1</lineThickness>
+      </grid>
+      <scale>
+        <type>Linear</type>
+        <layout>Automatic</layout>
+        <lower>0</lower>
+        <upper>0</upper>
+        <steps>0</steps>
+        <factor>1</factor>
+      </scale>
+    </chartAxisStyle>
+  </axes>
+</chartStyle>

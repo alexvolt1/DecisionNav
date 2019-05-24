@@ -1,0 +1,2626 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CrystalReports.Web</name>
+    </assembly>
+    <members>
+        <member name="T:CrystalReports.Web.Areas.PRCR.Controllers.BaseController">
+            <summary>
+            The base controller class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BaseController.RenderPartialViewToString">
+            <summary>
+            Returns the rendered partial view.
+            </summary>
+            <returns>The rendered partial view.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BaseController.RenderPartialViewToString(System.String)">
+            <summary>
+            Returns the rendered partial view.
+            </summary>
+            <param name="viewName">The name of the view.</param>
+            <returns>The rendered partial view.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BaseController.RenderPartialViewToString(System.Object)">
+            <summary>
+            Returns the rendered partial view.
+            </summary>
+            <param name="model">THe model object.</param>
+            <returns>The rendered partial view.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BaseController.RenderPartialViewToString(System.String,System.Object)">
+            <summary>
+            Returns the rendered partial view.
+            </summary>
+            <param name="viewName">The name of the view.</param>
+            <param name="model">THe model object.</param>
+            <returns>The rendered partial view.</returns>
+        </member>
+        <member name="T:CrystalReports.Web.Areas.PRCR.Controllers.BookController">
+            <summary>
+            The book controller class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.Index">
+            <summary>
+            GET: /Book/
+            </summary>
+            <returns>A view result.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.Edit(System.String)">
+            <summary>
+            Returns the book with the given id.
+            </summary>
+            <param name="id">The id of the book to be edited.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.Edit(CrystalReports.Web.Models.BookModel)">
+            <summary>
+            Updates the book to the database.
+            </summary>
+            <param name="model">The book model to update.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.Add">
+            <summary>
+            Returns a new book object.
+            </summary>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.Add(CrystalReports.Web.Models.BookModel)">
+            <summary>
+            Adds the new book.
+            </summary>
+            <param name="model">The book to add.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.Delete(System.String)">
+            <summary>
+            Deletes the book with the given id.
+            </summary>
+            <param name="id">The Id of the book to be deleted.</param>
+            <returns>True when successful or the error message when not successful.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.ValidateBookName(System.String,System.String)">
+            <summary>
+            Checks if the book name is valid.
+            </summary>
+            <param name="bookName">The name of the book.</param>
+            <param name="id">The id of the book.</param>
+            <returns>False if the name is ok or empty.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.GetAvailbleBooksBookItems(System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRBookContract})">
+            <summary>
+            Converts the books collection to an collection of list items.
+            </summary>
+            <param name="books">A collection of books to convert.</param>
+            <returns>A collection of list items.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.GetIncludedBooksListItems(System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRBookContract})">
+            <summary>
+            Converts the books collection to an collection of list items.
+            </summary>
+            <param name="books">A collection of books to convert.</param>
+            <returns>A collection of list items.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.BookController.GetReportListItems(System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRReportContract})">
+            <summary>
+            Converts the reports collection to an collection of list items.
+            </summary>
+            <param name="reports">A collection of reports to convert.</param>
+            <returns>A collection of list items.</returns>
+        </member>
+        <member name="T:CrystalReports.Web.Areas.PRCR.Controllers.JobController">
+            <summary>
+            The job controller class.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Areas.PRCR.Controllers.JobController.ViewTemplate">
+            <summary>
+            The view template constant.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.Index">
+            <summary>
+            GET: /Job/
+            </summary>
+            <returns>A view result.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.Add">
+            <summary>
+            Returns a new job object.
+            </summary>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.Add(CrystalReports.Web.Models.JobModel)">
+            <summary>
+            Adds the new job.
+            </summary>
+            <param name="model">The job to add.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.Edit(System.String)">
+            <summary>
+            Returns the job with the given id.
+            </summary>
+            <param name="id">The id of the job to be edited.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.Edit(CrystalReports.Web.Models.JobModel)">
+            <summary>
+            Updates the job to the database.
+            </summary>
+            <param name="model">The job to update.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.Delete(System.String)">
+            <summary>
+            Deletes the job with the given id.
+            </summary>
+            <param name="id">The Id of the job to be deleted.</param>
+            <returns>True when successful or the error message when not successful.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.Execute(System.String)">
+            <summary>
+            Executes the job.
+            </summary>
+            <param name="id">The Id of the job to be executed.</param>
+            <returns>True when successful.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.ValidateJobName(System.String,System.String)">
+            <summary>
+            Checks if the job name is valid.
+            </summary>
+            <param name="jobName">The name of the job.</param>
+            <param name="id">The id of the job.</param>
+            <returns>False if the name is ok or empty.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetUsers">
+            <summary>
+            Returns a list of users.
+            </summary>
+            <returns>List of users.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetMonths">
+            <summary>
+            Returns the available months.
+            </summary>
+            <returns>A list of months.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetDays">
+            <summary>
+            Returns the available days.
+            </summary>
+            <returns>A list of months.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetWeekOfMonth">
+            <summary>
+            Returns the available month weeks.
+            </summary>
+            <returns>A list of month weeks.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetDaysOfWeek">
+            <summary>
+            Returns the available week days.
+            </summary>
+            <returns>A list of week days.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.CreateCRJobContractFromJobModel(CrystalReports.Web.Models.JobModel)">
+            <summary>
+            Creates the CRJobContract object from the job model.
+            </summary>
+            <param name="model">The job model.</param>
+            <returns>A new CRJobContract object.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetBooksListItems(System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRBookContract})">
+            <summary>
+            Converts the books collection to an collection of list items.
+            </summary>
+            <param name="books">A collection of books to convert.</param>
+            <returns>A collection of list items.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetReportListItems(System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRReportContract})">
+            <summary>
+            Converts the reports collection to an collection of list items.
+            </summary>
+            <param name="reports">A collection of reports to convert.</param>
+            <returns>A collection of list items.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetRolesListItems(System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRUserContract})">
+            <summary>
+            Converts the users collection to an collection of list items.
+            </summary>
+            <param name="includedRoles">A collection of users to convert.</param>
+            <returns>A list of list items.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetUsersListItems(System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRUserContract})">
+            <summary>
+            Converts the users collection to an collection of list items.
+            </summary>
+            <param name="users">A collection of users to convert.</param>
+            <returns>A collection of list items.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetIncludedUsersListItems(System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRUserContract},System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRUserContract})">
+            <summary>
+            Converts the users collection to an collection of list items.
+            </summary>
+            <param name="users">A collection of users.</param>
+            <param name="roles">A collection of roles.</param>
+            <returns>A collection of list items.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.GetRoleListItem(System.String)">
+            <summary>
+            Converts a role Id into a list item.
+            </summary>
+            <param name="id">The Id of the role.</param>
+            <returns>A list item.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetRunOptions(CrystalReports.Web.Models.JobModel,System.Collections.ObjectModel.Collection{Infor.PM.Decision.CrystalReports.Contracts.CRTaskTriggerContract})">
+            <summary>
+            Sets the run options.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="evaluationTimes">The evaluation times.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetEvaluationTimes(Infor.PM.Decision.CrystalReports.Contracts.CRJobContract,CrystalReports.Web.Models.JobModel)">
+            <summary>
+            Sets the evaluation times for the job.
+            </summary>
+            <param name="job">The job.</param>
+            <param name="model">The job model.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetBeginDate(CrystalReports.Web.Models.JobModel,Infor.PM.Decision.CrystalReports.Contracts.CRTaskTriggerContract)">
+            <summary>
+            Sets the begin date.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="taskTrigger">The task trigger.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetEndDate(CrystalReports.Web.Models.JobModel,Infor.PM.Decision.CrystalReports.Contracts.CRTaskTriggerContract)">
+            <summary>
+            Sets the end date.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="taskTrigger">The task trigger.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetModelWeekDays(CrystalReports.Web.Models.JobModel,System.Int32)">
+            <summary>
+            Sets the model week days.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="weekDays">The week days.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetWeekDays(CrystalReports.Web.Models.JobModel,Infor.PM.Decision.CrystalReports.Contracts.CRTaskTriggerContract)">
+            <summary>
+            Sets the week days on the task trigger from the model.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="taskTrigger">The task trigger.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetModelMonths(CrystalReports.Web.Models.JobModel,System.Int32)">
+            <summary>
+            Sets the model months.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="months">The months.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetMonths(CrystalReports.Web.Models.JobModel,Infor.PM.Decision.CrystalReports.Contracts.CRTaskTriggerContract)">
+            <summary>
+            Sets the months from the job model to the task trigger.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="taskTrigger">The task trigger.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetModelDays(CrystalReports.Web.Models.JobModel,System.Collections.ObjectModel.Collection{System.Int32})">
+            <summary>
+            Sets the model days.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="days">The days.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetDays(CrystalReports.Web.Models.JobModel,Infor.PM.Decision.CrystalReports.Contracts.CRTaskTriggerContract)">
+            <summary>
+            Sets the days from the job model to the task trigger.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="taskTrigger">The task trigger.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetModelMonthWeeks(CrystalReports.Web.Models.JobModel,System.Int32)">
+            <summary>
+            Sets the model month weeks.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="monthWeeks">The month weeks.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetMonthWeeks(CrystalReports.Web.Models.JobModel,Infor.PM.Decision.CrystalReports.Contracts.CRTaskTriggerContract)">
+            <summary>
+            Sets the month weeks from the job model to the task trigger.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="taskTrigger">The task trigger.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetModelWeekdays(CrystalReports.Web.Models.JobModel,System.Int32)">
+            <summary>
+            Sets the model week days.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="weekDays">The week days.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.JobController.SetWeekdays(CrystalReports.Web.Models.JobModel,Infor.PM.Decision.CrystalReports.Contracts.CRTaskTriggerContract)">
+            <summary>
+            Sets the week days from the job model to the task trigger.
+            </summary>
+            <param name="model">The job model.</param>
+            <param name="taskTrigger">The task trigger.</param>
+        </member>
+        <member name="T:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController">
+            <summary>
+            The Production Reporting Crystal Reports controller class.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.repository">
+            <summary>
+            The repository to use.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.Index">
+            <summary>
+            GET: /PRCR/
+            </summary>
+            <returns>The index view.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.GetCurrentCulture">
+            <summary>
+            Returns the current culture.
+            </summary>
+            <returns>The current culture 2 letter ISO language name.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.GetViewDatabaseAliases">
+            <summary>
+            Returns a list of view database aliases.
+            </summary>
+            <returns>Collection of view database aliases.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.SetServiceUrl(System.String,System.String,System.String)">
+            <summary>
+            Sets the service url.
+            </summary>
+            <param name="protocol">The protocol. Either HTTP or HTTPS.</param>
+            <param name="host">The host name.</param>
+            <param name="port">The port.</param>
+            <returns>True when set successfully.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.SetViewsDBAlias(System.String)">
+            <summary>
+            Sets the views database alias.
+            </summary>
+            <param name="id">The views database alias to set.</param>
+            <returns>True when successfull.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.IsChrystalReportsInstalled">
+            <summary>
+            Checks if ChrystalReport is installed.
+            </summary>
+            <returns>True when installed.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.GetUsers">
+            <summary>
+            Returns a list of users.
+            </summary>
+            <returns>List of users.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.GetReports">
+            <summary>
+            Returns a list of reports.
+            </summary>
+            <returns>List of reports.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.GetBooks">
+            <summary>
+            Returns a list of books.
+            </summary>
+            <returns>List of books.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.GetTemplates">
+            <summary>
+            Returns a list of templates.
+            </summary>
+            <returns>List of templates.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.PRCRController.GetJobs">
+            <summary>
+            Returns a list of books.
+            </summary>
+            <returns>List of books.</returns>
+        </member>
+        <member name="T:CrystalReports.Web.Areas.PRCR.Controllers.ReportController">
+            <summary>
+            The report controller class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.ReportController.Index">
+            <summary>
+            GET: /Report/
+            </summary>
+            <returns>A view result.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.ReportController.Edit(System.String)">
+            <summary>
+            Returns the report with the given id.
+            </summary>
+            <param name="id">The id of the report to be edited.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.ReportController.Edit(Infor.PM.Decision.CrystalReports.Contracts.CRReportContract)">
+            <summary>
+            Updates the report to the database.
+            </summary>
+            <param name="report">The report to update.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.ReportController.Add">
+            <summary>
+            Returns a new report object.
+            </summary>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.ReportController.Add(Infor.PM.Decision.CrystalReports.Contracts.CRReportContract)">
+            <summary>
+            Adds the new report.
+            </summary>
+            <param name="report">The report to add.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.ReportController.Delete(System.String)">
+            <summary>
+            Deletes the report with the given id.
+            </summary>
+            <param name="id">The Id of the report to be deleted.</param>
+            <returns>True when successful or the error message when not successful.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.ReportController.ValidateReportName(System.String,System.String)">
+            <summary>
+            Checks if the report name is valid.
+            </summary>
+            <param name="reportName">The name of the report.</param>
+            <param name="id">The id of the report.</param>
+            <returns>False if the name is ok or empty.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.ReportController.GetViews">
+            <summary>
+            Returns a list of reports.
+            </summary>
+            <returns>List of reports.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.ReportController.GetTemplates">
+            <summary>
+            Returns a list of templates.
+            </summary>
+            <returns>List of templates.</returns>
+        </member>
+        <member name="T:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController">
+            <summary>
+            The template controller class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.Index">
+            <summary>
+            GET: /Template/
+            </summary>
+            <returns>A view result.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.Edit(System.String)">
+            <summary>
+            Returns the template with the given id.
+            </summary>
+            <param name="id">The id of the template to be edited.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.Edit(Infor.PM.Decision.CrystalReports.CRTemplateContract)">
+            <summary>
+            Updates the template to the database.
+            </summary>
+            <param name="template">The template to update.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.Add">
+            <summary>
+            Returns a new template object.
+            </summary>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.Add(Infor.PM.Decision.CrystalReports.CRTemplateContract)">
+            <summary>
+            Adds the new template.
+            </summary>
+            <param name="template">The template to add.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.Delete(System.String)">
+            <summary>
+            Deletes the template with the given id.
+            </summary>
+            <param name="id">The Id of the template to be deleted.</param>
+            <returns>True when successful or the error message when not successful.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.ValidateTemplateName(System.String,System.String)">
+            <summary>
+            Checks if the template name is valid.
+            </summary>
+            <param name="templateName">The name of the template.</param>
+            <param name="id">The id of the template.</param>
+            <returns>False if the name is ok or empty.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.IsTemplateInUse(System.String)">
+            <summary>
+            Checks if the template is in use.
+            </summary>
+            <param name="id">The template id to check.</param>
+            <returns>True when in use.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.GetTemplateFiles">
+            <summary>
+            Returns a list of template files.
+            </summary>
+            <returns>Template file list.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.TemplateController.GetTemplateImageFiles">
+            <summary>
+            Returns a list of template image files.
+            </summary>
+            <returns>Template image file list.</returns>
+        </member>
+        <member name="T:CrystalReports.Web.Areas.PRCR.Controllers.UserController">
+            <summary>
+            The user controller class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.UserController.Index">
+            <summary>
+            GET: /User/
+            </summary>
+            <returns>A view result.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.UserController.SaveUsers(System.Collections.ObjectModel.Collection{CrystalReports.Web.UserItem})">
+            <summary>
+            Saves the new and changed users.
+            </summary>
+            <param name="users">The users to save.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.UserController.Delete(System.String)">
+            <summary>
+            Deletes the user with the given id.
+            </summary>
+            <param name="id">The Id of the user to be deleted.</param>
+            <returns>True when successful or the error message when not successful.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.UserController.IsValidateGuid(System.String)">
+            <summary>
+            Checks if the Id is a valid Guid.
+            </summary>
+            <param name="theGuid">The Guid to check.</param>
+            <returns>True when a valid Guid.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.UserController.AddUser(CrystalReports.Web.UserItem)">
+            <summary>
+            Adds a new user.
+            </summary>
+            <param name="user">The user to be added.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.Controllers.UserController.UpdateUser(CrystalReports.Web.UserItem)">
+            <summary>
+            Updates the user.
+            </summary>
+            <param name="user">The user to be updated.</param>
+        </member>
+        <member name="T:CrystalReports.Web.Repository">
+            <summary>
+            This class handles the web service calls.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Repository.ServiceUrlEndpoint">
+            <summary>
+            The path to the Crystal Reports Json Service.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Repository.instance">
+            <summary>
+            The single ViewManager instance for this singleton.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Repository.instanceLock">
+            <summary>
+            Locking object used to make creating an instance of this object thread safe.
+            This should only be used to lock the creation of the instance.  It should not
+            be used to lock any actions performed by the instance.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Repository.httpService">
+            <summary>
+            The HttpService.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Repository.viewsDBAlias">
+            <summary>
+            The ViewsDBAlias to use for now.
+            </summary>        
+        </member>
+        <member name="F:CrystalReports.Web.Repository.isValidViewsDB">
+            <summary>
+            Indicates whether the current views database is valid or not.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.#ctor">
+            <summary>
+            Initializes a new instance of the Repository class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.IsValidViewsDB(System.String)">
+            <summary>
+            Checks whether the views database is valid or not.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>True when valid.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.IsChrystalReportsInstalled(System.String)">
+            <summary>
+            Checks if ChrystalReport is installed.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>True when installed.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetViewDatabaseAliases(System.String)">
+            <summary>
+            Returns a collection of available view database aliases.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of view database aliases.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetTemplates(System.String)">
+            <summary>
+            Returns a collection of templates.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of templates.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetTemplate(System.String,System.String)">
+            <summary>
+            Returns a template.
+            </summary>
+            <param name="id">The id of the template to be returned.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A CRTemplateContract object.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.UpdateTemplate(Infor.PM.Decision.CrystalReports.CRTemplateContract,System.String)">
+            <summary>
+            Updates the template.
+            </summary>
+            <param name="template">The template to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.AddTemplate(Infor.PM.Decision.CrystalReports.CRTemplateContract,System.String)">
+            <summary>
+            Saves the template.
+            </summary>
+            <param name="template">The template to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.DeleteTemplate(System.String,System.String)">
+            <summary>
+            Deletes the template.
+            </summary>
+            <param name="templateId">The template Id to be deleted.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.DoesTemplateNameExists(System.String,System.String,System.String)">
+            <summary>
+            Checks if the template name already exists.
+            </summary>
+            <param name="templateName">The name of the template.</param>
+            <param name="id">The id of the template.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>True when already existing.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.IsTemplateInUse(System.String,System.String)">
+            <summary>
+            Checks if the template is in use.
+            </summary>
+            <param name="id">The template id to check.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>True when in use.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetTemplateFiles(System.String)">
+            <summary>
+            Returns a collection of availabel template files.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of available template files.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetTemplateImageFiles(System.String)">
+            <summary>
+            Returns a collection of availabel template image files.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of available template image files.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetReports(System.String)">
+            <summary>
+            Returns a collection of reports.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of reports.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetReport(System.String,System.String)">
+            <summary>
+            Returns a report.
+            </summary>
+            <param name="id">The id of the report to be returned.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A CRReportContract object.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.UpdateReport(Infor.PM.Decision.CrystalReports.Contracts.CRReportContract,System.String)">
+            <summary>
+            Updates the reports.
+            </summary>
+            <param name="report">The report to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.AddReport(Infor.PM.Decision.CrystalReports.Contracts.CRReportContract,System.String)">
+            <summary>
+            Saves the report.
+            </summary>
+            <param name="report">The report to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.DeleteReport(System.String,System.String)">
+            <summary>
+            Deletes the report.
+            </summary>
+            <param name="reportId">The report Id to be deleted.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.DoesReportNameExists(System.String,System.String,System.String)">
+            <summary>
+            Checks if the report name already exists.
+            </summary>
+            <param name="reportName">The name of the report.</param>
+            <param name="id">The id of the report.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>True when already existing.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetBooks(System.String)">
+            <summary>
+            Returns a collection of books.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of books.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetBook(System.String,System.String)">
+            <summary>
+            Returns a book.
+            </summary>
+            <param name="id">The id of the book to be returned.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A CRBookContract object.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.AddBook(Infor.PM.Decision.CrystalReports.Contracts.CRBookContract,System.String)">
+            <summary>
+            Saves the book.
+            </summary>
+            <param name="book">The book to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.UpdateBook(Infor.PM.Decision.CrystalReports.Contracts.CRBookContract,System.String)">
+            <summary>
+            Updates the books.
+            </summary>
+            <param name="book">The book to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.DeleteBook(System.String,System.String)">
+            <summary>
+            Deletes the book.
+            </summary>
+            <param name="bookId">The book Id to be deleted.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.DoesBookNameExists(System.String,System.String,System.String)">
+            <summary>
+            Checks if the book name already exists.
+            </summary>
+            <param name="bookName">The name of the book.</param>
+            <param name="id">The id of the book.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>True when already existing.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetAvailableBooksByBookId(System.String,System.String)">
+            <summary>
+            Returns a collection of unused books.
+            </summary>
+            <param name="id">The Id of the book.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of the unused books.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetAvailableReportsByBookId(System.String,System.String)">
+            <summary>
+            Returns a collection of unused reports.
+            </summary>
+            <param name="id">The Id of the book.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of the unused reports.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetJobs(System.String)">
+            <summary>
+            Returns a collection of jobs.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of jobs.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetJob(System.String,System.String)">
+            <summary>
+            Returns a job.
+            </summary>
+            <param name="id">The id of the job to be returned.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A CRJobContract object.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.AddJob(Infor.PM.Decision.CrystalReports.Contracts.CRJobContract,System.String)">
+            <summary>
+            Saves the job.
+            </summary>
+            <param name="job">The job to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.UpdateJob(Infor.PM.Decision.CrystalReports.Contracts.CRJobContract,System.String)">
+            <summary>
+            Updates the job.
+            </summary>
+            <param name="job">The job to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.DeleteJob(System.String,System.String)">
+            <summary>
+            Deletes the job.
+            </summary>
+            <param name="jobId">The job Id to be deleted.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.ExecuteJob(System.String,System.String)">
+            <summary>
+            Executes the job.
+            </summary>
+            <param name="jobId">The job Id to be executed.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.DoesJobNameExists(System.String,System.String,System.String)">
+            <summary>
+            Checks if the job name already exists.
+            </summary>
+            <param name="jobName">The name of the job.</param>
+            <param name="id">The id of the job.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>True when already existing.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetAvailableBooksByJobId(System.String,System.String)">
+            <summary>
+            Returns a collection of unused books.
+            </summary>
+            <param name="id">The Id of the job.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of the unused books.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetAvailableReportsByJobId(System.String,System.String)">
+            <summary>
+            Returns a collection of unused reports.
+            </summary>
+            <param name="id">The Id of the job.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of the unused reports.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetAvailableUsersByJobId(System.String,System.String)">
+            <summary>
+            Returns a collection of unused users.
+            </summary>
+            <param name="id">The Id of the job.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of the unused users.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetViews(System.String)">
+            <summary>
+            Returns a collection of views.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of views.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetUsers(System.String)">
+            <summary>
+            Returns the json response string for users.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>Json reponse string with users the information.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.UpdateUser(Infor.PM.Decision.CrystalReports.Contracts.CRUserContract,System.String)">
+            <summary>
+            Updates the user.
+            </summary>
+            <param name="user">The user to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.AddUser(Infor.PM.Decision.CrystalReports.Contracts.CRUserContract,System.String)">
+            <summary>
+            Saves the user.
+            </summary>
+            <param name="user">The user to be saved.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.GetAvailableUsers(System.String)">
+            <summary>
+            Returns a collection of users.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>A collection of users.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.DeleteUser(System.String,System.String)">
+            <summary>
+            Deletes the user.
+            </summary>
+            <param name="id">The id of the user to be deleted.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Repository.SetServiceUrl(System.String,System.String,System.String)">
+            <summary>
+            Sets the service Url.
+            </summary>
+            <param name="protocol">The protocol. Either HTTP or HTTPS.</param>
+            <param name="host">The host name.</param>
+            <param name="port">The port.</param>
+        </member>
+        <member name="P:CrystalReports.Web.Repository.Instance">
+            <summary>
+            Gets the single instance of the Repository.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Repository.ViewsDBAlias">
+            <summary>
+            Gets or sets the views database alias.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Repository.IsValidViewsDatabase">
+            <summary>
+            Gets a value indicating whether the views database is valid or not.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Repository.ServiceUrl">
+            <summary>
+            Gets or sets the service Url.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.BookItem">
+            <summary>
+            A book item.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.ListItem">
+            <summary>
+            Holds the Id and Name of a list item.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.ListItem.#ctor">
+            <summary>
+            Initializes a new instance of the ListItem class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.ListItem.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ListItem class.
+            </summary>
+            <param name="id">The id of the list item.</param>
+            <param name="name">The name of the list item.</param>
+        </member>
+        <member name="M:CrystalReports.Web.ListItem.Equals(System.Object)">
+            <summary>
+            Override Equals.
+            </summary>
+            <param name="obj">Object to check.</param>s
+            <returns>Bool value for if the compared objects are equal.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.ListItem.GetHashCode">
+            <summary>
+            Override hash code for the equals method.
+            </summary>
+            <returns>Int value of the hashcode</returns>
+        </member>
+        <member name="P:CrystalReports.Web.ListItem.Id">
+            <summary>
+            Gets or sets the Id of the list item.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.ListItem.Name">
+            <summary>
+            Gets or sets the name of the list item.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.BookItem.#ctor">
+            <summary>
+            Initializes a new instance of the BookItem class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.BookItem.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the BookItem class.
+            </summary>
+            <param name="id">The id of the book.</param>
+            <param name="name">The name of the book.</param>
+            <param name="isValid">A value indicating whether this book can be used or not.</param>
+        </member>
+        <member name="M:CrystalReports.Web.BookItem.Equals(System.Object)">
+            <summary>
+            Override Equals.
+            </summary>
+            <param name="obj">Object to check.</param>s
+            <returns>Bool value for if the compared objects are equal.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.BookItem.GetHashCode">
+            <summary>
+            Override hash code for the equals method.
+            </summary>
+            <returns>Int value of the hashcode</returns>
+        </member>
+        <member name="P:CrystalReports.Web.BookItem.IsValid">
+            <summary>
+            Gets or sets a value indicating whether this item can be assign to a given book or not.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.DayItem">
+            <summary>
+            Represents a month item.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.DayItem.#ctor">
+            <summary>
+            Initializes a new instance of the DayItem class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.DayItem.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the DayItem class.
+            </summary>
+            <param name="id">The id of the month item.</param>
+            <param name="dayName">The name of the day item.</param>
+        </member>
+        <member name="P:CrystalReports.Web.DayItem.DayName">
+            <summary>
+            Gets or sets the name of the month.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.DayItem.DayId">
+            <summary>
+            Gets or sets the Id of the month.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.DayOfWeekItem">
+            <summary>
+            Represents a day of the week item.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.DayOfWeekItem.#ctor">
+            <summary>
+            Initializes a new instance of the DayOfWeekItem class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.DayOfWeekItem.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the DayOfWeekItem class.
+            </summary>
+            <param name="id">The id of the day of the week.</param>
+            <param name="dayOfWeekName">The name of the day of the week.</param>
+        </member>
+        <member name="P:CrystalReports.Web.DayOfWeekItem.DayOfWeekName">
+            <summary>
+            Gets or sets the name of the day.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.DayOfWeekItem.DayOfWeekId">
+            <summary>
+            Gets or sets the Id of the day.
+            </summary>
+        </member>
+        <member name="T:HtmlExtension">
+            <summary>
+            An Html extension class.
+            </summary>
+        </member>
+        <member name="M:HtmlExtension.RadioButtonForEnum``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Creates a MvcHtmlString for a given enum.
+            </summary>
+            <typeparam name="TModel">The generic model.</typeparam>
+            <typeparam name="TProperty">The generic property.</typeparam>
+            <param name="htmlHelper">The html helper class.</param>
+            <param name="expression">An expression.</param>
+            <returns>A Mvc html string.</returns>
+        </member>
+        <member name="M:HtmlExtension.DateFieldFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object,System.Boolean)">
+            <summary>
+            Creates a IHtmlString for a given date.
+            </summary>
+            <typeparam name="TModel">The generic model.</typeparam>
+            <typeparam name="TProperty">The generic property.</typeparam>
+            <param name="htmlHelper">The html helper class.</param>
+            <param name="expression">An expression.</param>
+            <param name="htmlAttributes">The html attributes.</param>
+            <param name="enable">A value indicating whether the date field is enabled or not.</param>
+            <returns>An IHtmlString.</returns>
+        </member>
+        <member name="M:HtmlExtension.ListBoxForAvailableBooks``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
+            <summary>
+            Creates the list box MvcHtmlString.
+            </summary>
+            <typeparam name="TModel">The generic model.</typeparam>
+            <typeparam name="TProperty">The generic property.</typeparam>
+            <param name="htmlHelper">The html helper class.</param>
+            <param name="expression">An expression.</param>
+            <param name="htmlAttributes">The html attributes.</param>
+            <returns>A MvcHtmlString.</returns>
+        </member>
+        <member name="T:CrystalReports.Web.HttpService">
+            <summary>
+            HttpService class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.HttpService.#ctor">
+            <summary>
+            Initializes a new instance of the HttpService class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.HttpService.Post(System.Uri,System.String,System.String,System.String)">
+            <summary>
+            Performs a POST request.
+            </summary>
+            <param name="host">The host adress.</param>
+            <param name="path">The path.</param>
+            <param name="payload">The object to post.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>The return string.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.HttpService.Get(System.Uri,System.String,System.String)">
+            <summary>
+            Performs the GET request.
+            </summary>
+            <param name="host">The host adress.</param>
+            <param name="path">The path.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>The return string.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.HttpService.Put(System.Uri,System.String,System.String,System.String)">
+            <summary>
+            Performs a PUT request.
+            </summary>
+            <param name="host">The host adress.</param>
+            <param name="path">The path.</param>
+            <param name="payload">The object to post.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>The return string.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.HttpService.Delete(System.Uri,System.String,System.String)">
+            <summary>
+            Performs a DELETE request.
+            </summary>
+            <param name="host">The host adress.</param>
+            <param name="path">The path.</param>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>The return string.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.HttpService.ThrowHttpException(System.Net.WebException)">
+            <summary>
+            Converts the CrystalReportsJsonServiceException to an HttpException.
+            </summary>
+            <param name="ex">The WebException having the CrystalReportsJsonServiceException.</param>
+        </member>
+        <member name="M:CrystalReports.Web.HttpService.AcceptCertificate(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+            <summary>
+            I use this class for internal web services.  For external web services, you'll want
+            to put some logic in here to determine whether or not you should accept a certificate
+            or not if the domain name in the cert doesn't match the url you are accessing.
+            </summary>
+            <param name="sender">The sender object.</param>
+            <param name="certificate">The X509 certificate.</param>
+            <param name="chain">The X509 chain.</param>
+            <param name="errors">A SslPolicyErrors object.</param>
+            <returns>True when accepted.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.HttpService.GetCredential(System.String)">
+            <summary>
+            Takes an authentication header from a request and turns it into the credential we need.
+            </summary>
+            <param name="authHeader">Authentication header from the request.</param>
+            <returns>User Credentials</returns>
+        </member>
+        <member name="T:CrystalReports.Web.MonthItem">
+            <summary>
+            Represents a month item.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.MonthItem.#ctor">
+            <summary>
+            Initializes a new instance of the MonthItem class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.MonthItem.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the MonthItem class.
+            </summary>
+            <param name="id">The id of the month item.</param>
+            <param name="monthName">The name of the month item.</param>
+        </member>
+        <member name="P:CrystalReports.Web.MonthItem.MonthName">
+            <summary>
+            Gets or sets the name of the month.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.MonthItem.MonthId">
+            <summary>
+            Gets or sets the Id of the month.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.UserItem">
+            <summary>
+            The user item.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.UserItem.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the disk path and email address.
+            </summary>
+            <param name="validationContext">The validation context.</param>
+            <returns>A validation result.</returns>
+        </member>
+        <member name="P:CrystalReports.Web.UserItem.Id">
+            <summary>
+            Gets or sets the Id.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.UserItem.UserName">
+            <summary>
+            Gets or sets the UserName.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.UserItem.Indicator">
+            <summary>
+            Gets or sets the Indicator.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.UserItem.EmailAddress">
+            <summary>
+            Gets or sets the EmailAddress.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.UserItem.DiskPath">
+            <summary>
+            Gets or sets the DiskPath.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.UserItem.LastModified">
+            <summary>
+            Gets or sets the LastModified.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.UserItem.LastModifiedBy">
+            <summary>
+            Gets or sets the LastModifiedBy.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.WeekOfMonthItem">
+            <summary>
+            Represents a week of the month item.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.WeekOfMonthItem.#ctor">
+            <summary>
+            Initializes a new instance of the WeekOfMonthItem class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.WeekOfMonthItem.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the WeekOfMonthItem class.
+            </summary>
+            <param name="id">The id of the week of the month.</param>
+            <param name="weekOfMonthName">The name of the week of the month.</param>
+        </member>
+        <member name="P:CrystalReports.Web.WeekOfMonthItem.WeekOfMonthName">
+            <summary>
+            Gets or sets the name of the month.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.WeekOfMonthItem.WeekOfMonthId">
+            <summary>
+            Gets or sets the Id of the month.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.ListItemConverter">
+            <summary>
+            CRBookContract converter.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.ListItemConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Overrides the CanConvertFrom method of TypeConverter.
+            The ITypeDescriptorContext interface provides the context for the
+            conversion. Typically, this interface is used at design time to
+            provide information about the design-time container.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="sourceType">The source type.</param>
+            <returns>True if it can be converted.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.ListItemConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Overrides the ConvertFrom method of TypeConverter.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="culture">The culture.</param>
+            <param name="value">The value.</param>
+            <returns>An object.</returns>
+        </member>
+        <member name="M:CrystalReports.Web.ListItemConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Overrides the ConvertTo method of TypeConverter.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="culture">The culture.</param>
+            <param name="value">The value.</param>
+            <param name="destinationType">The destination type.</param>
+            <returns>An object.</returns>
+        </member>
+        <member name="T:CrystalReports.Web.Models.BookModel">
+            <summary>
+            Holds all properties we need for the book wizard.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Models.BookModel.#ctor">
+            <summary>
+            Initializes a new instance of the BookModel class.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.Id">
+            <summary>
+            Gets or sets the Id of the book.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.Name">
+            <summary>
+            Gets or sets the name of the book.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.Description">
+            <summary>
+            Gets or sets the description of the book.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.HowToUse">
+            <summary>
+            Gets or sets the how to use description of the book.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.LastModified">
+            <summary>
+            Gets or sets the date of the last modification.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.LastModifiedBy">
+            <summary>
+            Gets or sets the name of the user who last modified the book.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.IncludedBooks">
+            <summary>
+            Gets or sets a list of included books.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.IncludedReports">
+            <summary>
+            Gets or sets a list of included reports.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.AvailableBooks">
+            <summary>
+            Gets or sets a list of unused books.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.BookModel.AvailableReports">
+            <summary>
+            Gets or sets a list of unused reports.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.Models.RunOption">
+            <summary>
+            All Available run options.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.RunOption.RunOnDemand">
+            <summary>
+            Run option on demand.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.RunOption.RunOnce">
+            <summary>
+            Run option once.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.RunOption.RunDaily">
+            <summary>
+            Run option daily.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.RunOption.RunWeekly">
+            <summary>
+            Run option weekly.
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.RunOption.RunMonthly">
+            <summary>
+            Run option monthly.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.Models.Months">
+            <summary>
+            Values for months of the year (January, February, etc.)  These are
+            bitwise mask of DaysOfTheWeek and be combined with | (or).
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.January">
+            <summary>
+            Months value is January
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.February">
+            <summary>
+            Months value is February
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.March">
+            <summary>
+            Months value is March
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.April">
+            <summary>
+            Months value is April
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.May">
+            <summary>
+            Months value is May 
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.June">
+            <summary>
+            Months value is June
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.July">
+            <summary>
+            Months value is July
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.August">
+            <summary>
+            Months value is August
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.September">
+            <summary>
+            Months value is September
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.October">
+            <summary>
+            Months value is October
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.November">
+            <summary>
+            Months value is November
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.Months.December">
+            <summary>
+            Months value is December
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.Models.WeeksOfMonth">
+            <summary>
+            bitwise mask values for week of month (first, second, ..., last)
+            Note that you can explicitly specify the last week of the month, regardless of what week it is, by specifying 0X20 (32).
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.WeeksOfMonth.First">
+            <summary>
+            First week of the month
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.WeeksOfMonth.Second">
+            <summary>
+            Second week of the month
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.WeeksOfMonth.Third">
+            <summary>
+            Third week of the month
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.WeeksOfMonth.Fourth">
+            <summary>
+            Fourth week of the month
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.WeeksOfMonth.Fifth">
+            <summary>
+            Fifth week of the month
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.WeeksOfMonth.Last">
+            <summary>
+            Last week of the month
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.Models.DaysOfTheWeek">
+            <summary>
+            Values for days of the week (Monday, Tuesday, etc.)  These are
+            bitwise mask of DaysOfTheWeek and be combined with | (or).
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.DaysOfTheWeek.Sunday">
+            <summary>
+            DaysOfTheWeek value is Sunday
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.DaysOfTheWeek.Monday">
+            <summary>
+            DaysOfTheWeek value is Monday
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.DaysOfTheWeek.Tuesday">
+            <summary>
+            DaysOfTheWeek value is Tuesday
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.DaysOfTheWeek.Wednesday">
+            <summary>
+            DaysOfTheWeek value is Wednesday
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.DaysOfTheWeek.Thursday">
+            <summary>
+            DaysOfTheWeek value is Thursday
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.DaysOfTheWeek.Friday">
+            <summary>
+            DaysOfTheWeek value is Friday
+            </summary>
+        </member>
+        <member name="F:CrystalReports.Web.Models.DaysOfTheWeek.Saturday">
+            <summary>
+            DaysOfTheWeek value is Saturday
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.Models.JobModel">
+            <summary>
+            Holds all properties we need for the job wizard.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Models.JobModel.#ctor">
+            <summary>
+            Initializes a new instance of the JobModel class.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.Id">
+            <summary>
+            Gets or sets the Id of the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.Name">
+            <summary>
+            Gets or sets the name of the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.Description">
+            <summary>
+            Gets or sets the description of the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.FileType">
+            <summary>
+            Gets or sets the file type of the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.DeliveryType">
+            <summary>
+            Gets or sets the delivery type of the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.OnSuccessId">
+            <summary>
+            Gets or sets the user Id to send success message to for the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.OnSuccessName">
+            <summary>
+            Gets or sets the user name to send success message to for the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.OnSuccessSubject">
+            <summary>
+            Gets or sets the success subject of the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.OnFailId">
+            <summary>
+            Gets or sets the user Id to send fail message to for the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.OnFailName">
+            <summary>
+            Gets or sets the user name to send fail message to for the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.OnFailSubject">
+            <summary>
+            Gets or sets the fail subject of the job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.RunOption">
+            <summary>
+            Gets or sets the run option.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.BeginDate">
+            <summary>
+            Gets or sets the begin date.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.DaysInterval">
+            <summary>
+            Gets or sets the days interval.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.WeeksInterval">
+            <summary>
+            Gets or sets the weeks interval.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.EndDate">
+            <summary>
+            Gets or sets the end date.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.HasEndDate">
+            <summary>
+            Gets or sets a value indicating whether an end date is specified or not.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.MonthNames">
+            <summary>
+            Gets or sets the month names.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.MonthIds">
+            <summary>
+            Gets or sets the month ids.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.DaysEnabled">
+            <summary>
+            Gets or sets a value indicating whether days are used or not.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.DayNames">
+            <summary>
+            Gets or sets the day names.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.WeekOfMonthNames">
+            <summary>
+            Gets or sets the month names.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.WeekOfMonthIds">
+            <summary>
+            Gets or sets the month ids.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.DaysOfWeekForWeeklyNames">
+            <summary>
+            Gets or sets the names of the days of the weeks.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.DaysOfWeekForWeeklyIds">
+            <summary>
+            Gets or sets the Ids of the days of the weeks.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.DaysOfWeekNames">
+            <summary>
+            Gets or sets the names of the days of the weeks.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.DaysOfWeekIds">
+            <summary>
+            Gets or sets the Ids of the days of the weeks.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.RunImmediately">
+            <summary>
+            Gets or sets a value indicating whether to run the job immediately or not.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.LastModified">
+            <summary>
+            Gets or sets the date of the last modification.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.LastModifiedBy">
+            <summary>
+            Gets or sets the name of the user who last modified the book.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.IncludedBooks">
+            <summary>
+            Gets or sets a list of included books.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.IncludedReports">
+            <summary>
+            Gets or sets a list of included reports.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.IncludedUsers">
+            <summary>
+            Gets or sets a list of included users.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.AvailableBooks">
+            <summary>
+            Gets or sets a list of unused books.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.AvailableReports">
+            <summary>
+            Gets or sets a list of unused reports.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.AvailableRoles">
+            <summary>
+            Gets or sets a list of unused roles.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Models.JobModel.AvailableUsers">
+            <summary>
+            Gets or sets a list of unused users.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.Areas.PRCR.PRCRAreaRegistration">
+            <summary>
+            PRCR area registratiob class.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Areas.PRCR.PRCRAreaRegistration.RegisterArea(System.Web.Mvc.AreaRegistrationContext)">
+            <summary>
+            Registers the area.
+            </summary>
+            <param name="context">The context to use.</param>
+        </member>
+        <member name="P:CrystalReports.Web.Areas.PRCR.PRCRAreaRegistration.AreaName">
+            <summary>
+            Gets the area name.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.Initializer">
+            <summary>
+            Contains code that should only be executed once on application start.
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Initializer.Initialize">
+            <summary>
+            Sets up CrystalReport's routes and filter information
+            </summary>
+        </member>
+        <member name="M:CrystalReports.Web.Initializer.RegisterGlobalFilters(System.Web.Mvc.GlobalFilterCollection)">
+            <summary>
+            Registers the global filters.
+            </summary>
+            <param name="filters">Collection of filters to register.</param>
+        </member>
+        <member name="M:CrystalReports.Web.Initializer.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            Registers the routes.
+            </summary>
+            <param name="routes">A collection of routes.</param>
+        </member>
+        <member name="T:CrystalReports.Web.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Accountant">
+            <summary>
+              Looks up a localized string similar to Accountant.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Add">
+            <summary>
+              Looks up a localized string similar to Add.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AddNewBook">
+            <summary>
+              Looks up a localized string similar to Add New.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AddNewJob">
+            <summary>
+              Looks up a localized string similar to Add New.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AddNewReport">
+            <summary>
+              Looks up a localized string similar to Add New.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AddNewTemplate">
+            <summary>
+              Looks up a localized string similar to Add New.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AddNewUser">
+            <summary>
+              Looks up a localized string similar to Add New.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Administrator">
+            <summary>
+              Looks up a localized string similar to Administrator.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AllUsers">
+            <summary>
+              Looks up a localized string similar to All Users.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Analyst">
+            <summary>
+              Looks up a localized string similar to Analyst.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.April">
+            <summary>
+              Looks up a localized string similar to April.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.August">
+            <summary>
+              Looks up a localized string similar to August.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AvailableBooks">
+            <summary>
+              Looks up a localized string similar to Available Books.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AvailableJobs">
+            <summary>
+              Looks up a localized string similar to Available Jobs.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AvailableReports">
+            <summary>
+              Looks up a localized string similar to Available Reports.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AvailableTemplates">
+            <summary>
+              Looks up a localized string similar to Available Templates.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.AvailableUsers">
+            <summary>
+              Looks up a localized string similar to Available Users.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Books">
+            <summary>
+              Looks up a localized string similar to Books.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.BudgetHolder">
+            <summary>
+              Looks up a localized string similar to Budget Holder.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.By">
+            <summary>
+              Looks up a localized string similar to By.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Content">
+            <summary>
+              Looks up a localized string similar to Content.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Controller">
+            <summary>
+              Looks up a localized string similar to Controller.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.CrystalReportsWizard">
+            <summary>
+              Looks up a localized string similar to Crystal Reports Wizard.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Daily">
+            <summary>
+              Looks up a localized string similar to Daily.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.DataSourceName">
+            <summary>
+              Looks up a localized string similar to Views Database.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Date">
+            <summary>
+              Looks up a localized string similar to Date.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Day">
+            <summary>
+              Looks up a localized string similar to Day.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Days">
+            <summary>
+              Looks up a localized string similar to day(s)..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.December">
+            <summary>
+              Looks up a localized string similar to December.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.DeleteBook">
+            <summary>
+              Looks up a localized string similar to Delete Selected.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.DeleteJob">
+            <summary>
+              Looks up a localized string similar to Delete Selected.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.DeleteReport">
+            <summary>
+              Looks up a localized string similar to Delete Selected.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.DeleteTemplate">
+            <summary>
+              Looks up a localized string similar to Delete Selected.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.DeleteUsers">
+            <summary>
+              Looks up a localized string similar to Delete Selected.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Delivery">
+            <summary>
+              Looks up a localized string similar to Delivery.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Description">
+            <summary>
+              Looks up a localized string similar to Description.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.DescriptionForSelectedTemplate">
+            <summary>
+              Looks up a localized string similar to For the selected template.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.EditBook">
+            <summary>
+              Looks up a localized string similar to Edit Selected.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.EditJob">
+            <summary>
+              Looks up a localized string similar to Edit Selected.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.EditReport">
+            <summary>
+              Looks up a localized string similar to Edit Selected.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.EditTemplate">
+            <summary>
+              Looks up a localized string similar to Edit Selected.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.EndOn">
+            <summary>
+              Looks up a localized string similar to End On:.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.February">
+            <summary>
+              Looks up a localized string similar to February.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Fifth">
+            <summary>
+              Looks up a localized string similar to Fifth.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.First">
+            <summary>
+              Looks up a localized string similar to First.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.ForceJobToRun">
+            <summary>
+              Looks up a localized string similar to This will force the job to run regardless of the setting in the Time tab..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Fourth">
+            <summary>
+              Looks up a localized string similar to Fourth.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Friday">
+            <summary>
+              Looks up a localized string similar to Friday.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.General">
+            <summary>
+              Looks up a localized string similar to General.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.History">
+            <summary>
+              Looks up a localized string similar to History.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.HolderAccounts">
+            <summary>
+              Looks up a localized string similar to Budget Holder / Accountant.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.IncludedBooks">
+            <summary>
+              Looks up a localized string similar to Included Books.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.IncludedReports">
+            <summary>
+              Looks up a localized string similar to Included Reports.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.January">
+            <summary>
+              Looks up a localized string similar to January.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Jobs">
+            <summary>
+              Looks up a localized string similar to Jobs.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.July">
+            <summary>
+              Looks up a localized string similar to July.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.June">
+            <summary>
+              Looks up a localized string similar to June.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Last">
+            <summary>
+              Looks up a localized string similar to Last.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.LastUpdated">
+            <summary>
+              Looks up a localized string similar to Last updated.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Layout">
+            <summary>
+              Looks up a localized string similar to Template.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.March">
+            <summary>
+              Looks up a localized string similar to March.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.May">
+            <summary>
+              Looks up a localized string similar to May.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Monday">
+            <summary>
+              Looks up a localized string similar to Monday.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Monthly">
+            <summary>
+              Looks up a localized string similar to Monthly.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Months">
+            <summary>
+              Looks up a localized string similar to Months.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Name">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Notify">
+            <summary>
+              Looks up a localized string similar to Notify.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.November">
+            <summary>
+              Looks up a localized string similar to November.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.October">
+            <summary>
+              Looks up a localized string similar to October.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Once">
+            <summary>
+              Looks up a localized string similar to Once.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.OnDemand">
+            <summary>
+              Looks up a localized string similar to On Demand.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.OnError">
+            <summary>
+              Looks up a localized string similar to On error, notify.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.OnSuccessfulCompletion">
+            <summary>
+              Looks up a localized string similar to On completion, notify.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.OnThe">
+            <summary>
+              Looks up a localized string similar to On the.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Picture">
+            <summary>
+              Looks up a localized string similar to Image.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.PRCRTitle">
+            <summary>
+              Looks up a localized string similar to Production Reporting for Crystal Reports.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.PublishingFormat">
+            <summary>
+              Looks up a localized string similar to Format.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Recipients">
+            <summary>
+              Looks up a localized string similar to Recipients.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.RecurEvery">
+            <summary>
+              Looks up a localized string similar to Recur every.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.RefreshUsers">
+            <summary>
+              Looks up a localized string similar to Refresh.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Remove">
+            <summary>
+              Looks up a localized string similar to Remove.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Reports">
+            <summary>
+              Looks up a localized string similar to Reports.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Roles">
+            <summary>
+              Looks up a localized string similar to Roles.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Run">
+            <summary>
+              Looks up a localized string similar to Run.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.RunJob">
+            <summary>
+              Looks up a localized string similar to Run Job.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.RunJobImmediately">
+            <summary>
+              Looks up a localized string similar to Run job immediately.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.RunJobOnDemand">
+            <summary>
+              Looks up a localized string similar to To run job on demand, select and run job from jobs list.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.RunOn">
+            <summary>
+              Looks up a localized string similar to Run On:.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.RunThisJob">
+            <summary>
+              Looks up a localized string similar to Run this job:.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.SamplePicture">
+            <summary>
+              Looks up a localized string similar to Sample Image.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Saturday">
+            <summary>
+              Looks up a localized string similar to Saturday.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.SaveUsers">
+            <summary>
+              Looks up a localized string similar to Save.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Schedule">
+            <summary>
+              Looks up a localized string similar to Schedule.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Second">
+            <summary>
+              Looks up a localized string similar to Second.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.SelectedTemplate">
+            <summary>
+              Looks up a localized string similar to Template.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.September">
+            <summary>
+              Looks up a localized string similar to September.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.StartOn">
+            <summary>
+              Looks up a localized string similar to Start On.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.SubjectLine">
+            <summary>
+              Looks up a localized string similar to Subject line.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Sunday">
+            <summary>
+              Looks up a localized string similar to Sunday.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Templates">
+            <summary>
+              Looks up a localized string similar to Templates.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.TemplateUsage">
+            <summary>
+              Looks up a localized string similar to Template Usage.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Third">
+            <summary>
+              Looks up a localized string similar to Third.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Thursday">
+            <summary>
+              Looks up a localized string similar to Thursday.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Time">
+            <summary>
+              Looks up a localized string similar to Time.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.To">
+            <summary>
+              Looks up a localized string similar to To.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Tuesday">
+            <summary>
+              Looks up a localized string similar to Tuesday.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Usage">
+            <summary>
+              Looks up a localized string similar to Usage.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Users">
+            <summary>
+              Looks up a localized string similar to Users.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.ViewName">
+            <summary>
+              Looks up a localized string similar to View.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Wednesday">
+            <summary>
+              Looks up a localized string similar to Wednesday.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Weekday">
+            <summary>
+              Looks up a localized string similar to Weekday.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.Weekly">
+            <summary>
+              Looks up a localized string similar to Weekly.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resource.WeeksOn">
+            <summary>
+              Looks up a localized string similar to week(s) on.
+            </summary>
+        </member>
+        <member name="T:CrystalReports.Web.Resources.CrystalReportJavaScriptResource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.AddBookWizard">
+            <summary>
+              Looks up a localized string similar to Add Book Wizard.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.AddJobWizard">
+            <summary>
+              Looks up a localized string similar to Add Job Wizard.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.AddReportWizard">
+            <summary>
+              Looks up a localized string similar to Add Report Wizard.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.AddTemplateWizard">
+            <summary>
+              Looks up a localized string similar to Add Template Wizard.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.AnErrorOccurred">
+            <summary>
+              Looks up a localized string similar to An Error Occurred.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.BookAlreadyExists">
+            <summary>
+              Looks up a localized string similar to A book with this name already exists..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.IdNotFound">
+            <summary>
+              Looks up a localized string similar to Could not find a book with the name &apos;{0}&apos;!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.CannotAddNewJob">
+            <summary>
+              Looks up a localized string similar to Cannot add new job!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.CorrectForm">
+            <summary>
+              Looks up a localized string similar to Please correct your form!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.EditBookWizard">
+            <summary>
+              Looks up a localized string similar to Edit Book Wizard.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.EditJobWizard">
+            <summary>
+              Looks up a localized string similar to Edit Job Wizard.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.EditReportWizard">
+            <summary>
+              Looks up a localized string similar to Edit Report Wizard.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.EditTemplateWizard">
+            <summary>
+              Looks up a localized string similar to Edit Template Wizard.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.Error">
+            <summary>
+              Looks up a localized string similar to Error.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.ErrorDialog">
+            <summary>
+              Looks up a localized string similar to Error Dialog.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.InvalidEmailAddress">
+            <summary>
+              Looks up a localized string similar to The email address is invalid!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.InvalidEndDate">
+            <summary>
+              Looks up a localized string similar to Invalid end date..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.InvalidSelectedViewsDatabase">
+            <summary>
+              Looks up a localized string similar to The selected views database is not valid!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.InvalidStartDate">
+            <summary>
+              Looks up a localized string similar to Invalid start date..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.InvalidViewsDatabase">
+            <summary>
+              Looks up a localized string similar to Invalid Views Database.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.JobAlreadyExists">
+            <summary>
+              Looks up a localized string similar to A job with this name already exists..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoBooksFound">
+            <summary>
+              Looks up a localized string similar to No books found!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoCrystalReportInstalled">
+            <summary>
+              Looks up a localized string similar to Execution of jobs is not possible because there is no Crystal Report installed..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoDaySelected">
+            <summary>
+              Looks up a localized string similar to You have to select at least one day..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoEmailAddressOrDiskPathEntered">
+            <summary>
+              Looks up a localized string similar to You have to enter an email address or disk path!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoJobFound">
+            <summary>
+              Looks up a localized string similar to No job found!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoJobsFound">
+            <summary>
+              Looks up a localized string similar to No jobs found!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoMonthSelected">
+            <summary>
+              Looks up a localized string similar to You have to select at least one month..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoRecipientSelected">
+            <summary>
+              Looks up a localized string similar to No recipient selected!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoReportsFound">
+            <summary>
+              Looks up a localized string similar to No reports found!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoReportsOrBooksSelected">
+            <summary>
+              Looks up a localized string similar to No reports or books selected!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoTemplatesFound">
+            <summary>
+              Looks up a localized string similar to No templates found!.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.NoWeekdaySelected">
+            <summary>
+              Looks up a localized string similar to You have to select at least one weekday..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.ReportAlreadyExists">
+            <summary>
+              Looks up a localized string similar to A report with this name already exists..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.Required">
+            <summary>
+              Looks up a localized string similar to Required.
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.TemplateAlreadyExists">
+            <summary>
+              Looks up a localized string similar to A template with this name already exists..
+            </summary>
+        </member>
+        <member name="P:CrystalReports.Web.Resources.CrystalReportJavaScriptResource.TemplateUsedByReports">
+            <summary>
+              Looks up a localized string similar to Cannot delete the template! The template is used by reports..
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,96 @@
+﻿@model DecisionNav.Models.BankVars.Bank
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Bank</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BankName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BankName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BankAlias)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BankAlias)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DBServer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DBServer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RMTools)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RMTools)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HAT)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HAT)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lockout_RMTools)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lockout_RMTools)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CustSearch)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustSearch)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ReportList)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ReportList)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lockout_RMWeekly)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lockout_RMWeekly)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lockout_RMMonthly)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lockout_RMMonthly)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DBServerDataNetwork)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DBServerDataNetwork)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BatchProcessed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BatchProcessed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OnDemand)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OnDemand)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BankID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
