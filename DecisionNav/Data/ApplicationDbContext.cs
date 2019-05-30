@@ -20,6 +20,7 @@ namespace DecisionNav.Data
             modelBuilder.Query<NavigationList>().ToView("vNavigationList");
         }
         public virtual DbSet<Menu> Menu { get; set; }
+        public virtual DbSet<NavigationItem_View> NavigationItem_View { get; set; }
         public virtual DbQuery<NavigationList> NavigationList { get; set; }
 
     }
