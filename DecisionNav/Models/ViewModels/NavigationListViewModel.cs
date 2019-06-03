@@ -11,5 +11,9 @@ namespace DecisionNav.Models.ViewModels
         public string DefaultName { get; set; }
         public string ImageUrl { get; set; }
         public IList<NavigationListViewModel> Children { get; set; }
+
+        public IEnumerable<NavigationItem_View> NavViews { get; set; }
+
+        public NavigationList NavList { get; set; }
     }
 }

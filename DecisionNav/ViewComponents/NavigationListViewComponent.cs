@@ -21,6 +21,7 @@ namespace DecisionNav.ViewComponents
         {
             _context = context;
             _cache = memoryCache;
+
         }
 
         public async Task<IViewComponentResult> InvokeAsync(
@@ -33,6 +34,7 @@ namespace DecisionNav.ViewComponents
             {
                 // Key not in cache, so get data.
                 cacheEntry = await _context.NavigationList.ToListAsync();
+
 
                 // Set cache options.
                 var cacheEntryOptions = new MemoryCacheEntryOptions()

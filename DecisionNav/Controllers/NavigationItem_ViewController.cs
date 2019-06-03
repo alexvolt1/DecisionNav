@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DecisionNav.Data;
 using DecisionNav.Models;
+using DecisionNav.Models.ViewModels;
 
 namespace DecisionNav.Controllers
 {
@@ -14,15 +15,23 @@ namespace DecisionNav.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+
+        public NavigationItem_ViewModel NavItemVM { get; set; }
+
         public NavigationItem_ViewController(ApplicationDbContext context)
         {
             _context = context;
+            NavItemVM = new NavigationItem_ViewModel()
+            {
+                NavigationItem_View = _context.NavigationItem_View.ToList()
+
+            };
         }
 
         // GET: NavigationItem_View
         public async Task<IActionResult> Index()
         {
-            return View(await _context.NavigationItem_View.ToListAsync());
+            return View(NavItemVM);
         }
 
         // GET: NavigationItem_View/Details/5
