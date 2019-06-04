@@ -8,6 +8,7 @@ namespace DecisionNav.Models.ViewModels
     public class NavigationListViewModel
     {
         public string Id { get; set; }
+        public string ViewId { get; set; }
         public string DefaultName { get; set; }
         public string ImageUrl { get; set; }
         public IList<NavigationListViewModel> Children { get; set; }

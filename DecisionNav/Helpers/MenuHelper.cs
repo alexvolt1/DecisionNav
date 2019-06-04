@@ -61,6 +61,13 @@ namespace DecisionNav.Helpers
         {
             return menuList.FirstOrDefault(x => x.Id == id);
         }
+        public static NavigationItem_View GetViewId(IList<NavigationItem_View> navItemView, string id, string RType)
+        {
+            NavigationItem_View navView = new NavigationItem_View();
+
+            navView= navItemView.FirstOrDefault(x => x.TopicId == id && x.RType.ToLower()== RType);
+            return navView;
+        }
 
         public static IList<MenuViewModel> GetMenu(IList<Menu> menuList, string parentId)
         {
@@ -103,10 +110,14 @@ namespace DecisionNav.Helpers
             foreach (var item in children)
             {
                 var menu = MenuHelper.GetMenuItemNavList(menuList, item.Id);
+                string RType = "rel";
+                var navItem = MenuHelper.GetViewId(navItemView, item.Id, RType);
 
                 var vm = new NavigationListViewModel();
 
                 vm.Id = menu.Id;
+
+                vm.ViewId = navItem?.ViewId;
                 vm.DefaultName = menu.DefaultName;
                 vm.ImageUrl = menu.ImageUrl;
                 vm.Children = GetMenuNavList(menuList, navItemView, menu.Id);
