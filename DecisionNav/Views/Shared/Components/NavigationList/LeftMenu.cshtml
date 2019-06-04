@@ -1,28 +1,29 @@
-﻿@model IList<DecisionNav.Models.NavigationList>
+﻿@*@model IList<DecisionNav.Models.NavigationList>*@
+@model DecisionNav.Models.ViewModels.NavigationObjectsModel
 @using DecisionNav.Helpers
 @{
 
-    var listMenuItems = MenuHelper.GetMenuNavList(Model, "00000000-0000-0000-0000-000000000000");
+    var listMenuItems = MenuHelper.GetMenuNavList(Model.NavList, Model.NavItemView, "00000000-0000-0000-0000-000000000000");
 }
 
-    <ul class="navbar-nav m-auto">
-        @*@Html.Partial("_TestPartial", listMenuItems)*@
+<ul class="navbar-nav m-auto">
+    @*@Html.Partial("_TestPartial", listMenuItems)*@
 
-        <partial name="_NavListPartial" model="listMenuItems" />
-        <li class="nav-item">
-            <a class="nav-link" href="#" role="button">
-                <span>Show Loaded Views :0</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" role="button">
-                <span>Show Private Views :0</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" role="button">
-                <span>Manage My Account</span>
-            </a>
-        </li>
-    </ul>
+    <partial name="_NavListPartial" model="listMenuItems" />
+    <li class="nav-item">
+        <a class="nav-link" href="#" role="button">
+            <span>Show Loaded Views :0</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" role="button">
+            <span>Show Private Views :0</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" role="button">
+            <span>Manage My Account</span>
+        </a>
+    </li>
+</ul>
 

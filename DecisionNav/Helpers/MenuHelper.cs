@@ -90,7 +90,7 @@ namespace DecisionNav.Helpers
             return vmList;
         }
 
-        public static IList<NavigationListViewModel> GetMenuNavList(IList<NavigationList> menuList, string parentId)
+        public static IList<NavigationListViewModel> GetMenuNavList(IList<NavigationList> menuList, IList<NavigationItem_View> navItemView, string parentId)
         {
             var children = MenuHelper.GetChildrenMenuNavList(menuList, parentId);
 
@@ -109,7 +109,7 @@ namespace DecisionNav.Helpers
                 vm.Id = menu.Id;
                 vm.DefaultName = menu.DefaultName;
                 vm.ImageUrl = menu.ImageUrl;
-                vm.Children = GetMenuNavList(menuList, menu.Id);
+                vm.Children = GetMenuNavList(menuList, navItemView, menu.Id);
 
                 vmList.Add(vm);
             }

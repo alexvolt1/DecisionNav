@@ -1,8 +1,9 @@
-﻿@model IList<DecisionNav.Models.NavigationList>
+﻿@*@model IList<DecisionNav.Models.NavigationList>*@
+@model DecisionNav.Models.ViewModels.NavigationObjectsModel
 @using DecisionNav.Helpers
 @{
 
-    var listMenuItems = MenuHelper.GetMenuNavList(Model, "00000000-0000-0000-0000-000000000000");
+    var listMenuItems = MenuHelper.GetMenuNavList(Model.NavList, Model.NavItemView, "00000000-0000-0000-0000-000000000000");
 }
 
 <ul class="navbar-nav m-auto">

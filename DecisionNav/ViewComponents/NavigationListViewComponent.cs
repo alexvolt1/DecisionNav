@@ -28,12 +28,25 @@ namespace DecisionNav.ViewComponents
         int maxPriority, bool isDone, string position)
         {
             IEnumerable<NavigationList> cacheEntry;
+            IList<NavigationList> cacheEntry2;
+            IList<NavigationItem_View> cacheEntry3;
+            NavigationObjectsModel cacheNavObjectModel;
+
+            NavigationObjectsModel navigationObjectsModel = new NavigationObjectsModel();
 
             // Look for cache key.
-            if (!_cache.TryGetValue(CacheKeys.Entry, out cacheEntry))
+            if (!_cache.TryGetValue(CacheKeys.Entry, out cacheNavObjectModel))
             {
                 // Key not in cache, so get data.
-                cacheEntry = await _context.NavigationList.ToListAsync();
+                cacheEntry2 = await _context.NavigationList.ToListAsync();
+                cacheEntry3 = await _context.NavigationItem_View.ToListAsync();
+
+                cacheNavObjectModel = new NavigationObjectsModel()
+                {
+                    NavList = cacheEntry2,
+                    NavItemView = cacheEntry3
+                };
+
 
 
                 // Set cache options.
@@ -42,17 +55,21 @@ namespace DecisionNav.ViewComponents
                     .SetSlidingExpiration(TimeSpan.FromSeconds(15));
 
                 // Save data in cache.
-                _cache.Set(CacheKeys.Entry, cacheEntry, cacheEntryOptions);
+                _cache.Set(CacheKeys.Entry, cacheNavObjectModel, cacheEntryOptions);
             }
-            if (position=="left")
+
+            navigationObjectsModel.NavList = cacheNavObjectModel.NavList;
+            navigationObjectsModel.NavItemView = cacheNavObjectModel.NavItemView;
+
+            if (position == "left")
             {
-                return View("LeftMenu", cacheEntry);
+                return View("LeftMenu", navigationObjectsModel);
             }
             else
             {
-                return View(cacheEntry);
+                return View(navigationObjectsModel);
             }
-            
+
         }
 
     }
